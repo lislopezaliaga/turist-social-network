@@ -5,13 +5,18 @@ export const changeTmp = (route) => {
     mainSection.innerHTML = '';
 
     switch (route) {
-        case '': {
+        case '#/signin': case '': {
             return mainSection.appendChild(components.signin());
             break;
         }
 
-        case '': {
+        case '#/signup': {
             return mainSection.appendChild(components.signup());
+            break;
+        }
+
+        case '#/home': {
+            return mainSection.appendChild(components.home());
             break;
         }
 

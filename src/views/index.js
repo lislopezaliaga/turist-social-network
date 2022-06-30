@@ -1,8 +1,11 @@
-import {formLogIn} from './signin.js';
+import {formSignIn} from './signin.js';
+import { formSingUp } from './signup.js';
+import { home } from './home.js';
 
 const components = {
-    signin: formLogIn,
-    signup: formInit,
+    signin: formSignIn,
+    signup: formSingUp,
+    home: home
 };
 
 export { components };
