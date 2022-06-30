@@ -1,7 +1,13 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { routers} from './router/index.js';
+import { myFunction } from './lib/index.js';
+import { changeTmp } from './view-controller/router.js';
 
-window.addEventListener('load',routers);
+myFunction();
+const init = ()=> {
+    changeTmp(window.location.hash);
+    window.addEventListener('hashchange', ()=> changeTmp(window.location.hash));
+}
 
-window.addEventListener('hashchange', routers);
+window.addEventListener('load', init);
+

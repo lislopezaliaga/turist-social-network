@@ -12,7 +12,6 @@ export const routers= () => {
       main.appendChild(formLogIn());
       break;
    
-
     default:
       main.innerHTML = 'Página No Encontrada';
       break;
