@@ -1,3 +1,4 @@
+
 import {saveTask} from '../firebase/config.js';
 
 //vista de registro
@@ -30,4 +31,7 @@ export const register=()=>{
    
     await saveTask(nombre,correo,contraseña);
   })}
+
+
+
 

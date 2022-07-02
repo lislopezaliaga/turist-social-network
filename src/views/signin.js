@@ -1,14 +1,15 @@
-//vista inicio de sesión
+//vista de registro
 export const formSignIn = () => {
-    const formInit = `
+    const signInContent = `
     <div>
+        <input type= "text" placeholder= "Nombre">
         <input type="text" placeholder="Email">
         <input type="password">
-        <button><a href = "#/home">Inicia Sesión</a></button>
-        <a href= "#/signup">Registrarse</a>
+        <button><a href="#/home">Registrarse</a></button>
+        <a href="#/signup">Iniciar sesión</a>
     </div>
     `;
-    const formInitializacion = document.createElement('div');
-    formInitializacion.innerHTML =formInit;
-    return formInitializacion;
+    const signInContainer = document.createElement('div');
+    signInContainer.innerHTML =signInContent;
+    return signInContainer;
 };
