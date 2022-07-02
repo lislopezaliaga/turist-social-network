@@ -14,7 +14,6 @@ export const changeTmp = (route) => {
 
         case '#/signin': case '': {  
             mainSection.appendChild(components.signin());
-
             break;
         }
 
