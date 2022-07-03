@@ -8,14 +8,14 @@ export const changeTmp = (route) => {
     navBar.innerHTML = '';
 
     switch (route) {
-        case '#/signup': 
+        case '#/signin': 
         case '': {
-            mainSection.appendChild(components.signup());
+            mainSection.appendChild(components.signin());
             break;
         }
 
-        case '#/signin': {
-            mainSection.appendChild(components.signin());
+        case '#/signup': {
+            mainSection.appendChild(components.signup());
             break;
         }
 
