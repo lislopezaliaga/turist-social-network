@@ -10,10 +10,5 @@ const components = {
     home: home
 };
 
-const conections={
-    registerUsers:registerUsers,
-    siginUsers: siginUsers,
-};
 
-export { components,conections};
 
