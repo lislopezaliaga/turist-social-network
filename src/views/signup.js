@@ -1,5 +1,5 @@
 
-import {saveTask} from '../firebase/config.js';
+import {addUsers} from '../firebase/config.js';
 
 //vista de registro
 //no funciona con el href nuestro botón
@@ -20,17 +20,35 @@ export  const formSingUp = () => {
     return formInitializacion;
   
 };
-export const register=()=>{
+export const registerUsers=()=>{
  const formRegister=document.querySelector('#formRegister');
 
   formRegister.addEventListener('submit',async(e)=>{
     e.preventDefault();
-   const nombre= formRegister['name'].value;
+  // const nombre= formRegister['name'].value;
    const correo= formRegister['email'].value;
    const contraseña= formRegister['pasword'].value;
    
-    await saveTask(nombre,correo,contraseña);
-  })}
+    // await saveUsers(nombre,correo,contraseña);
+    // formRegister.reset();
+    await addUsers(correo,contraseña)
+    // console.log(addUsers());
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      console.log(errorCode );
+      const errorMessage = error.message;
+      console.log(errorMessage );
+      // ..
+    });
+    
+  })
+}
 
 
 

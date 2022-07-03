@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
-import { getFirestore, collection,addDoc} from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
+import { getFirestore, collection,addDoc } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,9 +19,10 @@ import { getFirestore, collection,addDoc} from "https://www.gstatic.com/firebase
 
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+/**Inicia firebase****/
+export const app = initializeApp(firebaseConfig);
+/**Inicia firebase****/
 const db=getFirestore();
+export const auth = getAuth();
 
-export const saveTask=(nombre,correo,contraseña)=>{
- addDoc(collection(db, 'tasks'),{nombre:nombre,correo:correo,contraseña:contraseña})
-}
+

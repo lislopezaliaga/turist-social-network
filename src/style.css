@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 98%;
+    background: rgba(154, 243, 148, 0.16);
+}
+#container{
+width: 100%;
+}
+@media screen and (max-width:320px) {
+#formSignIn{
+display: flex;
+
+}
+}

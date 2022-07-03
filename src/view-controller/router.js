@@ -1,7 +1,4 @@
-import { components } from '../views/index.js';
-import {register} from '../views/signup.js';
-
-
+import { components,conections } from '../views/index.js';
 
 export const changeTmp = (route) => {
     const mainSection = document.getElementById('container');
@@ -14,12 +11,13 @@ export const changeTmp = (route) => {
 
         case '#/signin': case '': {  
             mainSection.appendChild(components.signin());
+            conections.siginUsers();
             break;
         }
 
         case '#/signup': {
            mainSection.appendChild(components.signup());
-            register();
+           conections.registerUsers();
             break;
         }
 

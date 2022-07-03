@@ -1,5 +1,5 @@
-import { formSignIn } from './signin.js';
-import { formSingUp} from './signup.js';
+import { formSignIn,siginUsers } from './signin.js';
+import { formSingUp,registerUsers} from './signup.js';
 import { home } from './home.js';
 import { navBar } from './navBar.js';
 
@@ -10,5 +10,10 @@ const components = {
     home: home
 };
 
-export { components };
+const conections={
+    registerUsers:registerUsers,
+    siginUsers: siginUsers,
+};
+
+export { components,conections};
 
