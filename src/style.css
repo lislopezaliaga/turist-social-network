@@ -1,0 +1,65 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.back-principal{
+  background-image: url("/img/fondo.jpg");
+  height: 650px;
+}
+.divs2{
+  padding: 0px 0px;
+  width:50%;
+  height: 100%;
+}
+#seccion1 {
+  background: rgba(233, 232, 244, 0.59);
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  justify-content: center;
+  align-content: center;
+}
+.formulario{
+  font-family: 'Overpass', sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  margin: 10px;
+  width: 90%;
+  height: 25px;
+  border-radius: 5px;
+}
+button {
+  margin: 10px;
+}
+#btn-signin{
+  background: #7CB731;
+  padding: 5px 0px;
+  border-radius: 5px ;
+  border: 2px solid #7CB731; 
+  width: 180px;
+  font-family: 'Overpass', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+#btn-signin:hover{
+  background: #aad86e;
+}
+@media only screen and (max-width: 700px){
+  .divs2{
+    width: 100%;
+  }
+}
+.bienvenidos{
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 12px;
+}
