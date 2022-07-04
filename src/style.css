@@ -87,7 +87,7 @@ float: left;
  
 #signUpForm  input,
 #signUpForm  p{
-    width: 260px;
+    width: 250px;
     height: 25px;
     border-radius: 5px;
 }
@@ -98,7 +98,7 @@ float: left;
 #signUpForm  button{
     background: #7CB731;
     border:  solid #7CB731;
-    width: 260px;
+    width: 250px;
     height: 30px;
     border-radius: 5px;
     font-weight: 600;
