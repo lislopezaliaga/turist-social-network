@@ -9,11 +9,19 @@ import {
 export const formSignUp = () => {
     const signUpContent = `
     <form id = "signUpForm">
+        <div class="imgLogo">
+            <img src="img/viajeros.png" width="200px"/>
+        </div>
+        <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
         <input type= "text" placeholder= "Nombre" id = "name">
         <input type="text" placeholder="Email" id = "email">
-        <input type="password" id = "password">
+        <input type="password" placeholder="Contraseña"id = "password">
+        <div>
+            <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
+        </div>
         <button type= "submit" id ="btn-signup">Registrarse</button>
-        <a href="#/signin">Iniciar sesión</a>
+        <p>¿Ya tienes una cuenta?<a href="#/signin">Inicia sesión</a></p>
+       
     </form>
     `;
     const signUpContainer = document.createElement('div');
