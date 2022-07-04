@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: rgba(154, 243, 148, 0.16);
+}
+main{
+    width: 98%;
+    margin: 1%;
+    background-color: black;
+}
+main > div{
+    width: 98%;
+    margin: 1%;
+    align-items: center;
+    background-color: rgb(42, 99, 165);
+    height: 100vh;
+}
+#signUpForm{
+    float:right;
+   display: grid;
+   padding: 0 5%;
+   width: 260px;
+   background-color: brown;
+   height: 100vh;
+}
+  
+#signUpForm  input,
+#signUpForm  button{
+height: 30px;
+margin: 3% 0;
+border-radius: 5px;
+}
+
+
+/* @media screen and (max-width:320px) {
+   
+}  */ 
