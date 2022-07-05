@@ -34,7 +34,7 @@ export const formSignUp = () => {
 };
 
 //Añadir nuevo usuario (Document) a users (colección)
-function createNewUser (name, email, userId){
+export function createNewUser (name, email, userId){
     setDoc(doc(db, 'users', userId), {
         name,
         email

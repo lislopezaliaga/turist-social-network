@@ -3,7 +3,8 @@
         setDoc, doc, db,
         auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider
     } from '../firebase/firebaseconfig.js';
-
+  
+import{createNewUser}from './signup.js'
 
     export const formSignIn = () => {
         const  signInContent = `
@@ -35,7 +36,7 @@
         e.preventDefault();
         const signInForm = document.querySelector('#signInForm');
         const email = signInForm['email'].value;
-        const password = signInForm['#password'].value;
+        const password = signInForm['password'].value;
         console.log(email + ' y ' + password)
 
         signInWithEmailAndPassword(auth, email, password)
@@ -68,6 +69,7 @@
             console.log(emailRegister, userIdRegister);
             console.log(result);
             createNewUser(name, emailRegister, userIdRegister);
+            alert('usuario autentificado');
         })
         .catch((error) => {
         // Handle Errors here.
