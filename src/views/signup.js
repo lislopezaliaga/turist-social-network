@@ -3,7 +3,7 @@
 import {
     setDoc, doc, db,
     createUserWithEmailAndPassword,
-    auth, 
+    auth, sendEmailVerification
 } from '../firebase/firebaseconfig.js';
 
 export const formSignUp = () => {
@@ -57,6 +57,8 @@ export const signUpHandler = (e) => {
         const userIdRegister = userCredential.user.uid;
         console.log(userCredential);
         console.log(emailRegister, userIdRegister);
+
+        emailVerificationHandler();
         createNewUser(name, emailRegister, userIdRegister);
     })
     .catch((error) => {
@@ -66,7 +68,18 @@ export const signUpHandler = (e) => {
     });
 }
 
-
+const emailVerificationHandler = ()=> {
+    sendEmailVerification(auth.currentUser)
+      .then((result) => {
+        console.log('result:' + result);
+        console.log('correo de verificación enviado');
+      })
+      .catch((error)=> {
+        console.log('error:' + error);
+        console.log('no se envió correo de verificación');
+      });
+    }
+    
 /* signInWithRedirect(auth, provider);
 
 getRedirectResult(auth)
