@@ -4,7 +4,7 @@
         auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider
     } from '../firebase/firebaseconfig.js';
   
-import{createNewUser}from './signup.js'
+import{createNewUser}from '../firebase/firestore.js'
 
     export const formSignIn = () => {
         const  signInContent = `
@@ -14,8 +14,10 @@ import{createNewUser}from './signup.js'
                 <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
                 <form id="signInForm" class="formulario">
                 <button type="submit" id="btn-signin-google"><i class="fa fa-google"></i> Sign In with Google</button>
-                <input type="text" placeholder="Email" id = "email">
-                <input type="password" placeholder="Contraseña" id = "password">
+                <input type="email" required placeholder="Email" id = "email">
+                <label id="invalidEmail"></label>
+                <input type="password" required placeholder="Contraseña" id = "password">
+                <label id="invalidPassword"></label>
                 <button type="submit" id ="btn-signin"><a href = "#/home">Inicia Sesión</a></button>
                     
                 <p>¿No tienes una cuenta? <a href = "#/signup">Registrate</a></p>
@@ -47,7 +49,12 @@ import{createNewUser}from './signup.js'
             const userIdRegister = userCredential.user.uid;
             console.log(userCredential);
             console.log(emailRegister, userIdRegister);
-            alert('usuario autentificado');
+            if(user.emailVerified){
+                alert('usuario autentificado');
+                window.location.hash = '#/home';
+                console.log(user.emailVerified);
+            }
+          
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -70,6 +77,8 @@ import{createNewUser}from './signup.js'
             console.log(emailRegister, userIdRegister);
             console.log(result);
             createNewUser(name, emailRegister, userIdRegister);
+            window.location.hash = '#/home';
+            
         })
         .catch((error) => {
         // Handle Errors here.
@@ -77,11 +86,31 @@ import{createNewUser}from './signup.js'
         const errorMessage = error.message;
         console.log('error en signup', errorMessage, errorCode);
 
-        // The email of the user's account used.
-        //const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+            /**Haciendo las validaciones  */
+            if (error.message === 'Firebase: Error (auth/invalid-email).') {
+                const invalidEmail=document.querySelector('#invalidEmail');
+                invalidEmail.innerHTML = 'Ingrese un correo Válido';
+                setTimeout(() => {
+                  invalidEmail.innerHTML = '';
+                }, 5000);
+              } else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+                const invalidPassword=document.querySelector('#invalidPassword');
+                invalidPassword.innerHTML ='La contraseña debe tener al menos 6 caractéres';
+                setTimeout(() => {
+                    invalidPassword.innerHTML = '';
+                }, 5000);
+              } else if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+                invalidEmail.innerHTML = 'El correo está asociado a una cuenta existente';
+                setTimeout(() => {
+                    invalidEmail.innerHTML = '';
+                }, 5000);
+              } else {
+                invalidPassword.textContent = error.message;
+              }
+
+
+
+       
         });
 
     };

@@ -1,10 +1,9 @@
 //vista de registro, es SIGNUP
 /* <button><a href="#/home">Registrarse</a></button> */
-import {
-    setDoc, doc, db,
-    createUserWithEmailAndPassword,
-    auth, 
-} from '../firebase/firebaseconfig.js';
+
+import{createNewUser} from '../firebase/firestore.js'
+import{addUser,emailVerificationHandler} from '../firebase/auth.js'
+
 
 export const formSignUp = () => {
     const signUpContent = `
@@ -13,9 +12,12 @@ export const formSignUp = () => {
             <img src="img/viajeros.png" width="200px"/>
         </div>
         <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
-        <input type= "text" placeholder= "Nombre" id = "name">
-        <input type="text" placeholder="Email" id = "email">
-        <input type="password" placeholder="Contraseña"id = "password">
+        <input type= "text" placeholder= "Nombre" id ="name"  required>
+        <label id="nameAlert"></label>
+        <input type="email" placeholder="Email" id = "email" required>
+        <label id="invalidEmail"></label>
+        <input type="password" placeholder="Contraseña" id = "password" required>
+        <label id="invalidPassword"></label>
         <div>
             <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
         </div>
@@ -33,14 +35,7 @@ export const formSignUp = () => {
     return signUpContainer;
 };
 
-//Añadir nuevo usuario (Document) a users (colección)
-export function createNewUser (name, email, userId){
-    setDoc(doc(db, 'users', userId), {
-        name,
-        email
-    });
-    console.log('estoy llamando a createuser');
-}
+
 
 export const signUpHandler = (e) => {
     e.preventDefault();
@@ -49,25 +44,57 @@ export const signUpHandler = (e) => {
     const email = signUpForm['email'].value;
     const password = e.target.closest('#signUpForm').querySelector('#password').value;
     console.log(email + ' y ' + password)
-
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Agregar nvo user
-        const emailRegister = userCredential.user.email;
-        const userIdRegister = userCredential.user.uid;
-        console.log(userCredential);
-        console.log(emailRegister, userIdRegister);
-        createNewUser(name, emailRegister, userIdRegister);
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('error en signup', errorMessage, errorCode);
-    });
+    if(name.length!=0){
+        addUser(email,password)
+        .then((userCredential) => {
+            // Agregar nuevo user
+            const user = userCredential.user;
+            const emailRegister = user.email;
+            const userIdRegister = user.uid;
+            console.log(userCredential);
+            console.log(emailRegister, userIdRegister);
+    
+            emailVerificationHandler().then(() => {   
+                createNewUser(name, emailRegister, userIdRegister);                    
+            })
+            window.location.hash = '#/signin';
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // console.log('error en signup', errorMessage, errorCode);
+            /**Haciendo las validaciones  */
+            if (error.message === 'Firebase: Error (auth/invalid-email).') {
+                const invalidEmail=document.querySelector('#invalidEmail');
+                invalidEmail.innerHTML = 'Ingrese un correo Válido';
+                setTimeout(() => {
+                  invalidEmail.innerHTML = '';
+                }, 5000);
+              } else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+                const invalidPassword=document.querySelector('#invalidPassword');
+                invalidPassword.innerHTML ='La contraseña debe tener al menos 6 caractéres';
+                setTimeout(() => {
+                    invalidPassword.innerHTML = '';
+                }, 5000);
+              } else if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+                invalidEmail.innerHTML = 'El correo está asociado a una cuenta existente';
+                setTimeout(() => {
+                    invalidEmail.innerHTML = '';
+                }, 5000);
+              } else {
+                console.log(error.message) 
+              }
+        });
+    }else{
+        const name = document.querySelector('#nameAlert');
+        name.innerHTML="Ingrese un nombre de usuario"
+    }
+    
 }
 
 
 
+    
 /* signInWithRedirect(auth, provider);
 
 getRedirectResult(auth)
