@@ -42,6 +42,7 @@ import{createNewUser}from './signup.js'
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Agregar nvo user
+            const user=userCredential.user;
             const emailRegister = userCredential.user.email;
             const userIdRegister = userCredential.user.uid;
             console.log(userCredential);

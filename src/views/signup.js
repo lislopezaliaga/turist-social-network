@@ -67,6 +67,7 @@ export const signUpHandler = (e) => {
 }
 
 
+
 /* signInWithRedirect(auth, provider);
 
 getRedirectResult(auth)
