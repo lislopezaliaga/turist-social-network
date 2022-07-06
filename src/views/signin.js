@@ -69,7 +69,6 @@ import{createNewUser}from './signup.js'
             console.log(emailRegister, userIdRegister);
             console.log(result);
             createNewUser(name, emailRegister, userIdRegister);
-            alert('usuario autentificado');
         })
         .catch((error) => {
         // Handle Errors here.
