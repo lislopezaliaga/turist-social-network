@@ -9,6 +9,7 @@ html, body {
 .back-principal{
   background-image: url("/img/fondo.jpg");
   height: 100vh;
+  display: flex;
 }
 .divs2{
   padding: 0px 0px;
@@ -116,5 +117,8 @@ float: left;
     }
     #signUpForm{
         width: 100%;
+    }
+    .back-principal{
+        display: block;
     }
   }

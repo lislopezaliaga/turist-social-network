@@ -3,6 +3,7 @@
 
 import{createNewUser} from '../firebase/firestore.js'
 import{addUser,emailVerificationHandler} from '../firebase/auth.js'
+import { doc } from '../firebase/firebaseconfig.js';
 
 
 export const formSignUp = () => {
@@ -21,7 +22,6 @@ export const formSignUp = () => {
         <label id="invalidEmail"></label>
 
         <input type="password" placeholder="Contraseña" id = "password" name = "password" required = "required">
-
         <label id="invalidPassword"></label>
         <div>
             <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
@@ -35,20 +35,23 @@ export const formSignUp = () => {
     signUpContainer.innerHTML =signUpContent;
 
     signUpContainer.querySelector('#btn-signup').addEventListener('click', signUpHandler);
-    
 
     return signUpContainer;
 };
-
-function validarDatos (name, email, password){
+function validarDatos(){
     if (name==""|| email=="" || password=="" ){
         invalidPassword.innerHTML ='Completar todos los datos';
         setTimeout(() => {
             invalidPassword.innerHTML = '';
         }, 5000);
     }
-}
-
+    let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    if ( expressionemail.test(email)==false ){
+        invalidPassword.innerHTML ='Formato de email incorrecto';
+        setTimeout(() => {
+            invalidPassword.innerHTML = '';
+        }, 5000);
+    }}
 
 export const signUpHandler = (e) => {
     e.preventDefault();
@@ -56,6 +59,7 @@ export const signUpHandler = (e) => {
     const name = signUpForm['name'].value;
     const email = signUpForm['email'].value;
     const password = e.target.closest('#signUpForm').querySelector('#password').value;
+    validarDatos();
     console.log(email + ' y ' + password)
 
     validarDatos(name, email, password);

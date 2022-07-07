@@ -59,7 +59,7 @@ import{createNewUser}from '../firebase/firestore.js'
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log('error en signup', errorMessage, errorCode);
+            console.log('error en signin', errorMessage, errorCode);
         });
     }
 
