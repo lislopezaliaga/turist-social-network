@@ -13,22 +13,11 @@ export const formSignUp = () => {
             <img src="img/viajeros.png" width="200px"/>
         </div>
         <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
-<<<<<<< HEAD
         <input type= "text" placeholder= "Nombre" id ="name"  Required>
         <label id="nameAlert"></label>
         <input type="email" placeholder="Email" id = "email" Required>
         <label id="invalidEmail"></label>
         <input type="password" placeholder="Contraseña" id = "password" Required>
-=======
-        <input type= "text" placeholder= "Nombre" id ="name" name = "name"  required = "required">
-        <label id="nameAlert"></label>
-
-        <input type="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-        title="Invalid email address" />
-        <label id="invalidEmail"></label>
-
-        <input type="password" placeholder="Contraseña" id = "password" name = "password" required = "required">
->>>>>>> 333f85ff6c267b480defd41430ba1f8f16dec2f5
         <label id="invalidPassword"></label>
         <div>
             <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
@@ -53,13 +42,14 @@ function validarDatos(){
         }, 5000);
     }
     let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    console.log(expressionemail.test(email));
     if ( expressionemail.test(email)==false ){
         invalidPassword.innerHTML ='Formato de email incorrecto';
         setTimeout(() => {
             invalidPassword.innerHTML = '';
         }, 5000);
     }
-
+}
 export const signUpHandler = (e) => {
     e.preventDefault();
     const signUpForm = document.querySelector('#signUpForm');
@@ -128,18 +118,6 @@ export const signUpHandler = (e) => {
     } */
     
 }
-let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-    console.log(expressionemail.test(name));
-    if ( expressionemail.test(name)==false ){
-        invalidPassword.innerHTML ='Formato de email incorrecto';
-        setTimeout(() => {
-            invalidPassword.innerHTML = '';
-        }, 5000);
-    }
-
-
-
-    
 /* signInWithRedirect(auth, provider);
 
 getRedirectResult(auth)
