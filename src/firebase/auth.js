@@ -5,12 +5,9 @@ import {
 
 } from './firebaseconfig.js';
 
-export const addUser=async(email,password)=> {
-  return await createUserWithEmailAndPassword(auth, email, password) 
-}
+export const addUser=(email,password)=>createUserWithEmailAndPassword(auth, email, password);
 
-export const emailVerificationHandler = async()=> {
-   return await sendEmailVerification(auth.currentUser)   
-}
+
+export const emailVerificationHandler = ()=> sendEmailVerification(auth.currentUser);
 
   

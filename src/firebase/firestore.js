@@ -7,8 +7,8 @@ import {
   } from './firebaseconfig.js';
   
   //Añadir nuevo usuario (Document) a users (colección)
-  export  async function createNewUser (name, email, userId){
-    await setDoc(doc(db, 'users', userId), {
+  export   function createNewUser (name, email, userId){
+   setDoc(doc(db, 'users', userId), {
         name,
         email
     });

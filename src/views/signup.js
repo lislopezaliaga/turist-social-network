@@ -62,6 +62,9 @@ export const signUpHandler = (e) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            console.log(errorMessage) ;
+           console.log(errorCode);
+
             // console.log('error en signup', errorMessage, errorCode);
             /**Haciendo las validaciones  */
             if (error.message === 'Firebase: Error (auth/invalid-email).') {
