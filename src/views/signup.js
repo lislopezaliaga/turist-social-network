@@ -3,6 +3,7 @@
 
 import{createNewUser} from '../firebase/firestore.js'
 import{addUser,emailVerificationHandler} from '../firebase/auth.js'
+import { doc } from '../firebase/firebaseconfig.js';
 
 
 export const formSignUp = () => {
@@ -12,11 +13,11 @@ export const formSignUp = () => {
             <img src="img/viajeros.png" width="200px"/>
         </div>
         <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
-        <input type= "text" placeholder= "Nombre" id ="name"  required>
+        <input type= "text" placeholder= "Nombre" id ="name"  Required>
         <label id="nameAlert"></label>
-        <input type="email" placeholder="Email" id = "email" required>
+        <input type="email" placeholder="Email" id = "email" Required>
         <label id="invalidEmail"></label>
-        <input type="password" placeholder="Contraseña" id = "password" required>
+        <input type="password" placeholder="Contraseña" id = "password" Required>
         <label id="invalidPassword"></label>
         <div>
             <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
@@ -30,11 +31,25 @@ export const formSignUp = () => {
     signUpContainer.innerHTML =signUpContent;
 
     signUpContainer.querySelector('#btn-signup').addEventListener('click', signUpHandler);
-    
 
     return signUpContainer;
 };
+function validarDatos(){
+    if (name==""|| email=="" || password=="" ){
+        invalidPassword.innerHTML ='Completar todos los datos';
+        setTimeout(() => {
+            invalidPassword.innerHTML = '';
+        }, 5000);
+    }
+    let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    if ( expressionemail.test(email)==false ){
+        invalidPassword.innerHTML ='Formato de email incorrecto';
+        setTimeout(() => {
+            invalidPassword.innerHTML = '';
+        }, 5000);
+    }
 
+}
 
 
 export const signUpHandler = (e) => {
@@ -43,6 +58,7 @@ export const signUpHandler = (e) => {
     const name = signUpForm['name'].value;
     const email = signUpForm['email'].value;
     const password = e.target.closest('#signUpForm').querySelector('#password').value;
+    validarDatos();
     console.log(email + ' y ' + password)
     if(name.length!=0){
         addUser(email,password)
