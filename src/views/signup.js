@@ -12,11 +12,11 @@ export const formSignUp = () => {
             <img src="img/viajeros.png" width="200px"/>
         </div>
         <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
-        <input type= "text" placeholder= "Nombre" id ="name"  required>
+        <input type= "text" placeholder="Nombre" id ="name"  required="required">
         <label id="nameAlert"></label>
-        <input type="email" placeholder="Email" id = "email" required>
+        <input type="email" placeholder="Email" id = "email" required />
         <label id="invalidEmail"></label>
-        <input type="password" placeholder="Contraseña" id = "password" required>
+        <input type="password" placeholder="Contraseña" id = "password" required />
         <label id="invalidPassword"></label>
         <div>
             <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
@@ -73,18 +73,20 @@ export const signUpHandler = (e) => {
                 setTimeout(() => {
                   invalidEmail.innerHTML = '';
                 }, 5000);
-              } else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+              } 
+              if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
                 const invalidPassword=document.querySelector('#invalidPassword');
                 invalidPassword.innerHTML ='La contraseña debe tener al menos 6 caractéres';
                 setTimeout(() => {
                     invalidPassword.innerHTML = '';
                 }, 5000);
-              } else if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+              } 
+              if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
                 invalidEmail.innerHTML = 'El correo está asociado a una cuenta existente';
                 setTimeout(() => {
                     invalidEmail.innerHTML = '';
                 }, 5000);
-              } else {
+              } else{
                 console.log(error.message) 
               }
         });

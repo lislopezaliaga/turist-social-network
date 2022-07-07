@@ -86,29 +86,7 @@ import{createNewUser}from '../firebase/firestore.js'
         const errorMessage = error.message;
         console.log('error en signup', errorMessage, errorCode);
 
-            /**Haciendo las validaciones  */
-            if (error.message === 'Firebase: Error (auth/invalid-email).') {
-                const invalidEmail=document.querySelector('#invalidEmail');
-                invalidEmail.innerHTML = 'Ingrese un correo Válido';
-                setTimeout(() => {
-                  invalidEmail.innerHTML = '';
-                }, 5000);
-              } else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
-                const invalidPassword=document.querySelector('#invalidPassword');
-                invalidPassword.innerHTML ='La contraseña debe tener al menos 6 caractéres';
-                setTimeout(() => {
-                    invalidPassword.innerHTML = '';
-                }, 5000);
-              } else if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
-                invalidEmail.innerHTML = 'El correo está asociado a una cuenta existente';
-                setTimeout(() => {
-                    invalidEmail.innerHTML = '';
-                }, 5000);
-              } else {
-                invalidPassword.textContent = error.message;
-              }
-
-
+            
 
        
         });
