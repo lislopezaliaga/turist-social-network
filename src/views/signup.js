@@ -12,11 +12,14 @@ export const formSignUp = () => {
             <img src="img/viajeros.png" width="200px"/>
         </div>
         <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
-        <input type= "text" placeholder= "Nombre" id ="name"  required>
+        <input type= "text" placeholder= "Nombre" id ="name" name = "name"  required = "required">
         <label id="nameAlert"></label>
-        <input type="email" placeholder="Email" id = "email" required>
+
+        <input type="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        title="Invalid email address" />
         <label id="invalidEmail"></label>
-        <input type="password" placeholder="Contraseña" id = "password" required>
+
+        <input type="password" placeholder="Contraseña" id = "password" name = "password" required = "required">
         <label id="invalidPassword"></label>
         <div>
             <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
@@ -35,6 +38,14 @@ export const formSignUp = () => {
     return signUpContainer;
 };
 
+function validarDatos (name, email, password){
+    if (name==""|| email=="" || password=="" ){
+        invalidPassword.innerHTML ='Completar todos los datos';
+        setTimeout(() => {
+            invalidPassword.innerHTML = '';
+        }, 5000);
+    }
+}
 
 
 export const signUpHandler = (e) => {
@@ -44,6 +55,9 @@ export const signUpHandler = (e) => {
     const email = signUpForm['email'].value;
     const password = e.target.closest('#signUpForm').querySelector('#password').value;
     console.log(email + ' y ' + password)
+
+    validarDatos(name, email, password);
+
     if(name.length!=0){
         addUser(email,password)
         .then((userCredential) => {
@@ -62,7 +76,7 @@ export const signUpHandler = (e) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // console.log('error en signup', errorMessage, errorCode);
+            console.log('error en signup', errorMessage, errorCode);
             /**Haciendo las validaciones  */
             if (error.message === 'Firebase: Error (auth/invalid-email).') {
                 const invalidEmail=document.querySelector('#invalidEmail');
@@ -81,16 +95,34 @@ export const signUpHandler = (e) => {
                 setTimeout(() => {
                     invalidEmail.innerHTML = '';
                 }, 5000);
-              } else {
+              } /* else if (error.message === 'Firebase: Error (auth/missing-email).'
+                || !email.value.includes("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")) {
+                invalidEmail.innerHTML = 'Ingrese un correo electrónico válido';
+                setTimeout(() => {
+                    invalidEmail.innerHTML = '';
+                }, 5000);
+              } */ else {
                 console.log(error.message) 
               }
         });
-    }else{
+    }/* else{
         const name = document.querySelector('#nameAlert');
-        name.innerHTML="Ingrese un nombre de usuario"
-    }
+        name.innerHTML="Ingrese un nombre de usuario";
+        setTimeout(() => {
+            name.innerHTML = '';
+        }, 5000);
+        console.log(name.length);
+    } */
     
 }
+let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    console.log(expressionemail.test(name));
+    if ( expressionemail.test(name)==false ){
+        invalidPassword.innerHTML ='Formato de email incorrecto';
+        setTimeout(() => {
+            invalidPassword.innerHTML = '';
+        }, 5000);
+    }
 
 
 
