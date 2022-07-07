@@ -46,6 +46,7 @@ function validarDatos(){
         }, 5000);
     }
     let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    console.log(expressionemail.test(email));
     if ( expressionemail.test(email)==false ){
         invalidPassword.innerHTML ='Formato de email incorrecto';
         setTimeout(() => {
@@ -120,18 +121,6 @@ export const signUpHandler = (e) => {
     } */
     
 }
-let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-    console.log(expressionemail.test(name));
-    if ( expressionemail.test(name)==false ){
-        invalidPassword.innerHTML ='Formato de email incorrecto';
-        setTimeout(() => {
-            invalidPassword.innerHTML = '';
-        }, 5000);
-    }
-
-
-
-    
 /* signInWithRedirect(auth, provider);
 
 getRedirectResult(auth)
