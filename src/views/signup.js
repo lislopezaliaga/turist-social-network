@@ -6,6 +6,7 @@ import{addUser,emailVerificationHandler} from '../firebase/auth.js'
 import { doc } from '../firebase/firebaseconfig.js';
 
 
+
 export const formSignUp = () => {
     const signUpContent = `
     <form id = "signUpForm">
@@ -34,112 +35,73 @@ export const formSignUp = () => {
 
     return signUpContainer;
 };
-function validarDatos(){
+
+
+let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
+function verifyCompletedInput (name, email, password){
+    const invalidEmail = document.querySelector('#invalidEmail');
+    const invalidPassword = document.querySelector('#invalidPassword');
+
     if (name==""|| email=="" || password=="" ){
-        invalidPassword.innerHTML ='Completar todos los datos';
-        setTimeout(() => {
-            invalidPassword.innerHTML = '';
-        }, 5000);
+        invalidPassword.innerHTML ='Complete todos los datos';
+        cleanErrorMsm (invalidPassword);
     }
-    let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-    console.log(expressionemail.test(email));
-    if ( expressionemail.test(email)==false ){
-        invalidPassword.innerHTML ='Formato de email incorrecto';
-        setTimeout(() => {
-            invalidPassword.innerHTML = '';
-        }, 5000);
+
+    if (email !== '' ){
+        if (expressionemail.test(email) == false){
+            invalidEmail.innerHTML ='Ingrese un correo válido';
+            cleanErrorMsm (invalidEmail);
+        }
     }
 }
+
 export const signUpHandler = (e) => {
     e.preventDefault();
     const signUpForm = document.querySelector('#signUpForm');
     const name = signUpForm['name'].value;
     const email = signUpForm['email'].value;
-    const password = e.target.closest('#signUpForm').querySelector('#password').value;
-    validarDatos();
+    const password = signUpForm['password'].value;
     console.log(email + ' y ' + password)
 
-    validarDatos(name, email, password);
+    verifyCompletedInput(name, email, password);
 
-    if(name.length!=0){
-        addUser(email,password)
-        .then((userCredential) => {
-            // Agregar nuevo user
-            const user = userCredential.user;
-            const emailRegister = user.email;
-            const userIdRegister = user.uid;
-            console.log(userCredential);
-            console.log(emailRegister, userIdRegister);
-    
-            emailVerificationHandler().then(() => {   
-                createNewUser(name, emailRegister, userIdRegister);                    
-            })
-            window.location.hash = '#/signin';
+    addUser(email,password)
+    .then((userCredential) => {
+        // Agregar nuevo user
+        const user = userCredential.user;
+        const emailRegister = user.email;
+        const userIdRegister = user.uid;
+        console.log(userCredential);
+        console.log(emailRegister, userIdRegister);
+
+        emailVerificationHandler().then(() => {   
+            createNewUser(name, emailRegister, userIdRegister);                    
         })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+        window.location.hash = '#/signin';
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        /* Mostrar errores al usuario al momento del registro de su cuenta  */
+        if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+            invalidPassword.innerHTML ='La contraseña debe tener al menos 6 caracteres';
+            cleanErrorMsm (invalidPassword);
+
+        } else if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+            invalidEmail.innerHTML = 'El correo está asociado a una cuenta existente';
+            cleanErrorMsm (invalidEmail);
+
+        } else {
             console.log('error en signup', errorMessage, errorCode);
-            /**Haciendo las validaciones  */
-            if (error.message === 'Firebase: Error (auth/invalid-email).') {
-                const invalidEmail=document.querySelector('#invalidEmail');
-                invalidEmail.innerHTML = 'Ingrese un correo Válido';
-                setTimeout(() => {
-                  invalidEmail.innerHTML = '';
-                }, 5000);
-              } else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
-                const invalidPassword=document.querySelector('#invalidPassword');
-                invalidPassword.innerHTML ='La contraseña debe tener al menos 6 caractéres';
-                setTimeout(() => {
-                    invalidPassword.innerHTML = '';
-                }, 5000);
-              } else if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
-                invalidEmail.innerHTML = 'El correo está asociado a una cuenta existente';
-                setTimeout(() => {
-                    invalidEmail.innerHTML = '';
-                }, 5000);
-              } /* else if (error.message === 'Firebase: Error (auth/missing-email).'
-                || !email.value.includes("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")) {
-                invalidEmail.innerHTML = 'Ingrese un correo electrónico válido';
-                setTimeout(() => {
-                    invalidEmail.innerHTML = '';
-                }, 5000);
-              } */ else {
-                console.log(error.message) 
-              }
-        });
-    }/* else{
-        const name = document.querySelector('#nameAlert');
-        name.innerHTML="Ingrese un nombre de usuario";
-        setTimeout(() => {
-            name.innerHTML = '';
-        }, 5000);
-        console.log(name.length);
-    } */
-    
+        }
+    });
 }
-/* signInWithRedirect(auth, provider);
 
-getRedirectResult(auth)
-.then((result) => {
-// This gives you a Google Access Token. You can use it to access Google APIs.
-const credential = GoogleAuthProvider.credentialFromResult(result);
-const token = credential.accessToken;
-console.log(token);
-// The signed-in user info.
-const emailRegister = user.email;
-const userIdRegister = user.uid;
-
-createNewUser(emailRegister, userIdRegister);
-}).catch((error) => {
-// Handle Errors here.
-const errorCode = error.code;
-const errorMessage = error.message;
-console.log('error en signup', errorMessage, errorCode);
-
-// The email of the user's account used.
-const email = error.customData.email;
-// The AuthCredential type that was used.
-const credential = GoogleAuthProvider.credentialFromError(error);
-console.log(email + ' y '+ credential)
-}); */
+//Limpiar los mensajes de alerta dados al user
+export const cleanErrorMsm = (containerMsm) => {
+    setTimeout(() => {
+        containerMsm.innerHTML = '';
+    }, 4000);
+}
