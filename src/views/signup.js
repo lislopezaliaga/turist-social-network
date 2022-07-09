@@ -13,18 +13,20 @@ export const formSignUp = () => {
         <div class="imgLogo">
             <img src="img/viajeros.png" width="200px"/>
         </div>
-        <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
-        <input type= "text" placeholder= "Nombre" id ="name"  Required>
+        <h2 class="bienvenidos">Bienvenido a Travels </h2>
+        <label id="complete"></label>
+        <input type= "text" placeholder= " Nombre" id ="name"  Required>
         <label id="nameAlert"></label>
-        <input type="email" placeholder="Email" id = "email" Required>
+        <input type="email" placeholder="  Correo Electrónico" id = "email" Required>
         <label id="invalidEmail"></label>
-        <input type="password" placeholder="Contraseña" id = "password" Required>
+        <input type="password" placeholder="  Contraseña" id = "password" Required>
         <label id="invalidPassword"></label>
-        <div>
-            <p>Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
+        <div class="termsConditions">
+            <input type="checkbox" required="">
+            <p class="smallText">Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
         </div>
         <button type= "submit" id ="btn-signup">Registrarse</button>
-        <p>¿Ya tienes una cuenta?<a href="#/signin">Inicia sesión</a></p>
+        <p class="smallText">¿Ya tienes una cuenta?<a href="#/signin">Inicia sesión</a></p>
        
     </form>
     `;
@@ -42,10 +44,11 @@ let expressionemail=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 function verifyCompletedInput (name, email, password){
     const invalidEmail = document.querySelector('#invalidEmail');
     const invalidPassword = document.querySelector('#invalidPassword');
-
+    const complete = document.querySelector('#complete');
+    
     if (name==""|| email=="" || password=="" ){
-        invalidPassword.innerHTML ='Complete todos los datos';
-        cleanErrorMsm (invalidPassword);
+        complete.innerHTML ='Completa todos los datos';
+        cleanErrorMsm (complete);
     }
 
     if (email !== '' ){

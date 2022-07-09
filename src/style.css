@@ -1,23 +1,24 @@
 *{
     margin: 0;
-    padding: 0;
 }
-html, body {
+body {
   width: 100%;
+  font-family:'Arial narrow' ;
 }
-
 .back-principal{
-  background-image: url("/img/fondo.jpg");
+  background-image: url("https://static.comunicae.com/photos/notas/1212336/1582318987_encuentros_viajeros_barcelona_2_.jpg" ) ;
   height: 100vh;
   display: flex;
+  background-size:100vw 100vh;
+ 
 }
 .divs2{
   padding: 0px 0px;
-  width:50%;
-  height: 100%;
+  width:40%;
+  height: 100vh;
 }
 #seccion1 {
-  background: rgba(233, 232, 244, 0.59);
+  background: rgba(233, 232, 244, 0.621);
   display: grid;
   justify-items: center;
   align-items: start;
@@ -37,28 +38,33 @@ input {
   margin: 10px;
   width: 90%;
   height: 25px;
-  border-radius: 5px;
+  border: 0.7px solid black;
+  border-radius: 10px;
+  
 }
 button {
   margin: 10px;
 }
 #btn-signin{
-  background: #7CB731;
-  padding: 5px 0px;
-  border-radius: 5px ;
-  border: 2px solid #7CB731; 
-  width: 180px;
-  font-family: 'Overpass', sans-serif;
+  background: #000000;
+  border: 0.7px solid #000000;
+  width: 250px;
+  height: 30px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 18px;
+  color: white;
+  text-decoration: none;
+
 }
 #btn-signin:hover{
-  background: #aad86e;
+  background: green;
+  border: green;
 }
 
 .bienvenidos{
-  font-family: 'Lato', sans-serif;
-  font-style: normal;
+  font-family: 'Pacifico', 'cursive';
+  color: green;
   font-weight: 700;
   font-size: 24px;
   line-height: 12px;
@@ -68,17 +74,16 @@ button {
 
 main > div{
     width: 100%;
-    background-image: url("/img/fondo.jpg");
+    background-image: url("https://static.comunicae.com/photos/notas/1212336/1582318987_encuentros_viajeros_barcelona_2_.jpg");
     height: 100vh;
-    
-   
+    background-size: 100vw 100vh;
 }
 
 #signUpForm{
 float: left;
    display: grid;
-   width: 50%;
-   background: rgba(233, 232, 244, 0.59);
+   width: 40%;
+   background: rgba(233, 232, 244, 0.621);
    height: 100vh;
    text-align: center;
   justify-content: center;
@@ -88,30 +93,113 @@ float: left;
  
 #signUpForm  input,
 #signUpForm  p{
-    width: 250px;
+
     height: 25px;
-    border-radius: 5px;
+   
 }
 
 #signUpForm  p{
     height: 40px;
 }
 #signUpForm  button{
-    background: #7CB731;
-    border:  solid #7CB731;
+    background: #000000;
+    border: 0.7px solid #000000;
     width: 250px;
     height: 30px;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 18px;
+    color: white;
+}
+#signUpForm  button:hover{
+  background: green;
+  border: green;
+}
+.smallText{
+font-family:"Microsoft Himalaya";
+font-size: 25px;
 }
 
+#smallTex{
+  font-size: 12px;
+  
+  }
+.smallText a{
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+.smallText a:hover{
+  text-decoration: underline;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+.termsConditions{
+  width: 250px;
+  display: flex;
+ justify-content: center;
+  align-items: center;
+
+}
+.termsConditions p{
+  font-size:20px; 
+ width: 90%;
+
+}
+.termsConditions input{
+  width: 10%;
+}
+span{
+  font-weight: bold;
+  color: black;
+}
+label{
+  color: red;
+  font-family: "Microsoft Himalaya";
+  font-size: 25px;
+
+}
+.buttonGoogle{
+  width: 80%;
+  height: 25px;
+border: 10px ;
+border-color: rgb(102, 26, 26);
+border-radius: 6px;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #ffffff;
+margin: 3%;
+}
+#btn-signin-google{
+  width: 70%;
+  text-align: left;
+  background-color: #ffffff;
+  border: #ffffff;
+}
+span:hover{
+  text-decoration: underline;
+}
 
  /* 
 /* @media screen and (max-width:320px) {
    
 }  */  
+@media only screen and (max-width: 1000px){
+  .divs2{
+    width: 50%;
+  }
+  #signUpForm{
+    width: 50%;
+}
+}
 @media only screen and (max-width: 700px){
+  .back-principal,main > div{
+    background-image: none;
+    background-color: rgb(252, 252, 252);
+  }
     .divs2{
       width: 100%;
     }

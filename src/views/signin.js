@@ -12,20 +12,25 @@ export const formSignIn = () => {
     <section class="back-principal">
         <div id="seccion1" class="divs2">
             <img src="img/viajeros.png" width="200px"/>
-            <h2 class="bienvenidos"> Bienvenidos a Viajeros </h2>
+            <h2 class="bienvenidos">Bienvenido a Travels</h2>
 
             <form id="signInForm" class="formulario">
-            <button type="submit" id="btn-signin-google"><i class="fa fa-google"></i> Sign In with Google</button>
-            
-            <input type="email" required placeholder="Email" id = "email">
+            <div class="buttonGoogle">
+                <img src="../img/logoGoogle.png" width="20px">
+                <button type="submit" id="btn-signin-google">Continúa con Google</button>
+            </div>
+            <label id="complete"></label>
+            <input type="email" required placeholder="  Correo electrónico" id = "email">
             <label id="invalidEmail"></label>
 
-            <input type="password" required placeholder="Contraseña" id = "password">
+            <input type="password" required placeholder="  Contraseña" id = "password">
             <label id="invalidPassword"></label>
+            
+            <p id="smallTex">¿Olvidaste tu contraseña?<span>Obtén ayuda</span></p>
 
             <button type="submit" id ="btn-signin"><a href = "#/home">Inicia Sesión</a></button>
                 
-            <p>¿No tienes una cuenta? <a href = "#/signup">Registrate</a></p>
+            <p class="smallText">¿No tienes una cuenta? <a href = "#/signup">Regístrate</a></p>
             </form>
         </div>
         <div id="seccion2" class="divs2"></div>
@@ -42,10 +47,11 @@ export const formSignIn = () => {
 function verifyCompletedInput (email, password){
     const invalidEmail = document.querySelector('#invalidEmail');
     const invalidPassword = document.querySelector('#invalidPassword');
+    const complete = document.querySelector('#complete');
 
     if (email=="" || password=="" ){
-        invalidPassword.innerHTML ='Complete todos los datos';
-        cleanErrorMsm (invalidPassword);
+        complete.innerHTML ='Completa todos los datos';
+        cleanErrorMsm (complete);
     }
 }
 
