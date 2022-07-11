@@ -4,7 +4,7 @@ import {
   auth, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider,
 } from '../firebase/firebaseconfig.js';
-import { createNewUser } from '../firebase/firestore.js';
+import { createNewUser, getUserById } from '../firebase/firestore.js';
 import { cleanErrorMsm } from './signup.js';
 
 export const formSignIn = () => {
@@ -87,6 +87,16 @@ export const signInHandler = (e) => {
 
       if (user.emailVerified) {
         alert('usuario autentificado');
+        // Obtener data del user logueado para agregarlo al sessionStorage
+        getUserById(userIdRegister, 'users').then(userData => {
+          userData.id = userIdRegister;
+          sessionStorage.setItem('user', JSON.stringify(userData));
+          sessionStorage.setItem('key', userIdRegister);
+          console.log(userData);
+          console.log(sessionStorage);
+        })
+
+        //Enviar al usuario con email verificado a la vista home
         window.location.hash = '#/home';
         console.log(user.emailVerified);
       }

@@ -6,7 +6,10 @@ body {
   font-family:'Arial narrow', sans-serif;
 }
 .back-principal{
-  background-image: url("https://static.comunicae.com/photos/notas/1212336/1582318987_encuentros_viajeros_barcelona_2_.jpg" ) ;
+  background-image: url("./img/fondoprincipal.png" ) ;
+  object-fit: cover;
+  object-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   display: flex;
   background-size:100vw 100vh;
@@ -74,7 +77,10 @@ button {
 
 main > div{
     width: 100%;
-    background-image: url("https://static.comunicae.com/photos/notas/1212336/1582318987_encuentros_viajeros_barcelona_2_.jpg");
+    background-image: url("./img/fondoprincipal.png");
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
     background-size: 100vw 100vh;
 }
@@ -192,9 +198,10 @@ span:hover{
   .divs2{
     width: 50%;
   }
+
   #signUpForm{
     width: 50%;
-}
+  }
 }
 @media only screen and (max-width: 700px){
   .back-principal,main > div{
@@ -209,5 +216,9 @@ span:hover{
     }
     .back-principal{
         display: block;
+    }
+
+    #seccion2 {
+      display: none;
     }
   }
