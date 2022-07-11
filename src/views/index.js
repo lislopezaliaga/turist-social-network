@@ -4,13 +4,11 @@ import { home } from './home.js';
 import { navBar } from './navBar.js';
 
 const components = {
-    signin: formSignIn,
-    signup: formSignUp,
-    nav: navBar,
-    home: home
+  signin: formSignIn,
+  signup: formSignUp,
+  nav: navBar,
+  // eslint-disable-next-line object-shorthand
+  home: home,
 };
 
 export { components };
-
-
-

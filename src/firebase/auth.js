@@ -1,13 +1,5 @@
-import {
-    auth, sendEmailVerification,
-    createUserWithEmailAndPassword,
+import { auth, sendEmailVerification, createUserWithEmailAndPassword } from './firebaseconfig.js';
 
-} from './firebaseconfig.js';
+export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
-export const addUser=async(email,password)=> {
-  return await createUserWithEmailAndPassword(auth, email, password) 
-}
-
-export const emailVerificationHandler = async()=> {
-   return await sendEmailVerification(auth.currentUser)   
-}
+export const emailVerificationHandler = () => sendEmailVerification(auth.currentUser);
