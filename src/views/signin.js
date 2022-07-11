@@ -91,7 +91,6 @@ export const signInHandler = (e) => {
         getUserById(userIdRegister, 'users').then(userData => {
           userData.id = userIdRegister;
           sessionStorage.setItem('user', JSON.stringify(userData));
-          sessionStorage.setItem('key', userIdRegister);
           console.log(userData);
           console.log(sessionStorage);
         })
