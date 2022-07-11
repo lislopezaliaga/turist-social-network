@@ -3,7 +3,7 @@
 }
 body {
   width: 100%;
-  font-family:'Arial narrow' ;
+  font-family:'Arial narrow', sans-serif;
 }
 .back-principal{
   background-image: url("https://static.comunicae.com/photos/notas/1212336/1582318987_encuentros_viajeros_barcelona_2_.jpg" ) ;
@@ -63,7 +63,7 @@ button {
 }
 
 .bienvenidos{
-  font-family: 'Pacifico', 'cursive';
+  font-family: 'Pacifico', 'cursive', sans-serif;
   color: green;
   font-weight: 700;
   font-size: 24px;
@@ -116,7 +116,7 @@ float: left;
   border: green;
 }
 .smallText{
-font-family:"Microsoft Himalaya";
+font-family:"Microsoft Himalaya", sans-serif;
 font-size: 25px;
 }
 
@@ -124,6 +124,10 @@ font-size: 25px;
   font-size: 12px;
   
   }
+a{
+    text-decoration: none;
+    color: white;
+}
 .smallText a{
   text-decoration: none;
   font-weight: bold;
@@ -132,10 +136,7 @@ font-size: 25px;
 .smallText a:hover{
   text-decoration: underline;
 }
-a{
-  text-decoration: none;
-  color: white;
-}
+
 .termsConditions{
   width: 250px;
   display: flex;
@@ -143,12 +144,12 @@ a{
   align-items: center;
 
 }
-.termsConditions p{
+#termConditionsP{
   font-size:20px; 
  width: 90%;
 
 }
-.termsConditions input{
+#checkdiv{
   width: 10%;
 }
 span{
@@ -157,7 +158,7 @@ span{
 }
 label{
   color: red;
-  font-family: "Microsoft Himalaya";
+  font-family: "Microsoft Himalaya", sans-serif;
   font-size: 25px;
 
 }

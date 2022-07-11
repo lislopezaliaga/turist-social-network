@@ -1,5 +1,5 @@
 export const navBar = () => {
-    const navContent = `
+  const navContent = `
         <header>
             <ul>
             <li><a href="#/inicio">Inicio</a></li>
@@ -8,7 +8,7 @@ export const navBar = () => {
             </ul>
         </header>
     `;
-    const navContainer = document.createElement('div');
-    navContainer.innerHTML = navContent;
-    return navContainer;
+  const navContainer = document.createElement('div');
+  navContainer.innerHTML = navContent;
+  return navContainer;
 };
