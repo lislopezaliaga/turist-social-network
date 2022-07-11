@@ -6,7 +6,10 @@ body {
   font-family:'Arial narrow', sans-serif;
 }
 .back-principal{
-  background-image: url("./img/fondoprincipal.png");
+  background-image: url("./img/fondoprincipal.png" ) ;
+  object-fit: cover;
+  object-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   display: flex;
   background-size:100vw 100vh;
@@ -76,6 +79,12 @@ button {
 main > div{
     width: 100%;
     background-image: url("./img/fondoprincipal.png");
+<<<<<<< HEAD
+=======
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+>>>>>>> 2848aea999ef4d5a0389b88dc5fcc284ae5037e0
     height: 100vh;
     background-size: 100vw 100vh;
 }
@@ -193,9 +202,15 @@ span:hover{
   .divs2{
     width: 40%;
   }
+
   #signUpForm{
+<<<<<<< HEAD
     width: 40%;
 }
+=======
+    width: 50%;
+  }
+>>>>>>> 2848aea999ef4d5a0389b88dc5fcc284ae5037e0
 }
 @media only screen and (max-width: 700px){
   .back-principal,main > div{
@@ -210,5 +225,9 @@ span:hover{
     }
     .back-principal{
         display: block;
+    }
+
+    #seccion2 {
+      display: none;
     }
   }

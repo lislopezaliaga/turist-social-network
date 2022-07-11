@@ -4,7 +4,7 @@ import {
   auth, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider,
 } from '../firebase/firebaseconfig.js';
-import { createNewUser, obtenerById } from '../firebase/firestore.js';
+import { createNewUser, getUserById } from '../firebase/firestore.js';
 import { cleanErrorMsm } from './signup.js';
 
 export const formSignIn = () => {
@@ -13,7 +13,6 @@ export const formSignIn = () => {
         <div id="seccion1" class="divs2">
             <img src="img/viajeros.png" width="200px"/>
             <h2 class="bienvenidos">Bienvenido a Travels</h2>
-
             <form id="signInForm" class="formulario">
             <div class="buttonGoogle">
                 <img src="../img/logoGoogle.png" width="20px">
@@ -22,12 +21,10 @@ export const formSignIn = () => {
             <label id="complete"></label>
             <input type="email" required placeholder="  Correo electrónico" id = "email">
             <label id="invalidEmail"></label>
-
             <input type="password" required placeholder="  Contraseña" id = "password">
             <label id="invalidPassword"></label>
             
             <p id="smallTex">¿Olvidaste tu contraseña?<span>Obtén ayuda</span></p>
-
             <button type="submit" id ="btn-signin"><a href = "#/home">Inicia Sesión</a></button>
                 
             <p class="smallText">¿No tienes una cuenta? <a href = "#/signup">Regístrate</a></p>
@@ -86,10 +83,17 @@ export const signInHandler = (e) => {
       console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
-        console.log(obtenerById(userIdRegister, 'users'));
         alert('usuario autentificado');
-        window.location.hash = '#/home';
+        // Obtener data del user logueado para agregarlo al sessionStorage
+        getUserById(userIdRegister, 'users').then(userData => {
+          userData.id = userIdRegister;
+          sessionStorage.setItem('user', JSON.stringify(userData));
+          console.log(userData);
+          console.log(sessionStorage);
+        })
 
+        //Enviar al usuario con email verificado a la vista home
+        window.location.hash = '#/home';
         console.log(user.emailVerified);
       }
     })
@@ -120,7 +124,7 @@ export const signInGoogleHandler = (e) => {
       const name = user.displayName;
       const emailRegister = user.email;
       const userIdRegister = user.uid;
-      console.log(obtenerById(userIdRegister, 'users'));
+
       console.log(emailRegister, userIdRegister);
       console.log(result);
       createNewUser(name, emailRegister, userIdRegister);
