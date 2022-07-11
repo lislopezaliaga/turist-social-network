@@ -1,4 +1,3 @@
-
 import {
     auth, sendEmailVerification,
     createUserWithEmailAndPassword,
@@ -12,5 +11,3 @@ export const addUser=async(email,password)=> {
 export const emailVerificationHandler = async()=> {
    return await sendEmailVerification(auth.currentUser)   
 }
-
-  
