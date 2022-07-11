@@ -4,7 +4,7 @@ import {
   auth, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider,
 } from '../firebase/firebaseconfig.js';
-import { createNewUser } from '../firebase/firestore.js';
+import { createNewUser, obtenerById } from '../firebase/firestore.js';
 import { cleanErrorMsm } from './signup.js';
 
 export const formSignIn = () => {
@@ -86,8 +86,10 @@ export const signInHandler = (e) => {
       console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
+        console.log(obtenerById(userIdRegister, 'users'));
         alert('usuario autentificado');
         window.location.hash = '#/home';
+
         console.log(user.emailVerified);
       }
     })
@@ -118,7 +120,7 @@ export const signInGoogleHandler = (e) => {
       const name = user.displayName;
       const emailRegister = user.email;
       const userIdRegister = user.uid;
-
+      console.log(obtenerById(userIdRegister, 'users'));
       console.log(emailRegister, userIdRegister);
       console.log(result);
       createNewUser(name, emailRegister, userIdRegister);
