@@ -1,55 +1,111 @@
 *{
-    margin: 0;
+  margin: 0;
 }
 body {
-  width: 100%;
-  font-family:'Arial narrow', sans-serif;
+width: 100%;
+font-family:'Arial narrow', sans-serif;
 }
 .back-principal{
-  background-image: url("./img/fondoprincipal.png" ) ;
-  object-fit: cover;
-  object-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  background-size:100vw 100vh;
- 
+background-image: url("./img/appBackgr.jpg" ) ;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh;
+display: flex;
+background-size: cover;
+
 }
 .divs2{
-  padding: 0px 0px;
-  width:40%;
-  height: 100vh;
+padding: 0px 0px;
+width:40%;
+height: 100vh;
 }
 #seccion1 {
-  background: rgba(233, 232, 244, 0.621);
-  display: grid;
-  justify-items: center;
-  align-items: start;
-  justify-content: center;
-  align-content: center;
+background: rgba(233, 232, 244, 0.621);
+display: grid;
+justify-items: center;
+align-items: start;
+justify-content: center;
+align-content: center;
 }
 .formulario{
-  font-family: 'Overpass', sans-serif;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-around;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+font-family: 'Overpass', sans-serif;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-content: space-around;
+justify-content: center;
+align-items: center;
 }
 input {
-  margin: 10px;
-  width: 90%;
-  height: 25px;
-  border: 0.7px solid black;
-  border-radius: 10px;
-  
+margin: 10px;
+width: 90%;
+height: 25px;
+border: 0.7px solid black;
+border-radius: 10px;
+
 }
 button {
-  margin: 10px;
+margin: 10px;
 }
 #btn-signin{
+background: #000000;
+border: 0.7px solid #000000;
+width: 250px;
+height: 30px;
+border-radius: 10px;
+font-weight: 600;
+font-size: 18px;
+color: white;
+text-decoration: none;
+
+}
+#btn-signin:hover{
+background: green;
+border: green;
+}
+
+.bienvenidos{
+font-family: 'Pacifico', 'cursive', sans-serif;
+color: green;
+font-weight: 700;
+font-size: 24px;
+line-height: 12px;
+margin-bottom: 2%;
+}
+
+
+main > div{
+  width: 100%;
+  background-image: url("./img/appBackgr.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+}
+
+#signUpForm{
+float: left;
+ display: grid;
+ width: 40%;
+ background: rgba(233, 232, 244, 0.621);
+ height: 100vh;
+ text-align: center;
+justify-content: center;
+align-items: center;
+align-content: center;
+}
+
+#signUpForm  input,
+#signUpForm  p{
+
+  height: 25px;
+ 
+}
+
+#signUpForm  p{
+  height: 40px;
+}
+#signUpForm  button{
   background: #000000;
   border: 0.7px solid #000000;
   width: 250px;
@@ -58,72 +114,10 @@ button {
   font-weight: 600;
   font-size: 18px;
   color: white;
-  text-decoration: none;
-
-}
-#btn-signin:hover{
-  background: green;
-  border: green;
-}
-
-.bienvenidos{
-  font-family: 'Pacifico', 'cursive', sans-serif;
-  color: green;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 12px;
-  margin-bottom: 4%;
-}
-
-
-main > div{
-    width: 100%;
-    background-image: url("./img/fondoprincipal.png");
-<<<<<<< HEAD
-=======
-    object-fit: cover;
-    object-position: center;
-    background-repeat: no-repeat;
->>>>>>> 2848aea999ef4d5a0389b88dc5fcc284ae5037e0
-    height: 100vh;
-    background-size: 100vw 100vh;
-}
-
-#signUpForm{
-float: left;
-   display: grid;
-   width: 40%;
-   background: rgba(233, 232, 244, 0.621);
-   height: 100vh;
-   text-align: center;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
- 
-#signUpForm  input,
-#signUpForm  p{
-
-    height: 25px;
-   
-}
-
-#signUpForm  p{
-    height: 40px;
-}
-#signUpForm  button{
-    background: #000000;
-    border: 0.7px solid #000000;
-    width: 250px;
-    height: 30px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 18px;
-    color: white;
 }
 #signUpForm  button:hover{
-  background: green;
-  border: green;
+background: green;
+border: green;
 }
 .smallText{
 font-family:"Microsoft Himalaya", sans-serif;
@@ -131,50 +125,50 @@ font-size: 25px;
 }
 
 #smallTex{
-  font-size: 12px;
-  
-  }
+font-size: 12px;
+
+}
 a{
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 .smallText a{
-  text-decoration: none;
-  font-weight: bold;
-  color: black;
+text-decoration: none;
+font-weight: bold;
+color: black;
 }
 .smallText a:hover{
-  text-decoration: underline;
+text-decoration: underline;
 }
 
 .termsConditions{
-  width: 250px;
-  display: flex;
- justify-content: center;
-  align-items: center;
+width: 250px;
+display: flex;
+justify-content: center;
+align-items: center;
 
 }
 #termConditionsP{
-  font-size:20px; 
- width: 90%;
+font-size:20px; 
+width: 90%;
 
 }
 #checkdiv{
-  width: 10%;
+width: 10%;
 }
 span{
-  font-weight: bold;
-  color: black;
+font-weight: bold;
+color: black;
 }
 label{
-  color: red;
-  font-family: "Microsoft Himalaya", sans-serif;
-  font-size: 22px;
+color: red;
+font-family: "Microsoft Himalaya", sans-serif;
+font-size: 25px;
 
 }
 .buttonGoogle{
-  width: 80%;
-  height: 25px;
+width: 80%;
+height: 25px;
 border: 10px ;
 border-color: rgb(102, 26, 26);
 border-radius: 6px;
@@ -185,49 +179,44 @@ background-color: #ffffff;
 margin: 3%;
 }
 #btn-signin-google{
-  width: 70%;
-  text-align: left;
-  background-color: #ffffff;
-  border: #ffffff;
+width: 70%;
+text-align: left;
+background-color: #ffffff;
+border: #ffffff;
 }
 span:hover{
-  text-decoration: underline;
+text-decoration: underline;
 }
 
- /* 
+/* 
 /* @media screen and (max-width:320px) {
-   
+ 
 }  */  
 @media only screen and (max-width: 1000px){
-  .divs2{
-    width: 40%;
-  }
-
-  #signUpForm{
-<<<<<<< HEAD
-    width: 40%;
+.divs2{
+  width: 50%;
 }
-=======
-    width: 50%;
-  }
->>>>>>> 2848aea999ef4d5a0389b88dc5fcc284ae5037e0
+
+#signUpForm{
+  width: 50%;
+}
 }
 @media only screen and (max-width: 700px){
-  .back-principal,main > div{
-    background-image: none;
-    background-color: rgb(252, 252, 252);
+.back-principal,main > div{
+  background-image: none;
+  background-color: rgb(252, 252, 252);
+}
+  .divs2{
+    width: 100%;
   }
-    .divs2{
+  #signUpForm{
       width: 100%;
-    }
-    #signUpForm{
-        width: 100%;
-    }
-    .back-principal{
-        display: block;
-    }
-
-    #seccion2 {
-      display: none;
-    }
   }
+  .back-principal{
+      display: block;
+  }
+
+  #seccion2 {
+    display: none;
+  }
+}
