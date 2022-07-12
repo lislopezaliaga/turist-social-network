@@ -78,23 +78,28 @@ export const signInHandler = (e) => {
       const user = userCredential.user;
       const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
-
       console.log(userCredential);
       console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
         alert('usuario autentificado');
+
         // Obtener data del user logueado para agregarlo al sessionStorage
-        getUserById(userIdRegister, 'users').then(userData => {
-          userData.id = userIdRegister;
+        getUserById(userIdRegister, 'users').then((userData) => {
+          const data = userData;
+          data.id = userIdRegister;
+          console.log(sessionStorage);
           sessionStorage.setItem('user', JSON.stringify(userData));
           console.log(userData);
           console.log(sessionStorage);
-        })
+        });
 
-        //Enviar al usuario con email verificado a la vista home
+        // Enviar al usuario con email verificado a la vista home
         window.location.hash = '#/home';
         console.log(user.emailVerified);
+      } else {
+        const complete = document.querySelector('#complete');
+        complete.innerHTML = 'Verifica tu email';
       }
     })
     .catch((error) => {

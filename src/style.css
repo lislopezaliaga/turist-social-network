@@ -26,6 +26,7 @@ justify-items: center;
 align-items: start;
 justify-content: center;
 align-content: center;
+text-align: center;
 }
 .formulario{
 font-family: 'Overpass', sans-serif;
@@ -93,6 +94,7 @@ float: left;
 justify-content: center;
 align-items: center;
 align-content: center;
+text-align: center;
 }
 
 #signUpForm  input,
@@ -164,6 +166,7 @@ label{
 color: red;
 font-family: "Microsoft Himalaya", sans-serif;
 font-size: 25px;
+width: 300px;
 
 }
 .buttonGoogle{

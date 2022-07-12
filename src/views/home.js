@@ -1,7 +1,7 @@
 // Llamar a sessionStorage
 const sessionStorageCall = () => {
   let userData = sessionStorage.getItem('user');
-  // console.log(userData);
+  console.log(sessionStorage);
   if (!userData) {
     userData = {
       username: '',
@@ -11,7 +11,7 @@ const sessionStorageCall = () => {
     userData = JSON.parse(sessionStorage.user);
   }
   return userData;
-}
+};
 const userInfo = sessionStorageCall();
 
 export const home = () => {
