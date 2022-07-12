@@ -7,9 +7,11 @@ import { addUser, emailVerificationHandler } from '../firebase/auth.js';
 
 export const formSignUp = () => {
   const signUpContent = `
+    <div id="mobilediv" >
+    </div>
     <form id = "signUpForm">
         <div class="imgLogo">
-            <img src="img/viajeros.png" width="200px"/>
+            <img  class="logo1" src="img/viajeros.png" width="200px"/>
         </div>
         <h2 class="bienvenidos">Bienvenido a Travels </h2>
         <label id="complete"></label>
@@ -20,11 +22,10 @@ export const formSignUp = () => {
         <input type="password" placeholder="  Contraseña" id = "password" Required>
         <label id="invalidPassword"></label>
         <div class="termsConditions">
-            <input type="checkbox" required="" id="checkdiv">
             <p class="smallText" id="termConditionsP">Acepto los <span>Términos y condiciones</span> de las Políticas de Privacidad.</p>
         </div>
         <button type= "submit" id ="btn-signup">Registrarse</button>
-        <p class="smallText">¿Ya tienes una cuenta?<a href="#/signin">Inicia sesión</a></p>
+        <p class="smallText">¿Ya tienes una cuenta? <a href="#/signin">Inicia sesión</a></p>
        
     </form>
     `;

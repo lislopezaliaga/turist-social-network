@@ -4,14 +4,16 @@ import {
   auth, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider,
 } from '../firebase/firebaseconfig.js';
-import { createNewUser } from '../firebase/firestore.js';
+import { createNewUser, getUserById } from '../firebase/firestore.js';
 import { cleanErrorMsm } from './signup.js';
 
 export const formSignIn = () => {
   const signInContent = `
     <section class="back-principal">
+        <div id="mobilediv" >
+          </div>
         <div id="seccion1" class="divs2">
-            <img src="img/viajeros.png" width="200px"/>
+            <img class="logo1"  src="img/viajeros.png" width="200px"/>
             <h2 class="bienvenidos">Bienvenido a Travels</h2>
 
             <form id="signInForm" class="formulario">
@@ -26,7 +28,7 @@ export const formSignIn = () => {
             <input type="password" required placeholder="  Contraseña" id = "password">
             <label id="invalidPassword"></label>
             
-            <p id="smallTex">¿Olvidaste tu contraseña?<span>Obtén ayuda</span></p>
+            <p id="smallTex">¿Olvidaste tu contraseña? <span>Obtén ayuda</span></p>
 
             <button type="submit" id ="btn-signin"><a href = "#/home">Inicia Sesión</a></button>
                 
@@ -87,6 +89,15 @@ export const signInHandler = (e) => {
 
       if (user.emailVerified) {
         alert('usuario autentificado');
+        // Obtener data del user logueado para agregarlo al sessionStorage
+        getUserById(userIdRegister, 'users').then(userData => {
+          userData.id = userIdRegister;
+          sessionStorage.setItem('user', JSON.stringify(userData));
+          console.log(userData);
+          console.log(sessionStorage);
+        })
+
+        //Enviar al usuario con email verificado a la vista home
         window.location.hash = '#/home';
         console.log(user.emailVerified);
       }
