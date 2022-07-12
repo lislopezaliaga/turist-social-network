@@ -10,8 +10,10 @@ import { cleanErrorMsm } from './signup.js';
 export const formSignIn = () => {
   const signInContent = `
     <section class="back-principal">
+        <div id="mobilediv" >
+          </div>
         <div id="seccion1" class="divs2">
-            <img src="img/viajeros.png" width="200px"/>
+            <img class="logo1"  src="img/viajeros.png" width="200px"/>
             <h2 class="bienvenidos">Bienvenido a Travels</h2>
             <form id="signInForm" class="formulario">
             <div class="buttonGoogle">
@@ -24,7 +26,8 @@ export const formSignIn = () => {
             <input type="password" required placeholder="  Contraseña" id = "password">
             <label id="invalidPassword"></label>
             
-            <p id="smallTex">¿Olvidaste tu contraseña?<span>Obtén ayuda</span></p>
+            <p id="smallTex">¿Olvidaste tu contraseña? <span>Obtén ayuda</span></p>
+
             <button type="submit" id ="btn-signin"><a href = "#/home">Inicia Sesión</a></button>
                 
             <p class="smallText">¿No tienes una cuenta? <a href = "#/signup">Regístrate</a></p>
@@ -99,7 +102,7 @@ export const signInHandler = (e) => {
         console.log(user.emailVerified);
       } else {
         const complete = document.querySelector('#complete');
-        complete.innerHTML = 'Verifica tu email';
+        complete.innerHTML = 'Verifica tu corre el';
       }
     })
     .catch((error) => {
