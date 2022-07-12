@@ -15,7 +15,6 @@ export const formSignIn = () => {
         <div id="seccion1" class="divs2">
             <img class="logo1"  src="img/viajeros.png" width="200px"/>
             <h2 class="bienvenidos">Bienvenido a Travels</h2>
-
             <form id="signInForm" class="formulario">
             <div class="buttonGoogle">
                 <img src="../img/logoGoogle.png" width="20px">
@@ -24,7 +23,6 @@ export const formSignIn = () => {
             <label id="complete"></label>
             <input type="email" required placeholder="  Correo electrónico" id = "email">
             <label id="invalidEmail"></label>
-
             <input type="password" required placeholder="  Contraseña" id = "password">
             <label id="invalidPassword"></label>
             
@@ -83,23 +81,28 @@ export const signInHandler = (e) => {
       const user = userCredential.user;
       const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
-
       console.log(userCredential);
       console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
         alert('usuario autentificado');
+
         // Obtener data del user logueado para agregarlo al sessionStorage
-        getUserById(userIdRegister, 'users').then(userData => {
-          userData.id = userIdRegister;
+        getUserById(userIdRegister, 'users').then((userData) => {
+          const data = userData;
+          data.id = userIdRegister;
+          console.log(sessionStorage);
           sessionStorage.setItem('user', JSON.stringify(userData));
           console.log(userData);
           console.log(sessionStorage);
-        })
+        });
 
-        //Enviar al usuario con email verificado a la vista home
+        // Enviar al usuario con email verificado a la vista home
         window.location.hash = '#/home';
         console.log(user.emailVerified);
+      } else {
+        const complete = document.querySelector('#complete');
+        complete.innerHTML = 'Verifica tu corre el';
       }
     })
     .catch((error) => {

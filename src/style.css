@@ -9,7 +9,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
-  display: flex;
   background-size: cover;
 }
 .divs2 {

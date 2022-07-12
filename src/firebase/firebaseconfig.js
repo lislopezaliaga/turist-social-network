@@ -2,7 +2,11 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js';
 
 // eslint-disable-next-line import/no-unresolved
-import { getFirestore, setDoc, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
+import {
+  getFirestore, setDoc,
+  doc, getDoc,
+// eslint-disable-next-line import/no-unresolved
+} from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
 
 import {
   getAuth, createUserWithEmailAndPassword,
