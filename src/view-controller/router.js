@@ -1,12 +1,9 @@
 import { components } from '../views/index.js';
+import { publicationView } from '../views/publications.js';
 
 export const changeTmp = (route) => {
   const mainSection = document.getElementById('container');
   mainSection.innerHTML = '';
-
-  const navBar = document.getElementById('nav-bar');
-  navBar.innerHTML = '';
-
   switch (route) {
     case '#/signin':
     case '': {
@@ -19,12 +16,17 @@ export const changeTmp = (route) => {
       break;
     }
 
-    case '#/home': {
-      navBar.appendChild(components.nav());
-      mainSection.appendChild(components.home());
+    case '#/inicio': {
+      mainSection.appendChild(components.Home());
+      const mainContent = document.getElementById('mainContent');
+      mainContent.appendChild(components.perfil());
+      const muro = document.createElement('div');
+      muro.setAttribute('id', 'muroContainer');
+      mainContent.appendChild(muro);
+      muro.appendChild(components.publications());
+
       break;
     }
-
     default:
       mainSection.appendChild(components.different());
   }

@@ -28,7 +28,7 @@ export const formSignIn = () => {
             
             <p id="smallTex">¿Olvidaste tu contraseña? <span>Obtén ayuda</span></p>
 
-            <button type="submit" id ="btn-signin"><a href = "#/home">Inicia Sesión</a></button>
+            <button type="submit" id ="btn-signin"><a href = "#/inicio">Inicia Sesión</a></button>
                 
             <p class="smallText">¿No tienes una cuenta? <a href = "#/signup">Regístrate</a></p>
             </form>
@@ -91,18 +91,18 @@ export const signInHandler = (e) => {
         getUserById(userIdRegister, 'users').then((userData) => {
           const data = userData;
           data.id = userIdRegister;
-          console.log(sessionStorage);
+          console.log(userData);
           sessionStorage.setItem('user', JSON.stringify(userData));
           console.log(userData);
           console.log(sessionStorage);
         });
 
-        // Enviar al usuario con email verificado a la vista home
-        window.location.hash = '#/home';
+        // Enviar al usuario con email verificado a la vista inicio
+        window.location.hash = '#/inicio';
         console.log(user.emailVerified);
       } else {
         const complete = document.querySelector('#complete');
-        complete.innerHTML = 'Verifica tu corre el';
+        complete.innerHTML = 'Verifica tu email';
       }
     })
     .catch((error) => {
@@ -136,7 +136,7 @@ export const signInGoogleHandler = (e) => {
       console.log(emailRegister, userIdRegister);
       console.log(result);
       createNewUser(name, emailRegister, userIdRegister);
-      window.location.hash = '#/home';
+      window.location.hash = '#/inicio';
     })
     .catch((error) => {
     // Handle Errors here.
