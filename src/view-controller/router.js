@@ -1,5 +1,4 @@
 import { components } from '../views/index.js';
-import { publicationView } from '../views/publications.js';
 
 export const changeTmp = (route) => {
   const mainSection = document.getElementById('container');
