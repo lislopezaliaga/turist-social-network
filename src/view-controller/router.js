@@ -1,4 +1,5 @@
 import { components } from '../views/index.js';
+import { muroView } from '../views/muro.js';
 
 export const changeTmp = (route) => {
   const mainSection = document.getElementById('container');
@@ -17,13 +18,12 @@ export const changeTmp = (route) => {
 
     case '#/inicio': {
       mainSection.appendChild(components.Home());
-      const mainContent = document.getElementById('mainContent');
-      mainContent.appendChild(components.perfil());
-      const muro = document.createElement('div');
-      muro.setAttribute('id', 'muroContainer');
-      mainContent.appendChild(muro);
-      muro.appendChild(components.publications());
-
+      mainSection.appendChild(components.inicio());
+      break;
+    }
+    case '#/viajeros': {
+      mainSection.appendChild(components.Home());
+      mainSection.appendChild(components.inicio(muroView));
       break;
     }
     default:

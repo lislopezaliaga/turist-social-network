@@ -1,12 +1,12 @@
 export const perfilView = () => {
   const perfilContent = `
     
-    <div>
+    <div class="divPerfil">
       <img id="imgPerfil" src="">
       <h2>hola</h2> 
     </div>
-    <div>
-      <div>
+    <div class="divPerfil">
+      <div class="divPerfil">
         <h3>Descripción</h3>
         <p>Arquitecto, viajero y amante de las mascotas</p>
       </div>

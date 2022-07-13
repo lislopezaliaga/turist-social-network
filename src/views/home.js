@@ -16,14 +16,14 @@
 export const home = () => {
   const homeContent = `
   <nav>
-    <img class="logo1"  src="img/viajeros.png" width="50px"/>
-    <ul>
+    <img class="logo2"  src="img/viajeros.png" width="50px"/>
+    <ul class="navBar">
       <li><a>INICIO</a></li>
       <li><a>VIAJEROS</a></li>
       <li><a>LUGARES</a></li>
     </ul> 
-    <div>
-      <img class="logo1"  src="img/viajeros.png" width="50px"/>
+    <div class="burgerMenu">
+      <img class="logo2"  src="img/viajeros.png" width="50px"/>
       <p>*</p>
     </div>
   </nav>
