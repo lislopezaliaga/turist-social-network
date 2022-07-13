@@ -7,6 +7,7 @@ import { addUser, emailVerificationHandler } from '../firebase/auth.js';
 
 export const formSignUp = () => {
   const signUpContent = `
+  <section class="back-principal">
     <div id="mobilediv" >
     </div>
     <form id = "signUpForm">
@@ -28,6 +29,7 @@ export const formSignUp = () => {
         <p class="smallText">¿Ya tienes una cuenta? <a href="#/signin">Inicia sesión</a></p>
        
     </form>
+    </section>
     `;
   const signUpContainer = document.createElement('div');
   signUpContainer.innerHTML = signUpContent;
