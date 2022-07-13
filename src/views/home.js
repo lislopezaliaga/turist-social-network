@@ -18,9 +18,9 @@ export const home = () => {
   <nav>
     <img class="logo2"  src="img/viajeros.png" width="50px"/>
     <ul class="navBar">
-      <li><a>INICIO</a></li>
-      <li><a>VIAJEROS</a></li>
-      <li><a>LUGARES</a></li>
+      <li><a href="#/inicio">INICIO</a></li>
+      <li><a href="#/viajeros">VIAJEROS</a></li>
+      <li><a href="#/lugares">LUGARES</a></li>
     </ul> 
     <div class="burgerMenu">
       <img class="logo2"  src="img/viajeros.png" width="50px"/>
