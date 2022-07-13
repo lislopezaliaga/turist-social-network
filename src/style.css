@@ -72,14 +72,14 @@ button {
   line-height: 12px;
   margin-bottom: 2%;
 }
-main > div {
+/* main > div {
   width: 100%;
   background-image: url("./img/fondoprin.png");
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
   background-size: cover;
-}
+} */
 
 #signUpForm {
   background-color: #efb739;

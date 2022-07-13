@@ -33,7 +33,6 @@ export const formSignIn = () => {
             <p class="smallText">¿No tienes una cuenta? <a href = "#/signup">Regístrate</a></p>
             </form>
         </div>
-        <div id="seccion2" class="divs2"></div>
     </section>
     `;
   const signInContainer = document.createElement('div');
