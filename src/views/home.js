@@ -1,30 +1,37 @@
-// Llamar a sessionStorage
-const sessionStorageCall = () => {
-  let userData = sessionStorage.getItem('user');
-  console.log(sessionStorage);
-  if (!userData) {
-    userData = {
-      username: '',
-      name: '',
-    };
-  } else {
-    userData = JSON.parse(sessionStorage.user);
-  }
-  return userData;
-};
-const userInfo = sessionStorageCall();
-
+// // Llamar a sessionStorage
+// const sessionStorageCall = () => {
+//   let userData = sessionStorage.getItem('user');
+//   console.log(sessionStorage);
+//   if (!userData) {
+//     userData = {
+//       username: '',
+//       name: '',
+//     };
+//   } else {
+//     userData = JSON.parse(sessionStorage.user);
+//   }
+//   return userData;
+// };
+// const userInfo = sessionStorageCall();
 export const home = () => {
   const homeContent = `
+  <nav>
+    <img class="logo1"  src="img/viajeros.png" width="50px"/>
+    <ul>
+      <li><a>INICIO</a></li>
+      <li><a>VIAJEROS</a></li>
+      <li><a>LUGARES</a></li>
+    </ul> 
     <div>
-        <input type="text" placeholder="buscar amigos">
+      <img class="logo1"  src="img/viajeros.png" width="50px"/>
+      <p>*</p>
     </div>
-    <div class="contenidoTextPerfil">
-      <h2>${userInfo.email}</h2>
-      <p>${userInfo.name}</p>
-    </div>
+  </nav>
+  <div id="mainContent">
+  </div>
     `;
   const homeContainer = document.createElement('div');
+  homeContainer.setAttribute('class', 'homeContainer');
   homeContainer.innerHTML = homeContent;
   return homeContainer;
 };
