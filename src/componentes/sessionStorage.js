@@ -1,14 +1,7 @@
 // Llamar a sessionStorage
-export const sessionStorageCall = () => {
-  let userData = sessionStorage.getItem('user');
-  console.log(sessionStorage.getItem('user'));
-  if (!userData) {
-    userData = {
-      username: '',
-      name: '',
-    };
-  } else {
-    userData = JSON.parse(sessionStorage.user);
-  }
-  return userData;
+export const localStorageCall = () => {
+  const userInfo = localStorage.getItem('USER');
+  const userObject = JSON.parse(userInfo);
+  console.log(userObject);
+  return userObject;
 };

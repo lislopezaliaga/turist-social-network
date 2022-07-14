@@ -92,7 +92,6 @@ export const signInHandler = (e) => {
           data.id = userIdRegister;
           localStorage.setItem('USER', JSON.stringify(userData));
           console.log(userData);
-          console.log(sessionStorage);
         });
 
         // Enviar al usuario con email verificado a la vista inicio
@@ -133,7 +132,17 @@ export const signInGoogleHandler = (e) => {
 
       console.log(emailRegister, userIdRegister);
       console.log(result);
+
+      //Crear el usuario y almacenarlo en firestore
       createNewUser(name, emailRegister, userIdRegister);
+
+      // Obtener data del user logueado para agregarlo al sessionStorage
+      getUserById(userIdRegister, 'users').then((userData) => {
+        const data = userData;
+        data.id = userIdRegister;
+        localStorage.setItem('USER', JSON.stringify(userData));
+        console.log(userData);
+      });
       window.location.hash = '#/inicio';
     })
     .catch((error) => {
