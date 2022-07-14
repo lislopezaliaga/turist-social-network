@@ -17,13 +17,16 @@ export const changeTmp = (route) => {
 
     case '#/inicio': {
       mainSection.appendChild(components.Home());
-      const mainContent = document.getElementById('mainContent');
-      mainContent.appendChild(components.perfil());
-      const muro = document.createElement('div');
-      muro.setAttribute('id', 'muroContainer');
-      mainContent.appendChild(muro);
-      muro.appendChild(components.publications());
-
+      mainSection.appendChild(components.inicio(components.muro(components.first())));
+      break;
+    }
+    case '#/viajeros': {
+      mainSection.appendChild(components.Home());
+      mainSection.appendChild(components.inicio(components.muro(components.first())));
+      break;
+    }
+    case '#/lugares': {
+      mainSection.appendChild(components.Home());
       break;
     }
     default:

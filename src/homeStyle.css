@@ -1,0 +1,47 @@
+nav{
+    display: flex;
+    width: 100vw;
+    background-color: #efb739;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.navBar{
+    display: flex;
+    gap:10vw;
+    list-style: none;
+    margin: 0 7vw;
+}
+.burgerMenu{
+    display: flex;
+}
+#mainContent{
+    background-color: black;
+    display: flex;
+}
+.sectionPerfil{
+    display: grid;
+    width: 20vw;
+    height: 70%;
+    background-color: blue;
+    min-height: 400px;
+    align-items: center;
+    /* position: fixed;  */
+}
+.divPerfil{
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+
+}
+#muroContainer{
+    display: grid;
+    width: 80vw;
+    justify-content: center;
+}
+.sectionPublication{
+    width: 50vw;
+    background-color: aquamarine;
+    max-height: 200px;
+}
