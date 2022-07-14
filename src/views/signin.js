@@ -90,8 +90,7 @@ export const signInHandler = (e) => {
         getUserById(userIdRegister, 'users').then((userData) => {
           const data = userData;
           data.id = userIdRegister;
-          console.log(userData);
-          sessionStorage.setItem('user', JSON.stringify(userData));
+          localStorage.setItem('USER', JSON.stringify(userData));
           console.log(userData);
           console.log(sessionStorage);
         });

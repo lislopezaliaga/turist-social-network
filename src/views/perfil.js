@@ -1,4 +1,8 @@
 export const perfilView = () => {
+  const tring = localStorage.getItem('USER');
+  // const usuarioid = JSON.stringify();
+  console.log(JSON.parse(tring).id);
+  // eslint-disable-next-line no-undef
   const perfilContent = `
     
     <div class="divPerfil">

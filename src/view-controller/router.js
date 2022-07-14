@@ -17,12 +17,11 @@ export const changeTmp = (route) => {
 
     case '#/inicio': {
       mainSection.appendChild(components.Home());
-      mainSection.appendChild(components.inicio(components.muro(components.first())));
+      mainSection.appendChild(components.inicio(components.muro(components.muroInicio())));
       break;
     }
     case '#/viajeros': {
       mainSection.appendChild(components.Home());
-      mainSection.appendChild(components.inicio(components.muro(components.first())));
       break;
     }
     case '#/lugares': {
