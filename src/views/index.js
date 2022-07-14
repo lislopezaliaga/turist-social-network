@@ -3,7 +3,7 @@ import { formSignUp } from './signup.js';
 import { home } from './home.js';
 import { inicioView } from './inicio.js';
 import { muroView } from './muro.js';
-import { firstView } from './first.js';
+import { muroInicioView } from './muroInicio.js';
 
 const components = {
   signin: formSignIn,
@@ -11,7 +11,7 @@ const components = {
   Home: home,
   muro: muroView,
   inicio: inicioView,
-  first: firstView,
+  muroInicio: muroInicioView,
 };
 
 export { components };
