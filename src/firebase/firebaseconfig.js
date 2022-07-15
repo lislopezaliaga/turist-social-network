@@ -4,7 +4,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase
 // eslint-disable-next-line import/no-unresolved
 import {
   getFirestore, setDoc,
-  doc, getDoc, addDoc, collection
+  doc, getDoc, addDoc, collection,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
 
@@ -14,6 +14,9 @@ import {
   GoogleAuthProvider, signInWithPopup, sendEmailVerification,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js';
+
+// eslint-disable-next-line import/no-unresolved
+// import { getStorage } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-storage.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCUpEXw7ZlfvMdeZ3xROQMIknx6Db6qeT4',
@@ -30,6 +33,8 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 export const auth = getAuth(app);
+/** Iniciando storage */
+// export const storage = getStorage();
 
 export {
   setDoc, doc, getDoc, addDoc, collection, createUserWithEmailAndPassword,

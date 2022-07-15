@@ -43,5 +43,42 @@ nav{
 .sectionPublication{
     width: 50vw;
     background-color: aquamarine;
-    max-height: 200px;
+  
+}
+#inputText{
+    width: 100%;
+    margin: auto;
+    height: 127px;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+}
+#addImage img {
+    margin-left: 20px;
+    border-radius: 5px ;
+    width: 100px;
+    height: 100px;
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    object-fit: cover ; 
+    object-position: center;
+}
+#addImage img:first-child {
+    margin-left: 10px;
+}
+#addImage span{
+    position: absolute;
+    right: 5%;
+    z-index: 1;
+    color: red;
+    cursor: pointer;
+}
+.imageContainer{
+    display: inline-block;
+    position: relative;
 }

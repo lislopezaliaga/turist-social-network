@@ -37,7 +37,7 @@ body {
 input {
   margin: 10px;
   width: 90%;
-  height: 25px;
+  height: 20px;
   border: 0.7px solid black;
   border-radius: 10px;
   font-family: "Overpass", sans-serif;
@@ -95,11 +95,11 @@ button {
 }
 #signUpForm input,
 #signInForm input {
-  border: #bc8e23 3px solid;
+  border: #bc8e23 1px solid;
   padding: 5px;
 }
 ::placeholder {
-  font-weight: 600;
+  font-weight: 100;
   font-size: 15px;
   color: #d2a53c;
 }
@@ -108,7 +108,7 @@ button {
 }
 #signUpForm input,
 #signUpForm p {
-  height: 18px;
+  height: 20px;
 }
 
 #signUpForm p {
