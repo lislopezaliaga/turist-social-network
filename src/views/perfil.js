@@ -1,7 +1,7 @@
-import {localStorageCall} from '../componentes/sessionStorage.js'
+import { localStorageCall } from '../componentes/sessionStorage.js';
 
 export const perfilView = () => {
-  const userObject = localStorageCall(); 
+  const userObject = localStorageCall();
 
   // eslint-disable-next-line no-undef
   const perfilContent = `

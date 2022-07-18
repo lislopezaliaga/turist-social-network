@@ -88,6 +88,7 @@ export const signInHandler = (e) => {
 
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
+          console.log(userData);
           const data = userData;
           data.id = userIdRegister;
           localStorage.setItem('USER', JSON.stringify(userData));
@@ -133,7 +134,7 @@ export const signInGoogleHandler = (e) => {
       console.log(emailRegister, userIdRegister);
       console.log(result);
 
-      //Crear el usuario y almacenarlo en firestore
+      // Crear el usuario y almacenarlo en firestore
       createNewUser(name, emailRegister, userIdRegister);
 
       // Obtener data del user logueado para agregarlo al sessionStorage

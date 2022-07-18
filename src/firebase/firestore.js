@@ -1,6 +1,6 @@
 import {
   db, doc,
-  setDoc, getDoc, addDoc, collection
+  setDoc, getDoc, addDoc, collection,
 } from './firebaseconfig.js';
 
 // Añadir nuevo usuario (Document) a users (colección)
@@ -11,7 +11,7 @@ export async function createNewUser(name, email, userId) {
     description: 'Soy amante de los viajes',
     country: 'Global',
     interest: 'Nuevas aventuras',
-    profilePhoto: '../img/viajeros.png'
+    profilePhoto: '../img/viajeros.png',
   });
   console.log('estoy llamando a createuser');
 }
@@ -21,14 +21,14 @@ export const getUserById = (userId, colection) => {
   const docRef = doc(db, colection, userId);
   const docSnap = getDoc(docRef).then((userDoc) => userDoc.data());
   return docSnap;
-}; 
+};
 
-//Subir publicaciones del usuario a firestore
-export const loadPublications = (creator, contentPost, urlImg)=> {
+// Subir publicaciones del usuario a firestore
+export const loadPublications = (creator, contentPost, urlImg) => {
   const addPost = addDoc(collection(db, 'posts'), {
     userId: creator,
     publication: contentPost,
     imgPost: urlImg,
   });
   return addPost;
-}
+};
