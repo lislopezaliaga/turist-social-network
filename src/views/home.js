@@ -16,15 +16,33 @@
 export const home = () => {
   const homeContent = `
   <nav>
-    <img class="logo1"  src="img/viajeros.png" width="50px"/>
-    <ul>
-      <li><a>INICIO</a></li>
-      <li><a>VIAJEROS</a></li>
-      <li><a>LUGARES</a></li>
-    </ul> 
-    <div>
-      <img class="logo1"  src="img/viajeros.png" width="50px"/>
-      <p>*</p>
+  <div class="logoTitle">
+    <img class="logo2"  src="img/travels.png" width="220px" />
+  </div>
+    <div class="menuItems">
+    <a href="#/inicio">
+      <div class="homePng">
+        <img class="iconhead" src="../img/homeicon.png" alt="inicio">
+      </div>
+    </a>
+    
+    <a href="#/viajeros">
+      <div class="homePng">
+        <img class="iconhead" src="../img/viajero.png" alt="viajeros">
+      </div>
+    </a>
+     
+    <a href="#/lugares">
+      <div class="homePng">
+        <img class="iconhead" src="../img/lugar.png" alt="lugares">
+      </div>
+    </a>
+    </div>
+    <div class="burgerMenu">
+      <img class="logomenuh"  src="../img/perfilViajeros.jpg"/>
+      <select>
+        
+      </select>
     </div>
   </nav>
   <div id="mainContent">

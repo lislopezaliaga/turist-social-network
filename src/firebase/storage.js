@@ -1,10 +1,13 @@
-// export const shareImgPost = (file, uid) => {
-//   const refStorage = firebase.storage().ref(`imgPosts/${uid}/${file.name}`);
-//   const taskStorage = refStorage.put(file);
-//   const catchError = () => {
-//     const progress = document.querySelector('.progress');
-//     progress.parentNode.innerText = '⚠️ Error al cargar foto';
-//     // console.log(err.message);
-//   };
+import {
+  ref, storage, uploadBytes,
+  getDownloadURL,
+} from './firebaseconfig.js';
 
-// };
+export const shareImgPost = async (imagen, file) => {
+  const storageRef = ref(storage, `postsImagen/${imagen}`);
+  // 'file' comes from the Blob or File API
+  await uploadBytes(storageRef, file);
+
+  const traerFile = getDownloadURL(storageRef);
+  return traerFile;
+};
