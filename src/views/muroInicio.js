@@ -5,6 +5,10 @@ export function muroInicioView() {
   const muroInicio = document.createElement('div');
   muroInicio.setAttribute('id', 'divContainer');
   muroInicio.appendChild(publicationView());
-  muroInicio.appendChild(postView());
+
+  const postContainer = document.createElement('div');
+  postContainer.setAttribute('id', 'postContainer');
+  muroInicio.appendChild(postContainer);
+  postView();
   return muroInicio;
 }

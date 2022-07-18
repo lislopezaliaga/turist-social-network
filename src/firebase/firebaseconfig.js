@@ -4,19 +4,24 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase
 // eslint-disable-next-line import/no-unresolved
 import {
   getFirestore, setDoc,
-  doc, getDoc, addDoc, collection,
+  doc, getDoc, addDoc, collection, serverTimestamp,
+  getDocs, onSnapshot, orderBy, query,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
-
+// query, , ,
 import {
   getAuth, createUserWithEmailAndPassword,
   signInWithRedirect, signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, sendEmailVerification,
-// eslint-disable-next-line import/no-unresolved
+  onAuthStateChanged,
+  // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js';
 
+import {
+  getStorage, ref, uploadBytes,
+  getDownloadURL,
 // eslint-disable-next-line import/no-unresolved
-// import { getStorage } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-storage.js';
+} from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-storage.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCUpEXw7ZlfvMdeZ3xROQMIknx6Db6qeT4',
@@ -34,10 +39,11 @@ export const db = getFirestore(app);
 
 export const auth = getAuth(app);
 /** Iniciando storage */
-// export const storage = getStorage();
+export const storage = getStorage();
 
 export {
   setDoc, doc, getDoc, addDoc, collection, createUserWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signInWithRedirect,
-  signInWithEmailAndPassword, sendEmailVerification,
+  signInWithEmailAndPassword, sendEmailVerification, onAuthStateChanged,
+  serverTimestamp, getDocs, onSnapshot, orderBy, query, ref, uploadBytes, getDownloadURL,
 };

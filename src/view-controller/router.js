@@ -18,6 +18,8 @@ export const changeTmp = (route) => {
     case '#/inicio': {
       mainSection.appendChild(components.Home());
       mainSection.appendChild(components.inicio(components.muro(components.muroInicio())));
+      // setTimeout(() => {
+      // }, 5000);
       break;
     }
     case '#/viajeros': {

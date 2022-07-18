@@ -3,6 +3,8 @@
 }
 body {
   width: 100%;
+  font-family: 'Microsoft Sans Serif';
+
 }
 .back-principal {
   background-image: url("./img/fondoprin.png");
