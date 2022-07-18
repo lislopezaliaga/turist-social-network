@@ -1,11 +1,12 @@
 import {
-  auth, sendEmailVerification, createUserWithEmailAndPassword,
+  auth, sendEmailVerification, createUserWithEmailAndPassword, onAuthStateChanged,
 } from './firebaseconfig.js';
 
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
 export const emailVerificationHandler = () => sendEmailVerification(auth.currentUser);
 
+export const estadoAuthUsuario = (callback) => onAuthStateChanged(auth, callback);
 // export const idUser = async () => {
 //   const user = auth.currentUser;
 // if (user !== null) {
