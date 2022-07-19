@@ -45,3 +45,5 @@ export const postView = () => {
     });
   });
 };
+
+//Botón para dar

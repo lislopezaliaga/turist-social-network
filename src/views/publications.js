@@ -13,7 +13,51 @@ async function addPublications(e) {
 
   const namecreator = localStorageCall().name;
   const photoCreator = localStorageCall().profilePhoto;
+
+  const postForm = document.querySelector('#postForm');
+  const chargingGif = document.querySelector('#modal-charging');
+
   /** ******SUBIENDO IMAGENES AL STORAGE Y AL FIRESTORE************ */
+  const inputTypeFile = document.getElementById('compartirImg');
+  let urlImg = '';
+  if (inputTypeFile.value) {
+    const urlImage = inputTypeFile.files[0].name;
+    const file = inputTypeFile.files[0];
+    console.log(file);
+    const objectLoadFiles = shareImgPost(urlImage, file);
+
+    chargingGif.style.display = "block";
+    postForm.style.display = "none";
+    
+    const uploadImg = objectLoadFiles.loadFile;
+    await uploadImg;
+    console.log('subida exitosa');
+    chargingGif.style.display = "none";
+    postForm.style.display = "block";
+
+    //urlImg = await objectLoadFiles.getURLimg;
+    const urlImg2 = await objectLoadFiles.getURLimg;
+    urlImg = urlImg2;
+    console.log(urlImg);
+    console.log(urlImg2);
+  }
+
+  /** ******SUBIENDO DATOS AL FIRESTORE************ */
+
+  if (inputTypeFile.value || inputText.value) {
+    await loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
+  }
+}
+/* async function addPublications(e) {
+  e.preventDefault();
+
+  const inputText = document.querySelector('#inputText');
+  const creator = localStorageCall().id;
+
+  const contentPost = inputText.value;
+
+  const namecreator = localStorageCall().name;
+  const photoCreator = localStorageCall().profilePhoto;
   const inputTypeFile = document.getElementById('compartirImg');
   let urlImg = '';
   if (inputTypeFile.value) {
@@ -25,7 +69,6 @@ async function addPublications(e) {
     urlImg = await shareImgPost(urlImage, file);
   }
 
-  /** ******SUBIENDO DATOS AL FIRESTORE************ */
 
   if (inputTypeFile.value || inputText.value) {
     loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
@@ -33,7 +76,7 @@ async function addPublications(e) {
     divAddImage.innerHTML = '';
     inputText.value = '';
   }
-}
+} */
 
 function addImage() {
   const divAddImage = document.getElementById('addImage');
@@ -83,6 +126,12 @@ export const publicationView = () => {
             <option value="2">🔒 Solo yo </option>
     </select>
   </div>
+
+  <div id = "modal-charging" style = "display:none">
+    <p>Cargando ...</p>
+    <img src="../img/cat-charging.gif"/>
+  </div>
+
   <form id="postForm">
     <textarea placeholder="Escribe Algo ..." id='inputText'></textarea>
   
@@ -96,7 +145,7 @@ export const publicationView = () => {
       </div>
     </div>
   </form>
-  
+
   <div class="buttonGeneralPublication">
     <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
     <button id = "cancel" class="buttonPublication">Cancelar</button>
