@@ -21,6 +21,7 @@ async function addPublications(e) {
     const file = inputTypeFile.files[0];
     console.log(file);
     await shareImgPost(urlImage, file);
+    console.log(await shareImgPost(urlImage, file));
     urlImg = await shareImgPost(urlImage, file);
   }
 
@@ -28,6 +29,9 @@ async function addPublications(e) {
 
   if (inputTypeFile.value || inputText.value) {
     loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
+    const divAddImage = document.getElementById('addImage');
+    divAddImage.innerHTML = '';
+    inputText.value = '';
   }
 }
 

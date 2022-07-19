@@ -43,8 +43,6 @@ export const home = () => {
       <i class="fa fa-bars"></i>
     </div>
   </nav>
-  <div id="mainContent">
-  </div>
     `;
   const homeContainer = document.createElement('div');
   homeContainer.setAttribute('class', 'homeContainer');
