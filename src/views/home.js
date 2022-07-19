@@ -15,35 +15,25 @@
 // const userInfo = sessionStorageCall();
 export const home = () => {
   const homeContent = `
-  <nav>
-  <div class="logoTitle">
+  <nav class="nav">
     <img class="logo2"  src="img/travels.png" width="220px" />
-  </div>
-    <div class="menuItems">
-    <a href="#/inicio">
-      <div class="homePng">
-        <img class="iconhead" src="../img/homeicon.png" alt="inicio">
-      </div>
-    </a>
-    
-    <a href="#/viajeros">
-      <div class="homePng">
-        <img class="iconhead" src="../img/viajero.png" alt="viajeros">
-      </div>
-    </a>
-     
-    <a href="#/lugares">
-      <div class="homePng">
-        <img class="iconhead" src="../img/lugar.png" alt="lugares">
-      </div>
-    </a>
-    </div>
+    <button class="nav-toggle"><i class="fa fa-bars"></i></button>
+    <ul class="nav-menu">
+      <li class="nav-menu-item">
+        <a href="#/inicio" class="nav-menu-link nav-link"><img class="iconhead" src="../img/homeicon.png" alt="inicio"></a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#/viajeros" class="nav-menu-link nav-link"><img class="iconhead" src="../img/viajero.png" alt="viajeros"></a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#/lugares" class="nav-menu-link nav-link"><img class="iconhead" src="../img/lugar.png" alt="lugares"></a>
+      </li>
+    </ul>
     <div class="burgerMenu">
-      <img class="logomenuh"  src="../img/perfilViajeros.jpg"/>
-      <i class="fa fa-bars"></i>
+        <img class="logomenuh"  src="../img/perfilViajeros.jpg"/>
+        <i class="fa fa-bars"></i>
     </div>
-  </nav>
-    `;
+  </nav>`;
   const homeContainer = document.createElement('div');
   homeContainer.setAttribute('class', 'homeContainer');
   homeContainer.innerHTML = homeContent;

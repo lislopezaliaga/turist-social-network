@@ -29,7 +29,7 @@ export const postView = () => {
           </div>
         </div>
         <div class="postText">
-          <p><i class="fa fa-quote-left"></i> ${dato.publication} <i class="fa fa-quote-right"></i></p>
+          <p class="texto"><i class="fa fa-quote-left"></i> ${dato.publication} <i class="fa fa-quote-right"></i></p>
         </div>
         <div class="imgpost">
         <img class="imgposted" src='${dato.imgPost}'>
