@@ -40,9 +40,7 @@ export const home = () => {
     </div>
     <div class="burgerMenu">
       <img class="logomenuh"  src="../img/perfilViajeros.jpg"/>
-      <select>
-        
-      </select>
+      <i class="fa fa-bars"></i>
     </div>
   </nav>
   <div id="mainContent">
