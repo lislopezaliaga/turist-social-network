@@ -17,36 +17,30 @@ export const home = () => {
   const homeContent = `
   <nav>
   <div class="logoTitle">
-    <img class="logo2"  src="img/viajeros.png" width="50px" />
-    <h2> Travelers</h2>
+    <img class="logo2"  src="img/travels.png" width="220px" />
   </div>
     <div class="menuItems">
     <a href="#/inicio">
       <div class="homePng">
-        <img src="../img/home.png" alt="">
-
+        <img class="iconhead" src="../img/homeicon.png" alt="inicio">
       </div>
     </a>
     
     <a href="#/viajeros">
       <div class="homePng">
-        <img src="../img/backpack.png" alt="">
-
+        <img class="iconhead" src="../img/viajero.png" alt="viajeros">
       </div>
     </a>
      
     <a href="#/lugares">
       <div class="homePng">
-        <img src="../img/places.png" alt="">
-
+        <img class="iconhead" src="../img/lugar.png" alt="lugares">
       </div>
     </a>
     </div>
     <div class="burgerMenu">
-      <img class="logo2"  src="../img/perfilViajeros.jpg"/>
-      <select>
-        
-      </select>
+      <img class="logomenuh"  src="../img/perfilViajeros.jpg"/>
+      <i class="fa fa-bars"></i>
     </div>
   </nav>
   <div id="mainContent">

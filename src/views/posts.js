@@ -20,21 +20,25 @@ export const postView = () => {
       // ${userPost.name}
       // console.log(userPost);
       const postContent = `
+      <div class="postindividual">
         <div class="postNameImage">
-          <img src="${dato.photoCreator}" width="50px">
-          <h3>${dato.nameCreator}</h3>
-          <span>${dato.dateTime}</span>
+          <img class="iconpost" src="${dato.photoCreator}" width="50px">
+          <div>
+            <h3 class="namepost">${dato.nameCreator}</h3>
+            <span class="datepost"> ${dato.dateTime}</span>
+          </div>
         </div>
         <div class="postText">
-          <p> ${dato.publication}</p>
+          <p><i class="fa fa-quote-left"></i> ${dato.publication} <i class="fa fa-quote-right"></i></p>
         </div>
-        <div>
-        <img src='${dato.imgPost}'>
+        <div class="imgpost">
+        <img class="imgposted" src='${dato.imgPost}'>
         </div>
         <div class="postReaction">
-          <button>me gusta</button>
+          <button class="likes"><i class="fa fa-heart"></i> me gusta</button>
           <h3> 3 personas les gusta</h3>
         </div>
+      </div>
             `;
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
