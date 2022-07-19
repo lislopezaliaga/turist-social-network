@@ -1,265 +1,325 @@
-nav{
-    display: flex;
-    width: 100%;
-    background-color: #efb739;
-    justify-content: space-around;
-    align-items: center;
-    
-    
+nav {
+  display: flex;
+  width: 100%;
+  background-color: #efb739;
+  justify-content: space-around;
+  align-items: center;
 }
-.logoTitle{
-display: flex;
-align-items: flex-end;
+.logoTitle {
+  display: flex;
+  align-items: flex-end;
 }
-.menuItems{
-    width: 40%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: space-around;
-    
+.menuItems {
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-around;
 }
 
-.homePng{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-    color: #293462;
-    justify-content: center;
+.homePng {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  color: #293462;
+  justify-content: center;
+}
+.homePng img {
+  width: 50%;
+  height: 50%;
+}
+.burgerMenu {
+  display: flex;
+  background-color: #c7a10c;
+  border: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.logo2 {
+  width: 220px;
+  height: 80px;
+}
+.iconhead {
+  border-radius: 50%;
+  border: 2px solid #000000;
+  background-color: #acd2fd;
+  padding: 3px;
+  cursor: pointer;
+}
+.iconhead:hover {
+  background-color: #e2c98e;
+}
+#mainContent {
+  background-color: rgb(242, 224, 165);
+  display: flex;
+}
+.sectionPerfil {
+  display: grid;
+  width: 20vw;
+  height: 70vh;
+  background-color: #8fc3ff;
+  min-height: 400px;
 
-    
+  /* position: fixed;  */
 }
-.homePng img{
-    width: 70%;
-    height: 60%;   
+.firstDivPerfil {
+  background-color: #3b61ab;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
-.burgerMenu{
-    display: flex;
-    width: 6vw;
-    height: 5vw;
-    background-color:#FFF80A ;
-    border: solid;
-    border-width: 1px;
-    border-radius: 10px ;
-    justify-content: center;
-    align-items: center;
-}
-.logo2{
-    width: 4vw;
-    height: 4vw;
-    border-radius: 50%;
-    border: 1px solid;
-}
-#mainContent{
-    background-color: black;
-    display: flex;
-}
-.sectionPerfil{
-    display: grid;
-    width: 20vw;
-    height: 70vh;
-    background-color: #293462;
-    min-height: 400px;
-    
-    /* position: fixed;  */
-}
-.firstDivPerfil{
-background-color: #D61C4E;
-display: grid;
-justify-content: center;
-justify-items: center;
-align-items: center;
-}
-.divPerfil{
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    text-align: center;
-
-}
-
-.photoPerfil{
-width: 13vw;
-height: 13vw;
-background-color: black;
-border-radius: 50%;
-
-}
-#imgPerfil{
-width: 100%;
-height: 100%;
-border-radius: 50%;
-object-fit: cover ; 
-object-position: center;
-border: 3px solid #FFF80A;
-
-}
-#muroContainer{
-    display: grid;
-    width: 80vw;
-    justify-content: center;
-}
-#divContainer{
-    background-color: #ffffff;
-    width: 45vw;
-    display: grid;
-    justify-items: center;
+.divPerfil {
+  padding: 15px;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
 }
 
-.sectionPublication{
-    width: 40vw;
-    background-color: #e0e3e2;
-    display: grid;
-    border-radius: 10px;
-    margin-top: 5px;
-  
+.photoPerfil {
+  width: 13vw;
+  height: 13vw;
+  background-color: black;
+  border-radius: 50%;
 }
-.divcamera{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #ffffff;
-    width: 90%;
-    margin-left: 5%;
-    align-items: center;
-    border-radius: 6px;
+#imgPerfil {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #1d1d17;
 }
-.inputFiles{
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    border-radius: 4px;
-    border:0.5px solid;
-    box-sizing: border-box;
-    cursor: pointer;
+#muroContainer {
+  display: grid;
+  width: 80vw;
+  justify-content: center;
 }
-.inputFiles:hover{
-    background-color: #D61C4E;
-}
-#compartirImg{
-    display: block;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-
-}
-.inputFiles label{
-    width: 90%;
-    margin-left: 5%;
-    height: 90%;
-    display: block;
-    background: transparent url('img/camera.png') no-repeat center center;
-    background-size: cover;
+#divContainer {
+  background-color: #ffffff;
+  width: 45vw;
+  display: grid;
+  justify-items: center;
+  box-shadow: 0px 8px 20px -6px #293462;
 }
 
-
-.buttonGeneralPublication{
-    
-    display: flex;
-    justify-content: flex-end;
-    }
-.buttonPublication{
-    width: 30%;
-    height: 35px;
-    border: 0.5px solid;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 1.3rem;
+.sectionPublication {
+  min-width: 40vw;
+  background-color: #e0e3e2;
+  display: grid;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 10px;
+  box-shadow: 0px 5px 8px #293462;
+}
+.divcamera {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  max-width: 40%;
+  margin-left: 5%;
+  align-items: center;
+  border-radius: 6px;
+}
+.inputFiles {
+  width: 28px;
+  height: 28px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 0.5px solid;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 3px;
+}
+.inputFiles:hover {
+  background-color: #d61c4e;
+}
+#compartirImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.inputFiles label {
+  width: 90%;
+  margin-left: 5%;
+  height: 90%;
+  display: block;
+  background: transparent url("img/camera.png") no-repeat center center;
+  background-size: cover;
 }
 
-.buttonPublication:first-child{
-    background-color: #293462;
-    color: #ffffff;
+.buttonGeneralPublication {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5px;
 }
-.buttonPublication:hover{
-    background-color: #D61C4E;
-    }
-.namePhotoPublication{
-    display: flex;
-    align-items: center;
-    position: relative;
-    
+.buttonPublication {
+  width: 30%;
+  height: 35px;
+  border: 0.5px solid;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
 }
-.namePhotoPublication img{
-    border-radius: 50%;
-    margin-left: 1vw;
-    border: solid #293462;
-    margin-right: 2%;
-}
-#privacyPostArea{
-    position: absolute;
-    right: 1vw;
-    font-size: 15px;
-    border: none;
-    outline: none;
-    background: none;
-    cursor: pointer;
-    padding: 0px 10px;
-}
-    
 
-#inputText{
-    width: 90%;
-    margin: 1% 5%;
-    height: 80px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 10px;
-    outline: none;
-    resize: none;
-    font-size: 16px;
+.buttonPublication:first-child {
+  background-color: #34579c;
+  color: #ffffff;
 }
-#addImage{
-    display: flex;
-    width: 100%;
+.buttonPublication:hover {
+  background-color: #d61c4e;
+}
+.namePhotoPublication {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 8px;
+}
+.namePhotoPublication img {
+  border-radius: 50%;
+  margin-left: 1vw;
+  border: solid #293462;
+  margin-right: 2%;
+  width: 50px;
+}
+#privacyPostArea {
+  position: absolute;
+  right: 1vw;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  padding: 0px 10px;
+}
+
+#inputText {
+  width: 90%;
+  margin: 1% 5%;
+  height: 80px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+  resize: none;
+  font-size: 16px;
+}
+#addImage {
+  display: flex;
+  width: 100%;
 }
 #addImage img {
-    margin-left:5%;
-    position: relative;
-    border-radius: 5px ;
-    width: 100px;
-    height: 100px;
-    object-fit: cover ; 
-    object-position: center;
+  margin-left: 5%;
+  position: relative;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
 }
 #addImage img:first-child {
-    margin-left:5%;
+  margin-left: 5%;
 }
-#addImage span{
-    position: absolute;
-    right: 1%;
-    top: 1%;
-    z-index: 1;
-    color: red;
-    cursor: pointer;
+#addImage span {
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  z-index: 1;
+  color: red;
+  cursor: pointer;
 }
-.imageContainer{
-    display: inline-block;
-    position: relative;
+.imageContainer {
+  display: inline-block;
+  position: relative;
 }
 #postContainer {
-    display: grid;
-    width: 90%;
+  display: grid;
+  max-width: 40vw;
 }
 .postsContent {
-    display: grid;
-    background-color: #ff7600;
-    align-items: center;
-    width: 100%;
-    border-radius: 10px;
-    margin: 1% 0;
+  display: grid;
+  align-items: center;
+  border-radius: 10px;
+  margin: 5% 0;
+  max-width: 40vw;
 }
 .postNameImage {
-    display: flex;
-    width: 100%;
-    background-color: blue;
+  display: flex;
+  background-color: #e0e3e2;
+  max-width: 40vw;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+  border: 2px solid #000000;
 }
 .postText {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+  background-color: #fff;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  font-family: "Edu NSW ACT Foundation", cursive;
 }
 .postReaction {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  max-width: 40vw;
+  background-color: #e0e3e2;
+  border-radius: 0px 0px 10px 10px;
+  border: 2px solid #000000;
+}
+.iconpost {
+  border-radius: 50%;
+  padding: 3px;
+  margin: 3px 5px;
+  background-color: #ffffff;
+}
+.imgpost {
+  max-width: 100%;
+  max-height: 380px;
+  background-color: #f5d2c3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+}
+.imgposted {
+  min-width: 100%;
+  max-height: 350px;
+  background-color: #ffffff;
+}
+.namepost {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+.datepost {
+  margin: 5px 2px;
+  font-size: 13px;
+}
+.logomenuh {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 3px 4px;
+}
+.postindividual {
+  box-shadow: 0px 5px 8px #293462;
+  margin: 10px 0px;
+  padding: 0px;
+  border-radius: 10px;
+  max-width: 40vw;
+}
+.likes {
+  background-color: #fff;
+  padding: 4px;
 }

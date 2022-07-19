@@ -13,7 +13,7 @@ export async function createNewUser(name, email, userId) {
     description: 'Soy amante de los viajes',
     country: 'Global',
     interest: 'Nuevas aventuras',
-    profilePhoto: '../img/perfilViajeros.jpg',
+    profilePhoto: '../img/usuario.png',
   });
   console.log('estoy llamando a createuser');
 }

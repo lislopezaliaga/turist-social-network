@@ -7,21 +7,21 @@ export const perfilView = () => {
     
     <div class="firstDivPerfil">
       <div class="photoPerfil">
-        <img id="imgPerfil" src=${userObject.profilePhoto}>
+        <img id="imgPerfil" src="./img/usuario.png">
       </div>
       <h2>${userObject.name}</h2> 
     </div>
     <div class="divPerfil">
       <div class="divPerfil">
-        <h3>Descripción</h3>
+        <h3><i class="fa fa-user"></i> Descripción</h3>
         <p>${userObject.description}</p>
       </div>
-      <div>
-        <h3>País</h3>
+      <div class="divPerfil">
+        <h3><i class="fa fa-globe"></i> País</h3>
         <p>${userObject.country}</p>
       </div>
-      <div>
-        <h3>Intereses</h3>
+      <div class="divPerfil">
+        <h3><i class="fa fa-gratipay"></i> Intereses</h3>
         <p>${userObject.interest}</p>
       </div>
     </div>

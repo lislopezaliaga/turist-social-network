@@ -72,7 +72,7 @@ export const publicationView = () => {
   const userObject = localStorageCall();
   const publicationContent = `
   <div class="namePhotoPublication">
-    <img src="${userObject.profilePhoto}" width = "50px">
+    <img src="${userObject.profilePhoto}" width = "30px">
     <h2>${userObject.name}</h2>
     <select id="privacyPostArea">
             <option value="1">🌎 Público</option>
@@ -87,15 +87,15 @@ export const publicationView = () => {
         <label for="compartirImg"></label>
         <input type="file"  id="compartirImg" >
       </div>
-      <h4>Agrega una imagen</h4>
+      <h4> Agrega una imagen </h4>
       <div id="addImage">
       </div>
     </div>
   </form>
   
   <div class="buttonGeneralPublication">
-    <button id = "publish" class="buttonPublication" type="submit">publicar</button>
-    <button id = "cancel" class="buttonPublication">cancelar</button>
+    <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
+    <button id = "cancel" class="buttonPublication">Cancelar</button>
   </div>
         `;
   const publicationContainer = document.createElement('div');
