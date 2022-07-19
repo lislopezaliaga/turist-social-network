@@ -6,6 +6,17 @@ import { changeTmp } from './view-controller/router.js';
 const init = () => {
   changeTmp(window.location.hash);
   window.addEventListener('hashchange', () => changeTmp(window.location.hash));
+  
+  
+  /*menu estilos*/
+  let navToggle = document.querySelector(".nav-toggle");
+  let navMenu = document.querySelector(".nav-menu");
+  console.log("entro");
+    navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("nav-menu_visible");
+  });
 };
 
 window.addEventListener('load', init);
+
+

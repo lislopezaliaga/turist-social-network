@@ -1,20 +1,7 @@
-nav {
-  display: flex;
-  width: 100%;
-  background-color: #efb739;
-  justify-content: space-around;
-  align-items: center;
-}
-.logoTitle {
-  display: flex;
-  align-items: flex-end;
-}
-.menuItems {
-  width: 40%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  align-content: space-around;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .homePng {
@@ -41,7 +28,7 @@ nav {
 }
 .logo2 {
   width: 220px;
-  height: 80px;
+  height: 70px;
 }
 .iconhead {
   border-radius: 50%;
@@ -49,13 +36,16 @@ nav {
   background-color: #acd2fd;
   padding: 3px;
   cursor: pointer;
+  width: 48px;
+  margin-top: 10px;
 }
 .iconhead:hover {
   background-color: #e2c98e;
 }
 #mainContent {
-  background-color: rgb(242, 224, 165);
+  background-color: rgb(248, 233, 185);
   display: flex;
+  padding-top: 70px;
 }
 .sectionPerfil {
   display: grid;
@@ -179,8 +169,9 @@ nav {
 .namePhotoPublication {
   display: flex;
   align-items: center;
-  position: relative;
   margin-bottom: 8px;
+  max-width: 40vw;
+  justify-content: space-around;
 }
 .namePhotoPublication img {
   border-radius: 50%;
@@ -190,7 +181,6 @@ nav {
   width: 50px;
 }
 #privacyPostArea {
-  position: absolute;
   right: 1vw;
   font-size: 15px;
   border: none;
@@ -268,6 +258,8 @@ nav {
   border-left: 2px solid #000000;
   border-right: 2px solid #000000;
   font-family: "Edu NSW ACT Foundation", cursive;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .postReaction {
   display: flex;
@@ -322,4 +314,138 @@ nav {
 .likes {
   background-color: #fff;
   padding: 4px;
+}
+.texto {
+  max-width: 36vw;
+}
+
+/*Menu estilos*/
+.homeContainer {
+  background-color: #efb739;
+  width: 100%;
+}
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #efb739;
+  position: fixed;
+  height: 73px;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu {
+  font-family: "Raleway";
+  display: flex;
+  margin-right: 30px;
+  list-style: none;
+}
+.nav-menu-item {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 5px 10px;
+  line-height: 60px;
+  text-shadow: 0 0 12px #000, 0 0 15px #daa439;
+}
+.nav-menu-link {
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.nav-menu-link:hover,
+.submenuDirector_items:hover {
+  background-color: #cb9a3a;
+  transition: 0.5s;
+}
+.nav-toggle {
+  color: #9b751e;
+  background: none;
+  border: none;
+  font-size: 30px;
+  padding: 0 20px;
+  line-height: 50px;
+  display: none;
+}
+
+.container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* Navbar section */
+
+/* Medai qurey section */
+
+@media screen and (min-width: 768px) and (max-width: 1350px) {
+  #mainContent {
+    background: rgb(248, 233, 185);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #muroContainer {
+    width: 100vw;
+  }
+  #divContainer {
+    width: 85vw;
+  }
+  .sectionPublication,
+  .namePhotoPublication {
+    min-width: 70vw;
+  }
+  .divcamera {
+    flex-wrap: nowrap;
+    min-width: 60vw;
+    display: flex;
+  }
+  #postContainer,
+  .postsContent,
+  .postindividual {
+    min-width: 70vw;
+  }
+
+  .postindividual div {
+    min-width: 70vw;
+  }
+  .burgerMenu {
+    display: none;
+  }
+  #mainContent {
+    background: rgb(248, 233, 185);
+  }
+  .sectionPerfil {
+    display: none;
+  }
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    background-color: #e4be94;
+    position: fixed;
+    top: 50px;
+    width: 80%;
+    padding: 20px 0%;
+    height: calc(35% - 60px);
+    overflow-y: visible;
+    left: 100%;
+    transition: left 0.5s;
+  }
+  .nav-menu-item {
+    line-height: 30px;
+  }
+  .nav-menu-link:hover {
+    background: #ab2016;
+    color: #fff;
+  }
+  .nav-toggle {
+    display: block;
+    cursor: pointer;
+  }
+  .nav-menu_visible {
+    height: auto;
+    left: 0;
+  }
 }
