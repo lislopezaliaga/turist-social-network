@@ -142,7 +142,7 @@ export const signInGoogleHandler = (e) => {
         const data = userData;
         data.id = userIdRegister;
         localStorage.setItem('USER', JSON.stringify(userData));
-        console.log(userData);
+        console.log(data);
       });
       window.location.hash = '#/inicio';
     })

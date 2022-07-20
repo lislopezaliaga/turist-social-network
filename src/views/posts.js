@@ -1,5 +1,7 @@
-import { actualizarPosts } from '../firebase/firestore.js';
-// import useTimeAgo from './timeago.js';
+import { localStorageCall } from '../componentes/sessionStorage.js';
+import { actualizarPosts, getUserById, updateLikes } from '../firebase/firestore.js';
+
+
 
 export const postView = () => {
   actualizarPosts((querySnapshoot) => {
@@ -13,14 +15,11 @@ export const postView = () => {
 
     querySnapshoot.forEach((element) => {
       const dato = element.data();
-      // const a = await getUserById(dato.userId, 'users');
-      // const timeago = useTimeAgo(+element.data().timestamp.toDate());
-      // console.log(timeago);
-      // getUserById(dato.userId, 'users').then((userPost) => {
-      // ${userPost.name}
-      // console.log(userPost);
+      // console.log(element.id);
+      const idPost = element.id;
+
       const postContent = `
-      <div class="postindividual">
+      <div class="postindividual" id='${idPost}'>
         <div class="postNameImage">
           <img class="iconpost" src="${dato.photoCreator}" width="50px">
           <div>
@@ -35,15 +34,41 @@ export const postView = () => {
         <img class="imgposted" src='${dato.imgPost}'>
         </div>
         <div class="postReaction">
-          <button class="likes"><i class="fa fa-heart"></i> me gusta</button>
+          <i class="fa fa-heart like" name="${idPost}"></i>
           <h3> 3 personas les gusta</h3>
         </div>
       </div>
             `;
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
+      const buttonLikes = postContainer.querySelector('.like');
+      buttonLikes.addEventListener('click', likesHandler);
     });
   });
 };
 
-//Botón para dar
+async function likesHandler(e) {
+  const btnLike = e.target;
+
+  const idUser = localStorageCall().id;
+  console.log(idUser);
+
+  const idPost = btnLike.getAttribute('name');
+  console.log(idPost);
+
+  const dataPost = await getUserById(idPost, 'posts');
+  console.log(dataPost);
+
+  if (dataPost.likes.includes(idUser)) {
+    // esto es para quitar el like por usuario
+    // subirLikes(idLike, dataPost.likes.filter((item) => item !== userData.id));
+    // btnLike.style.color = '#8F7D7D';
+    console.log('like dado');
+  } else {
+    // esto es para agregar like por usuario
+    await updateLikes(idPost, [...dataPost.likes, idUser]);
+    
+    // console.log('like recien dado');
+
+}
+}
