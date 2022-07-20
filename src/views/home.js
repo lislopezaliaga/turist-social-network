@@ -31,7 +31,7 @@ export const home = () => {
     </ul>
     <div class="burgerMenu">
         <img class="logomenuh"  src="../img/perfilViajeros.jpg"/>
-        <i class="fa fa-bars"></i>
+        <i class="fa fa-caret-down"></i>
     </div>
   </nav>`;
   const homeContainer = document.createElement('div');

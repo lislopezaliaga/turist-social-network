@@ -14,7 +14,6 @@ export const formSignUp = () => {
         <div class="imgLogo">
             <img  class="logo1" src="img/viajeros.png" width="200px"/>
         </div>
-        <h2 class="bienvenidos">Bienvenido a Travels </h2>
         <label id="complete"></label>
         <input type= "text" placeholder= " Nombre" id ="name"  Required>
         <label id="nameAlert"></label>
