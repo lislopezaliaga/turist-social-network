@@ -2,7 +2,6 @@ import { loadPublications } from '../firebase/firestore.js';
 import { localStorageCall } from '../componentes/sessionStorage.js';
 import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
-
 /* async function addPublications(e) {
   e.preventDefault();
 
@@ -81,7 +80,7 @@ async function addPublications(e) {
   if (inputTypeFile.value || inputText.value) {
     loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
   }
-  
+
   chargingGif.style.display = "none";
   postForm.style.display = "block";
 }
@@ -158,6 +157,8 @@ export const publicationView = () => {
     <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
     <button id = "cancel" class="buttonPublication">Cancelar</button>
   </div>
+
+  <select id = "selectCountry"></select>
         `;
   const publicationContainer = document.createElement('div');
   publicationContainer.setAttribute('class', 'sectionPublication');
