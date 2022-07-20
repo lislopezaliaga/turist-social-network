@@ -50,11 +50,16 @@ import { paises } from './country.js';
 } */
 async function addPublications(e) {
   e.preventDefault();
+  const privacySelect = document.querySelector('#privacyPostArea');
+  const privacyOption = privacySelect.value;
 
   const inputText = document.querySelector('#inputText');
   const creator = localStorageCall().id;
 
   const contentPost = inputText.value;
+
+  const countrySelect = document.querySelector('#selectCountry');
+  const countryOption = countrySelect.value;
 
   const namecreator = localStorageCall().name;
   const photoCreator = localStorageCall().profilePhoto;
@@ -82,7 +87,15 @@ async function addPublications(e) {
   if (inputTypeFile.value || inputText.value) {
     chargingGif.style.display = 'none';
     postForm.style.display = 'block';
-    await loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
+    await loadPublications(
+      creator,
+      contentPost,
+      urlImg,
+      namecreator,
+      photoCreator,
+      countryOption,
+      privacyOption,
+    );
     const divAddImage = document.getElementById('addImage');
     divAddImage.innerHTML = '';
     inputText.value = '';
@@ -134,8 +147,8 @@ export const publicationView = () => {
     <img src="${userObject.profilePhoto}" width = "30px">
     <h2>${userObject.name}</h2>
     <select id="privacyPostArea">
-            <option value="1">🌎 Público</option>
-            <option value="2">🔒 Solo yo </option>
+            <option value="🌎">🌎 Público</option>
+            <option value="🔒">🔒 Privado </option>
     </select>
   </div>
 

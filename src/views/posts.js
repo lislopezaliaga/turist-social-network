@@ -1,7 +1,7 @@
 import { localStorageCall } from '../componentes/sessionStorage.js';
-import { actualizarPosts, getUserById, updateLikes } from '../firebase/firestore.js';
-
-
+import {
+  actualizarPosts, getUserById, obtenerUserById, updateLikes,
+} from '../firebase/firestore.js';
 
 export const postView = () => {
   actualizarPosts((querySnapshoot) => {
@@ -15,8 +15,10 @@ export const postView = () => {
 
     querySnapshoot.forEach((element) => {
       const dato = element.data();
-      // console.log(element.id);
+
       const idPost = element.id;
+
+      const likesCount = dato.likes.length;
 
       const postContent = `
       <div class="postindividual" id='${idPost}'>
@@ -25,7 +27,9 @@ export const postView = () => {
           <div>
             <h3 class="namepost">${dato.nameCreator}</h3>
             <span class="datepost"> ${dato.dateTime}</span>
+            <span class="datepost"> ${dato.privacy}</span>
           </div>
+          <p class="namepost">esta en${dato.country} </p>
         </div>
         <div class="postText">
           <p class="texto"><i class="fa fa-quote-left"></i> ${dato.publication} <i class="fa fa-quote-right"></i></p>
@@ -35,21 +39,22 @@ export const postView = () => {
         </div>
         <div class="postReaction">
           <i class="fa fa-heart like" name="${idPost}"></i>
-          <h3> 3 personas les gusta</h3>
+          <h3> ${likesCount}</h3>
         </div>
       </div>
             `;
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
-      const buttonLikes = postContainer.querySelector('.like');
-      buttonLikes.addEventListener('click', likesHandler);
+    });
+    const buttonLikes = document.querySelectorAll('.like');
+    buttonLikes.forEach((likeIcon) => {
+      likeIcon.addEventListener('click', likesHandler);
     });
   });
 };
-
 async function likesHandler(e) {
   const btnLike = e.target;
-
+  console.log('lihkdsbslj');
   const idUser = localStorageCall().id;
   console.log(idUser);
 
@@ -57,19 +62,19 @@ async function likesHandler(e) {
   console.log(idPost);
 
   const dataPost = await getUserById(idPost, 'posts');
- 
 
-  if (dataPost.likes.includes(idUser)) {
+  if (await dataPost.likes.includes(idUser)) {
     // esto es para quitar el like por usuario
-    await updateLikes(idPost, dataPost.likes.filter((item) => item !== idUser));
-    btnLike.style.color = '#8F7D7D';
+    await updateLikes(idPost, await dataPost.likes.filter((item) => item !== idUser));
+    console.log(dataPost);
+    btnLike.style.fill = '#8F7D7D';
     console.log('like dado');
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-   
-    // console.log('like recien dado');
+    console.log(dataPost);
 
-}
-console.log(dataPost);
+    // console.log('like recien dado');
+  }
+  console.log(await obtenerUserById(idPost, 'posts'));
 }
