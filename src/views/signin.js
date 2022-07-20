@@ -14,7 +14,6 @@ export const formSignIn = () => {
           </div>
         <div id="seccion1" class="divs2">
             <img class="logo1"  src="img/viajeros.png" width="200px"/>
-            <h2 class="bienvenidos">Bienvenido a Travels</h2>
             <form id="signInForm" class="formulario">
             <div class="buttonGoogle">
                 <img src="../img/logoGoogle.png" width="20px">
