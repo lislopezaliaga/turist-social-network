@@ -57,18 +57,19 @@ async function likesHandler(e) {
   console.log(idPost);
 
   const dataPost = await getUserById(idPost, 'posts');
-  console.log(dataPost);
+ 
 
   if (dataPost.likes.includes(idUser)) {
     // esto es para quitar el like por usuario
-    // subirLikes(idLike, dataPost.likes.filter((item) => item !== userData.id));
-    // btnLike.style.color = '#8F7D7D';
+    await updateLikes(idPost, dataPost.likes.filter((item) => item !== idUser));
+    btnLike.style.color = '#8F7D7D';
     console.log('like dado');
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-    
+   
     // console.log('like recien dado');
 
 }
+console.log(dataPost);
 }
