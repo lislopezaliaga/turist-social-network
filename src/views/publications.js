@@ -3,7 +3,7 @@ import { localStorageCall } from '../componentes/sessionStorage.js';
 import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
 
-async function addPublications(e) {
+/* async function addPublications(e) {
   e.preventDefault();
 
   const inputText = document.querySelector('#inputText');
@@ -15,10 +15,10 @@ async function addPublications(e) {
   const photoCreator = localStorageCall().profilePhoto;
 
   const postForm = document.querySelector('#postForm');
-  const chargingGif = document.querySelector('#modal-charging');
+  const chargingGif = document.querySelector('#modal-charging'); */
 
   /** ******SUBIENDO IMAGENES AL STORAGE Y AL FIRESTORE************ */
-  const inputTypeFile = document.getElementById('compartirImg');
+  /* const inputTypeFile = document.getElementById('compartirImg');
   let urlImg = '';
   if (inputTypeFile.value) {
     const urlImage = inputTypeFile.files[0].name;
@@ -40,15 +40,15 @@ async function addPublications(e) {
     urlImg = urlImg2;
     console.log(urlImg);
     console.log(urlImg2);
-  }
+  } */
 
   /** ******SUBIENDO DATOS AL FIRESTORE************ */
-
+/* 
   if (inputTypeFile.value || inputText.value) {
     await loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
   }
-}
-/* async function addPublications(e) {
+} */
+async function addPublications(e) {
   e.preventDefault();
 
   const inputText = document.querySelector('#inputText');
@@ -59,20 +59,32 @@ async function addPublications(e) {
   const namecreator = localStorageCall().name;
   const photoCreator = localStorageCall().profilePhoto;
   const inputTypeFile = document.getElementById('compartirImg');
+
+  const postForm = document.querySelector('#postForm');
+  const chargingGif = document.querySelector('#modal-charging');
+
   let urlImg = '';
   if (inputTypeFile.value) {
     const urlImage = inputTypeFile.files[0].name;
     const file = inputTypeFile.files[0];
     console.log(file);
+
+    chargingGif.style.display = "block";
+    postForm.style.display = "none";
+
     await shareImgPost(urlImage, file);
     urlImg = await shareImgPost(urlImage, file);
+
   }
-
-
+  
+  
   if (inputTypeFile.value || inputText.value) {
     loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
   }
-} */
+  
+  chargingGif.style.display = "none";
+  postForm.style.display = "block";
+}
 
 function addImage() {
   const divAddImage = document.getElementById('addImage');
