@@ -2,6 +2,11 @@ import { loadPublications } from '../firebase/firestore.js';
 import { localStorageCall } from '../componentes/sessionStorage.js';
 import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
+<<<<<<< HEAD
+=======
+import { paises } from './country.js';
+
+>>>>>>> a77725a226c1a598ab1595b4b523541b479e83c8
 /* async function addPublications(e) {
   e.preventDefault();
 
@@ -16,18 +21,17 @@ import { shareImgPost } from '../firebase/storage.js';
   const postForm = document.querySelector('#postForm');
   const chargingGif = document.querySelector('#modal-charging'); */
 
-  /** ******SUBIENDO IMAGENES AL STORAGE Y AL FIRESTORE************ */
-  /* const inputTypeFile = document.getElementById('compartirImg');
+/** ******SUBIENDO IMAGENES AL STORAGE Y AL FIRESTORE************ */
+/* const inputTypeFile = document.getElementById('compartirImg');
   let urlImg = '';
   if (inputTypeFile.value) {
     const urlImage = inputTypeFile.files[0].name;
     const file = inputTypeFile.files[0];
     console.log(file);
-    const objectLoadFiles = shareImgPost(urlImage, file);
 
     chargingGif.style.display = "block";
     postForm.style.display = "none";
-    
+
     const uploadImg = objectLoadFiles.loadFile;
     await uploadImg;
     console.log('subida exitosa');
@@ -41,8 +45,8 @@ import { shareImgPost } from '../firebase/storage.js';
     console.log(urlImg2);
   } */
 
-  /** ******SUBIENDO DATOS AL FIRESTORE************ */
-/* 
+/** ******SUBIENDO DATOS AL FIRESTORE************ */
+/*
   if (inputTypeFile.value || inputText.value) {
     await loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
   }
@@ -68,21 +72,31 @@ async function addPublications(e) {
     const file = inputTypeFile.files[0];
     console.log(file);
 
-    chargingGif.style.display = "block";
-    postForm.style.display = "none";
-
+    chargingGif.style.display = 'block';
+    postForm.style.display = 'none';
+    /** **********subir el post al storage */
     await shareImgPost(urlImage, file);
-    urlImg = await shareImgPost(urlImage, file);
 
+    /** **********obtener la url del post */
+    console.log(await shareImgPost(urlImage, file));
+    urlImg = await shareImgPost(urlImage, file);
   }
-  
-  
+
   if (inputTypeFile.value || inputText.value) {
-    loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
+    chargingGif.style.display = 'none';
+    postForm.style.display = 'block';
+    await loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
+    const divAddImage = document.getElementById('addImage');
+    divAddImage.innerHTML = '';
+    inputText.value = '';
+    inputTypeFile.value = '';
   }
+<<<<<<< HEAD
 
   chargingGif.style.display = "none";
   postForm.style.display = "block";
+=======
+>>>>>>> a77725a226c1a598ab1595b4b523541b479e83c8
 }
 
 function addImage() {
@@ -148,17 +162,28 @@ export const publicationView = () => {
         <input type="file"  id="compartirImg" >
       </div>
       <h4> Agrega una imagen </h4>
+      <select id="selectCountry"> 
+      </select>
       <div id="addImage">
       </div>
     </div>
+
+    <div class="buttonGeneralPublication">
+      <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
+      <button id = "cancel" class="buttonPublication">Cancelar</button>
+    </div>
   </form>
 
+<<<<<<< HEAD
   <div class="buttonGeneralPublication">
     <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
     <button id = "cancel" class="buttonPublication">Cancelar</button>
   </div>
 
   <select id = "selectCountry"></select>
+=======
+
+>>>>>>> a77725a226c1a598ab1595b4b523541b479e83c8
         `;
   const publicationContainer = document.createElement('div');
   publicationContainer.setAttribute('class', 'sectionPublication');
@@ -178,6 +203,7 @@ export const publicationView = () => {
 
   const inputText = publicationContainer.querySelector('#compartirImg');
   inputText.addEventListener('change', (addImage));
+  paises(publicationContainer);
 
   /* cancelBtn.addEventListener('click', deletePublications); */
   return publicationContainer;

@@ -2,7 +2,7 @@ import { dateTime } from '../views/timeago.js';
 import {
   db, doc,
   setDoc, getDoc, addDoc, collection, serverTimestamp,
-  onSnapshot, orderBy, query,
+  onSnapshot, orderBy, query, updateDoc,
 } from './firebaseconfig.js';
 
 // Añadir nuevo usuario (Document) a users (colección)
@@ -35,6 +35,7 @@ export const loadPublications = (creator, contentPost, urlImg, nameCreator, phot
     nameCreator,
     photoCreator,
     dateTime: dateTime(),
+    likes: [],
   });
   return addPost;
 };
@@ -44,3 +45,17 @@ export const loadPublications = (creator, contentPost, urlImg, nameCreator, phot
 export const actualizarPosts = async (callback) => {
   await onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (callback));
 };
+
+export const updateLikes = async (idPost, arrayLikes) => {
+  await updateDoc(doc(db, 'posts', idPost), {
+    likes: arrayLikes,
+  });
+};
+
+// Para actualizar arreglo de likes
+// export const subirLikes = async (idPost, dataLikes) => {
+//   const docId = doc(db, 'posts', idPost);
+//   await updateDoc(docId, {
+//     likes: dataLikes,
+//   });
+// };
