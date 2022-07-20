@@ -11,8 +11,8 @@ const init = () => {
   /*menu estilos*/
   let navToggle = document.querySelector(".nav-toggle");
   let navMenu = document.querySelector(".nav-menu");
-  console.log("entro");
     navToggle.addEventListener("click", () => {
+      console.log("entro");
     navMenu.classList.toggle("nav-menu_visible");
   });
 };

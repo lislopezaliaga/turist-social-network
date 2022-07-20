@@ -37,32 +37,34 @@
   padding: 3px;
   cursor: pointer;
   width: 48px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .iconhead:hover {
   background-color: #e2c98e;
 }
 #mainContent {
-  background-color: rgb(248, 233, 185);
+  background-color: rgb(246, 245, 240);
   display: flex;
   padding-top: 70px;
 }
 .sectionPerfil {
   display: grid;
   width: 20vw;
-  height: 70vh;
-  background-color: #8fc3ff;
+  max-height: 80vh;
+  background-color: #335c67;
   min-height: 400px;
+  color: white;
+  padding-bottom: 30px;
 
   /* position: fixed;  */
 }
 .firstDivPerfil {
-  background-color: #3b61ab;
+  background: #335c67;
   display: grid;
   justify-content: center;
   justify-items: center;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
 }
 .divPerfil {
   padding: 15px;
@@ -73,8 +75,8 @@
 }
 
 .photoPerfil {
-  width: 13vw;
-  height: 13vw;
+  width: 8vw;
+  height: 8vw;
   background-color: black;
   border-radius: 50%;
 }
@@ -300,8 +302,8 @@
   font-size: 13px;
 }
 .logomenuh {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   padding: 3px 4px;
 }
@@ -319,10 +321,20 @@
 .texto {
   max-width: 36vw;
 }
-
+.nombreuser {
+  font-size: 22px;
+  text-align: center;
+}
 /*Menu estilos*/
 .homeContainer {
-  background-color: #efb739;
+  background: rgb(255, 201, 113);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 201, 113, 1) 0%,
+    rgba(255, 182, 39, 1) 30%,
+    rgba(255, 149, 5, 1) 68%,
+    rgba(204, 88, 3, 1) 100%
+  );
   width: 100%;
 }
 .nav {
@@ -331,7 +343,14 @@
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-  background-color: #efb739;
+  background: rgb(243, 183, 84);
+  background: linear-gradient(
+    90deg,
+    rgba(243, 183, 84, 1) 0%,
+    rgba(255, 182, 39, 1) 30%,
+    rgba(255, 149, 5, 1) 68%,
+    rgba(204, 88, 3, 1) 100%
+  );
   position: fixed;
   height: 73px;
 }
@@ -363,7 +382,7 @@
   transition: 0.5s;
 }
 .nav-toggle {
-  color: #9b751e;
+  color: #705516;
   background: none;
   border: none;
   font-size: 30px;
@@ -383,7 +402,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1350px) {
   #mainContent {
-    background: rgb(248, 233, 185);
+    background-color: rgb(246, 245, 240);
   }
 }
 
@@ -416,7 +435,7 @@
     display: none;
   }
   #mainContent {
-    background: rgb(248, 233, 185);
+    background-color: rgb(246, 245, 240);
   }
   .sectionPerfil {
     display: none;

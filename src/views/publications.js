@@ -116,7 +116,7 @@ export const publicationView = () => {
   const publicationContent = `
   <div class="namePhotoPublication">
     <img src="${userObject.profilePhoto}" width = "30px">
-    <h2>${userObject.name}</h2>
+    <h3>${userObject.name}</h3>
     <select id="privacyPostArea">
             <option value="1">🌎 Público</option>
             <option value="2">🔒 Solo yo </option>
