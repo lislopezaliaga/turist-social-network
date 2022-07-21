@@ -9,7 +9,7 @@ export const perfilView = () => {
       <div class="photoPerfil">
         <img id="imgPerfil" src=${userObject.profilePhoto}>
       </div>
-      <h2>${userObject.name}</h2> 
+      <h2 class="nombreuser">${userObject.name}</h2> 
     </div>
     <div class="divPerfil">
       <div class="divPerfil">

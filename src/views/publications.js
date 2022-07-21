@@ -74,7 +74,7 @@ async function addPublications(e) {
     const file = inputTypeFile.files[0];
     console.log(file);
 
-    chargingGif.style.display = 'block';
+    chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
     /** **********subir el post al storage */
     await shareImgPost(urlImage, file);
@@ -145,7 +145,7 @@ export const publicationView = () => {
   const publicationContent = `
   <div class="namePhotoPublication">
     <img src="${userObject.profilePhoto}" width = "30px">
-    <h2>${userObject.name}</h2>
+    <h3>${userObject.name}</h3>
     <select id="privacyPostArea">
             <option value="🌎">🌎 Público</option>
             <option value="🔒">🔒 Privado </option>
@@ -154,7 +154,7 @@ export const publicationView = () => {
 
   <div id = "modal-charging" style = "display:none">
     <p>Cargando ...</p>
-    <img src="../img/cat-charging.gif"/>
+    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
   </div>
 
   <form id="postForm">
