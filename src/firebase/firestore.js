@@ -18,20 +18,12 @@ export async function createNewUser(name, email, userId) {
   console.log('estoy llamando a createuser');
 }
 
-// // Obtener la data de cada user guardado en firestore
+// Obtener la data de cada user guardado en firestore
 export const getUserById = (userId, colection) => {
   const docRef = doc(db, colection, userId);
   const docSnap = getDoc(docRef).then((userDoc) => userDoc.data());
   return docSnap;
 };
-// Obtener la data de cada user guardado en firestore
-// export const getUserById = async (userId, colection) => {
-//   const docRef = doc(db, colection, userId);
-//   const docSnap = await onSnapshot(docRef, (quien) => quien.data());
-//   return docSnap;
-// };
-// const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
-//   console.log("Current data: ", doc.data());
 
 export const obtenerUserById = (userId, colection) => {
   const docRef = doc(db, colection, userId);
@@ -40,15 +32,7 @@ export const obtenerUserById = (userId, colection) => {
 };
 
 // Subir publicaciones del usuario a firestore
-export const loadPublications = (
-  creator,
-  contentPost,
-  urlImg,
-  nameCreator,
-  photoCreator,
-  country,
-  privacy,
-) => {
+export const loadPublications = (creator, contentPost, urlImg, nameCreator, photoCreator) => {
   const addPost = addDoc(collection(db, 'posts'), {
     userId: creator,
     publication: contentPost,
@@ -57,8 +41,6 @@ export const loadPublications = (
     nameCreator,
     photoCreator,
     dateTime: dateTime(),
-    country,
-    privacy,
     likes: [],
   });
   return addPost;

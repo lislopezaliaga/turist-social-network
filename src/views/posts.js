@@ -31,6 +31,9 @@ export const postView = () => {
           </div>
           <p class="namepost">esta en${dato.country} </p>
         </div>
+
+        <div class = "editPostIcon" id = ${dato.userId}></div>
+
         <div class="postText">
           <p class="texto"><i class="fa fa-quote-left"></i> ${dato.publication} <i class="fa fa-quote-right"></i></p>
         </div>
@@ -45,13 +48,38 @@ export const postView = () => {
             `;
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
+
     });
+    editPostOptions();
+
     const buttonLikes = document.querySelectorAll('.like');
     buttonLikes.forEach((likeIcon) => {
       likeIcon.addEventListener('click', likesHandler);
     });
   });
 };
+
+function editPostOptions (){
+  const iconEditPost = document.querySelectorAll('.editPostIcon');
+  iconEditPost.forEach((iconEditPost)=>{
+    if(iconEditPost.id === localStorageCall().id){
+      //const iconEditOptions = document.querySelector('.iconEditPost')
+      iconEditPost.innerHTML = `
+      <span class="icon-edit">
+        <i class="fas fa-ellipsis-v"></i>
+      </span>
+      <div>
+        <div class="arrow"></div>
+        <div class="tooltip">
+          <div> <span>Editar</span></div>
+          <div> <span>Eliminar</span></div>
+        </div>
+      </div>
+      `
+    }
+  });
+}
+
 async function likesHandler(e) {
   const btnLike = e.target;
   console.log('lihkdsbslj');
