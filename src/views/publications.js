@@ -2,11 +2,8 @@ import { loadPublications } from '../firebase/firestore.js';
 import { localStorageCall } from '../componentes/sessionStorage.js';
 import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
-<<<<<<< HEAD
-=======
 import { paises } from './country.js';
 
->>>>>>> a77725a226c1a598ab1595b4b523541b479e83c8
 /* async function addPublications(e) {
   e.preventDefault();
 
@@ -91,12 +88,6 @@ async function addPublications(e) {
     inputText.value = '';
     inputTypeFile.value = '';
   }
-<<<<<<< HEAD
-
-  chargingGif.style.display = "none";
-  postForm.style.display = "block";
-=======
->>>>>>> a77725a226c1a598ab1595b4b523541b479e83c8
 }
 
 function addImage() {
@@ -174,16 +165,6 @@ export const publicationView = () => {
     </div>
   </form>
 
-<<<<<<< HEAD
-  <div class="buttonGeneralPublication">
-    <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
-    <button id = "cancel" class="buttonPublication">Cancelar</button>
-  </div>
-
-  <select id = "selectCountry"></select>
-=======
-
->>>>>>> a77725a226c1a598ab1595b4b523541b479e83c8
         `;
   const publicationContainer = document.createElement('div');
   publicationContainer.setAttribute('class', 'sectionPublication');
