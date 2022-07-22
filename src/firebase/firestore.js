@@ -2,7 +2,7 @@ import { dateTime } from '../views/timeago.js';
 import {
   db, doc,
   setDoc, getDoc, addDoc, collection, serverTimestamp,
-  onSnapshot, orderBy, query, updateDoc,
+  onSnapshot, orderBy, query, updateDoc, deleteDoc
 } from './firebaseconfig.js';
 
 // Añadir nuevo usuario (Document) a users (colección)
@@ -32,7 +32,7 @@ export const obtenerUserById = (userId, colection) => {
 };
 
 // Subir publicaciones del usuario a firestore
-export const loadPublications = (creator, contentPost, urlImg, nameCreator, photoCreator) => {
+export const loadPublications = (creator, contentPost, urlImg, nameCreator, photoCreator, country, privacy) => {
   const addPost = addDoc(collection(db, 'posts'), {
     userId: creator,
     publication: contentPost,
@@ -41,6 +41,8 @@ export const loadPublications = (creator, contentPost, urlImg, nameCreator, phot
     nameCreator,
     photoCreator,
     dateTime: dateTime(),
+    country,
+    privacy,
     likes: [],
   });
   return addPost;
@@ -58,10 +60,14 @@ export const updateLikes = async (idPost, arrayLikes) => {
   });
 };
 
-// Para actualizar arreglo de likes
-// export const subirLikes = async (idPost, dataLikes) => {
-//   const docId = doc(db, 'posts', idPost);
-//   await updateDoc(docId, {
-//     likes: dataLikes,
-//   });
-// };
+//Eliminar post
+export const deletePost = (idPost) => {
+  deleteDoc(doc(db, 'posts', idPost));
+}
+
+//Editanto post
+export const updatePost = (idPost, contentPost) => {
+  updateDoc(doc(db, 'posts', idPost), {
+    publication: contentPost,
+  });
+}

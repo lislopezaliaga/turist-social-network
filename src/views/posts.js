@@ -1,17 +1,21 @@
-import { localStorageCall } from '../componentes/sessionStorage.js';
+import { localStorageCall } from "../componentes/sessionStorage.js";
 import {
-  actualizarPosts, getUserById, obtenerUserById, updateLikes,
-} from '../firebase/firestore.js';
+  actualizarPosts,
+  getUserById,
+  updateLikes,
+  deletePost,
+  updatePost
+} from "../firebase/firestore.js";
 
 export const postView = () => {
   actualizarPosts((querySnapshoot) => {
     /** Seleccionamos al container para añadir el post */
-    const postContainer = document.getElementById('postContainer');
-    postContainer.innerHTML = '';
+    const postContainer = document.getElementById("postContainer");
+    postContainer.innerHTML = "";
     /** Creamos un div post content */
-    const postContainerGeneral = document.createElement('div');
-    postContainerGeneral.setAttribute('class', 'postsContent');
-    postContainerGeneral.innerHTML = '';
+    const postContainerGeneral = document.createElement("div");
+    postContainerGeneral.setAttribute("class", "postsContent");
+    postContainerGeneral.innerHTML = "";
 
     querySnapshoot.forEach((element) => {
       const dato = element.data();
@@ -20,89 +24,137 @@ export const postView = () => {
 
       const likesCount = dato.likes.length;
 
-      const postContent = `
-      <div class="postindividual" id='${idPost}'>
-        <div class="postNameImage">
-          <img class="iconpost" src="${dato.photoCreator}" width="50px">
-          <div>
-            <h3 class="namepost">${dato.nameCreator}</h3>
-            <span class="datepost"> ${dato.dateTime}</span>
-            <span class="datepost"> ${dato.privacy}</span>
-          </div>
-          <p class="namepost">esta en${dato.country} </p>
-        </div>
-
-        <div class = "editPostIcon" id = ${dato.userId}></div>
-
-        <div class="postText">
-          <p class="texto"><i class="fa fa-quote-left"></i> ${dato.publication} <i class="fa fa-quote-right"></i></p>
-        </div>
-        <div class="imgpost">
-        <img class="imgposted" src='${dato.imgPost}'>
-        </div>
-        <div class="postReaction">
-          <i class="fa fa-heart like" name="${idPost}"></i>
-          <h3> ${likesCount}</h3>
-        </div>
-      </div>
-            `;
+      const postContent = templatePostContent(
+        idPost,
+        dato.photoCreator,
+        dato.nameCreator,
+        dato.dateTime,
+        dato.privacy,
+        dato.country,
+        dato.userId,
+        dato.publication,
+        dato.imgPost,
+        likesCount
+      );
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
-
     });
     editPostOptions();
 
-    const buttonLikes = document.querySelectorAll('.like');
+    const buttonLikes = document.querySelectorAll(".like");
     buttonLikes.forEach((likeIcon) => {
-      likeIcon.addEventListener('click', likesHandler);
+      likeIcon.addEventListener("click", likesHandler);
     });
   });
 };
 
-function editPostOptions (){
-  const iconEditPost = document.querySelectorAll('.editPostIcon');
-  iconEditPost.forEach((iconEditPost)=>{
-    if(iconEditPost.id === localStorageCall().id){
-      //const iconEditOptions = document.querySelector('.iconEditPost')
-      iconEditPost.innerHTML = `
-      <span class="icon-edit">
-        <i class="fas fa-ellipsis-v"></i>
-      </span>
+function templatePostContent(
+  idPost,
+  photo,
+  name,
+  date,
+  privacy,
+  country,
+  userId,
+  content,
+  imgPost,
+  likesCount
+) {
+  const postContent = `
+  <div class="postindividual" id='${idPost}'>
+    <div class="postNameImage">
+      <img class="iconpost" src="${photo}" width="50px">
       <div>
-        <div class="arrow"></div>
-        <div class="tooltip">
-          <div> <span>Editar</span></div>
-          <div> <span>Eliminar</span></div>
-        </div>
+        <h3 class="namepost">${name}</h3>
+        <span class="datepost"> ${date}</span>
+        <span class="datepost"> ${privacy}</span>
       </div>
-      `
+      <p class="namepost">esta en${country} </p>
+      <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
+    </div>
+
+    <div class="postText">
+      <p class="texto" contenteditable = "true"><i class="fa fa-quote-left"></i> ${content} <i class="fa fa-quote-right"></i></p>
+    </div>
+    <div class="imgpost">
+    <img class="imgposted" src='${imgPost}'>
+    </div>
+    <div class="postReaction">
+      <i class="fa fa-heart like" name="${idPost}"></i>
+      <h3> ${likesCount}</h3>
+    </div>
+  </div>`;
+
+  return postContent;
+}
+
+//Al apretar los ... el usuario puede seleccionar editar o eliminar su post
+function editPostOptions() {
+  const iconEditPost = document.querySelectorAll(".editPostIcon");
+  iconEditPost.forEach((iconOptions) => {
+    const idCurrentPost = iconOptions.dataset.id;
+    console.log(idCurrentPost);
+
+    if (iconOptions.id === localStorageCall().id) {
+      //const iconEditOptions = document.querySelector('.icon')
+      iconOptions.innerHTML = templateEditPost(idCurrentPost);
+      iconOptions.addEventListener("click", () => {
+        console.log("apretaste los 2 puntos");
+        const tooltip = iconOptions.querySelector(".tooltip");
+        tooltip.classList.toggle("hide");
+        deletePostClick(tooltip);
+        updatePostClick(tooltip);
+      });
     }
   });
 }
 
+function templateEditPost(idCurrentPost) {
+  const iconOptionsContent = `
+    <span class="icon-edit">
+      <i class="fa fa-ellipsis-v"></i>
+    </span>
+    <div class="tooltip hide" style = "position: absolute">
+      <span id = "update-post" data-id = ${idCurrentPost}>Editar</span>
+      <span id = "delete-post" data-id = ${idCurrentPost}>Eliminar</span>
+    </div> 
+  `;
+  return iconOptionsContent;
+}
+
+const deletePostClick = (divOptions) => {
+  const deleteOpt = divOptions.querySelector("#delete-post");
+  deleteOpt.addEventListener("click", (e) => {
+    const idPostBtn = e.target.dataset.id;
+    console.log(idPostBtn);
+    deletePost(idPostBtn);
+  });
+};
+
 async function likesHandler(e) {
   const btnLike = e.target;
-  console.log('lihkdsbslj');
   const idUser = localStorageCall().id;
-  console.log(idUser);
-
-  const idPost = btnLike.getAttribute('name');
-  console.log(idPost);
-
-  const dataPost = await getUserById(idPost, 'posts');
+  const idPost = btnLike.getAttribute("name");
+  const dataPost = await getUserById(idPost, "posts");
 
   if (await dataPost.likes.includes(idUser)) {
     // esto es para quitar el like por usuario
-    await updateLikes(idPost, await dataPost.likes.filter((item) => item !== idUser));
-    console.log(dataPost);
-    btnLike.style.fill = '#8F7D7D';
-    console.log('like dado');
+    await updateLikes(
+      idPost,
+      await dataPost.likes.filter((item) => item !== idUser)
+    );
+    btnLike.style.fill = "#8F7D7D";
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-    console.log(dataPost);
-
-    // console.log('like recien dado');
   }
-  console.log(await obtenerUserById(idPost, 'posts'));
 }
+
+const updatePostClick = (divOptions) => {
+  const updateOpt = divOptions.querySelector("#update-post");
+  updateOpt.addEventListener("click", (e) => {
+    const idPostBtn = e.target.dataset.id;
+    console.log(idPostBtn);
+    //updatePost (idPostBtn, contentPost)
+  });
+};
