@@ -451,8 +451,8 @@
     align-items: center;
     background-color: #e4be94;
     position: fixed;
-    top: 50px;
-    width: 80%;
+    top: 70px;
+    width: 70%;
     padding: 20px 0%;
     height: calc(35% - 60px);
     overflow-y: visible;
@@ -472,6 +472,6 @@
   }
   .nav-menu_visible {
     height: auto;
-    left: 0;
+    left: 30%;
   }
 }

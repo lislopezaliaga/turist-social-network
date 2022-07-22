@@ -38,7 +38,7 @@ export const postView = () => {
         <img class="imgposted" src='${dato.imgPost}'>
         </div>
         <div class="postReaction">
-          <i class="fa fa-heart like" name="${idPost}"></i>
+          <i class="fa fa-heart like" name="${idPost}"   ></i>
           <h3> ${likesCount}</h3>
         </div>
       </div>
@@ -54,25 +54,26 @@ export const postView = () => {
 };
 async function likesHandler(e) {
   const btnLike = e.target;
-  console.log('lihkdsbslj');
+  console.log('prueba'+ e);
   const idUser = localStorageCall().id;
   console.log(idUser);
 
   const idPost = btnLike.getAttribute('name');
-  console.log(idPost);
 
   const dataPost = await getUserById(idPost, 'posts');
 
-  if (await dataPost.likes.includes(idUser)) {
+  if ( dataPost.likes.includes(idUser)) {
     // esto es para quitar el like por usuario
-    await updateLikes(idPost, await dataPost.likes.filter((item) => item !== idUser));
+    updateLikes(idPost, await dataPost.likes.filter((item) => item !== idUser));
     console.log(dataPost);
-    btnLike.style.fill = '#8F7D7D';
     console.log('like dado');
   } else {
     // esto es para agregar like por usuario
-    await updateLikes(idPost, [...dataPost.likes, idUser]);
-    console.log(dataPost);
+    updateLikes(idPost, [...dataPost.likes, idUser]);
+    console.log("elemento "+btnLike.tagName);
+    console.log('primer like');
+    btnLike.style.color="#fff";
+    console.log("este es el " + btnLike.getAttribute('style'));
 
     // console.log('like recien dado');
   }
