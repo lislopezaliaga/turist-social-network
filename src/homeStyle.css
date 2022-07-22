@@ -279,6 +279,11 @@
   margin: 3px 5px;
   background-color: #ffffff;
 }
+
+.hide {
+  display: none;
+}
+
 .imgpost {
   max-width: 100%;
   max-height: 380px;
@@ -297,6 +302,9 @@
 .namepost {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
+}
+.divtitulopost {
+  max-width: 60%;
 }
 .datepost {
   margin: 5px 2px;
@@ -428,13 +436,17 @@
     min-width: 60vw;
     display: flex;
   }
+  .divtitulopost {
+    max-width: 70%;
+  }
   #postContainer,
   .postsContent,
   .postindividual {
     min-width: 70vw;
   }
 
-  .postindividual div {
+  .postindividual .postNameImage,
+  .postReaction {
     min-width: 70vw;
   }
   .burgerMenu {
