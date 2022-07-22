@@ -31,9 +31,7 @@ export const postView = () => {
           </div>
           <p class="namepost">esta en${dato.country} </p>
         </div>
-
         <div class = "editPostIcon" id = ${dato.userId}></div>
-
         <div class="postText">
           <p class="texto"><i class="fa fa-quote-left"></i> ${dato.publication} <i class="fa fa-quote-right"></i></p>
         </div>
