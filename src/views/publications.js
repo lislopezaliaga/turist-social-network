@@ -4,50 +4,49 @@ import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
 import { paises } from './country.js';
 
-/* async function addPublications(e) {
-  e.preventDefault();
+function templatePublication(photo, name) {
+  const publicationContent = `
+  <div class="namePhotoPublication">
+    <img src="${photo}" width = "30px">
+    <div class='nameSelectPublication'>
+      <h3>${name}</h3>
+      <select id="privacyPostArea">
+              <option value="🌎">🌎 Público</option>
+              <option value="🔒">🔒 Privado </option>
+      </select>
+    </div>
+  </div>
 
-  const inputText = document.querySelector('#inputText');
-  const creator = localStorageCall().id;
+  <div id = "modal-charging" style = "display:none">
+    <p>Cargando ...</p>
+    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
+  </div>
 
-  const contentPost = inputText.value;
+  <form id="postForm">
+    <textarea placeholder="Escribe Algo ..." id='inputText'></textarea>
+  
+    <div class="divcamera">
+      <div class="inputFiles">
+        <label for="compartirImg"></label>
+        <input type="file"  id="compartirImg" >
+      </div>
+      <h4> Agrega una imagen </h4>
+      <select id="selectCountry"> 
+        <option value="0" disabled selected>Lugares</option>
+      </select>
+      <div id="addImage">
+      </div>
+    </div>
 
-  const namecreator = localStorageCall().name;
-  const photoCreator = localStorageCall().profilePhoto;
+    <div class="buttonGeneralPublication">
+      <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
+      <button id = "cancel" class="buttonPublication">Cancelar</button>
+    </div>
+  </form>`;
 
-  const postForm = document.querySelector('#postForm');
-  const chargingGif = document.querySelector('#modal-charging'); */
+  return publicationContent;
+}
 
-/** ******SUBIENDO IMAGENES AL STORAGE Y AL FIRESTORE************ */
-/* const inputTypeFile = document.getElementById('compartirImg');
-  let urlImg = '';
-  if (inputTypeFile.value) {
-    const urlImage = inputTypeFile.files[0].name;
-    const file = inputTypeFile.files[0];
-    console.log(file);
-
-    chargingGif.style.display = "block";
-    postForm.style.display = "none";
-
-    const uploadImg = objectLoadFiles.loadFile;
-    await uploadImg;
-    console.log('subida exitosa');
-    chargingGif.style.display = "none";
-    postForm.style.display = "block";
-
-    //urlImg = await objectLoadFiles.getURLimg;
-    const urlImg2 = await objectLoadFiles.getURLimg;
-    urlImg = urlImg2;
-    console.log(urlImg);
-    console.log(urlImg2);
-  } */
-
-/** ******SUBIENDO DATOS AL FIRESTORE************ */
-/*
-  if (inputTypeFile.value || inputText.value) {
-    await loadPublications(creator, contentPost, urlImg, namecreator, photoCreator);
-  }
-} */
 async function addPublications(e) {
   e.preventDefault();
   const privacySelect = document.querySelector('#privacyPostArea');
@@ -72,15 +71,14 @@ async function addPublications(e) {
   if (inputTypeFile.value) {
     const urlImage = inputTypeFile.files[0].name;
     const file = inputTypeFile.files[0];
-    console.log(file);
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
-    /** **********subir el post al storage */
+    /* --------subir el post al storage----*/
     await shareImgPost(urlImage, file);
 
-    /** **********obtener la url del post */
-    console.log(await shareImgPost(urlImage, file));
+    /* --------obtener la url del post */
+
     urlImg = await shareImgPost(urlImage, file);
   }
 
@@ -142,43 +140,10 @@ function addImage() {
 export const publicationView = () => {
   console.log(dateTime());
   const userObject = localStorageCall();
-  const publicationContent = `
-  <div class="namePhotoPublication">
-    <img src="${userObject.profilePhoto}" width = "30px">
-    <h3>${userObject.name}</h3>
-    <select id="privacyPostArea">
-            <option value="🌎">🌎 Público</option>
-            <option value="🔒">🔒 Privado </option>
-    </select>
-  </div>
-
-  <div id = "modal-charging" style = "display:none">
-    <p>Cargando ...</p>
-    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
-  </div>
-
-  <form id="postForm">
-    <textarea placeholder="Escribe Algo ..." id='inputText'></textarea>
-  
-    <div class="divcamera">
-      <div class="inputFiles">
-        <label for="compartirImg"></label>
-        <input type="file"  id="compartirImg" >
-      </div>
-      <h4> Agrega una imagen </h4>
-      <select id="selectCountry"> 
-      </select>
-      <div id="addImage">
-      </div>
-    </div>
-
-    <div class="buttonGeneralPublication">
-      <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
-      <button id = "cancel" class="buttonPublication">Cancelar</button>
-    </div>
-  </form>
-
-        `;
+  const publicationContent = templatePublication(
+    userObject.profilePhoto,
+    userObject.name,
+  );
   const publicationContainer = document.createElement('div');
   publicationContainer.setAttribute('class', 'sectionPublication');
   publicationContainer.innerHTML = publicationContent;
@@ -196,7 +161,7 @@ export const publicationView = () => {
   });
 
   const inputText = publicationContainer.querySelector('#compartirImg');
-  inputText.addEventListener('change', (addImage));
+  inputText.addEventListener('change', addImage);
   paises(publicationContainer);
 
   /* cancelBtn.addEventListener('click', deletePublications); */
