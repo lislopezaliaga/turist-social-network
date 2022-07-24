@@ -4,6 +4,7 @@ import {
   getUserById,
   updateLikes,
   deletePost,
+  updatePost,
 } from '../firebase/firestore.js';
 
 function templatePostContent(
@@ -73,6 +74,18 @@ const updatePostClick = (divOptions, postContainer) => {
         const pContentPost = post.querySelector('.texto');
         pContentPost.contentEditable = 'true';
         pContentPost.focus();
+        console.log(post);
+
+        const pos = document.createElement('div');
+
+        const template = '<button id=\'subirfotos\'>submit</button>';
+        pos.innerHTML = template;
+        post.appendChild(pos);
+
+        const guardar = postContainer.querySelector('#subirfotos');
+        guardar.addEventListener('click', async () => {
+          await updatePost(post.id, pContentPost.textContent);
+        });
       }
     });
   });
