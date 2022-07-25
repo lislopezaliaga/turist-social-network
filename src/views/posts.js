@@ -4,6 +4,7 @@ import {
   getUserById,
   updateLikes,
   deletePost,
+  updatePost,
 } from '../firebase/firestore.js';
 
 function templatePostContent(
@@ -31,7 +32,7 @@ function templatePostContent(
       <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
     </div>
     <div class="postText">
-      <p class="texto" contenteditable = "false"><i class="fa fa-quote-left"></i> ${content} <i class="fa fa-quote-right"></i></p>
+    <p class="texto" contenteditable = "false"> ${content} </p>
     </div>
     <div class="imgpost">
     <img class="imgposted" src='${imgPost}'>
@@ -74,16 +75,21 @@ const updatePostClick = (divOptions, postContainer) => {
         pContentPost.focus();
         console.log(post);
 
-        // const pos = document.createElement('div');
+        const pos = document.createElement('div');
 
-        // const template = '<button id=\'subirfotos\'>submit</button>';
-        // pos.innerHTML = template;
-        // post.appendChild(pos);
+        const template = '<button id=\'subirfotos\'>submit</button>';
+        pos.innerHTML = template;
+        post.appendChild(pos);
 
-        // const guardar = postContainer.querySelector('#subirfotos');
-        // guardar.addEventListener('click', async () => {
-        //   await updatePost(post.id, pContentPost.textContent);
-        // });
+        const guardar = postContainer.querySelector('#subirfotos');
+        
+        guardar.addEventListener('click', async () => {
+          const urlImage = '';
+          if (!urlImage) {
+            await updatePost(post.id, pContentPost.textContent, urlImage);
+          } 
+
+        });
       }
     });
   });
@@ -131,14 +137,14 @@ async function likesHandler(e) {
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
-    btnLike.style.color = 'red';
+    //btnLike.style.color = 'red';
     console.log(btnLike);
     //  const like = document.document.querySelectorAll('.like');
     //  like.style.color = 'white';
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-    btnLike.style.color = 'black';
+    //btnLike.style.color = 'black';
   }
 }
 
@@ -173,6 +179,8 @@ export const postView = () => {
       );
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
+      console.log(dato.userId);
+      verifyLike (dato.likes, postContainerGeneral);
     });
     editPostOptions(postContainer);
 
@@ -182,3 +190,18 @@ export const postView = () => {
     });
   });
 };
+const verifyLike = async (arrLikesPost, individualPost) => {
+  const likesBtn = individualPost.querySelectorAll('.like');
+  const idUser = localStorageCall().id;
+
+  likesBtn.forEach((likeBtn) => {
+    console.log(likeBtn);
+    if (arrLikesPost.includes(idUser)) {
+      likeBtn.style.color = 'red';
+      console.log(arrLikesPost);
+    } else {
+      likeBtn.style.color = 'azul';
+
+    }
+  });
+}

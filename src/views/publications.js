@@ -1,6 +1,5 @@
 import { loadPublications } from '../firebase/firestore.js';
 import { localStorageCall } from '../componentes/sessionStorage.js';
-import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
 import { paises } from './country.js';
 
@@ -32,7 +31,7 @@ function templatePublication(photo, name) {
       </div>
       <h4> Agrega una imagen </h4>
       <select id="selectCountry"> 
-        <option value="0" disabled selected>Lugares</option>
+        <option value=" alguna parte del mundo" disabled selected>Lugares</option>
       </select>
       <div id="addImage">
       </div>

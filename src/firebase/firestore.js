@@ -74,8 +74,9 @@ export const deletePost = (idPost) => {
 };
 
 // Editanto post
-export const updatePost = (idPost, contentPost) => {
+export const updatePost = (idPost, contentPost, urlImg) => {
   updateDoc(doc(db, 'posts', idPost), {
     publication: contentPost,
+    imgPost: urlImg,
   });
 };
