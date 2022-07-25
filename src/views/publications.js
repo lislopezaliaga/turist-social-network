@@ -73,7 +73,6 @@ async function addPublications(e) {
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
-    
     /* --------subir el post al storage */
     await shareImgPost(urlImage, file);
 
@@ -128,7 +127,6 @@ function addImage() {
 
   read.readAsDataURL(file[0]);
 
-
   /* * *Borrando el preview de la imagen */
   const deleteButtonImage = document.getElementById('deleteButtonImage');
   deleteButtonImage.addEventListener('click', () => {
@@ -139,7 +137,6 @@ function addImage() {
 }
 
 export const publicationView = () => {
-  console.log(dateTime());
   const userObject = localStorageCall();
   const publicationContent = templatePublication(
     userObject.profilePhoto,
