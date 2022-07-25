@@ -12,7 +12,8 @@ export const dateTime = () => {
 
   const date = new Date().toLocaleDateString('es-Es', datePost);
   const time = new Date().toLocaleTimeString('es-Es', timePost);
-  const dateTime1 = `${date} ${time}`;
+  const dateTime = `${date} ${time}`;
+
 
   return dateTime1;
 };

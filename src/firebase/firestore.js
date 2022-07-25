@@ -32,7 +32,16 @@ export const obtenerUserById = (userId, colection) => {
 
 // Subir publicaciones del usuario a firestore
 /* eslint max-len: ["error", { "code": 120 }] */
-export const loadPublications = (creator, contentPost, urlImg, nameCreator, photoCreator, country, privacy) => {
+
+export const loadPublications = (
+  creator,
+  contentPost,
+  urlImg,
+  nameCreator,
+  photoCreator,
+  country,
+  privacy,
+) => {
   const addPost = addDoc(collection(db, 'posts'), {
     userId: creator,
     publication: contentPost,
