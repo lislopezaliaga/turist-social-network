@@ -1,5 +1,6 @@
 import { loadPublications } from '../firebase/firestore.js';
 import { localStorageCall } from '../componentes/sessionStorage.js';
+import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
 import { paises } from './country.js';
 
@@ -73,8 +74,7 @@ async function addPublications(e) {
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
-    
-    /* --------subir el post al storage */
+    /* --------subir el post al storage----*/
     await shareImgPost(urlImage, file);
 
     /* --------obtener la url del post */
@@ -117,7 +117,7 @@ function addImage() {
   const read = new FileReader();
   const file = this.files;
 
-  read.onload = function cargaimg() {
+  read.onload = function () {
     const result = this.result;
     const url = result;
     imagen.src = url;
@@ -128,8 +128,7 @@ function addImage() {
 
   read.readAsDataURL(file[0]);
 
-
-  /* * *Borrando el preview de la imagen */
+  /** *Borrando el preview de la imagen */
   const deleteButtonImage = document.getElementById('deleteButtonImage');
   deleteButtonImage.addEventListener('click', () => {
     divAddImage.innerHTML = '';

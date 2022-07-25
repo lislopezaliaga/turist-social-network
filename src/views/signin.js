@@ -69,6 +69,7 @@ export const signInHandler = (e) => {
   const signInForm = document.querySelector('#signInForm');
   const email = signInForm.email.value;
   const password = signInForm.password.value;
+  console.log(email, 'y', password);
 
   verifyCompletedInput(email, password);
 
@@ -76,20 +77,26 @@ export const signInHandler = (e) => {
     .then((userCredential) => {
       // Agregar nvo user
       const user = userCredential.user;
+      const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
+      console.log(userCredential);
+      console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
         alert('usuario autentificado');
 
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
+          console.log(userData);
           const data = userData;
           data.id = userIdRegister;
           localStorage.setItem('USER', JSON.stringify(userData));
+          console.log(userData);
         });
 
         // Enviar al usuario con email verificado a la vista inicio
         window.location.hash = '#/inicio';
+        console.log(user.emailVerified);
       } else {
         const complete = document.querySelector('#complete');
         complete.innerHTML = 'Verifica tu email';
@@ -122,6 +129,10 @@ export const signInGoogleHandler = (e) => {
       const name = user.displayName;
       const emailRegister = user.email;
       const userIdRegister = user.uid;
+
+      console.log(emailRegister, userIdRegister);
+      console.log(result);
+
       // Crear el usuario y almacenarlo en firestore
       createNewUser(name, emailRegister, userIdRegister);
 
@@ -130,11 +141,12 @@ export const signInGoogleHandler = (e) => {
         const data = userData;
         data.id = userIdRegister;
         localStorage.setItem('USER', JSON.stringify(userData));
+        console.log(data);
       });
       window.location.hash = '#/inicio';
     })
     .catch((error) => {
-      // Handle Errors here.
+    // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log('error en signup', errorMessage, errorCode);

@@ -15,6 +15,7 @@ export async function createNewUser(name, email, userId) {
     interest: 'Nuevas aventuras',
     profilePhoto: '../img/usuario.png',
   });
+  console.log('estoy llamando a createuser');
 }
 
 // Obtener la data de cada user guardado en firestore
@@ -31,8 +32,6 @@ export const obtenerUserById = (userId, colection) => {
 };
 
 // Subir publicaciones del usuario a firestore
-/* eslint max-len: ["error", { "code": 120 }] */
-
 export const loadPublications = (
   creator,
   contentPost,
