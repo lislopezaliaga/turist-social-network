@@ -4,7 +4,6 @@ import {
   getUserById,
   updateLikes,
   deletePost,
-  updatePost,
 } from '../firebase/firestore.js';
 
 function templatePostContent(
@@ -76,16 +75,16 @@ const updatePostClick = (divOptions, postContainer) => {
         pContentPost.focus();
         console.log(post);
 
-        const pos = document.createElement('div');
+        // const pos = document.createElement('div');
 
-        const template = '<button id=\'subirfotos\'>submit</button>';
-        pos.innerHTML = template;
-        post.appendChild(pos);
+        // const template = '<button id=\'subirfotos\'>submit</button>';
+        // pos.innerHTML = template;
+        // post.appendChild(pos);
 
-        const guardar = postContainer.querySelector('#subirfotos');
-        guardar.addEventListener('click', async () => {
-          await updatePost(post.id, pContentPost.textContent);
-        });
+        // const guardar = postContainer.querySelector('#subirfotos');
+        // guardar.addEventListener('click', async () => {
+        //   await updatePost(post.id, pContentPost.textContent);
+        // });
       }
     });
   });
@@ -122,6 +121,7 @@ function editPostOptions(postContainer) {
 
 async function likesHandler(e) {
   const btnLike = e.target;
+  console.log(e);
   const idUser = localStorageCall().id;
   const idPost = btnLike.getAttribute('name');
   const dataPost = await getUserById(idPost, 'posts');
@@ -132,10 +132,14 @@ async function likesHandler(e) {
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
-    btnLike.style.fill = '#8F7D7D';
+    btnLike.style.color = 'red';
+    console.log(btnLike);
+  //  const like = document.document.querySelectorAll('.like');
+  //  like.style.color = 'white';
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
+    btnLike.style.color = 'black';
   }
 }
 
