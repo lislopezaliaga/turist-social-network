@@ -74,7 +74,7 @@ async function addPublications(e) {
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
-    /* --------subir el post al storage----*/
+    /* --------subir el post al storage */
     await shareImgPost(urlImage, file);
 
     /* --------obtener la url del post */
@@ -127,8 +127,7 @@ function addImage() {
   };
 
   read.readAsDataURL(file[0]);
-
-  /** *Borrando el preview de la imagen */
+  /* * *Borrando el preview de la imagen */
   const deleteButtonImage = document.getElementById('deleteButtonImage');
   deleteButtonImage.addEventListener('click', () => {
     divAddImage.innerHTML = '';
@@ -138,7 +137,6 @@ function addImage() {
 }
 
 export const publicationView = () => {
-  console.log(dateTime());
   const userObject = localStorageCall();
   const publicationContent = templatePublication(
     userObject.profilePhoto,

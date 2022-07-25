@@ -30,7 +30,6 @@ function templatePostContent(
       <p class="namepost">esta en${country} </p>
       <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
     </div>
-
     <div class="postText">
       <p class="texto" contenteditable = "false"><i class="fa fa-quote-left"></i> ${content} <i class="fa fa-quote-right"></i></p>
     </div>

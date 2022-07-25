@@ -12,8 +12,7 @@ export const dateTime = () => {
 
   const date = new Date().toLocaleDateString('es-Es', datePost);
   const time = new Date().toLocaleTimeString('es-Es', timePost);
-  // eslint-disable-next-line no-shadow
-  const dateTime = `${date} ${time}`;
+  const dateTime1 = `${date} ${time}`;
+  return dateTime1;
 
-  return dateTime;
 };
