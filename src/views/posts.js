@@ -120,10 +120,12 @@ function editPostOptions(postContainer) {
 
 async function likesHandler(e) {
   const btnLike = e.target;
-  console.log(e);
   const idUser = localStorageCall().id;
   const idPost = btnLike.getAttribute('name');
   const dataPost = await getUserById(idPost, 'posts');
+  // eslint-disable-next-line no-useless-concat
+  const colorcambio = document.getElementById(`${idPost}`);
+  console.log(colorcambio.getAttribute('color'));
 
   if (await dataPost.likes.includes(idUser)) {
     // esto es para quitar el like por usuario
@@ -131,14 +133,15 @@ async function likesHandler(e) {
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
-    btnLike.style.color = 'red';
+    btnLike.style.color = 'green';
     console.log(btnLike);
     //  const like = document.document.querySelectorAll('.like');
     //  like.style.color = 'white';
   } else {
     // esto es para agregar like por usuario
+    colorcambio.style.color = '#ff3030';
+    console.log(colorcambio.getAttribute('color'));
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-    btnLike.style.color = 'black';
   }
 }
 

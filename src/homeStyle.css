@@ -319,6 +319,7 @@
   padding: 0px;
   border-radius: 10px;
   max-width: 40vw;
+  color: #000;
 }
 .likes {
   background-color: #fff;
@@ -335,6 +336,15 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.colors {
+  display: flex;
+  align-items: center;
+  max-width: 40vw;
+  background-color: #e0e3e2;
+  border-radius: 0px 0px 10px 10px;
+  border: 2px solid #000000;
+  color: #ff3030 !important;
 }
 /*Menu estilos*/
 .homeContainer {

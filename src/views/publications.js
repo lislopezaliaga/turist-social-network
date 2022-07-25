@@ -1,6 +1,5 @@
 import { loadPublications } from '../firebase/firestore.js';
 import { localStorageCall } from '../componentes/sessionStorage.js';
-import { dateTime } from './timeago.js';
 import { shareImgPost } from '../firebase/storage.js';
 import { paises } from './country.js';
 
