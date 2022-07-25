@@ -97,21 +97,21 @@ const updatePostClick = (divOptions) => {
 };
 
 // Al apretar los ... el usuario puede seleccionar editar o eliminar su post
-function editPostOptions() {
+function editPostOptions(postContainer) {
   const iconEditPost = document.querySelectorAll('.editPostIcon');
   iconEditPost.forEach((iconOptions) => {
     const idCurrentPost = iconOptions.dataset.id;
 
     if (iconOptions.id === localStorageCall().id) {
       // const iconEditOptions = document.querySelector('.icon')
-      const temporal = iconOptions;
-      temporal.innerHTML = templateEditPost(idCurrentPost);
+      // eslint-disable-next-line no-param-reassign
+      iconOptions.innerHTML = templateEditPost(idCurrentPost);
       iconOptions.addEventListener('click', () => {
         console.log('apretaste los 2 puntos');
         const tooltip = iconOptions.querySelector('.tooltip');
         tooltip.classList.toggle('hide');
         deletePostClick(tooltip);
-        updatePostClick(tooltip);
+        updatePostClick(tooltip, postContainer);
       });
     }
   });
