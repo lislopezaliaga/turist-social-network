@@ -83,7 +83,6 @@ export const signInHandler = (e) => {
       console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
-
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
           console.log(userData);
