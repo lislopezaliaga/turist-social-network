@@ -3,6 +3,49 @@ import { localStorageCall } from '../componentes/sessionStorage.js';
 import { shareImgPost } from '../firebase/storage.js';
 import { paises } from './country.js';
 
+function templatePublication(photo, name) {
+  const publicationContent = `
+  <div class="namePhotoPublication">
+    <img src="${photo}" width = "30px">
+    <div class='nameSelectPublication'>
+      <h3>${name}</h3>
+      <select id="privacyPostArea">
+              <option value="🌎">🌎 Público</option>
+              <option value="🔒">🔒 Privado </option>
+      </select>
+    </div>
+  </div>
+
+  <div id = "modal-charging" style = "display:none">
+    <p>Cargando ...</p>
+    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
+  </div>
+
+  <form id="postForm">
+    <textarea placeholder="Escribe Algo ..." id='inputText'></textarea>
+  
+    <div class="divcamera">
+      <div class="inputFiles">
+        <label for="compartirImg"></label>
+        <input type="file"  id="compartirImg" >
+      </div>
+      <h4> Agrega una imagen </h4>
+      <select id="selectCountry"> 
+        <option value="0" disabled selected>Lugares</option>
+      </select>
+      <div id="addImage">
+      </div>
+    </div>
+
+    <div class="buttonGeneralPublication">
+      <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
+      <button id = "cancel" class="buttonPublication">Cancelar</button>
+    </div>
+  </form>`;
+
+  return publicationContent;
+}
+
 async function addPublications(e) {
   e.preventDefault();
   const privacySelect = document.querySelector('#privacyPostArea');
@@ -30,10 +73,12 @@ async function addPublications(e) {
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
+    
     /* --------subir el post al storage */
     await shareImgPost(urlImage, file);
 
     /* --------obtener la url del post */
+
     urlImg = await shareImgPost(urlImage, file);
   }
 
@@ -83,6 +128,7 @@ function addImage() {
 
   read.readAsDataURL(file[0]);
 
+
   /* * *Borrando el preview de la imagen */
   const deleteButtonImage = document.getElementById('deleteButtonImage');
   deleteButtonImage.addEventListener('click', () => {
@@ -92,47 +138,8 @@ function addImage() {
   });
 }
 
-function templatePublication(photo, name) {
-  const publicationContent = `
-  <div class="namePhotoPublication">
-    <img src="${photo}" width = "30px">
-    <h3>${name}</h3>
-    <select id="privacyPostArea">
-            <option value="🌎">🌎 Público</option>
-            <option value="🔒">🔒 Privado </option>
-    </select>
-  </div>
-
-  <div id = "modal-charging" style = "display:none">
-    <p>Cargando ...</p>
-    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
-  </div>
-
-  <form id="postForm">
-    <textarea placeholder="Escribe Algo ..." id='inputText'></textarea>
-  
-    <div class="divcamera">
-      <div class="inputFiles">
-        <label for="compartirImg"></label>
-        <input type="file"  id="compartirImg" >
-      </div>
-      <h4> Agrega una imagen </h4>
-      <select id="selectCountry"> 
-      </select>
-      <div id="addImage">
-      </div>
-    </div>
-
-    <div class="buttonGeneralPublication">
-      <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
-      <button id = "cancel" class="buttonPublication">Cancelar</button>
-    </div>
-  </form>`;
-
-  return publicationContent;
-}
-
 export const publicationView = () => {
+  console.log(dateTime());
   const userObject = localStorageCall();
   const publicationContent = templatePublication(
     userObject.profilePhoto,

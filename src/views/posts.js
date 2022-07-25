@@ -32,7 +32,7 @@ function templatePostContent(
     </div>
 
     <div class="postText">
-      <p class="texto" contenteditable = "true"><i class="fa fa-quote-left"></i> ${content} <i class="fa fa-quote-right"></i></p>
+      <p class="texto" contenteditable = "false"><i class="fa fa-quote-left"></i> ${content} <i class="fa fa-quote-right"></i></p>
     </div>
     <div class="imgpost">
     <img class="imgposted" src='${imgPost}'>
@@ -59,17 +59,69 @@ function templateEditPost(idCurrentPost) {
   return iconOptionsContent;
 }
 
+const updatePostClick = (divOptions, postContainer) => {
+  const updateOpt = divOptions.querySelector('#update-post');
+  updateOpt.addEventListener('click', (e) => {
+    const idPostBtn = e.target.dataset.id;
+
+    const postindividual = postContainer.querySelectorAll('.postindividual');
+
+    // console.log(pContentPost);
+
+    postindividual.forEach((post) => {
+      if (idPostBtn === post.id) {
+        const pContentPost = post.querySelector('.texto');
+        pContentPost.contentEditable = 'true';
+        pContentPost.focus();
+        console.log(post);
+
+        // const pos = document.createElement('div');
+
+        // const template = '<button id=\'subirfotos\'>submit</button>';
+        // pos.innerHTML = template;
+        // post.appendChild(pos);
+
+        // const guardar = postContainer.querySelector('#subirfotos');
+        // guardar.addEventListener('click', async () => {
+        //   await updatePost(post.id, pContentPost.textContent);
+        // });
+      }
+    });
+  });
+};
+
 const deletePostClick = (divOptions) => {
   const deleteOpt = divOptions.querySelector('#delete-post');
   deleteOpt.addEventListener('click', (e) => {
     const idPostBtn = e.target.dataset.id;
-    console.log(idPostBtn);
+
     deletePost(idPostBtn);
   });
 };
+// Al apretar los ... el usuario puede seleccionar editar o eliminar su post
+function editPostOptions(postContainer) {
+  const iconEditPost = document.querySelectorAll('.editPostIcon');
+  iconEditPost.forEach((iconOptions) => {
+    const idCurrentPost = iconOptions.dataset.id;
+
+    if (iconOptions.id === localStorageCall().id) {
+      // const iconEditOptions = document.querySelector('.icon')
+      // eslint-disable-next-line no-param-reassign
+      iconOptions.innerHTML = templateEditPost(idCurrentPost);
+      iconOptions.addEventListener('click', () => {
+        console.log('apretaste los 2 puntos');
+        const tooltip = iconOptions.querySelector('.tooltip');
+        tooltip.classList.toggle('hide');
+        deletePostClick(tooltip);
+        updatePostClick(tooltip, postContainer);
+      });
+    }
+  });
+}
 
 async function likesHandler(e) {
   const btnLike = e.target;
+  console.log(e);
   const idUser = localStorageCall().id;
   const idPost = btnLike.getAttribute('name');
   const dataPost = await getUserById(idPost, 'posts');
@@ -80,21 +132,15 @@ async function likesHandler(e) {
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
-    btnLike.style.fill = '#8F7D7D';
+
+    btnLike.style.color = 'red';
+    console.log(btnLike);
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
+    btnLike.style.color = 'black';
   }
 }
-
-const updatePostClick = (divOptions) => {
-  const updateOpt = divOptions.querySelector('#update-post');
-  updateOpt.addEventListener('click', (e) => {
-    const idPostBtn = e.target.dataset.id;
-    console.log(idPostBtn);
-    // updatePost (idPostBtn, contentPost)
-  });
-};
 
 // Al apretar los ... el usuario puede seleccionar editar o eliminar su post
 function editPostOptions() {
