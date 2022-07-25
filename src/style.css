@@ -3,6 +3,7 @@
 }
 body {
   width: 100%;
+  font-family: "Roboto", sans-serif;
   /* font-family: "Microsoft Sans Serif"; */
 }
 .back-principal {
@@ -226,9 +227,6 @@ span:hover {
   padding: 3px;
 }
 
-.colorlike{
-  color: #ab2016;
-}
 /* 
 /* @media screen and (max-width:320px) {
    
