@@ -286,6 +286,14 @@
   display: none;
 }
 
+.clickeado {
+  color: #ff3030 !important;
+}
+
+.noclick {
+  color: #293462;
+}
+
 .imgpost {
   max-width: 100%;
   max-height: 380px;
@@ -348,7 +356,7 @@
 }
 
 .divtitulopost {
-  max-width: 60%;
+  max-width: 70%;
 }
 .country {
   font-size: 16px;

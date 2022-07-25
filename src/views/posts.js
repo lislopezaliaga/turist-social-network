@@ -4,6 +4,7 @@ import {
   getUserById,
   updateLikes,
   deletePost,
+  updatePost,
 } from '../firebase/firestore.js';
 
 function templatePostContent(
@@ -32,7 +33,7 @@ function templatePostContent(
       <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
     </div>
     <div class="postText">
-      <p class="texto" contenteditable = "false"><i class="fa fa-quote-left"></i> ${content} <i class="fa fa-quote-right"></i></p>
+    <p class="texto" contenteditable = "false"> ${content} </p>
     </div>
     <div class="imgpost">
     <img class="imgposted" src='${imgPost}'>
@@ -73,16 +74,19 @@ const updatePostClick = (divOptions, postContainer) => {
         pContentPost.focus();
         console.log(post);
 
-        // const pos = document.createElement('div');
+        const pos = document.createElement('div');
 
-        // const template = '<button id=\'subirfotos\'>submit</button>';
-        // pos.innerHTML = template;
-        // post.appendChild(pos);
+        const template = '<button id=\'subirfotos\'>submit</button>';
+        pos.innerHTML = template;
+        post.appendChild(pos);
 
-        // const guardar = postContainer.querySelector('#subirfotos');
-        // guardar.addEventListener('click', async () => {
-        //   await updatePost(post.id, pContentPost.textContent);
-        // });
+        const guardar = postContainer.querySelector('#subirfotos');
+        guardar.addEventListener('click', async () => {
+          const urlImage = '';
+          if (!urlImage) {
+            await updatePost(post.id, pContentPost.textContent, urlImage);
+          }
+        });
       }
     });
   });
@@ -168,7 +172,9 @@ export const postView = () => {
       );
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
+      console.log(dato.userId);
       // eslint-disable-next-line no-use-before-define
+      verifyLike(dato.likes, element.id);
     });
     editPostOptions(postContainer);
 
@@ -177,4 +183,14 @@ export const postView = () => {
       likeIcon.addEventListener('click', likesHandler);
     });
   });
+};
+
+const verifyLike = (arrLikesPost, idPost) => {
+  const idUser = localStorageCall().id;
+  const containerPost = document.getElementById(`${idPost}`);
+  if (arrLikesPost.includes(idUser)) {
+    containerPost.childNodes[7].classList.add('clickeado');
+  } else {
+    containerPost.childNodes[7].classList.add('noclickeado');
+  }
 };
