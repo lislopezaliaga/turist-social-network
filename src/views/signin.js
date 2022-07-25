@@ -83,7 +83,6 @@ export const signInHandler = (e) => {
       console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
-
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
           console.log(userData);
@@ -140,12 +139,11 @@ export const signInGoogleHandler = (e) => {
         const data = userData;
         data.id = userIdRegister;
         localStorage.setItem('USER', JSON.stringify(userData));
-        console.log(data);
       });
       window.location.hash = '#/inicio';
     })
     .catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log('error en signup', errorMessage, errorCode);

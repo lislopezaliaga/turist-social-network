@@ -67,8 +67,6 @@ const updatePostClick = (divOptions, postContainer) => {
 
     const postindividual = postContainer.querySelectorAll('.postindividual');
 
-    // console.log(pContentPost);
-
     postindividual.forEach((post) => {
       if (idPostBtn === post.id) {
         const pContentPost = post.querySelector('.texto');
@@ -87,7 +85,7 @@ const updatePostClick = (divOptions, postContainer) => {
           const urlImage = '';
           if (!urlImage) {
             await updatePost(post.id, pContentPost.textContent, urlImage);
-          } 
+          }
         });
       }
     });
@@ -138,14 +136,9 @@ async function likesHandler(e) {
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
-    //btnLike.style.color = 'red';
-    console.log(btnLike);
-    //  const like = document.document.querySelectorAll('.like');
-    //  like.style.color = 'white';
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-    //btnLike.style.color = 'black';
   }
 }
 export const postView = () => {
@@ -180,6 +173,7 @@ export const postView = () => {
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
       console.log(dato.userId);
+      // eslint-disable-next-line no-use-before-define
       verifyLike(dato.likes, element.id);
     });
     editPostOptions(postContainer);
