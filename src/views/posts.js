@@ -22,12 +22,13 @@ function templatePostContent(
   <div class="postindividual" id='${idPost}'>
     <div class="postNameImage">
       <img class="iconpost" src="${photo}" width="50px">
-      <div>
+      <div class="divtitulopost">
         <h3 class="namepost">${name}</h3>
+        <p class="country">esta en ${country} </p>
         <span class="datepost"> ${date}</span>
         <span class="datepost"> ${privacy}</span>
+        
       </div>
-      <p class="namepost">esta en${country} </p>
       <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
     </div>
     <div class="postText">
@@ -144,7 +145,6 @@ async function likesHandler(e) {
     await updateLikes(idPost, [...dataPost.likes, idUser]);
   }
 }
-
 export const postView = () => {
   actualizarPosts((querySnapshoot) => {
     /** Seleccionamos al container para añadir el post */
@@ -176,6 +176,7 @@ export const postView = () => {
       );
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
+      // eslint-disable-next-line no-use-before-define
     });
     editPostOptions(postContainer);
 
