@@ -2,7 +2,7 @@ import { dateTime } from '../views/timeago.js';
 import {
   db, doc,
   setDoc, getDoc, addDoc, collection, serverTimestamp,
-  onSnapshot, orderBy, query, updateDoc, deleteDoc
+  onSnapshot, orderBy, query, updateDoc, deleteDoc,
 } from './firebaseconfig.js';
 
 // Añadir nuevo usuario (Document) a users (colección)
@@ -15,7 +15,6 @@ export async function createNewUser(name, email, userId) {
     interest: 'Nuevas aventuras',
     profilePhoto: '../img/usuario.png',
   });
-  console.log('estoy llamando a createuser');
 }
 
 // Obtener la data de cada user guardado en firestore
@@ -32,6 +31,7 @@ export const obtenerUserById = (userId, colection) => {
 };
 
 // Subir publicaciones del usuario a firestore
+/* eslint max-len: ["error", { "code": 120 }] */
 export const loadPublications = (creator, contentPost, urlImg, nameCreator, photoCreator, country, privacy) => {
   const addPost = addDoc(collection(db, 'posts'), {
     userId: creator,
@@ -60,14 +60,14 @@ export const updateLikes = async (idPost, arrayLikes) => {
   });
 };
 
-//Eliminar post
+// Eliminar post
 export const deletePost = (idPost) => {
   deleteDoc(doc(db, 'posts', idPost));
-}
+};
 
-//Editanto post
+// Editanto post
 export const updatePost = (idPost, contentPost) => {
   updateDoc(doc(db, 'posts', idPost), {
     publication: contentPost,
   });
-}
+};

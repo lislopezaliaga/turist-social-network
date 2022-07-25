@@ -1,48 +1,46 @@
-import { loadPublications } from "../firebase/firestore.js";
-import { localStorageCall } from "../componentes/sessionStorage.js";
-import { dateTime } from "./timeago.js";
-import { shareImgPost } from "../firebase/storage.js";
-import { paises } from "./country.js";
+import { loadPublications } from '../firebase/firestore.js';
+import { localStorageCall } from '../componentes/sessionStorage.js';
+import { dateTime } from './timeago.js';
+import { shareImgPost } from '../firebase/storage.js';
+import { paises } from './country.js';
 
 async function addPublications(e) {
   e.preventDefault();
-  const privacySelect = document.querySelector("#privacyPostArea");
+  const privacySelect = document.querySelector('#privacyPostArea');
   const privacyOption = privacySelect.value;
 
-  const inputText = document.querySelector("#inputText");
+  const inputText = document.querySelector('#inputText');
   const creator = localStorageCall().id;
 
   const contentPost = inputText.value;
 
-  const countrySelect = document.querySelector("#selectCountry");
+  const countrySelect = document.querySelector('#selectCountry');
   const countryOption = countrySelect.value;
 
   const namecreator = localStorageCall().name;
   const photoCreator = localStorageCall().profilePhoto;
-  const inputTypeFile = document.getElementById("compartirImg");
+  const inputTypeFile = document.getElementById('compartirImg');
 
-  const postForm = document.querySelector("#postForm");
-  const chargingGif = document.querySelector("#modal-charging");
+  const postForm = document.querySelector('#postForm');
+  const chargingGif = document.querySelector('#modal-charging');
 
-  let urlImg = "";
+  let urlImg = '';
   if (inputTypeFile.value) {
     const urlImage = inputTypeFile.files[0].name;
     const file = inputTypeFile.files[0];
-    console.log(file);
 
-    chargingGif.style.display = "flex";
-    postForm.style.display = "none";
-    /*--------subir el post al storage */
+    chargingGif.style.display = 'flex';
+    postForm.style.display = 'none';
+    /* --------subir el post al storage */
     await shareImgPost(urlImage, file);
 
-    /*--------obtener la url del post */
-    console.log(await shareImgPost(urlImage, file));
+    /* --------obtener la url del post */
     urlImg = await shareImgPost(urlImage, file);
   }
 
   if (inputTypeFile.value || inputText.value) {
-    chargingGif.style.display = "none";
-    postForm.style.display = "block";
+    chargingGif.style.display = 'none';
+    postForm.style.display = 'block';
     await loadPublications(
       creator,
       contentPost,
@@ -50,32 +48,32 @@ async function addPublications(e) {
       namecreator,
       photoCreator,
       countryOption,
-      privacyOption
+      privacyOption,
     );
-    const divAddImage = document.getElementById("addImage");
-    divAddImage.innerHTML = "";
-    inputText.value = "";
-    inputTypeFile.value = "";
+    const divAddImage = document.getElementById('addImage');
+    divAddImage.innerHTML = '';
+    inputText.value = '';
+    inputTypeFile.value = '';
   }
 }
 
 function addImage() {
-  const divAddImage = document.getElementById("addImage");
+  const divAddImage = document.getElementById('addImage');
 
-  const imageContainer = document.createElement("div");
-  imageContainer.setAttribute("class", "imageContainer");
+  const imageContainer = document.createElement('div');
+  imageContainer.setAttribute('class', 'imageContainer');
   divAddImage.appendChild(imageContainer);
 
-  const imagen = document.createElement("img");
+  const imagen = document.createElement('img');
 
-  const iconX = document.createElement("span");
-  imageContainer.setAttribute("id", "deleteButtonImage");
-  iconX.innerHTML = "✖";
+  const iconX = document.createElement('span');
+  imageContainer.setAttribute('id', 'deleteButtonImage');
+  iconX.innerHTML = '✖';
 
   const read = new FileReader();
   const file = this.files;
 
-  read.onload = function () {
+  read.onload = function cargaimg() {
     const result = this.result;
     const url = result;
     imagen.src = url;
@@ -86,45 +84,14 @@ function addImage() {
 
   read.readAsDataURL(file[0]);
 
-  /** *Borrando el preview de la imagen */
-  const deleteButtonImage = document.getElementById("deleteButtonImage");
-  deleteButtonImage.addEventListener("click", () => {
-    divAddImage.innerHTML = "";
-    const cleanInputFile = document.getElementById("compartirImg");
-    cleanInputFile.value = "";
+  /* * *Borrando el preview de la imagen */
+  const deleteButtonImage = document.getElementById('deleteButtonImage');
+  deleteButtonImage.addEventListener('click', () => {
+    divAddImage.innerHTML = '';
+    const cleanInputFile = document.getElementById('compartirImg');
+    cleanInputFile.value = '';
   });
 }
-
-export const publicationView = () => {
-  console.log(dateTime());
-  const userObject = localStorageCall();
-  const publicationContent = templatePublication(
-    userObject.profilePhoto,
-    userObject.name
-  );
-  const publicationContainer = document.createElement("div");
-  publicationContainer.setAttribute("class", "sectionPublication");
-  publicationContainer.innerHTML = publicationContent;
-
-  const postForm = publicationContainer.querySelector("#postForm");
-  // Obteniendo botones de publicar y cancelar
-  const publishBtn = publicationContainer.querySelector("#publish");
-  publishBtn.addEventListener("click", addPublications);
-
-  const cancelBtn = publicationContainer.querySelector("#cancel");
-  cancelBtn.addEventListener("click", () => {
-    postForm.reset();
-    const divAddImage = document.getElementById("addImage");
-    divAddImage.innerHTML = "";
-  });
-
-  const inputText = publicationContainer.querySelector("#compartirImg");
-  inputText.addEventListener("change", addImage);
-  paises(publicationContainer);
-
-  /* cancelBtn.addEventListener('click', deletePublications); */
-  return publicationContainer;
-};
 
 function templatePublication(photo, name) {
   const publicationContent = `
@@ -165,3 +132,33 @@ function templatePublication(photo, name) {
 
   return publicationContent;
 }
+
+export const publicationView = () => {
+  const userObject = localStorageCall();
+  const publicationContent = templatePublication(
+    userObject.profilePhoto,
+    userObject.name,
+  );
+  const publicationContainer = document.createElement('div');
+  publicationContainer.setAttribute('class', 'sectionPublication');
+  publicationContainer.innerHTML = publicationContent;
+
+  const postForm = publicationContainer.querySelector('#postForm');
+  // Obteniendo botones de publicar y cancelar
+  const publishBtn = publicationContainer.querySelector('#publish');
+  publishBtn.addEventListener('click', addPublications);
+
+  const cancelBtn = publicationContainer.querySelector('#cancel');
+  cancelBtn.addEventListener('click', () => {
+    postForm.reset();
+    const divAddImage = document.getElementById('addImage');
+    divAddImage.innerHTML = '';
+  });
+
+  const inputText = publicationContainer.querySelector('#compartirImg');
+  inputText.addEventListener('change', addImage);
+  paises(publicationContainer);
+
+  /* cancelBtn.addEventListener('click', deletePublications); */
+  return publicationContainer;
+};
