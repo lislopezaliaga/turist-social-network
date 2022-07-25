@@ -66,8 +66,6 @@ const updatePostClick = (divOptions, postContainer) => {
 
     const postindividual = postContainer.querySelectorAll('.postindividual');
 
-    // console.log(pContentPost);
-
     postindividual.forEach((post) => {
       if (idPostBtn === post.id) {
         const pContentPost = post.querySelector('.texto');
@@ -134,14 +132,8 @@ async function likesHandler(e) {
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
-    btnLike.style.color = 'green';
-    console.log(btnLike);
-    //  const like = document.document.querySelectorAll('.like');
-    //  like.style.color = 'white';
   } else {
     // esto es para agregar like por usuario
-    colorcambio.style.color = '#ff3030';
-    console.log(colorcambio.getAttribute('color'));
     await updateLikes(idPost, [...dataPost.likes, idUser]);
   }
 }

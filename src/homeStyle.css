@@ -304,6 +304,7 @@
 .namepost {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
+  color: #000;
 }
 .datepost {
   margin: 5px 2px;
@@ -339,14 +340,11 @@
   flex-direction: column;
   align-items: center;
 }
-.colors {
-  display: flex;
-  align-items: center;
-  max-width: 40vw;
-  background-color: #e0e3e2;
-  border-radius: 0px 0px 10px 10px;
-  border: 2px solid #000000;
+.clickeado {
   color: #ff3030 !important;
+}
+.noclick {
+  color: #293462;
 }
 
 .divtitulopost {
@@ -355,6 +353,7 @@
 .country {
   font-size: 16px;
   padding: 5px;
+  color: #000;
 }
 /*Menu estilos*/
 .homeContainer {
