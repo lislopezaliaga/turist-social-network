@@ -47,6 +47,7 @@
   display: flex;
   padding-top: 70px;
   background-attachment: fixed;
+  background-size: 1600px 800px;
 }
 .sectionPerfil {
   display: grid;
@@ -252,6 +253,8 @@
   align-items: center;
   border-radius: 10px 10px 0px 0px;
   border: 2px solid #000000;
+  justify-content: space-around;
+  padding: 5px;
 }
 .postText {
   display: flex;
@@ -266,6 +269,7 @@
   overflow-wrap: break-word;
 }
 .postReaction {
+  padding: 8px;
   display: flex;
   align-items: center;
   max-width: 40vw;
@@ -374,7 +378,6 @@
 }
 
 .nav-menu {
-  font-family: "Raleway";
   display: flex;
   margin-right: 30px;
   list-style: none;
@@ -437,7 +440,7 @@
     display: flex;
   }
   .divtitulopost {
-    max-width: 70%;
+    max-width: 80%;
   }
   #postContainer,
   .postsContent,

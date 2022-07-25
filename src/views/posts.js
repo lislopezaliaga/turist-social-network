@@ -4,7 +4,6 @@ import {
   getUserById,
   updateLikes,
   deletePost,
-  updatePost,
 } from '../firebase/firestore.js';
 
 function templatePostContent(
@@ -105,7 +104,8 @@ function editPostOptions() {
 
     if (iconOptions.id === localStorageCall().id) {
       // const iconEditOptions = document.querySelector('.icon')
-      iconOptions.innerHTML = templateEditPost(idCurrentPost);
+      const temporal = iconOptions;
+      temporal.innerHTML = templateEditPost(idCurrentPost);
       iconOptions.addEventListener('click', () => {
         console.log('apretaste los 2 puntos');
         const tooltip = iconOptions.querySelector('.tooltip');
