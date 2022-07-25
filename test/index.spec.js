@@ -1,4 +1,9 @@
+// eslint-disable-next-line import/no-unresolved
 import MockFirebase from 'mock-cloud-firestore';
+// eslint-disable-next-line import/no-unresolved
+import { myFunction } from '../src/lib/index';
+
+import { addUser } from '../src/firebase/auth';
 
 const fixtureData = {
   __collection__: {
@@ -7,21 +12,15 @@ const fixtureData = {
         user_a: {
           age: 15,
           username: 'user_a',
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 };
 window.firebase = new MockFirebase(fixtureData);
 
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-unresolved, no-undef
 global.firebase = firebaseMock();
-// eslint-disable-next-line import/no-unresolved
-import { myFunction } from '../src/lib/index';
-
-import { addUser } from '../src/firebase/auth';
-
-
 
 describe('myFunction', () => {
   it('debería ser una función', () => {

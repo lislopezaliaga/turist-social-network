@@ -21,7 +21,7 @@ import {
 import {
   getStorage, ref, uploadBytes,
   getDownloadURL,
-// eslint-disable-next-line import/no-unresolved
+  // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-storage.js';
 
 const firebaseConfig = {
