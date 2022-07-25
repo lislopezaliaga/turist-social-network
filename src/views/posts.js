@@ -64,6 +64,7 @@ const updatePostClick = (divOptions, postContainer) => {
     const idPostBtn = e.target.dataset.id;
 
     const postindividual = postContainer.querySelectorAll('.postindividual');
+    console.log(postindividual);
 
     // console.log(pContentPost);
 
@@ -138,7 +139,7 @@ async function likesHandler(e) {
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-    btnLike.style.color = 'black';
+    btnLike.style.color = 'red';
   }
 }
 
