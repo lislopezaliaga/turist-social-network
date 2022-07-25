@@ -3,7 +3,7 @@
 }
 body {
   width: 100%;
-  /* font-family: "Microsoft Sans Serif"; */
+  font-family: "Roboto", sans-serif;
 }
 .back-principal {
   background-image: url("./img/fondoprin.png");
@@ -77,7 +77,7 @@ button {
   text-shadow: 0 0 12px #000, 0 0 15px #521818;
   font-weight: 700;
   font-size: 34px;
-  line-height: 12px;
+  line-height: 13px;
   margin-bottom: 2%;
 }
 /* main > div {
