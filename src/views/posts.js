@@ -132,14 +132,13 @@ async function likesHandler(e) {
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
-    btnLike.style.color = 'red';
+    // btnLike.classList.add('colorlike');
     console.log(btnLike);
   //  const like = document.document.querySelectorAll('.like');
   //  like.style.color = 'white';
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
-    btnLike.style.color = 'black';
   }
 }
 
