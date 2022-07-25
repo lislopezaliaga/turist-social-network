@@ -252,6 +252,8 @@
   align-items: center;
   border-radius: 10px 10px 0px 0px;
   border: 2px solid #000000;
+  padding: 10px;
+  justify-content: space-around;
 }
 .postText {
   display: flex;
@@ -319,6 +321,7 @@
   padding: 0px;
   border-radius: 10px;
   max-width: 40vw;
+  color: #000;
 }
 .likes {
   background-color: #fff;
@@ -335,6 +338,23 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.colors {
+  display: flex;
+  align-items: center;
+  max-width: 40vw;
+  background-color: #e0e3e2;
+  border-radius: 0px 0px 10px 10px;
+  border: 2px solid #000000;
+  color: #ff3030 !important;
+}
+
+.divtitulopost {
+  max-width: 60%;
+}
+.country {
+  font-size: 16px;
+  padding: 5px;
 }
 /*Menu estilos*/
 .homeContainer {
@@ -419,6 +439,9 @@
   #muroContainer {
     width: 100vw;
   }
+  .divtitulopost {
+    max-width: 70%;
+  }
   #divContainer {
     width: 85vw;
   }
@@ -438,7 +461,7 @@
   }
 
   .postindividual div {
-    min-width: 70vw;
+    max-width: 71vw;
   }
   .burgerMenu {
     display: none;
@@ -474,7 +497,8 @@
     cursor: pointer;
   }
   .nav-menu_visible {
+    margin-top: 20px;
     height: auto;
-    left: 0;
+    left: 30%;
   }
 }
