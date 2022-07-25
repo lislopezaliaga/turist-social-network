@@ -73,6 +73,7 @@ async function addPublications(e) {
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
+
     /* --------subir el post al storage */
     await shareImgPost(urlImage, file);
 
