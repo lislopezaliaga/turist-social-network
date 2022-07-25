@@ -22,12 +22,12 @@ function templatePostContent(
   <div class="postindividual" id='${idPost}'>
     <div class="postNameImage">
       <img class="iconpost" src="${photo}" width="50px">
-      <div>
-        <h3 class="namepost">${name}</h3>
+      <div class="divtitulopost">
+        <h3 class="namepost">${name} <p> esta en ${country} </p></h3>
         <span class="datepost"> ${date}</span>
         <span class="datepost"> ${privacy}</span>
       </div>
-      <p class="namepost">esta en${country} </p>
+      
       <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
     </div>
 
@@ -126,21 +126,41 @@ async function likesHandler(e) {
   const idPost = btnLike.getAttribute('name');
   const dataPost = await getUserById(idPost, 'posts');
 
-  if (await dataPost.likes.includes(idUser)) {
+  if (dataPost.likes.includes(idUser)) {
     // esto es para quitar el like por usuario
     await updateLikes(
       idPost,
       await dataPost.likes.filter((item) => item !== idUser),
     );
+
     btnLike.style.color = 'red';
     console.log(btnLike);
-  //  const like = document.document.querySelectorAll('.like');
-  //  like.style.color = 'white';
   } else {
     // esto es para agregar like por usuario
     await updateLikes(idPost, [...dataPost.likes, idUser]);
     btnLike.style.color = 'black';
   }
+}
+
+// Al apretar los ... el usuario puede seleccionar editar o eliminar su post
+function editPostOptions() {
+  const iconEditPost = document.querySelectorAll('.editPostIcon');
+  iconEditPost.forEach((iconOptions) => {
+    const idCurrentPost = iconOptions.dataset.id;
+
+    if (iconOptions.id === localStorageCall().id) {
+      // const iconEditOptions = document.querySelector('.icon')
+      const temporal = iconOptions;
+      temporal.innerHTML = templateEditPost(idCurrentPost);
+      iconOptions.addEventListener('click', () => {
+        console.log('apretaste los 2 puntos');
+        const tooltip = iconOptions.querySelector('.tooltip');
+        tooltip.classList.toggle('hide');
+        deletePostClick(tooltip);
+        updatePostClick(tooltip);
+      });
+    }
+  });
 }
 
 export const postView = () => {
@@ -175,7 +195,7 @@ export const postView = () => {
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
     });
-    editPostOptions(postContainer);
+    editPostOptions();
 
     const buttonLikes = document.querySelectorAll('.like');
     buttonLikes.forEach((likeIcon) => {
