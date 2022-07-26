@@ -47,6 +47,7 @@
   display: flex;
   padding-top: 70px;
   background-attachment: fixed;
+  background-size: 1600px 800px;
 }
 .sectionPerfil {
   display: grid;
@@ -113,12 +114,18 @@
 }
 .divcamera {
   display: flex;
-  flex-wrap: wrap;
   background-color: #ffffff;
-  max-width: 40%;
-  margin-left: 5%;
+  max-width: 80%;
+  margin-left: 10%;
+  margin-right: 5%;
   align-items: center;
   border-radius: 6px;
+  flex-direction: row;
+  padding: 5px 15px;
+}
+#selectCountry {
+  max-width: 100px;
+  padding: 5px;
 }
 .inputFiles {
   width: 28px;
@@ -129,6 +136,12 @@
   box-sizing: border-box;
   cursor: pointer;
   margin: 3px;
+  margin-right: 10px;
+}
+.textimg {
+  font-size: 16px;
+  margin: 5px 10px;
+  width: 400px;
 }
 .inputFiles:hover {
   background-color: #d61c4e;
@@ -253,7 +266,10 @@
   border-radius: 10px 10px 0px 0px;
   border: 2px solid #000000;
   padding: 10px;
-  justify-content: space-around;
+}
+.editPostIcon {
+  position: absolute;
+  left: 78%;
 }
 .postText {
   display: flex;
@@ -274,6 +290,7 @@
   background-color: #e0e3e2;
   border-radius: 0px 0px 10px 10px;
   border: 2px solid #000000;
+  padding: 10px;
 }
 .iconpost {
   border-radius: 50%;
@@ -357,6 +374,7 @@
 
 .divtitulopost {
   max-width: 70%;
+  padding-left: 20px;
 }
 .country {
   font-size: 16px;
@@ -461,12 +479,20 @@
     min-width: 60vw;
     display: flex;
   }
+  .textimg {
+    width: 100px;
+  }
   #postContainer,
   .postsContent,
   .postindividual {
     min-width: 70vw;
   }
-
+  .divtitulopost {
+    padding-left: 0;
+  }
+  .editPostIcon {
+    left: 80%;
+  }
   .postindividual div {
     max-width: 71vw;
   }
