@@ -271,7 +271,6 @@
   max-width: 40vw;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
-  border: 2px solid #000000;
   padding: 10px;
 }
 .editPostIcon {
@@ -284,8 +283,6 @@
   padding: 10px;
   justify-content: center;
   background-color: #fff;
-  border-left: 2px solid #000000;
-  border-right: 2px solid #000000;
   font-family: "Edu NSW ACT Foundation", cursive;
   white-space: pre-wrap;
   overflow-wrap: break-word;
@@ -296,7 +293,6 @@
   max-width: 40vw;
   background-color: #e0e3e2;
   border-radius: 0px 0px 10px 10px;
-  border: 2px solid #000000;
   padding: 10px;
 }
 .iconpost {
@@ -325,8 +321,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 2px solid #000000;
-  border-right: 2px solid #000000;
 }
 .imgposted {
   min-width: 100%;
