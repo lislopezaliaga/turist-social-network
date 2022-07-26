@@ -18,7 +18,7 @@
 }
 .burgerMenu {
   display: flex;
-  background-color: #c7a10c;
+  background-color: #ffffff;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -31,19 +31,20 @@
 }
 .iconhead {
   border-radius: 50%;
-  border: 2px solid #000000;
-  background-color: #acd2fd;
   padding: 3px;
   cursor: pointer;
-  width: 48px;
-  margin-top: 20px;
+  margin-top: 3px;
   box-shadow: 0px 5px 8px #293462;
+}
+.textheaderi {
+  color: #fff;
+  font-size: 12px;
 }
 .iconhead:hover {
   background-color: #e2c98e;
 }
 #mainContent {
-  background-image: url("./img/fondoback.png");
+  background: #ececec;
   display: flex;
   padding-top: 70px;
   background-attachment: fixed;
@@ -53,15 +54,23 @@
   display: grid;
   width: 20vw;
   max-height: 80vh;
-  background-color: #335c67;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 244, 244, 0.68) 31.96%,
+    rgba(243, 242, 239, 0.68) 98.11%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+  border-radius: 13px;
   min-height: 400px;
-  color: white;
+  color: rgb(41, 41, 41);
   padding-bottom: 30px;
+  margin-left: 40px;
+  margin-top: 40px;
 
   /* position: fixed;  */
 }
 .firstDivPerfil {
-  background: #335c67;
+  background: #acd2fd;
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -96,11 +105,9 @@
   justify-content: center;
 }
 #divContainer {
-  background-color: #ffffff;
   width: 45vw;
   display: grid;
   justify-items: center;
-  box-shadow: 0px 8px 20px -6px #293462;
 }
 
 .sectionPublication {
@@ -399,16 +406,9 @@
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-  background: rgb(243, 183, 84);
-  background: linear-gradient(
-    90deg,
-    rgba(243, 183, 84, 1) 0%,
-    rgba(255, 182, 39, 1) 30%,
-    rgba(255, 149, 5, 1) 68%,
-    rgba(204, 88, 3, 1) 100%
-  );
+  background: #2e3c79;
   position: fixed;
-  height: 73px;
+  height: 75px;
 }
 .nav-link {
   color: #fff;
@@ -421,11 +421,11 @@
   list-style: none;
 }
 .nav-menu-item {
-  font-size: 20px;
+  color: #fff;
+  font-size: 12px;
   font-weight: 600;
-  margin: 5px 10px;
-  line-height: 60px;
-  text-shadow: 0 0 12px #000, 0 0 15px #daa439;
+  margin: 8px 10px;
+  text-align: center;
 }
 .nav-menu-link {
   padding: 8px 10px;
@@ -437,7 +437,7 @@
   transition: 0.5s;
 }
 .nav-toggle {
-  color: #705516;
+  color: #ffffff;
   background: none;
   border: none;
   font-size: 30px;
@@ -508,7 +508,7 @@
   .nav-menu {
     flex-direction: column;
     align-items: center;
-    background-color: #e4be94;
+    background: #acd2fd;
     position: fixed;
     top: 50px;
     width: 80%;
