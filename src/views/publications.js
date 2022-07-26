@@ -29,10 +29,10 @@ function templatePublication(photo, name) {
         <label for="compartirImg"></label>
         <input type="file"  id="compartirImg" >
       </div>
-      <h4> Agrega una imagen </h4>
-      <select id="selectCountry"> 
+      <div class="textimg"><h4 > Agrega una imagen </h4></div>
+      <div><select id="selectCountry"> 
         <option value=" alguna parte del mundo" disabled selected>Lugares</option>
-      </select>
+      </select></div>
       <div id="addImage">
       </div>
     </div>

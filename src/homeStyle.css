@@ -18,7 +18,7 @@
 }
 .burgerMenu {
   display: flex;
-  background-color: #c7a10c;
+  background-color: #ffffff;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -31,36 +31,46 @@
 }
 .iconhead {
   border-radius: 50%;
-  border: 2px solid #000000;
-  background-color: #acd2fd;
   padding: 3px;
   cursor: pointer;
-  width: 48px;
-  margin-top: 20px;
+  margin-top: 3px;
   box-shadow: 0px 5px 8px #293462;
+}
+.textheaderi {
+  color: #fff;
+  font-size: 12px;
 }
 .iconhead:hover {
   background-color: #e2c98e;
 }
 #mainContent {
-  background-image: url("./img/fondoback.png");
+  background: #ececec;
   display: flex;
   padding-top: 70px;
   background-attachment: fixed;
+  background-size: 1600px 800px;
 }
 .sectionPerfil {
   display: grid;
   width: 20vw;
   max-height: 80vh;
-  background-color: #335c67;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 244, 244, 0.68) 31.96%,
+    rgba(243, 242, 239, 0.68) 98.11%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+  border-radius: 13px;
   min-height: 400px;
-  color: white;
+  color: rgb(41, 41, 41);
   padding-bottom: 30px;
+  margin-left: 40px;
+  margin-top: 40px;
 
   /* position: fixed;  */
 }
 .firstDivPerfil {
-  background: #335c67;
+  background: #acd2fd;
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -95,11 +105,9 @@
   justify-content: center;
 }
 #divContainer {
-  background-color: #ffffff;
   width: 45vw;
   display: grid;
   justify-items: center;
-  box-shadow: 0px 8px 20px -6px #293462;
 }
 
 .sectionPublication {
@@ -113,12 +121,18 @@
 }
 .divcamera {
   display: flex;
-  flex-wrap: wrap;
   background-color: #ffffff;
-  max-width: 40%;
-  margin-left: 5%;
+  max-width: 80%;
+  margin-left: 10%;
+  margin-right: 5%;
   align-items: center;
   border-radius: 6px;
+  flex-direction: row;
+  padding: 5px 15px;
+}
+#selectCountry {
+  max-width: 100px;
+  padding: 5px;
 }
 .inputFiles {
   width: 28px;
@@ -129,6 +143,12 @@
   box-sizing: border-box;
   cursor: pointer;
   margin: 3px;
+  margin-right: 10px;
+}
+.textimg {
+  font-size: 16px;
+  margin: 5px 10px;
+  width: 400px;
 }
 .inputFiles:hover {
   background-color: #d61c4e;
@@ -251,9 +271,11 @@
   max-width: 40vw;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
-  border: 2px solid #000000;
   padding: 10px;
-  justify-content: space-around;
+}
+.editPostIcon {
+  position: absolute;
+  left: 78%;
 }
 .postText {
   display: flex;
@@ -261,8 +283,6 @@
   padding: 10px;
   justify-content: center;
   background-color: #fff;
-  border-left: 2px solid #000000;
-  border-right: 2px solid #000000;
   font-family: "Edu NSW ACT Foundation", cursive;
   white-space: pre-wrap;
   overflow-wrap: break-word;
@@ -273,7 +293,7 @@
   max-width: 40vw;
   background-color: #e0e3e2;
   border-radius: 0px 0px 10px 10px;
-  border: 2px solid #000000;
+  padding: 10px;
 }
 .iconpost {
   border-radius: 50%;
@@ -301,8 +321,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 2px solid #000000;
-  border-right: 2px solid #000000;
 }
 .imgposted {
   min-width: 100%;
@@ -357,6 +375,7 @@
 
 .divtitulopost {
   max-width: 70%;
+  padding-left: 20px;
 }
 .country {
   font-size: 16px;
@@ -381,16 +400,9 @@
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-  background: rgb(243, 183, 84);
-  background: linear-gradient(
-    90deg,
-    rgba(243, 183, 84, 1) 0%,
-    rgba(255, 182, 39, 1) 30%,
-    rgba(255, 149, 5, 1) 68%,
-    rgba(204, 88, 3, 1) 100%
-  );
+  background: #2e3c79;
   position: fixed;
-  height: 73px;
+  height: 75px;
 }
 .nav-link {
   color: #fff;
@@ -403,11 +415,11 @@
   list-style: none;
 }
 .nav-menu-item {
-  font-size: 20px;
+  color: #fff;
+  font-size: 12px;
   font-weight: 600;
-  margin: 5px 10px;
-  line-height: 60px;
-  text-shadow: 0 0 12px #000, 0 0 15px #daa439;
+  margin: 8px 10px;
+  text-align: center;
 }
 .nav-menu-link {
   padding: 8px 10px;
@@ -419,7 +431,7 @@
   transition: 0.5s;
 }
 .nav-toggle {
-  color: #705516;
+  color: #ffffff;
   background: none;
   border: none;
   font-size: 30px;
@@ -461,12 +473,20 @@
     min-width: 60vw;
     display: flex;
   }
+  .textimg {
+    width: 100px;
+  }
   #postContainer,
   .postsContent,
   .postindividual {
     min-width: 70vw;
   }
-
+  .divtitulopost {
+    padding-left: 0;
+  }
+  .editPostIcon {
+    left: 80%;
+  }
   .postindividual div {
     max-width: 71vw;
   }
@@ -482,7 +502,7 @@
   .nav-menu {
     flex-direction: column;
     align-items: center;
-    background-color: #e4be94;
+    background: #acd2fd;
     position: fixed;
     top: 50px;
     width: 80%;

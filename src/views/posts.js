@@ -24,11 +24,10 @@ function templatePostContent(
     <div class="postNameImage">
       <img class="iconpost" src="${photo}" width="50px">
       <div class="divtitulopost">
-        <h3 class="namepost">${name}</h3>
+        <h3 class="namepost">${name}  </h3>
         <p class="country">esta en ${country} </p>
         <span class="datepost"> ${date}</span>
         <span class="datepost"> ${privacy}</span>
-        
       </div>
       <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
     </div>
