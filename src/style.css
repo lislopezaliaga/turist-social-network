@@ -45,8 +45,8 @@ body {
 }
 input {
   margin: 10px;
-  width: 90%;
-  height: 20px;
+  width: 95%;
+  height: 30px;
   border: 0.7px solid black;
   border-radius: 10px;
   font-family: "Overpass", sans-serif;
@@ -120,11 +120,11 @@ button {
   color: #d2a53c;
 }
 #signUpForm input {
-  width: 70%;
+  width: 85%;
 }
 #signUpForm input,
 #signUpForm p {
-  height: 20px;
+  height: 30px;
 }
 
 #signUpForm p {
@@ -174,7 +174,6 @@ a {
 }
 #termConditionsP {
   font-size: 16px;
-  padding: 5px;
   width: 90%;
 }
 #checkdiv {
