@@ -47,7 +47,6 @@
   display: flex;
   padding-top: 70px;
   background-attachment: fixed;
-  background-size: 1600px 800px;
 }
 .sectionPerfil {
   display: grid;
@@ -253,8 +252,8 @@
   align-items: center;
   border-radius: 10px 10px 0px 0px;
   border: 2px solid #000000;
+  padding: 10px;
   justify-content: space-around;
-  padding: 5px;
 }
 .postText {
   display: flex;
@@ -269,7 +268,6 @@
   overflow-wrap: break-word;
 }
 .postReaction {
-  padding: 8px;
   display: flex;
   align-items: center;
   max-width: 40vw;
@@ -286,6 +284,14 @@
 
 .hide {
   display: none;
+}
+
+.clickeado {
+  color: #ff3030 !important;
+}
+
+.noclick {
+  color: #293462;
 }
 
 .imgpost {
@@ -307,9 +313,6 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
 }
-.divtitulopost {
-  max-width: 60%;
-}
 .datepost {
   margin: 5px 2px;
   font-size: 13px;
@@ -326,6 +329,7 @@
   padding: 0px;
   border-radius: 10px;
   max-width: 40vw;
+  color: #000;
 }
 .likes {
   background-color: #fff;
@@ -342,6 +346,23 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.colors {
+  display: flex;
+  align-items: center;
+  max-width: 40vw;
+  background-color: #e0e3e2;
+  border-radius: 0px 0px 10px 10px;
+  border: 2px solid #000000;
+  color: #ff3030 !important;
+}
+
+.divtitulopost {
+  max-width: 60%;
+}
+.country {
+  font-size: 16px;
+  padding: 5px;
 }
 /*Menu estilos*/
 .homeContainer {
@@ -412,8 +433,6 @@
   margin-left: 5%;
   margin-right: 5%;
 }
-
-
 /* Navbar section */
 
 /* Medai qurey section */
@@ -428,6 +447,9 @@
   #muroContainer {
     width: 100vw;
   }
+  .divtitulopost {
+    max-width: 70%;
+  }
   #divContainer {
     width: 85vw;
   }
@@ -440,18 +462,14 @@
     min-width: 60vw;
     display: flex;
   }
-  .divtitulopost {
-    max-width: 80%;
-  }
   #postContainer,
   .postsContent,
   .postindividual {
     min-width: 70vw;
   }
 
-  .postindividual .postNameImage,
-  .postReaction {
-    min-width: 70vw;
+  .postindividual div {
+    max-width: 71vw;
   }
   .burgerMenu {
     display: none;
@@ -467,8 +485,8 @@
     align-items: center;
     background-color: #e4be94;
     position: fixed;
-    top: 70px;
-    width: 70%;
+    top: 50px;
+    width: 80%;
     padding: 20px 0%;
     height: calc(35% - 60px);
     overflow-y: visible;
@@ -487,6 +505,7 @@
     cursor: pointer;
   }
   .nav-menu_visible {
+    margin-top: 20px;
     height: auto;
     left: 30%;
   }

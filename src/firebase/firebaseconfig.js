@@ -4,7 +4,6 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase
 import {
   getFirestore, setDoc,
   doc, getDoc, addDoc, collection, serverTimestamp,
-
   getDocs, onSnapshot, orderBy, query,
   updateDoc, deleteDoc,
 // eslint-disable-next-line import/no-unresolved
@@ -21,7 +20,7 @@ import {
 import {
   getStorage, ref, uploadBytes,
   getDownloadURL,
-// eslint-disable-next-line import/no-unresolved
+  // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-storage.js';
 
 const firebaseConfig = {

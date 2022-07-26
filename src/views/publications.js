@@ -31,7 +31,7 @@ function templatePublication(photo, name) {
       </div>
       <h4> Agrega una imagen </h4>
       <select id="selectCountry"> 
-        <option value="0" disabled selected>Lugares</option>
+        <option value=" alguna parte del mundo" disabled selected>Lugares</option>
       </select>
       <div id="addImage">
       </div>
@@ -73,7 +73,6 @@ async function addPublications(e) {
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
-
     /* --------subir el post al storage */
     await shareImgPost(urlImage, file);
 
@@ -117,7 +116,7 @@ function addImage() {
   const read = new FileReader();
   const file = this.files;
 
-  read.onload = function cargaimg() {
+  read.onload = function () {
     const result = this.result;
     const url = result;
     imagen.src = url;
@@ -127,7 +126,6 @@ function addImage() {
   };
 
   read.readAsDataURL(file[0]);
-
   /* * *Borrando el preview de la imagen */
   const deleteButtonImage = document.getElementById('deleteButtonImage');
   deleteButtonImage.addEventListener('click', () => {
