@@ -5,18 +5,21 @@
 
 import { addUser, signInGoogle } from '../src/firebase/auth';
 
+import { signInGoogleHandler } from '../src/views/signin';
 // eslint-disable-next-line import/no-unresolved
 import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from '../src/firebase/firebaseconfig.js';
 
 jest.mock('../src/firebase/firebaseconfig.js');
 
+describe('signInGoogleHandler', () => {
+  it('Debería retornar una función', () => {
+    signInGoogle().then(() => expect(window.location.hash).toEqual('#/inicio'));
+  });
+});
+
 describe('signInGoogle', () => {
   it('debería ser una función', () => {
     expect(typeof signInGoogle).toBe('function');
-  });
-
-  it('Debería retornar una función', () => {
-    expect(signInGoogle()).toEqual(signInWithPopup());
   });
 
   it('Debería llamar la función al menos una vez con los argumentos (email and password)', () => signInWithPopup()

@@ -147,4 +147,5 @@ export const signInGoogleHandler = (e) => {
       const errorMessage = error.message;
       console.log('error en signup', errorMessage, errorCode);
     });
+  return '#/inicio';
 };

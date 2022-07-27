@@ -65,6 +65,7 @@ const updatePostClick = (divOptions, postContainer) => {
     const idPostBtn = e.target.dataset.id;
 
     const postindividual = postContainer.querySelectorAll('.postindividual');
+    console.log(postindividual);
 
     postindividual.forEach((post) => {
       if (idPostBtn === post.id) {
