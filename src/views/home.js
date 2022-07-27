@@ -16,7 +16,7 @@
 export const home = () => {
   const homeContent = `
   <nav class="nav">
-    <img class="logo2"  src="img/travels.png" width="220px" />
+    <img class="logo2"  src="img/travels.svg" width="220px" />
     <button class="nav-toggle"><i class="fa fa-bars"></i></button>
     <ul class="nav-menu">
       <li class="nav-menu-item">
@@ -40,5 +40,6 @@ export const home = () => {
   const homeContainer = document.createElement('div');
   homeContainer.setAttribute('class', 'homeContainer');
   homeContainer.innerHTML = homeContent;
+
   return homeContainer;
 };

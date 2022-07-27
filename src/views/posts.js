@@ -71,7 +71,6 @@ const updatePostClick = (divOptions, postContainer) => {
         const pContentPost = post.querySelector('.texto');
         pContentPost.contentEditable = 'true';
         pContentPost.focus();
-        console.log(post);
 
         const pos = document.createElement('div');
 
@@ -125,9 +124,6 @@ async function likesHandler(e) {
   const idUser = localStorageCall().id;
   const idPost = btnLike.getAttribute('name');
   const dataPost = await getUserById(idPost, 'posts');
-  // eslint-disable-next-line no-useless-concat
-  const colorcambio = document.getElementById(`${idPost}`);
-  console.log(colorcambio.getAttribute('color'));
 
   if (await dataPost.likes.includes(idUser)) {
     // esto es para quitar el like por usuario
@@ -171,7 +167,6 @@ export const postView = () => {
       );
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
-      console.log(dato.userId);
       // eslint-disable-next-line no-use-before-define
       verifyLike(dato.likes, element.id);
     });
