@@ -33,9 +33,10 @@ function templatePublication(photo, name) {
       <div><select id="selectCountry"> 
         <option value=" alguna parte del mundo" disabled selected>Lugares</option>
       </select></div>
-      <div id="addImage">
-      </div>
+      
     </div>
+    <div id="addImage">
+      </div>
 
     <div class="buttonGeneralPublication">
       <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
