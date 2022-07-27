@@ -30,11 +30,9 @@
   height: 70px;
 }
 .iconhead {
-  border-radius: 50%;
-  padding: 3px;
+  /* border-radius: 50%; */
   cursor: pointer;
   margin-top: 3px;
-  box-shadow: 0px 5px 8px #293462;
 }
 .textheaderi {
   color: #fff;
@@ -65,7 +63,7 @@
   color: rgb(41, 41, 41);
   padding-bottom: 30px;
   margin-left: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
 
   /* position: fixed;  */
 }
@@ -76,6 +74,7 @@
   justify-items: center;
   align-items: center;
   padding: 20px;
+  border-radius: 10px 10px 0 0;
 }
 .divPerfil {
   padding: 15px;
@@ -403,6 +402,8 @@
   background: #2e3c79;
   position: fixed;
   height: 75px;
+  font-family:'Poppins', sans-serif;;
+ 
 }
 .nav-link {
   color: #fff;
@@ -417,7 +418,6 @@
 .nav-menu-item {
   color: #fff;
   font-size: 12px;
-  font-weight: 600;
   margin: 8px 10px;
   text-align: center;
 }
