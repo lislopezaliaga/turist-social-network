@@ -2,9 +2,9 @@
 // vista inicio de sesión signIn
 import {
   auth, signInWithEmailAndPassword,
-  signInWithPopup, GoogleAuthProvider,
 } from '../firebase/firebaseconfig.js';
 import { createNewUser, getUserById } from '../firebase/firestore.js';
+import { signInGoogle } from '../firebase/auth.js';
 import { cleanErrorMsm } from './signup.js';
 
 export const formSignIn = () => {
@@ -117,10 +117,9 @@ export const signInHandler = (e) => {
     });
 };
 
-const provider = new GoogleAuthProvider();
 export const signInGoogleHandler = (e) => {
   e.preventDefault();
-  signInWithPopup(auth, provider)
+  signInGoogle()
     .then((result) => {
       // The signed-in user info.
       const user = result.user;
