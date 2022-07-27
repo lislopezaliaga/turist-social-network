@@ -21,6 +21,7 @@ function templatePostContent(
 ) {
   const postContent = `
   <div class="postindividual" id='${idPost}'>
+
     <div class="postNameImage">
       <img class="iconpost" src="${photo}" width="50px">
       <div class="divtitulopost">
@@ -31,16 +32,21 @@ function templatePostContent(
       </div>
       <div class = "editPostIcon" id = ${userId} data-id = "${idPost}"></div>
     </div>
+
     <div class="postText">
     <p class="texto" contenteditable = "false"> ${content} </p>
+
     </div>
     <div class="imgpost">
     <img class="imgposted" src='${imgPost}'>
     </div>
+
     <div class="postReaction">
       <i class="fa fa-heart like" name="${idPost}"></i>
       <h3> ${likesCount}</h3>
     </div>
+
+    <div id="containerDelete"></div>
   </div>`;
 
   return postContent;
@@ -67,9 +73,38 @@ const updatePostClick = (divOptions, postContainer) => {
     const postindividual = postContainer.querySelectorAll('.postindividual');
     console.log(postindividual);
 
-    postindividual.forEach((post) => {
+    postindividual.forEach( async (post) => {
       if (idPostBtn === post.id) {
-        const pContentPost = post.querySelector('.texto');
+        // Crear modal
+        const modalUpdate = document.createElement('dialog');
+        modalUpdate.setAttribute('class', 'modalEditPost');
+        postContainer.appendChild(modalUpdate);
+        
+        // Traer los datos actuales del post
+        const postData = await getUserById(post.id, 'posts');
+        console.log(postData);
+        
+        modalUpdate.innerHTML = templateEditModal (
+          postData.publication,
+          postData.imgPost,
+          postData.country,
+          postData.privacy,
+        );
+        modalUpdate.showModal();
+
+        // Capturar los nuevos datos ingresados
+
+
+        // Guardar cambios con btn guardar
+        modalUpdate.querySelector('#cancelUpdate').addEventListener('click', () => {
+          //updatePost(post.id, pContentPost.textContent, urlImage);
+          modalUpdate.close();
+        });
+
+
+        // Cerrar modal con boton cancelar
+        modalUpdate.querySelector('#cancelUpdate').addEventListener('click', () => modalUpdate.close());
+        /* const pContentPost = post.querySelector('.texto');
         pContentPost.contentEditable = 'true';
         pContentPost.focus();
 
@@ -85,20 +120,90 @@ const updatePostClick = (divOptions, postContainer) => {
           if (!urlImage) {
             await updatePost(post.id, pContentPost.textContent, urlImage);
           }
-        });
+        }); */
       }
     });
   });
 };
 
-const deletePostClick = (divOptions) => {
+const templateDeleteModal = () => {
+  const deleteModalContent = `<div id="modalDeletePost" class="modalDeletePost">
+    <button type="button" class="cerrarModalPost" id="cerrarDelete">X</button>
+    <img class="gatitoWarning" src="image/gatoTriste.png">
+    <p class="modalTitleDelete">¿Estás seguro que deseas eliminar?</p>
+    <div class= "btnsDeleteCancel">
+      <button type="button" class="btnPost" id="deletePost">Eliminar</button>
+      <button type="button" class= "btnPost" id="closeModal">Cancelar</button>
+    </div>
+  </div>`;
+
+  return deleteModalContent;
+};
+
+const deletePostClick = (divOptions, postContainer) => {
   const deleteOpt = divOptions.querySelector('#delete-post');
   deleteOpt.addEventListener('click', (e) => {
     const idPostBtn = e.target.dataset.id;
 
-    deletePost(idPostBtn);
+    // Crear modal
+    const modalDelete = document.createElement('dialog');
+    modalDelete.innerHTML = templateDeleteModal();
+    modalDelete.setAttribute('class', 'modalDeleteWarning');
+    postContainer.appendChild(modalDelete);
+    modalDelete.showModal();
+
+    // Seleccionar btn cancelar y eliminar post
+    modalDelete.querySelector('#closeModal').addEventListener('click', () => modalDelete.close());
+    modalDelete.querySelector('#deletePost').addEventListener('click', () => {
+      deletePost(idPostBtn);
+      modalDelete.close();
+    });
   });
 };
+
+const templateEditModal = ( 
+  textPost,
+  urlImg,
+  country,
+  privacy,
+  ) => {
+  const editModalContent = `
+  <div class="namePhotoPublication">
+    <div class='nameSelectPublication'>
+      <select id="selectPostArea">
+              <option value="🌎">🌎 ${privacy}</option>
+              <option value="🔒">🔒 Privado </option>
+      </select>
+    </div>
+  </div>
+
+  <form id="postForm">
+    <textarea placeholder="Escribe Algo ..." id='inputUpdatedText'>${textPost}</textarea>
+  
+    <div class="divcamera">
+      <div class="inputFiles">
+        <label for="compartirImg"></label>
+        <input type="file"  id="selectImg" >
+      </div>
+      <div class="textimg"><h4 > Cambia tu imagen </h4></div>
+      <select id="selectYourCountry"> 
+        <option value=" alguna parte del mundo" disabled selected>${country}</option>
+      </select>
+    </div>
+
+    <div id="addImage">
+      <img src = ${urlImg}/>
+    </div>
+
+    <div class="buttonGeneralPublication">
+      <button id = "saveUpdate" class="buttonPublication" type="submit">Guardar</button>
+      <button id = "cancelUpdate" class="buttonPublication">Cancelar</button>
+    </div>
+  </form>`;
+
+  return editModalContent;
+};
+
 // Al apretar los ... el usuario puede seleccionar editar o eliminar su post
 function editPostOptions(postContainer) {
   const iconEditPost = document.querySelectorAll('.editPostIcon');
@@ -113,7 +218,7 @@ function editPostOptions(postContainer) {
         console.log('apretaste los 2 puntos');
         const tooltip = iconOptions.querySelector('.tooltip');
         tooltip.classList.toggle('hide');
-        deletePostClick(tooltip);
+        deletePostClick(tooltip, postContainer);
         updatePostClick(tooltip, postContainer);
       });
     }
