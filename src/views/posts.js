@@ -73,18 +73,18 @@ const updatePostClick = (divOptions, postContainer) => {
     const postindividual = postContainer.querySelectorAll('.postindividual');
     console.log(postindividual);
 
-    postindividual.forEach( async (post) => {
+    postindividual.forEach(async (post) => {
       if (idPostBtn === post.id) {
         // Crear modal
         const modalUpdate = document.createElement('dialog');
         modalUpdate.setAttribute('class', 'modalEditPost');
         postContainer.appendChild(modalUpdate);
-        
+
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
         console.log(postData);
-        
-        modalUpdate.innerHTML = templateEditModal (
+
+        modalUpdate.innerHTML = templateEditModal(
           postData.publication,
           postData.imgPost,
           postData.country,
@@ -94,13 +94,11 @@ const updatePostClick = (divOptions, postContainer) => {
 
         // Capturar los nuevos datos ingresados
 
-
         // Guardar cambios con btn guardar
         modalUpdate.querySelector('#cancelUpdate').addEventListener('click', () => {
-          //updatePost(post.id, pContentPost.textContent, urlImage);
+          // updatePost(post.id, pContentPost.textContent, urlImage);
           modalUpdate.close();
         });
-
 
         // Cerrar modal con boton cancelar
         modalUpdate.querySelector('#cancelUpdate').addEventListener('click', () => modalUpdate.close());
@@ -161,12 +159,12 @@ const deletePostClick = (divOptions, postContainer) => {
   });
 };
 
-const templateEditModal = ( 
+const templateEditModal = (
   textPost,
   urlImg,
   country,
   privacy,
-  ) => {
+) => {
   const editModalContent = `
   <div class="namePhotoPublication">
     <div class='nameSelectPublication'>
