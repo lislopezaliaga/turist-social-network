@@ -1,10 +1,7 @@
 /* eslint-disable eqeqeq */
 // vista inicio de sesión signIn
-import {
-  auth, signInWithEmailAndPassword,
-} from '../firebase/firebaseconfig.js';
 import { createNewUser, getUserById } from '../firebase/firestore.js';
-import { signInGoogle } from '../firebase/auth.js';
+import { loginEmailPas, signInGoogle } from '../firebase/auth.js';
 import { cleanErrorMsm } from './signup.js';
 
 export const formSignIn = () => {
@@ -66,30 +63,31 @@ export const signInHandler = (e) => {
   const invalidEmail = document.querySelector('#invalidEmail');
   const invalidPassword = document.querySelector('#invalidPassword');
 
-  const signInForm = document.querySelector('#signInForm');
-  const email = signInForm.email.value;
-  const password = signInForm.password.value;
-  console.log(email, 'y', password);
+  // const signInForm = document.querySelector('#signInForm');
+  const inputEmail = document.querySelector('#email');
+  const inputPassword = document.querySelector('#password');
+  const email = inputEmail.value;
+  const password = inputPassword.value;
 
   verifyCompletedInput(email, password);
 
-  signInWithEmailAndPassword(auth, email, password)
+  loginEmailPas(email, password)
     .then((userCredential) => {
       // Agregar nvo user
       const user = userCredential.user;
-      const emailRegister = userCredential.user.email;
+      // const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
       console.log(userCredential);
-      console.log(emailRegister, userIdRegister);
+      // console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
-          console.log(userData);
+          // console.log(userData);
           const data = userData;
           data.id = userIdRegister;
           localStorage.setItem('USER', JSON.stringify(userData));
-          console.log(userData);
+          // console.log(userData);
         });
 
         // Enviar al usuario con email verificado a la vista inicio

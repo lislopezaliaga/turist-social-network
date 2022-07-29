@@ -117,27 +117,30 @@
 
 .sectionPublication {
   min-width: 40vw;
-  background-color: #e0e3e2;
+  background-color: #EDE8E8;
   display: grid;
-  border-radius: 10px;
-  margin-top: 15px;
+  border-radius: 20px;
+  margin-top: 20px;
   padding: 10px;
-  box-shadow: 0px 5px 8px #293462;
+  box-shadow: 0px 1px 10px #838bae;
+}
+#postForm{
+  width: 40vw;
 }
 .divcamera {
   display: flex;
-  background-color: #ffffff;
-  max-width: 80%;
-  margin-left: 10%;
+  width: 90%;
+  margin-left: 5%;
   margin-right: 5%;
   align-items: center;
-  border-radius: 6px;
   flex-direction: row;
-  padding: 5px 15px;
 }
 #selectCountry {
   max-width: 150px;
   padding: 5px;
+  border: 2px solid #878787;
+  border-radius: 15px;
+  color: #878787;
 }
 .inputFiles {
   width: 28px;
@@ -210,13 +213,12 @@
   width: 50px;
 }
 #privacyPostArea {
-  right: 1vw;
-  font-size: 15px;
-  border: none;
-  outline: none;
-  background: none;
+  font-size: 14px;
   cursor: pointer;
-  padding: 8px 10px;
+  padding: 4px 6px;
+  border: 2px solid #878787;
+  border-radius: 14px;
+  color: #878787;
 }
 
 #inputText {
@@ -404,7 +406,7 @@
   background: #2e3c79;
   position: fixed;
   height: 75px;
-  font-family:'Poppins', sans-serif;
+  font-family:'Work Sans', sans-serif;
  
 }
 .nav-link {

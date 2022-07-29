@@ -5,23 +5,22 @@ import { paises } from './country.js';
 
 function templatePublication(photo, name) {
   const publicationContent = `
-  <div class="namePhotoPublication">
-    <img src="${photo}" width = "30px">
-    <div class='nameSelectPublication'>
-      <h3>${name}</h3>
-      <select id="privacyPostArea">
-              <option value="🌎">🌎 Público</option>
-              <option value="🔒">🔒 Privado </option>
-      </select>
-    </div>
-  </div>
-
   <div id = "modal-charging" style = "display:none">
     <p>Cargando ...</p>
     <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
   </div>
-
   <form id="postForm">
+    <div class="namePhotoPublication">
+      <img src="${photo}" width = "30px">
+      <div class='nameSelectPublication'>
+        <h3>${name}</h3>
+        <select id="privacyPostArea">
+                <option value="🌎">🌎 Público</option>
+                <option value="🔒">🔒 Privado </option>
+        </select>
+      </div>
+    </div>
+
     <textarea placeholder="Escribe Algo ..." id='inputText'></textarea>
   
     <div class="divcamera">
