@@ -22,20 +22,22 @@ describe('formSigin', () => {
 
     expect(buttonLogin instanceof HTMLElement).toBe(true);
     // obtener el boton
-
+    // const inputEmail = document.querySelector('#email');
+    // const inputPassword = document.querySelector('#password');
+    // inputEmail.value = '';
+    // inputPassword.value = '';
     // CUANDO
     buttonLogin.click();
 
     const email = 'hi';
     const password = 'oa';
-
+    
     const complete = document.querySelector('#complete');
-
     // ENTONCES
     expect(complete.textContent).toEqual('Completa todos los datos');
     // verificar que el mensaje de error este dentro del documento
   });
-  it('Deberia pasar', () => {
+  it.only('Deberia pasar', async () => {
     // DADO
     const mainSection = document.createElement('div');
     mainSection.id = 'container';
@@ -44,7 +46,7 @@ describe('formSigin', () => {
 
     const buttonLogin = document.querySelector('#btn-signin');
 
-    expect(buttonLogin instanceof HTMLElement).toBe(true);
+    // expect(buttonLogin instanceof HTMLElement).toBe(true);
     // obtener el boton
 
   /*     // CUANDO
@@ -54,10 +56,12 @@ describe('formSigin', () => {
     const inputPassword = document.querySelector('#password');
     inputEmail.value = 'hola@gmail.com';
     inputPassword.value = 'holamundo';
-
     // const complete = document.querySelector('#complete');
-
+  //  ;
+  //   console.log(buttonLogin.click());
     // ENTONCES
+   await buttonLogin.click();
+
     expect(window.location.hash).toBe('#/inicio');
     // verificar que el mensaje de error este dentro del documento */
   });

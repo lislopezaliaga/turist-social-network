@@ -23,7 +23,6 @@ export const formSignIn = () => {
             <label id="invalidPassword"></label>
             
             <p id="smallTex">¿Olvidaste tu contraseña? <span>Obtén ayuda</span></p>
-
             <button type="submit" id ="btn-signin"><a href = "#/inicio">Inicia Sesión</a></button>
                 
             <p class="smallText">¿No tienes una cuenta? <a href = "#/signup">Regístrate</a></p>
