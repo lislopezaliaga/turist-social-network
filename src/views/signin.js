@@ -17,9 +17,9 @@ export const formSignIn = () => {
                 <button type="submit" id="btn-signin-google">Continúa con Google</button>
             </div>
             <label id="complete"></label>
-            <input type="email" required placeholder="  Correo electrónico" id = "email">
+            <input type="email" required placeholder="  Correo electrónico" id = "email" value = "holas">
             <label id="invalidEmail"></label>
-            <input type="password" required placeholder="  Contraseña" id = "password">
+            <input type="password" required placeholder="  Contraseña" id = "password" value = "holas">
             <label id="invalidPassword"></label>
             
             <p id="smallTex">¿Olvidaste tu contraseña? <span>Obtén ayuda</span></p>
@@ -70,7 +70,7 @@ export const signInHandler = (e) => {
   const password = inputPassword.value;
 
   verifyCompletedInput(email, password);
-
+  console.log('email');
   loginEmailPas(email, password)
     .then((userCredential) => {
       // Agregar nvo user
@@ -82,17 +82,15 @@ export const signInHandler = (e) => {
 
       if (user.emailVerified) {
         // Obtener data del user logueado para agregarlo al sessionStorage
-        getUserById(userIdRegister, 'users').then((userData) => {
+        /* getUserById(userIdRegister, 'users').then((userData) => {
           // console.log(userData);
           const data = userData;
           data.id = userIdRegister;
           localStorage.setItem('USER', JSON.stringify(userData));
           // console.log(userData);
-        });
-
-        // Enviar al usuario con email verificado a la vista inicio
-        window.location.hash = '#/inicio';
-        console.log(user.emailVerified);
+          // Enviar al usuario con email verificado a la vista inicio
+          window.location.hash = '#/inicio';
+        }); */
       } else {
         const complete = document.querySelector('#complete');
         complete.innerHTML = 'Verifica tu email';
