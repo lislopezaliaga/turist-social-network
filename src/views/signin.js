@@ -23,7 +23,6 @@ export const formSignIn = () => {
             <label id="invalidPassword"></label>
             
             <p id="smallTex">¿Olvidaste tu contraseña? <span>Obtén ayuda</span></p>
-
             <button type="submit" id ="btn-signin"><a href = "#/inicio">Inicia Sesión</a></button>
                 
             <p class="smallText">¿No tienes una cuenta? <a href = "#/signup">Regístrate</a></p>
@@ -73,15 +72,14 @@ export const signInHandler = (e) => {
 
   loginEmailPas(email, password)
     .then((userCredential) => {
-      console.log('hola');
       // Agregar nvo user
       const user = userCredential.user;
       // const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
+      console.log(userCredential);
       // console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
-        console.log('te quiero');
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
           // console.log(userData);
@@ -89,10 +87,11 @@ export const signInHandler = (e) => {
           data.id = userIdRegister;
           localStorage.setItem('USER', JSON.stringify(userData));
           // console.log(userData);
-          // Enviar al usuario con email verificado a la vista inicio
-          window.location.hash = '#/inicio';
-          console.log(window.location.hash);
         });
+
+        // Enviar al usuario con email verificado a la vista inicio
+        window.location.hash = '#/inicio';
+        console.log(user.emailVerified);
       } else {
         const complete = document.querySelector('#complete');
         complete.innerHTML = 'Verifica tu email';

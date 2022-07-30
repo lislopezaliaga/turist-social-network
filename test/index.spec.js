@@ -51,9 +51,11 @@ describe('formSigin', () => {
     inputEmail.value = 'hola@gmail.com';
     inputPassword.value = 'holamundo';
     // const complete = document.querySelector('#complete');
-    buttonLogin.click();
-
+  //  ;
+  //   console.log(buttonLogin.click());
     // ENTONCES
+   await buttonLogin.click();
+
     expect(window.location.hash).toBe('#/inicio');
     // verificar que el mensaje de error este dentro del documento
   });
