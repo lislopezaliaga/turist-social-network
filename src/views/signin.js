@@ -73,16 +73,17 @@ export const signInHandler = (e) => {
   console.log('email');
   loginEmailPas(email, password)
     .then((userCredential) => {
+      console.log('hola');
       // Agregar nvo user
       const user = userCredential.user;
       // const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
-      console.log(userCredential);
       // console.log(emailRegister, userIdRegister);
 
       if (user.emailVerified) {
+        console.log('te quiero');
         // Obtener data del user logueado para agregarlo al sessionStorage
-        /* getUserById(userIdRegister, 'users').then((userData) => {
+        getUserById(userIdRegister, 'users').then((userData) => {
           // console.log(userData);
           const data = userData;
           data.id = userIdRegister;
@@ -90,7 +91,8 @@ export const signInHandler = (e) => {
           // console.log(userData);
           // Enviar al usuario con email verificado a la vista inicio
           window.location.hash = '#/inicio';
-        }); */
+          console.log(window.location.hash);
+        });
       } else {
         const complete = document.querySelector('#complete');
         complete.innerHTML = 'Verifica tu email';

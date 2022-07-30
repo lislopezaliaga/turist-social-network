@@ -1,5 +1,7 @@
 import { components } from '../src/views';
 
+jest.mock('../src/firebase/auth.js');
+jest.mock('../src/firebase/firestore.js');
 jest.mock('../src/firebase/firebaseconfig.js');
 
 function tick() {
