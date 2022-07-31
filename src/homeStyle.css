@@ -167,6 +167,31 @@
   height: 100%;
   opacity: 0;
 }
+/* modal input file */
+#inputSelectImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  margin: 0;
+}
+
+/* close x btn preview modal */
+.closeImg {
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  z-index: 1;
+  color: red;
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
 .inputFiles label {
   width: 90%;
   margin-left: 5%;
@@ -237,7 +262,7 @@
   display: flex;
   width: 100%;
 }
-#addImage img {
+.containerPreviewImg img {
   margin-left: 5%;
   position: relative;
   border-radius: 5px;

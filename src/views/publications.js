@@ -34,8 +34,8 @@ function templatePublication(photo, name) {
       </select></div>
       
     </div>
-    <div id="addImage">
-      </div>
+    <div id="addImage" class = "containerPreviewImg">
+    </div>
 
     <div class="buttonGeneralPublication">
       <button id = "publish" class="buttonPublication" type="submit">Publicar</button>
@@ -101,7 +101,7 @@ async function addPublications(e) {
 }
 
 function addImage() {
-  const divAddImage = document.getElementById('addImage');
+/*   const divAddImage = document.getElementById('addImage');
 
   const imageContainer = document.createElement('div');
   imageContainer.setAttribute('class', 'imageContainer');
@@ -110,10 +110,19 @@ function addImage() {
   const imagen = document.createElement('img');
 
   const iconX = document.createElement('span');
-  imageContainer.setAttribute('id', 'deleteButtonImage');
-  iconX.innerHTML = '✖';
+  iconX.setAttribute('id', 'deleteButtonImage');
+  iconX.innerHTML = '✖'; */
 
-  const read = new FileReader();
+  const divAddImage = document.getElementById('addImage');
+  divAddImage.innerHTML = `
+    <div class = "imageContainer">
+      <img id = "imgLoad" src="" class = "imageContainer" >
+      <span id = "deleteButtonImage">✖</span>
+    </div>
+  `;
+  deleteButtonPreviewImg();
+
+  /* const read = new FileReader();
   const file = this.files;
 
   read.onload = function () {
@@ -123,12 +132,32 @@ function addImage() {
 
     imageContainer.appendChild(imagen);
     imageContainer.appendChild(iconX);
-  };
+    deleteButtonPreviewImg();
+  }; */
+/*   const preview = document.querySelector('#imgLoad'); */
 
-  read.readAsDataURL(file[0]);
+  const file = document.querySelector('#compartirImg').files[0];
+  const reader = new FileReader();
+  console.log(file);
+  console.log(reader);
+  reader.addEventListener('load', () => {
+    // convierte la imagen a una cadena en base64
+    const imagen = divAddImage.querySelector('#imgLoad');
+    imagen.src = reader.result;
+  }, true);
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+
+/*   read.readAsDataURL(file[0]); */
+}
+
+function deleteButtonPreviewImg() {
   /* * *Borrando el preview de la imagen */
   const deleteButtonImage = document.getElementById('deleteButtonImage');
+  console.log(deleteButtonImage);
   deleteButtonImage.addEventListener('click', () => {
+    const divAddImage = document.getElementById('addImage');
     divAddImage.innerHTML = '';
     const cleanInputFile = document.getElementById('compartirImg');
     cleanInputFile.value = '';

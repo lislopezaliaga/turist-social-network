@@ -17,9 +17,9 @@ export const formSignIn = () => {
                 <button type="submit" id="btn-signin-google">Continúa con Google</button>
             </div>
             <label id="complete"></label>
-            <input type="email" required placeholder="  Correo electrónico" id = "email" value = "holas">
+            <input type="email" required placeholder="  Correo electrónico" id = "email">
             <label id="invalidEmail"></label>
-            <input type="password" required placeholder="  Contraseña" id = "password" value = "holas">
+            <input type="password" required placeholder="  Contraseña" id = "password">
             <label id="invalidPassword"></label>
             
             <p id="smallTex">¿Olvidaste tu contraseña? <span>Obtén ayuda</span></p>

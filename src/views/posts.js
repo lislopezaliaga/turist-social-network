@@ -82,8 +82,7 @@ const updatePostClick = (divOptions, postContainer) => {
 
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
-        console.log(postData);
-
+        // postData.imgPost,
         modalUpdate.innerHTML = templateEditModal(
           postData.publication,
           postData.imgPost,
@@ -91,8 +90,10 @@ const updatePostClick = (divOptions, postContainer) => {
           postData.privacy,
         );
         modalUpdate.showModal();
-
         // Capturar los nuevos datos ingresados
+        const inputFile = document.querySelector('#inputSelectImg');
+        console.log(inputFile);
+        inputFile.addEventListener('change', addImage);
 
         // Guardar cambios con btn guardar
         modalUpdate.querySelector('#cancelUpdate').addEventListener('click', () => {
@@ -123,6 +124,53 @@ const updatePostClick = (divOptions, postContainer) => {
     });
   });
 };
+
+function addImage() {
+  const divAddImage = document.getElementById('addImageContainer');
+
+  const imageContainer = document.createElement('div');
+  imageContainer.setAttribute('class', 'imageContainer');
+  divAddImage.appendChild(imageContainer);
+
+  const imagen = document.createElement('img');
+
+  const iconX = document.createElement('span');
+  iconX.setAttribute('id', 'deleteBtnImg');
+  iconX.innerHTML = '✖';
+  iconX.classList.add('closeImg');
+
+  const read = new FileReader();
+  const file = this.files;
+
+  read.onload = function () {
+    const result = this.result;
+    const url = result;
+    imagen.src = url;
+
+    imageContainer.appendChild(imagen);
+    imageContainer.appendChild(iconX);
+    deleteBtnPreviewImg();
+  };
+
+  read.readAsDataURL(file[0]);
+
+  // Reemplazar la imagen del post por la nueva seleccionada
+  if (document.getElementById('oldImgContainer')) {
+    const oldImgContainer = document.getElementById('oldImgContainer');
+    oldImgContainer.style.display = 'none';
+  }
+}
+
+function deleteBtnPreviewImg() {
+  /* Borrando la imagen del modal */
+  const deleteBtnImage = document.getElementById('deleteBtnImg');
+  deleteBtnImage.addEventListener('click', () => {
+    const imgContainer = document.getElementById('addImageContainer');
+    imgContainer.innerHTML = '';
+    const cleanInputFile = document.getElementById('inputSelectImg');
+    cleanInputFile.value = '';
+  });
+}
 
 const templateDeleteModal = () => {
   const deleteModalContent = `<div id="modalDeletePost" class="modalDeletePost">
@@ -161,7 +209,7 @@ const deletePostClick = (divOptions, postContainer) => {
 
 const templateEditModal = (
   textPost,
-  urlImg,
+  imgUrl,
   country,
   privacy,
 ) => {
@@ -179,9 +227,9 @@ const templateEditModal = (
     <textarea placeholder="Escribe Algo ..." id='inputUpdatedText'>${textPost}</textarea>
   
     <div class="divcamera">
-      <div class="inputFiles">
+      <div class="inputFiles relative">
         <label for="compartirImg"></label>
-        <input type="file"  id="selectImg" >
+        <input type="file"  id="inputSelectImg" >
       </div>
       <div class="textimg"><h4 > Cambia tu imagen </h4></div>
       <select id="selectYourCountry"> 
@@ -189,8 +237,10 @@ const templateEditModal = (
       </select>
     </div>
 
-    <div id="addImage">
-      <img src = ${urlImg}/>
+    <div id="addImageContainer" class = "containerPreviewImg">
+      <div id="oldImgContainer" class = "imageContainer">
+        <img src = ${imgUrl}/>
+      </div>
     </div>
 
     <div class="buttonGeneralPublication">
