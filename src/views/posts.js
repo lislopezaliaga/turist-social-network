@@ -4,6 +4,7 @@ import {
   getUserById,
   updateLikes,
   deletePost,
+  // eslint-disable-next-line no-unused-vars
   updatePost,
 } from '../firebase/firestore.js';
 
@@ -71,7 +72,6 @@ const updatePostClick = (divOptions, postContainer) => {
     const idPostBtn = e.target.dataset.id;
 
     const postindividual = postContainer.querySelectorAll('.postindividual');
-    console.log(postindividual);
 
     postindividual.forEach(async (post) => {
       if (idPostBtn === post.id) {
@@ -83,6 +83,7 @@ const updatePostClick = (divOptions, postContainer) => {
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
         // postData.imgPost,
+        // eslint-disable-next-line no-use-before-define
         modalUpdate.innerHTML = templateEditModal(
           postData.publication,
           postData.imgPost,
@@ -93,6 +94,7 @@ const updatePostClick = (divOptions, postContainer) => {
         // Capturar los nuevos datos ingresados
         const inputFile = document.querySelector('#inputSelectImg');
         console.log(inputFile);
+        // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
 
         // Guardar cambios con btn guardar
@@ -149,6 +151,7 @@ function addImage() {
 
     imageContainer.appendChild(imagen);
     imageContainer.appendChild(iconX);
+    // eslint-disable-next-line no-use-before-define
     deleteBtnPreviewImg();
   };
 
