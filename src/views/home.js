@@ -33,7 +33,7 @@ export const home = () => {
       </li>
     </ul>
     <div class="burgerMenu">
-        <img class="logomenuh"  src="../img/perfilViajeros.jpg"/>
+        <img class="logomenuh"  src="../img/user.png"/>
         <i class="fa fa-caret-down"></i>
     </div>
   </nav>`;
