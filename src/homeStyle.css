@@ -36,7 +36,6 @@
   height: 70px;
 }
 .iconhead {
-  /* border-radius: 50%; */
   cursor: pointer;
   margin-top: 3px;
 }
@@ -44,8 +43,9 @@
   color: #fff;
   font-size: 12px;
 }
-.iconhead:hover {
+.nav-menu-item:hover {
   background-color: #e2c98e;
+  border-radius: 8px;
 }
 #mainContent {
   background: #ececec;
@@ -74,7 +74,12 @@
   /* position: fixed;  */
 }
 .firstDivPerfil {
-  background: #acd2fd;
+  background: linear-gradient(
+    180deg,
+    #acd2fd 0%,
+    rgba(172, 210, 253, 0.744792) 39%,
+    rgba(172, 210, 253, 0) 39%
+  );
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -97,6 +102,7 @@
   border-radius: 50%;
 }
 #imgPerfil {
+  background-color: #fff;
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -117,14 +123,14 @@
 
 .sectionPublication {
   min-width: 40vw;
-  background-color: #EDE8E8;
+  background-color: #ede8e8;
   display: grid;
   border-radius: 20px;
   margin-top: 20px;
   padding: 10px;
   box-shadow: 0px 1px 10px #838bae;
 }
-#postForm{
+#postForm {
   width: 40vw;
 }
 .divcamera {
@@ -431,8 +437,7 @@
   background: #2e3c79;
   position: fixed;
   height: 75px;
-  font-family:'Work Sans', sans-serif;
- 
+  font-family: "Work Sans", sans-serif;
 }
 .nav-link {
   color: #fff;
@@ -475,6 +480,86 @@
 }
 .icon-edit {
   color: #1d1d17;
+  padding: 10px;
+  border-radius: 25%;
+}
+.icon-edit:hover {
+  color: #2e3c79;
+  background-color: #acd2fd;
+}
+.tooltip {
+  padding: 5px;
+  background-color: #cccccc;
+  color: #293462;
+  border-radius: 10px;
+  box-shadow: 0px 1px 10px #838bae;
+  text-align: center;
+}
+.tooltip span {
+  color: #1d1d17;
+}
+
+.modalEditPost {
+  display: flex;
+  position: relative;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 350px;
+  box-shadow: 0px 1px 10px #838bae;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+}
+.modalDeletePost {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.modalDeleteWarning {
+  display: flex;
+  position: relative;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0px 1px 10px #838bae;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+}
+.modalTitleDelete {
+  padding: 5px;
+}
+#inputUpdatedText {
+  width: 250px;
+  resize: none;
+}
+.textimgUp {
+  font-size: 16px;
+  margin: 5px 10px;
+  width: 200px;
+}
+.divcameraUpdate {
+  display: flex;
+  max-width: 280px;
+  margin-left: 5px;
+  margin-right: 5px;
+  align-items: center;
+  flex-direction: row;
+}
+#postForm2 {
+  width: 380px;
+}
+.buttonGeneralPublicationUpdate {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5px;
+  width: 350px;
 }
 /* Navbar section */
 
@@ -499,6 +584,7 @@
   .sectionPublication,
   .namePhotoPublication {
     max-width: 86vw;
+    min-width: 85vw;
     font-size: 14px;
   }
   .divcamera {
@@ -512,9 +598,10 @@
   }
   .buttonGeneralPublication {
     max-width: 300px;
+    min-width: 280px;
   }
   #inputText {
-    width: 80%;
+    width: 290px;
     margin: 1% 3%;
   }
   #postContainer,

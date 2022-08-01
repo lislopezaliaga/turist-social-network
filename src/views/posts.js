@@ -4,6 +4,7 @@ import {
   getUserById,
   updateLikes,
   deletePost,
+  // eslint-disable-next-line no-unused-vars
   updatePost,
 } from '../firebase/firestore.js';
 
@@ -71,7 +72,6 @@ const updatePostClick = (divOptions, postContainer) => {
     const idPostBtn = e.target.dataset.id;
 
     const postindividual = postContainer.querySelectorAll('.postindividual');
-    console.log(postindividual);
 
     postindividual.forEach(async (post) => {
       if (idPostBtn === post.id) {
@@ -83,6 +83,7 @@ const updatePostClick = (divOptions, postContainer) => {
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
         // postData.imgPost,
+        // eslint-disable-next-line no-use-before-define
         modalUpdate.innerHTML = templateEditModal(
           postData.publication,
           postData.imgPost,
@@ -93,6 +94,7 @@ const updatePostClick = (divOptions, postContainer) => {
         // Capturar los nuevos datos ingresados
         const inputFile = document.querySelector('#inputSelectImg');
         console.log(inputFile);
+        // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
 
         // Guardar cambios con btn guardar
@@ -142,6 +144,7 @@ function addImage() {
   const read = new FileReader();
   const file = this.files;
 
+  // eslint-disable-next-line func-names
   read.onload = function () {
     const result = this.result;
     const url = result;
@@ -149,6 +152,7 @@ function addImage() {
 
     imageContainer.appendChild(imagen);
     imageContainer.appendChild(iconX);
+    // eslint-disable-next-line no-use-before-define
     deleteBtnPreviewImg();
   };
 
@@ -174,8 +178,7 @@ function deleteBtnPreviewImg() {
 
 const templateDeleteModal = () => {
   const deleteModalContent = `<div id="modalDeletePost" class="modalDeletePost">
-    <button type="button" class="cerrarModalPost" id="cerrarDelete">X</button>
-    <img class="gatitoWarning" src="image/gatoTriste.png">
+    <img class="gatitoWarning" src="img/triste.png">
     <p class="modalTitleDelete">¿Estás seguro que deseas eliminar?</p>
     <div class= "btnsDeleteCancel">
       <button type="button" class="btnPost" id="deletePost">Eliminar</button>
@@ -193,13 +196,18 @@ const deletePostClick = (divOptions, postContainer) => {
 
     // Crear modal
     const modalDelete = document.createElement('dialog');
+    modalDelete.innerHTML = '';
     modalDelete.innerHTML = templateDeleteModal();
     modalDelete.setAttribute('class', 'modalDeleteWarning');
     postContainer.appendChild(modalDelete);
     modalDelete.showModal();
 
     // Seleccionar btn cancelar y eliminar post
-    modalDelete.querySelector('#closeModal').addEventListener('click', () => modalDelete.close());
+    modalDelete.querySelector('#closeModal').addEventListener('click', () => {
+      modalDelete.close();
+      postContainer.removeChild(modalDelete);
+      console.log(postContainer.childNodes);
+    });
     modalDelete.querySelector('#deletePost').addEventListener('click', () => {
       deletePost(idPostBtn);
       modalDelete.close();
@@ -223,15 +231,15 @@ const templateEditModal = (
     </div>
   </div>
 
-  <form id="postForm">
+  <form id="postForm2">
     <textarea placeholder="Escribe Algo ..." id='inputUpdatedText'>${textPost}</textarea>
   
-    <div class="divcamera">
+    <div class="divcameraUpdate">
       <div class="inputFiles relative">
         <label for="compartirImg"></label>
         <input type="file"  id="inputSelectImg" >
       </div>
-      <div class="textimg"><h4 > Cambia tu imagen </h4></div>
+      <div class="textimgUp"><h4 > Cambia tu imagen </h4></div>
       <select id="selectYourCountry"> 
         <option value=" alguna parte del mundo" disabled selected>${country}</option>
       </select>
@@ -243,7 +251,7 @@ const templateEditModal = (
       </div>
     </div>
 
-    <div class="buttonGeneralPublication">
+    <div class="buttonGeneralPublicationUpdate">
       <button id = "saveUpdate" class="buttonPublication" type="submit">Guardar</button>
       <button id = "cancelUpdate" class="buttonPublication">Cancelar</button>
     </div>
