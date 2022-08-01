@@ -7,7 +7,7 @@ export const perfilView = () => {
     
     <div class="firstDivPerfil">
       <div class="photoPerfil">
-        <img id="imgPerfil" src=${userObject.profilePhoto}>
+        <img id="imgPerfil" src="${userObject.profilePhoto}">
       </div>
       <h2 class="nombreuser">${userObject.name}</h2> 
     </div>

@@ -101,17 +101,17 @@ async function addPublications(e) {
 }
 
 function addImage() {
-/*   const divAddImage = document.getElementById('addImage');
+  /*   const divAddImage = document.getElementById('addImage');
 
-  const imageContainer = document.createElement('div');
-  imageContainer.setAttribute('class', 'imageContainer');
-  divAddImage.appendChild(imageContainer);
+    const imageContainer = document.createElement('div');
+    imageContainer.setAttribute('class', 'imageContainer');
+    divAddImage.appendChild(imageContainer);
 
-  const imagen = document.createElement('img');
+    const imagen = document.createElement('img');
 
-  const iconX = document.createElement('span');
-  iconX.setAttribute('id', 'deleteButtonImage');
-  iconX.innerHTML = '✖'; */
+    const iconX = document.createElement('span');
+    iconX.setAttribute('id', 'deleteButtonImage');
+    iconX.innerHTML = '✖'; */
 
   const divAddImage = document.getElementById('addImage');
   divAddImage.innerHTML = `
@@ -120,6 +120,7 @@ function addImage() {
       <span id = "deleteButtonImage">✖</span>
     </div>
   `;
+  // eslint-disable-next-line no-use-before-define
   deleteButtonPreviewImg();
 
   /* const read = new FileReader();
@@ -134,7 +135,7 @@ function addImage() {
     imageContainer.appendChild(iconX);
     deleteButtonPreviewImg();
   }; */
-/*   const preview = document.querySelector('#imgLoad'); */
+  /*   const preview = document.querySelector('#imgLoad'); */
 
   const file = document.querySelector('#compartirImg').files[0];
   const reader = new FileReader();
@@ -149,7 +150,7 @@ function addImage() {
     reader.readAsDataURL(file);
   }
 
-/*   read.readAsDataURL(file[0]); */
+  /*   read.readAsDataURL(file[0]); */
 }
 
 function deleteButtonPreviewImg() {
