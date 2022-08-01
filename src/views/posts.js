@@ -8,6 +8,9 @@ import {
   updatePost,
 } from '../firebase/firestore.js';
 
+import { shareImgPost } from '../firebase/storage.js';
+
+let count = 'image';
 function templatePostContent(
   idPost,
   photo,
@@ -75,36 +78,67 @@ const updatePostClick = (divOptions, postContainer) => {
 
     postindividual.forEach(async (post) => {
       if (idPostBtn === post.id) {
-        // Crear modal
-        const modalUpdate = document.createElement('dialog');
-        modalUpdate.setAttribute('class', 'modalEditPost');
-        postContainer.appendChild(modalUpdate);
+        const modalContainerEdit = document.querySelector('#modalEditContainer');
 
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
         // postData.imgPost,
         // eslint-disable-next-line no-use-before-define
-        modalUpdate.innerHTML = templateEditModal(
+        modalContainerEdit.innerHTML = templateEditModal(
           postData.publication,
           postData.imgPost,
-          postData.country,
-          postData.privacy,
+          // postData.country,
+          // postData.privacy,
         );
-        modalUpdate.showModal();
+        if (!modalContainerEdit.open) {
+          modalContainerEdit.showModal();
+        }
         // Capturar los nuevos datos ingresados
         const inputFile = document.querySelector('#inputSelectImg');
         console.log(inputFile);
         // eslint-disable-next-line no-use-before-define
+        let urlImage = postData.imgPost;
+
         inputFile.addEventListener('change', addImage);
 
-        // Guardar cambios con btn guardar
-        modalUpdate.querySelector('#cancelUpdate').addEventListener('click', () => {
-          // updatePost(post.id, pContentPost.textContent, urlImage);
-          modalUpdate.close();
+        // if( inputFile.addEventListener('change',addImage)){
+        //       // chargingGif.style.display = 'flex';
+        //       // postForm.style.display = 'none';
+        //       /* --------subir el post al storage */
+        //       await shareImgPost(url, file);
+
+        //       /* --------obtener la url del post */
+
+        //       urlImage = await shareImgPost(url, file);
+
+        //       Guardar cambios con btn guardar
+        // }
+
+        modalContainerEdit.querySelector('#saveUpdate').addEventListener('click', async () => {
+          const chargingGif = document.querySelector('#modalCharginEdit');
+          chargingGif.style.display = 'block';
+
+          if (count === 'changeImage') {
+            const file = inputFile.files[0];
+            const url = file.name;
+            await shareImgPost(url, file);
+
+            /* --------obtener la url del post */
+            urlImage = await shareImgPost(url, file);
+          }
+          const pContentPost = document.querySelector('#inputUpdatedText').value;
+          console.log(pContentPost);
+          await updatePost(post.id, pContentPost, urlImage);
+
+          modalContainerEdit.close();
         });
 
         // Cerrar modal con boton cancelar
-        modalUpdate.querySelector('#cancelUpdate').addEventListener('click', () => modalUpdate.close());
+        modalContainerEdit.querySelector('#cancelUpdate').addEventListener('click', () => {
+          // updatePost(post.id, pContentPost.textContent, urlImage);
+          modalContainerEdit.close();
+        });
+
         /* const pContentPost = post.querySelector('.texto');
         pContentPost.contentEditable = 'true';
         pContentPost.focus();
@@ -128,11 +162,15 @@ const updatePostClick = (divOptions, postContainer) => {
 };
 
 function addImage() {
+  count = 'changeImage';
+  console.log(count);
   const divAddImage = document.getElementById('addImageContainer');
 
-  const imageContainer = document.createElement('div');
-  imageContainer.setAttribute('class', 'imageContainer');
-  divAddImage.appendChild(imageContainer);
+  const imageContainer = '<div class=\'imageContainer\' id="imageContainer"></div>';
+  console.log(JSON.stringify(imageContainer));
+
+  console.log(imageContainer);
+  divAddImage.innerHTML = imageContainer;
 
   const imagen = document.createElement('img');
 
@@ -149,9 +187,9 @@ function addImage() {
     const result = this.result;
     const url = result;
     imagen.src = url;
-
-    imageContainer.appendChild(imagen);
-    imageContainer.appendChild(iconX);
+    const newImageContainer = document.querySelector('#imageContainer');
+    newImageContainer.appendChild(imagen);
+    newImageContainer.appendChild(iconX);
     // eslint-disable-next-line no-use-before-define
     deleteBtnPreviewImg();
   };
@@ -189,28 +227,29 @@ const templateDeleteModal = () => {
   return deleteModalContent;
 };
 
-const deletePostClick = (divOptions, postContainer) => {
+const deletePostClick = (divOptions) => {
   const deleteOpt = divOptions.querySelector('#delete-post');
   deleteOpt.addEventListener('click', (e) => {
     const idPostBtn = e.target.dataset.id;
 
     // Crear modal
-    const modalDelete = document.createElement('dialog');
-    modalDelete.innerHTML = '';
-    modalDelete.innerHTML = templateDeleteModal();
-    modalDelete.setAttribute('class', 'modalDeleteWarning');
-    postContainer.appendChild(modalDelete);
-    modalDelete.showModal();
+
+    const modalContainer = document.querySelector('#modalContainer');
+    modalContainer.innerHTML = templateDeleteModal();
+
+    if (!modalContainer.open){
+      modalContainer.showModal();
+    }
 
     // Seleccionar btn cancelar y eliminar post
-    modalDelete.querySelector('#closeModal').addEventListener('click', () => {
-      modalDelete.close();
-      postContainer.removeChild(modalDelete);
-      console.log(postContainer.childNodes);
+    modalContainer.querySelector('#closeModal').addEventListener('click', () => {
+      modalContainer.close();
+
+      console.log(modalContainer.close());
     });
-    modalDelete.querySelector('#deletePost').addEventListener('click', () => {
+    modalContainer.querySelector('#deletePost').addEventListener('click', () => {
       deletePost(idPostBtn);
-      modalDelete.close();
+      modalContainer.close();
     });
   });
 };
@@ -218,20 +257,22 @@ const deletePostClick = (divOptions, postContainer) => {
 const templateEditModal = (
   textPost,
   imgUrl,
-  country,
-  privacy,
 ) => {
   const editModalContent = `
+  <div id = "modalCharginEdit" style = "display:none">
+    <p>Cargando ...</p>
+    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
+  </div>
   <div class="namePhotoPublication">
     <div class='nameSelectPublication'>
       <select id="selectPostArea">
-              <option value="🌎">🌎 ${privacy}</option>
+              <option value="🌎">🌎 Público</option>
               <option value="🔒">🔒 Privado </option>
       </select>
     </div>
   </div>
 
-  <form id="postForm2">
+  <div id="postForm2">
     <textarea placeholder="Escribe Algo ..." id='inputUpdatedText'>${textPost}</textarea>
   
     <div class="divcameraUpdate">
@@ -241,7 +282,7 @@ const templateEditModal = (
       </div>
       <div class="textimgUp"><h4 > Cambia tu imagen </h4></div>
       <select id="selectYourCountry"> 
-        <option value=" alguna parte del mundo" disabled selected>${country}</option>
+        <option value=" alguna parte del mundo" disabled selected></option>
       </select>
     </div>
 
@@ -255,7 +296,7 @@ const templateEditModal = (
       <button id = "saveUpdate" class="buttonPublication" type="submit">Guardar</button>
       <button id = "cancelUpdate" class="buttonPublication">Cancelar</button>
     </div>
-  </form>`;
+  </div>`;
 
   return editModalContent;
 };
@@ -274,7 +315,7 @@ function editPostOptions(postContainer) {
         console.log('apretaste los 2 puntos');
         const tooltip = iconOptions.querySelector('.tooltip');
         tooltip.classList.toggle('hide');
-        deletePostClick(tooltip, postContainer);
+        deletePostClick(tooltip);
         updatePostClick(tooltip, postContainer);
       });
     }
@@ -302,7 +343,10 @@ export const postView = () => {
   actualizarPosts((querySnapshoot) => {
     /** Seleccionamos al container para añadir el post */
     const postContainer = document.getElementById('postContainer');
-    postContainer.innerHTML = '';
+    /** Creamos un div para el modal */
+    const modalContainer = `<dialog id="modalContainer">
+     </dialog><dialog id="modalEditContainer"></dialog>`;
+    postContainer.innerHTML = modalContainer;
     /** Creamos un div post content */
     const postContainerGeneral = document.createElement('div');
     postContainerGeneral.setAttribute('class', 'postsContent');
