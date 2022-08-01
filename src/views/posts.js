@@ -203,11 +203,7 @@ const deletePostClick = (divOptions, postContainer) => {
     modalDelete.showModal();
 
     // Seleccionar btn cancelar y eliminar post
-    modalDelete.querySelector('#closeModal').addEventListener('click', () => {
-      modalDelete.close();
-      postContainer.removeChild(modalDelete);
-      console.log(postContainer.childNodes);
-    });
+    modalDelete.querySelector('#closeModal').addEventListener('click', () => modalDelete.close());
     modalDelete.querySelector('#deletePost').addEventListener('click', () => {
       deletePost(idPostBtn);
       modalDelete.close();
