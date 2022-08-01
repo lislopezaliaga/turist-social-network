@@ -99,6 +99,7 @@ const updatePostClick = (divOptions, postContainer) => {
         // eslint-disable-next-line no-use-before-define
         let urlImage = postData.imgPost;
 
+        // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
 
         // if( inputFile.addEventListener('change',addImage)){
@@ -237,7 +238,7 @@ const deletePostClick = (divOptions) => {
     const modalContainer = document.querySelector('#modalContainer');
     modalContainer.innerHTML = templateDeleteModal();
 
-    if (!modalContainer.open){
+    if (!modalContainer.open) {
       modalContainer.showModal();
     }
 
