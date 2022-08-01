@@ -2,7 +2,7 @@ import { dateTime } from '../views/timeago.js';
 import {
   db, doc,
   setDoc, getDoc, addDoc, collection, serverTimestamp,
-  onSnapshot, orderBy, query, updateDoc, deleteDoc, where,
+  onSnapshot, orderBy, query, updateDoc, deleteDoc,
 } from './firebaseconfig.js';
 
 // Añadir nuevo usuario (Document) a users (colección)
@@ -59,7 +59,7 @@ export const loadPublications = (
 // export const obtenerPosts = () => onSnapshot(collection(db, 'posts'),(callback));
 
 export const actualizarPosts = async (callback) => {
-  await onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), where('privacy', '==', '🌎'), (callback));
+  await onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (callback));
 };
 
 export const updateLikes = async (idPost, arrayLikes) => {

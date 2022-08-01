@@ -70,6 +70,7 @@ async function addPublications(e) {
   if (inputTypeFile.value) {
     const urlImage = inputTypeFile.files[0].name;
     const file = inputTypeFile.files[0];
+    console.log(file);
 
     chargingGif.style.display = 'flex';
     postForm.style.display = 'none';
