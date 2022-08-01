@@ -99,6 +99,7 @@ const updatePostClick = (divOptions, postContainer) => {
         // eslint-disable-next-line no-use-before-define
         let urlImage = postData.imgPost;
 
+        // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
         
         const deleteImage = document.querySelector('#deleteImageOld');
