@@ -10,7 +10,7 @@ import {
 
 import { shareImgPost } from '../firebase/storage.js';
 
-let count = 'image';
+let count = '';
 function templatePostContent(
   idPost,
   photo,
@@ -100,31 +100,29 @@ const updatePostClick = (divOptions, postContainer) => {
         let urlImage = postData.imgPost;
 
         inputFile.addEventListener('change', addImage);
+        
+        const deleteImage = document.querySelector('#deleteImageOld');
+        deleteImage.addEventListener('click', () => {
+          urlImage = '';
+          const imgLoad = document.getElementById('oldImgContainer');
+            imgLoad.innerHTML = '';
 
-        // if( inputFile.addEventListener('change',addImage)){
-        //       // chargingGif.style.display = 'flex';
-        //       // postForm.style.display = 'none';
-        //       /* --------subir el post al storage */
-        //       await shareImgPost(url, file);
-
-        //       /* --------obtener la url del post */
-
-        //       urlImage = await shareImgPost(url, file);
-
-        //       Guardar cambios con btn guardar
-        // }
+        });
 
         modalContainerEdit.querySelector('#saveUpdate').addEventListener('click', async () => {
           const chargingGif = document.querySelector('#modalCharginEdit');
           chargingGif.style.display = 'block';
+          if (inputFile.files.length > 0) {
+            if (count === 'changeImage') {
+              const file = inputFile.files[0];
+              const url = file.name;
+              await shareImgPost(url, file);
 
-          if (count === 'changeImage') {
-            const file = inputFile.files[0];
-            const url = file.name;
-            await shareImgPost(url, file);
-
-            /* --------obtener la url del post */
-            urlImage = await shareImgPost(url, file);
+              /* --------obtener la url del post */
+              urlImage = await shareImgPost(url, file);
+              count = '';
+            }
+            
           }
           const pContentPost = document.querySelector('#inputUpdatedText').value;
           console.log(pContentPost);
@@ -137,6 +135,7 @@ const updatePostClick = (divOptions, postContainer) => {
         modalContainerEdit.querySelector('#cancelUpdate').addEventListener('click', () => {
           // updatePost(post.id, pContentPost.textContent, urlImage);
           modalContainerEdit.close();
+          count = '';
         });
 
         /* const pContentPost = post.querySelector('.texto');
@@ -237,7 +236,7 @@ const deletePostClick = (divOptions) => {
     const modalContainer = document.querySelector('#modalContainer');
     modalContainer.innerHTML = templateDeleteModal();
 
-    if (!modalContainer.open){
+    if (!modalContainer.open) {
       modalContainer.showModal();
     }
 
@@ -289,6 +288,7 @@ const templateEditModal = (
     <div id="addImageContainer" class = "containerPreviewImg">
       <div id="oldImgContainer" class = "imageContainer">
         <img src = ${imgUrl}/>
+        <span id = "deleteImageOld" class='closeImg'>✖</span>
       </div>
     </div>
 
