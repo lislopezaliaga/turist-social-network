@@ -1,7 +1,8 @@
-import { localStorageCall } from '../componentes/sessionStorage.js';
+import { sessionStorageCall } from '../componentes/sessionStorage.js';
 
 export const perfilView = () => {
-  const userObject = localStorageCall();
+  const userObject = sessionStorageCall();
+  console.log(userObject);
   // eslint-disable-next-line no-undef
   const perfilContent = `
     
@@ -29,6 +30,7 @@ export const perfilView = () => {
       `;
   const perfilContainer = document.createElement('section');
   perfilContainer.setAttribute('class', 'sectionPerfil');
+  perfilContainer.setAttribute('id', 'firstPerfil');
   perfilContainer.innerHTML = perfilContent;
   return perfilContainer;
 };

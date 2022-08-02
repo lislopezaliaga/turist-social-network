@@ -38,7 +38,7 @@ describe('formSigin', () => {
     // verificar que el mensaje de error este dentro del documento
   });
   // eslint-disable-next-line jest/no-focused-tests
-  it.only('Deberia pasar', async () => {
+  it('Deberia pasar', async () => {
     // DADO
     const mainSection = document.createElement('div');
     mainSection.id = 'container';

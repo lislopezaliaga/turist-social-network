@@ -1,4 +1,4 @@
-import { localStorageCall } from '../componentes/sessionStorage.js';
+import { sessionStorageCall } from '../componentes/sessionStorage.js';
 import {
   actualizarPosts,
   getUserById,
@@ -90,7 +90,7 @@ const updatePostClick = (divOptions, postContainer) => {
           // postData.country,
           // postData.privacy,
         );
-       
+
         if (!modalContainerEdit.open) {
           modalContainerEdit.showModal();
         }
@@ -102,24 +102,24 @@ const updatePostClick = (divOptions, postContainer) => {
 
         // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
-        if(postData.imgPost === ''){
+        if (postData.imgPost === '') {
           const imgLoad = document.getElementById('oldImgContainer');
           imgLoad.innerHTML = '';
-        }else{ 
-        const deleteImage = document.querySelector('#deleteImageOld');
-        deleteImage.addEventListener('click', () => {
-          urlImage = '';
-          const imgLoad = document.getElementById('oldImgContainer');
+        } else {
+          const deleteImage = document.querySelector('#deleteImageOld');
+          deleteImage.addEventListener('click', () => {
+            urlImage = '';
+            const imgLoad = document.getElementById('oldImgContainer');
             imgLoad.innerHTML = '';
-
-        });}
+          });
+        }
 
         modalContainerEdit.querySelector('#saveUpdate').addEventListener('click', async () => {
           const chargingGif = document.querySelector('#modalCharginEdit');
           chargingGif.style.display = 'block';
           const chargingContainer = document.querySelector('#chargingContainer');
           chargingContainer.style.display = 'none';
-          
+
           if (inputFile.files.length > 0) {
             if (count === 'changeImage') {
               const file = inputFile.files[0];
@@ -130,7 +130,6 @@ const updatePostClick = (divOptions, postContainer) => {
               urlImage = await shareImgPost(url, file);
               count = '';
             }
-            
           }
           const pContentPost = document.querySelector('#inputUpdatedText').value;
           console.log(pContentPost);
@@ -317,7 +316,7 @@ function editPostOptions(postContainer) {
   iconEditPost.forEach((iconOptions) => {
     const idCurrentPost = iconOptions.dataset.id;
 
-    if (iconOptions.id === localStorageCall().id) {
+    if (iconOptions.id === sessionStorageCall().id) {
       // const iconEditOptions = document.querySelector('.icon')
       // eslint-disable-next-line no-param-reassign
       iconOptions.innerHTML = templateEditPost(idCurrentPost);
@@ -334,7 +333,7 @@ function editPostOptions(postContainer) {
 
 async function likesHandler(e) {
   const btnLike = e.target;
-  const idUser = localStorageCall().id;
+  const idUser = sessionStorageCall().id;
   const idPost = btnLike.getAttribute('name');
   const dataPost = await getUserById(idPost, 'posts');
 
@@ -396,7 +395,7 @@ export const postView = () => {
 };
 
 const verifyLike = (arrLikesPost, idPost) => {
-  const idUser = localStorageCall().id;
+  const idUser = sessionStorageCall().id;
   const containerPost = document.getElementById(`${idPost}`);
   if (arrLikesPost.includes(idUser)) {
     containerPost.childNodes[7].classList.add('clickeado');

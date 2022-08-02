@@ -33,7 +33,9 @@ export const changeTmp = (route) => {
     case '#/perfil': {
       mainSection.appendChild(components.Home());
       mainSection.appendChild(components.inicio(components.muro(components.profile())));
-  
+      const perfil = document.querySelector('#firstPerfil');
+      perfil.style.display = 'none';
+
       break;
     }
     default:

@@ -1,22 +1,14 @@
-import { localStorageCall } from '../componentes/sessionStorage.js';
+import { sessionStorageCall } from '../componentes/sessionStorage.js';
 // import { userid } from '../firebase/auth.js';
-import { dataUser, getUserById, updateUser } from '../firebase/firestore.js';
-
-const userObject = localStorageCall();
-// async function users(){
-//   const usuario = await userid();
-//       return usuario;
-// }
-async function user() {
-  const datausuario = await dataUser(userObject.id);
-  // datausuario.then((hola) => console.log(hola.id));
-  console.log(datausuario);
-  console.log(userObject.id);
-  return datausuario;
-}
+import { getUserById, updateUser } from '../firebase/firestore.js';
 
 export const profileView = () => {
-  user();
+  const userObject = sessionStorageCall();
+  // setTimeout( async() => {
+  //   const perfilData = await dataUser(userObject.id);
+  //   console.log(perfilData);
+  // }, 1000);
+
   // eslint-disable-next-line no-undef
   const perfilContent = `
       
@@ -56,11 +48,17 @@ export const profileView = () => {
 
 async function editPerfilUser() {
   const modalEdit = document.querySelector('#modalEdit');
+  const userObject = sessionStorageCall();
 
   const perfilData = await getUserById(userObject.id, 'users');
   console.log(perfilData);
 
-  modalEdit.innerHTML = modalEditPerfil(perfilData.name, perfilData.description, perfilData.country, perfilData.interest);
+  modalEdit.innerHTML = modalEditPerfil(
+    perfilData.name,
+    perfilData.description,
+    perfilData.country,
+    perfilData.interest,
+  );
   if (!modalEdit.open) {
     modalEdit.showModal();
   }
@@ -83,8 +81,7 @@ async function editPerfilUser() {
       name: namepefil,
       profilePhoto: '../img/user.png',
     };
-
-    localStorage.setItem('USER', JSON.stringify(userStorage));
+    sessionStorage.setItem('USER', JSON.stringify(userStorage));
     //     const user = await userid();
     // console.log(user.uid);
     updateUser(userObject.id, namepefil, descriptionpefil, paispefil, interesespefil);

@@ -5,9 +5,9 @@ export function editProfile() {
   muroInicio.setAttribute('id', 'divContainerProfile');
   muroInicio.appendChild(profileView());
 
-//   const postContainer = document.createElement('div');
-//   postContainer.setAttribute('id', 'postContainer');
-//   muroInicio.appendChild(postContainer);
-//   postView();
+  //   const postContainer = document.createElement('div');
+  //   postContainer.setAttribute('id', 'postContainer');
+  //   muroInicio.appendChild(postContainer);
+  //   postView();
   return muroInicio;
 }
