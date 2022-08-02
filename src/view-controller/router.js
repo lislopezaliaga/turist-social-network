@@ -30,6 +30,12 @@ export const changeTmp = (route) => {
       mainSection.appendChild(components.Home());
       break;
     }
+    case '#/perfil': {
+      mainSection.appendChild(components.Home());
+      mainSection.appendChild(components.inicio(components.muro(components.profile())));
+  
+      break;
+    }
     default:
       mainSection.appendChild(components.different());
   }

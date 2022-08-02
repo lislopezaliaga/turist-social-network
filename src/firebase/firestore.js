@@ -80,3 +80,28 @@ export const updatePost = (idPost, contentPost, urlImg) => {
     imgPost: urlImg,
   });
 };
+
+// Editanto user
+export const updateUser = (idUser, name, description, country, interest) => {
+  updateDoc(doc(db, 'users', idUser), {
+    name,
+    description,
+    country,
+    interest,
+  });
+};
+
+export const dataUser = (userId) => {
+  onSnapshot(doc(db, 'users', userId), async (file) => {
+    await file.data();
+    // return fileNew;
+  });
+};
+// const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
+//   console.log("Current data: ", doc.data());
+// });
+// export const getUserById = (userId, colection) => {
+//   const docRef = doc(db, colection, userId);
+//   const docSnap = getDoc(docRef).then((userDoc) => userDoc.data());
+//   return docSnap;
+// };
