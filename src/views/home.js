@@ -33,13 +33,23 @@ export const home = () => {
       </li>
     </ul>
     <div class="burgerMenu">
+      <div id='perfilView'>
         <img class="logomenuh"  src="../img/user.png"/>
         <i class="fa fa-caret-down"></i>
+        
+      </div>
+      <div id='optionsAccount'></div>
     </div>
   </nav>`;
   const homeContainer = document.createElement('div');
   homeContainer.setAttribute('class', 'homeContainer');
   homeContainer.innerHTML = homeContent;
 
+  const perfilview = homeContainer.querySelector('#perfilView');
+  perfilview.addEventListener('click', () => {
+    const optionsAccount = homeContainer.querySelector('#optionsAccount');
+    const templateOptions = '<a href="#/perfil">Perfil</a><p>Cerrar Sesión</p>';
+    optionsAccount.innerHTML = templateOptions;
+  });
   return homeContainer;
 };

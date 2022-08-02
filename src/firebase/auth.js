@@ -20,3 +20,4 @@ export const signInGoogle = () => {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 };
+export const userid = () => auth.currentUser;

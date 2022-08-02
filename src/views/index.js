@@ -4,6 +4,7 @@ import { home } from './home.js';
 import { inicioView } from './inicio.js';
 import { muroView } from './muro.js';
 import { muroInicioView } from './muroInicio.js';
+import { editProfile } from './editProfile.js';
 
 const components = {
   signin: formSignIn,
@@ -12,6 +13,7 @@ const components = {
   muro: muroView,
   inicio: inicioView,
   muroInicio: muroInicioView,
+  profile: editProfile,
 };
 
 export { components };
