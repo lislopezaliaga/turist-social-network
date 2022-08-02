@@ -1,5 +1,5 @@
 import { loadPublications } from '../firebase/firestore.js';
-import { localStorageCall } from '../componentes/sessionStorage.js';
+import { sessionStorageCall } from '../componentes/sessionStorage.js';
 import { shareImgPost } from '../firebase/storage.js';
 import { paises } from './country.js';
 
@@ -52,15 +52,15 @@ async function addPublications(e) {
   const privacyOption = privacySelect.value;
 
   const inputText = document.querySelector('#inputText');
-  const creator = localStorageCall().id;
+  const creator = sessionStorageCall().id;
 
   const contentPost = inputText.value;
 
   const countrySelect = document.querySelector('#selectCountry');
   const countryOption = countrySelect.value;
 
-  const namecreator = localStorageCall().name;
-  const photoCreator = localStorageCall().profilePhoto;
+  const namecreator = sessionStorageCall().name;
+  const photoCreator = sessionStorageCall().profilePhoto;
   const inputTypeFile = document.getElementById('compartirImg');
 
   const postForm = document.querySelector('#postForm');
@@ -167,7 +167,8 @@ function deleteButtonPreviewImg() {
 }
 
 export const publicationView = () => {
-  const userObject = localStorageCall();
+  const userObject = sessionStorageCall();
+  console.log(userObject);
   const publicationContent = templatePublication(
     userObject.profilePhoto,
     userObject.name,

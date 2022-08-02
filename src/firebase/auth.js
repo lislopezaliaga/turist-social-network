@@ -5,7 +5,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword, signOut,
 } from './firebaseconfig.js';
 
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
@@ -21,3 +21,4 @@ export const signInGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 export const userid = () => auth.currentUser;
+export const cierreActividadUsuario = () => signOut(auth);

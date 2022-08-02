@@ -6,14 +6,14 @@ import {
 } from './firebaseconfig.js';
 
 // Añadir nuevo usuario (Document) a users (colección)
-export async function createNewUser(name, email, userId) {
+export async function createNewUser(name, email, userId, profilePhoto) {
   await setDoc(doc(db, 'users', userId), {
     name,
     email,
     description: 'Soy amante de los viajes',
     country: 'Global',
     interest: 'Nuevas aventuras',
-    profilePhoto: '../img/user.png',
+    profilePhoto,
   });
   console.log('estoy llamando a createuser');
 }
@@ -91,10 +91,9 @@ export const updateUser = (idUser, name, description, country, interest) => {
   });
 };
 
-export const dataUser = (userId) => {
-  onSnapshot(doc(db, 'users', userId), async (file) => {
-    await file.data();
-    // return fileNew;
+export const dataUser = async (userId) => {
+  onSnapshot(doc(db, 'users', userId), (file) => {
+    console.log(file.data());
   });
 };
 // const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {

@@ -3,7 +3,7 @@
 /* <button><a href="#/home">Registrarse</a></button> */
 
 import { createNewUser } from '../firebase/firestore.js';
-import { addUser, emailVerificationHandler } from '../firebase/auth.js';
+import { addUser, cierreActividadUsuario, emailVerificationHandler } from '../firebase/auth.js';
 
 export const formSignUp = () => {
   const signUpContent = `
@@ -63,6 +63,8 @@ function verifyCompletedInput(name, email, password) {
 }
 
 export const signUpHandler = (e) => {
+  cierreActividadUsuario();
+  sessionStorage.clear();
   e.preventDefault();
   const invalidPassword = document.querySelector('#invalidPassword');
   const invalidEmail = document.querySelector('#invalidEmail');
@@ -85,9 +87,9 @@ export const signUpHandler = (e) => {
       console.log(emailRegister, userIdRegister);
 
       emailVerificationHandler().then(() => {
-        createNewUser(name, emailRegister, userIdRegister);
+        createNewUser(name, emailRegister, userIdRegister, '../img/user.png');
+        window.location.hash = '#/signin';
       });
-      window.location.hash = '#/signin';
     })
     .catch((error) => {
       const errorCode = error.code;
