@@ -69,18 +69,15 @@ export const signInHandler = (e) => {
   const password = inputPassword.value;
 
   verifyCompletedInput(email, password);
-  console.log('email');
   loginEmailPas(email, password)
     .then((userCredential) => {
-      console.log('hola');
       // Agregar nvo user
       const user = userCredential.user;
       // const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
       // console.log(emailRegister, userIdRegister);
-
+      console.log('email');
       if (user.emailVerified) {
-        console.log('te quiero');
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
           // console.log(userData);
@@ -90,7 +87,6 @@ export const signInHandler = (e) => {
           // console.log(userData);
           // Enviar al usuario con email verificado a la vista inicio
           window.location.hash = '#/inicio';
-          console.log(window.location.hash);
         });
       } else {
         const complete = document.querySelector('#complete');
@@ -132,15 +128,28 @@ export const signInGoogleHandler = (e) => {
       console.log(result);
 
       // Crear el usuario y almacenarlo en firestore
-      createNewUser(name, emailRegister, userIdRegister, photo);
-
       // Obtener data del user logueado para agregarlo al sessionStorage
-      getUserById(userIdRegister, 'users').then((userData) => {
-        const data = userData;
-        data.id = userIdRegister;
-        sessionStorage.setItem('USER', JSON.stringify(data));
-        window.location.hash = '#/inicio';
-      });
+      getUserById(userIdRegister, 'users')
+        .then((userData) => {
+          console.log(userData);
+          let localUser = userData;
+          if (!localUser) {
+            createNewUser(name, emailRegister, userIdRegister, photo);
+            localUser = {
+              country: 'Global',
+              description: '',
+              email: emailRegister,
+              interest: '',
+              name,
+              profilePhoto: photo,
+            };
+          }
+
+          const data = localUser;
+          data.id = userIdRegister;
+          sessionStorage.setItem('USER', JSON.stringify(data));
+          window.location.hash = '#/inicio';
+        });
     })
     .catch((error) => {
       // Handle Errors here.

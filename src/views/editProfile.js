@@ -1,13 +1,15 @@
-import { profileView } from './profile.js';
-
 export function editProfile() {
-  const muroInicio = document.createElement('div');
-  muroInicio.setAttribute('id', 'divContainerProfile');
-  muroInicio.appendChild(profileView());
+  const muroProfile = document.createElement('div');
+  muroProfile.setAttribute('id', 'divContainerProfile');
+
+  const perfil = document.createElement('div');
+  perfil.setAttribute('id', 'perfilUser');
+  muroProfile.appendChild(perfil);
+
+  return muroProfile;
 
   //   const postContainer = document.createElement('div');
   //   postContainer.setAttribute('id', 'postContainer');
   //   muroInicio.appendChild(postContainer);
   //   postView();
-  return muroInicio;
 }

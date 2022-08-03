@@ -1,7 +1,6 @@
 // Llamar a sessionStorage
 export const sessionStorageCall = () => {
   let userObject = sessionStorage.getItem('USER');
-  console.log(sessionStorage.USER);
   userObject = JSON.parse(sessionStorage.USER);
 
   return userObject;
