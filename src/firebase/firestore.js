@@ -92,16 +92,16 @@ export const updateUser = (idUser, name, description, country, interest) => {
 };
 
 // Obtener la data de cada user guardado en firestore
-export const getPosts = async () => {
-  const docSnap = query(collection(db, 'posts'), where('userId', '==', 'ipb0GzB5x2dAA4cfQRiTAUlj9jD3'));
+export const getPosts = async (idUser) => {
+  const docSnap = query(collection(db, 'posts'), where('userId', '==', `${idUser}`));
   const querySnapshot = await getDocs(docSnap);
   return querySnapshot;
 };
 
 // Editanto post
-export const updateCreatorName = (idPost) => {
+export const updateCreatorName = (idPost, name) => {
   updateDoc(doc(db, 'posts', idPost), {
-    nameCreator: 'holas',
+    nameCreator: name,
   });
 };
 // querySnapshot.forEach((doc) => {

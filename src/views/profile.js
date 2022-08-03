@@ -91,10 +91,10 @@ async function editPerfilUser() {
     updateUser(userObject.id, namepefil, descriptionpefil, paispefil, interesespefil);
     modalEdit.close();
 
-    const postsUser = await getPosts();
+    const postsUser = await getPosts(userObj.id);
     postsUser.forEach((doc) => {
       console.log(doc.id, ' => ', doc.data());
-      updateCreatorName(doc.id);
+      updateCreatorName(doc.id, namepefil);
     });
   });
 }

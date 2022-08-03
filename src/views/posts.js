@@ -355,7 +355,10 @@ export const postView = () => {
     /** Creamos un div para el modal */
     const modalContainer = `<dialog id="modalContainer">
      </dialog><dialog id="modalEditContainer"></dialog>`;
-    postContainer.innerHTML = modalContainer;
+    if (postContainer != null) {
+      postContainer.innerHTML = modalContainer;
+    }
+
     /** Creamos un div post content */
     const postContainerGeneral = document.createElement('div');
     postContainerGeneral.setAttribute('class', 'postsContent');
@@ -381,7 +384,9 @@ export const postView = () => {
         likesCount,
       );
       postContainerGeneral.innerHTML += postContent;
+
       postContainer.appendChild(postContainerGeneral);
+
       // eslint-disable-next-line no-use-before-define
       verifyLike(dato.likes, element.id);
     });
