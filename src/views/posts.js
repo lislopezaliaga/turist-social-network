@@ -101,13 +101,11 @@ const updatePostClick = (divOptions, postContainer) => {
 
         // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
-        
         const deleteImage = document.querySelector('#deleteImageOld');
         deleteImage.addEventListener('click', () => {
           urlImage = '';
           const imgLoad = document.getElementById('oldImgContainer');
-            imgLoad.innerHTML = '';
-
+          imgLoad.innerHTML = '';
         });
 
         modalContainerEdit.querySelector('#saveUpdate').addEventListener('click', async () => {
@@ -123,7 +121,6 @@ const updatePostClick = (divOptions, postContainer) => {
               urlImage = await shareImgPost(url, file);
               count = '';
             }
-            
           }
           const pContentPost = document.querySelector('#inputUpdatedText').value;
           console.log(pContentPost);
