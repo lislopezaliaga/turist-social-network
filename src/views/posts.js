@@ -45,8 +45,8 @@ function templatePostContent(
     </div>
 
     <div class="postReaction">
-      <i class="fa fa-heart like" name="${idPost}"></i>
-      <h3> ${likesCount}</h3>
+      <i class="fa fa-heart like" name="${idPost}"> </i> 
+      <h3> ${likesCount} me gusta</h3>
     </div>
 
     <div id="containerDelete"></div>

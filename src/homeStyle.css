@@ -72,7 +72,7 @@
   padding-bottom: 30px;
   margin-left: 40px;
   margin-top: 20px;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   /* position: fixed;  */
 }
 .firstDivPerfil {
@@ -243,7 +243,7 @@
   margin-bottom: 8px;
   max-width: 40vw;
   justify-content: flex-start;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 .namePhotoPublication img {
   border-radius: 50%;
@@ -315,7 +315,7 @@
 }
 .postNameImage {
   display: flex;
-  background-color: #e0e3e2;
+  background-color: #efefefad;
   max-width: 40vw;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
@@ -339,7 +339,7 @@
   display: flex;
   align-items: center;
   max-width: 40vw;
-  background-color: #e0e3e2;
+  background-color: #efefefad;
   border-radius: 0px 0px 10px 10px;
   padding: 10px;
 }
@@ -355,7 +355,7 @@
 }
 
 .clickeado {
-  color: #ff3030 !important;
+  color: #ed5e8b !important;
 }
 
 .noclick {
@@ -376,7 +376,7 @@
   background-color: #ffffff;
 }
 .namepost {
-  font-family: "Acme", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 20px;
   color: #000;
 }
@@ -392,7 +392,7 @@
   padding: 3px 4px;
 }
 .postindividual {
-  box-shadow: 0px 5px 8px #293462;
+  box-shadow: 2px 2px 5px 8px #293462;
   margin: 10px 0px;
   padding: 0px;
   border-radius: 10px;
@@ -407,7 +407,7 @@
   max-width: 90%;
 }
 .nombreuser {
-  font-size: 22px;
+  font-size: 23px;
   text-align: center;
 }
 #modal-charging {
