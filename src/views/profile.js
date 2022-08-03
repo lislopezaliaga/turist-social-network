@@ -1,57 +1,59 @@
 import { sessionStorageCall } from '../componentes/sessionStorage.js';
-// import { userid } from '../firebase/auth.js';
-import { getUserById, updateUser } from '../firebase/firestore.js';
 
-export const profileView = () => {
+import {
+  getPosts, getUserById, updateCreatorName, updateUser,
+} from '../firebase/firestore.js';
+
+export const profileView = async () => {
+  const perfil = document.querySelector('#firstPerfil');
+  perfil.style.display = 'none';
+
   const userObject = sessionStorageCall();
-  // setTimeout( async() => {
-  //   const perfilData = await dataUser(userObject.id);
-  //   console.log(perfilData);
-  // }, 1000);
 
-  // eslint-disable-next-line no-undef
+  tenplateEditProfile(userObject);
+};
+
+function tenplateEditProfile(userObject) {
+  const perfilContainer = document.getElementById('perfilUser');
+
   const perfilContent = `
-      
-      <div class="firstDivPerfil">
-        <div class="photoPerfil">
-          <img id="imgPerfil" src="${userObject.profilePhoto}">
-        </div>
-        <h2 class="nombreuser">${userObject.name}</h2> 
-        <div class="divPerfil">
-      <div class="divPerfil">
-        <h3><i class="fa fa-user"></i> Descripción</h3>
-        <p>${userObject.description}</p>
+    <div class="firstDivPerfil">
+      <div class="photoPerfil">
+        <img id="imgPerfil" src="${userObject.profilePhoto}">
       </div>
+      <h2 class="nombreuser">${userObject.name}</h2> 
       <div class="divPerfil">
-        <h3><i class="fa fa-globe"></i> País</h3>
-        <p>${userObject.country}</p>
-      </div>
-      <div class="divPerfil">
-        <h3><i class="fa fa-gratipay"></i> Intereses</h3>
-        <p>${userObject.interest}</p>
-      </div>
+    <div class="divPerfil">
+      <h3><i class="fa fa-user"></i> Descripción</h3>
+      <p>${userObject.description}</p>
     </div>
-        <button id='editPerfil'>Editar perfil</button>
-        <dialog id='modalEdit'><dialog>
-      </div>
-  
-        `;
-  const perfilContainer = document.createElement('section');
-  perfilContainer.setAttribute('class', 'sectionPerfil');
+    <div class="divPerfil">
+      <h3><i class="fa fa-globe"></i> País</h3>
+      <p>${userObject.country}</p>
+    </div>
+    <div class="divPerfil">
+      <h3><i class="fa fa-gratipay"></i> Intereses</h3>
+      <p>${userObject.interest}</p>
+    </div>
+  </div>
+      <button id='editPerfil'>Editar perfil</button>
+      <dialog id='modalEdit'><dialog>
+    </div>
+
+      `;
 
   perfilContainer.innerHTML = perfilContent;
 
   const editPeril = perfilContainer.querySelector('#editPerfil');
   editPeril.addEventListener('click', editPerfilUser);
   return perfilContainer;
-};
+}
 
 async function editPerfilUser() {
   const modalEdit = document.querySelector('#modalEdit');
   const userObject = sessionStorageCall();
 
   const perfilData = await getUserById(userObject.id, 'users');
-  console.log(perfilData);
 
   modalEdit.innerHTML = modalEditPerfil(
     perfilData.name,
@@ -81,11 +83,19 @@ async function editPerfilUser() {
       name: namepefil,
       profilePhoto: '../img/user.png',
     };
+    // llama otra vez a la funcion
     sessionStorage.setItem('USER', JSON.stringify(userStorage));
-    //     const user = await userid();
-    // console.log(user.uid);
+    const userObj = sessionStorageCall();
+    tenplateEditProfile(userObj);
+
     updateUser(userObject.id, namepefil, descriptionpefil, paispefil, interesespefil);
     modalEdit.close();
+
+    const postsUser = await getPosts();
+    postsUser.forEach((doc) => {
+      console.log(doc.id, ' => ', doc.data());
+      updateCreatorName(doc.id);
+    });
   });
 }
 function modalEditPerfil(name, description, pais, intereses) {

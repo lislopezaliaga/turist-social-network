@@ -4,7 +4,6 @@ import {
   getUserById,
   updateLikes,
   deletePost,
-  // eslint-disable-next-line no-unused-vars
   updatePost,
 } from '../firebase/firestore.js';
 
@@ -82,6 +81,7 @@ const updatePostClick = (divOptions, postContainer) => {
 
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
+
         // postData.imgPost,
         // eslint-disable-next-line no-use-before-define
         modalContainerEdit.innerHTML = templateEditModal(
