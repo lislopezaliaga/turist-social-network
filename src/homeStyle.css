@@ -163,6 +163,7 @@
   margin-right: 10px;
 }
 .textimg {
+  font-family: "Signika", sans-serif;
   font-size: 16px;
   margin: 5px 10px;
   width: 400px;
@@ -216,26 +217,63 @@
   align-items: center;
   margin-top: 5px;
 }
-.buttonPublication {
+.buttonPublication,
+#cancelButton {
   border: none;
   width: 30%;
   height: 35px;
   border-radius: 7px;
   cursor: pointer;
   font-size: 15px;
-  background-color: #cb9a3a;
+  background-color: #acd2fd;
   box-shadow: 0px 1px 10px #838bae;
   font-family: "Acme", sans-serif;
 }
-
+.buttonPublication2 {
+  border: none;
+  width: 80px;
+  height: 35px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #acd2fd;
+  box-shadow: 0px 1px 10px #838bae;
+  font-family: "Acme", sans-serif;
+}
+.btnPost,
+#guardarButton,
+#editPerfil {
+  order: none;
+  width: 80px;
+  height: 35px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #fff;
+  background-color: #023876;
+  box-shadow: 0px 1px 10px #838bae;
+  font-family: "Acme", sans-serif;
+}
+#editPerfil {
+  width: 100px;
+}
+.firstDivPerfil2 .nombreuser {
+  margin-top: 15px;
+}
 .buttonPublication:first-child {
   background-color: #34579c;
   color: #ffffff;
   border: none;
 }
 .buttonPublication:hover {
-  background-color: #d61c4e;
+  background-color: #709fb0;
 }
+.botonesProfile {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
 .namePhotoPublication {
   display: flex;
   align-items: center;
@@ -341,7 +379,12 @@
   max-width: 40vw;
   background-color: #efefefad;
   border-radius: 0px 0px 10px 10px;
-  padding: 10px;
+  padding: 15px;
+  font-family: "Signika", sans-serif;
+  font-weight: 600;
+}
+.fa-heart {
+  margin-right: 8px;
 }
 .iconpost {
   border-radius: 50%;
@@ -392,8 +435,8 @@
   padding: 3px 4px;
 }
 .postindividual {
-  -webkit-box-shadow: 4px 1px 16px 2px rgba(0, 0, 0, 0.93);
-  box-shadow: 4px 1px 16px 2px rgba(0, 0, 0, 0.93);
+  -webkit-box-shadow: 2px 5px 16px -1px rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 5px 16px -1px rgba(0, 0, 0, 0.9);
   margin: 10px 0px;
   padding: 0px;
   border-radius: 10px;
@@ -512,6 +555,8 @@
 }
 
 #modalEditContainer {
+  width: 350px;
+  border: none;
   position: absolute;
   top: 30%;
   left: 15%;
@@ -519,7 +564,8 @@
   padding: 10px;
   border-radius: 10px;
   max-width: 350px;
-  box-shadow: 0px 1px 10px #838bae;
+  -webkit-box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
   flex-direction: column;
   align-content: center;
   justify-content: center;
@@ -538,7 +584,9 @@
   padding: 10px;
   border-radius: 10px;
   width: 300px;
-  box-shadow: 0px 1px 10px #838bae;
+  border: none;
+  -webkit-box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
   flex-direction: column;
   align-content: center;
   justify-content: center;
@@ -608,6 +656,7 @@
   border-radius: 10px 10px 0 0;
 }
 #modalEdit {
+  border: none;
   position: absolute;
   top: 10%;
   left: 15%;
@@ -615,12 +664,18 @@
   padding: 10px;
   border-radius: 10px;
   width: 300px;
-  box-shadow: 0px 1px 10px #838bae;
+  -webkit-box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
   flex-direction: column;
   align-content: center;
   justify-content: center;
   align-items: stretch;
   overflow: hidden;
+}
+#modalEdit input {
+  padding-left: 10px;
+  -webkit-box-shadow: 1px 1px 18px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 18px 8px rgba(0, 0, 0, 0.3);
 }
 #modalEdit .photoPerfil,
 #modalEdit .inputFiles {
@@ -673,7 +728,7 @@
   #modalEditContainer,
   #modalContainer {
     top: 40%;
-    left: 2%;
+    left: 1%;
   }
   .divtitulopost {
     max-width: 70%;
@@ -751,8 +806,9 @@
     cursor: pointer;
   }
   .nav-menu_visible {
+    width: 50%;
     margin-top: 20px;
     height: auto;
-    left: 30%;
+    left: 50%;
   }
 }
