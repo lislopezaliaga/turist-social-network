@@ -88,8 +88,9 @@ export const signUpHandler = (e) => {
 
       emailVerificationHandler().then(() => {
         createNewUser(name, emailRegister, userIdRegister, '../img/user.png');
-        window.location.hash = '#/signin';
+        //pos antigua
       });
+      window.location.hash = '#/signin';
     })
     .catch((error) => {
       const errorCode = error.code;

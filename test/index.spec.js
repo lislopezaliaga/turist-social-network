@@ -38,7 +38,7 @@ describe('formSigin', () => {
     // verificar que el mensaje de error este dentro del documento
   });
   // eslint-disable-next-line jest/no-focused-tests
-  it('Deberia pasar', async () => {
+  it('Deberia pasar', () => {
     // DADO
     const mainSection = document.createElement('div');
     mainSection.id = 'container';
@@ -52,7 +52,7 @@ describe('formSigin', () => {
     // obtener el boton
 
     /*     // CUANDO
-      buttonLogin.click();
+      buttonLogin.click();n
       const inputEmail = document.querySelector('#email');
       const inputPassword = document.querySelector('#password');
       inputEmail.value = 'hola@gmail.com';
