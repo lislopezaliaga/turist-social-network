@@ -1,10 +1,9 @@
-import { localStorageCall } from '../componentes/sessionStorage.js';
+import { sessionStorageCall } from '../componentes/sessionStorage.js';
 import {
   actualizarPosts,
   getUserById,
   updateLikes,
   deletePost,
-  // eslint-disable-next-line no-unused-vars
   updatePost,
 } from '../firebase/firestore.js';
 
@@ -82,6 +81,7 @@ const updatePostClick = (divOptions, postContainer) => {
 
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
+
         // postData.imgPost,
         // eslint-disable-next-line no-use-before-define
         modalContainerEdit.innerHTML = templateEditModal(
@@ -90,6 +90,7 @@ const updatePostClick = (divOptions, postContainer) => {
           // postData.country,
           // postData.privacy,
         );
+
         if (!modalContainerEdit.open) {
           modalContainerEdit.showModal();
         }
@@ -101,16 +102,24 @@ const updatePostClick = (divOptions, postContainer) => {
 
         // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
-        const deleteImage = document.querySelector('#deleteImageOld');
-        deleteImage.addEventListener('click', () => {
-          urlImage = '';
+        if (postData.imgPost === '') {
           const imgLoad = document.getElementById('oldImgContainer');
           imgLoad.innerHTML = '';
-        });
+        } else {
+          const deleteImage = document.querySelector('#deleteImageOld');
+          deleteImage.addEventListener('click', () => {
+            urlImage = '';
+            const imgLoad = document.getElementById('oldImgContainer');
+            imgLoad.innerHTML = '';
+          });
+        }
 
         modalContainerEdit.querySelector('#saveUpdate').addEventListener('click', async () => {
           const chargingGif = document.querySelector('#modalCharginEdit');
           chargingGif.style.display = 'block';
+          const chargingContainer = document.querySelector('#chargingContainer');
+          chargingContainer.style.display = 'none';
+
           if (inputFile.files.length > 0) {
             if (count === 'changeImage') {
               const file = inputFile.files[0];
@@ -241,8 +250,6 @@ const deletePostClick = (divOptions) => {
     // Seleccionar btn cancelar y eliminar post
     modalContainer.querySelector('#closeModal').addEventListener('click', () => {
       modalContainer.close();
-
-      console.log(modalContainer.close());
     });
     modalContainer.querySelector('#deletePost').addEventListener('click', () => {
       deletePost(idPostBtn);
@@ -260,39 +267,41 @@ const templateEditModal = (
     <p>Cargando ...</p>
     <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
   </div>
-  <div class="namePhotoPublication">
-    <div class='nameSelectPublication'>
-      <select id="selectPostArea">
-              <option value="🌎">🌎 Público</option>
-              <option value="🔒">🔒 Privado </option>
-      </select>
-    </div>
-  </div>
-
-  <div id="postForm2">
-    <textarea placeholder="Escribe Algo ..." id='inputUpdatedText'>${textPost}</textarea>
-  
-    <div class="divcameraUpdate">
-      <div class="inputFiles relative">
-        <label for="compartirImg"></label>
-        <input type="file"  id="inputSelectImg" >
-      </div>
-      <div class="textimgUp"><h4 > Cambia tu imagen </h4></div>
-      <select id="selectYourCountry"> 
-        <option value=" alguna parte del mundo" disabled selected></option>
-      </select>
-    </div>
-
-    <div id="addImageContainer" class = "containerPreviewImg">
-      <div id="oldImgContainer" class = "imageContainer">
-        <img src = ${imgUrl}/>
-        <span id = "deleteImageOld" class='closeImg'>✖</span>
+  <div id='chargingContainer'>
+    <div class="namePhotoPublication">
+      <div class='nameSelectPublication'>
+        <select id="selectPostArea">
+                <option value="🌎">🌎 Público</option>
+                <option value="🔒">🔒 Privado </option>
+        </select>
       </div>
     </div>
 
-    <div class="buttonGeneralPublicationUpdate">
-      <button id = "saveUpdate" class="buttonPublication" type="submit">Guardar</button>
-      <button id = "cancelUpdate" class="buttonPublication">Cancelar</button>
+    <div id="postForm2">
+      <textarea placeholder="Escribe Algo ..." id='inputUpdatedText'>${textPost}</textarea>
+    
+      <div class="divcameraUpdate">
+        <div class="inputFiles relative">
+          <label for="compartirImg"></label>
+          <input type="file"  id="inputSelectImg" >
+        </div>
+        <div class="textimgUp"><h4 > Cambia tu imagen </h4></div>
+        <select id="selectYourCountry"> 
+          <option value=" alguna parte del mundo" disabled selected></option>
+        </select>
+      </div>
+
+      <div id="addImageContainer" class = "containerPreviewImg">
+        <div id="oldImgContainer" class = "imageContainer">
+          <img src = ${imgUrl}/>
+          <span id = "deleteImageOld" class='closeImg'>✖</span>
+        </div>
+      </div>
+
+      <div class="buttonGeneralPublicationUpdate">
+        <button id = "saveUpdate" class="buttonPublication" type="submit">Guardar</button>
+        <button id = "cancelUpdate" class="buttonPublication">Cancelar</button>
+      </div>
     </div>
   </div>`;
 
@@ -305,7 +314,7 @@ function editPostOptions(postContainer) {
   iconEditPost.forEach((iconOptions) => {
     const idCurrentPost = iconOptions.dataset.id;
 
-    if (iconOptions.id === localStorageCall().id) {
+    if (iconOptions.id === sessionStorageCall().id) {
       // const iconEditOptions = document.querySelector('.icon')
       // eslint-disable-next-line no-param-reassign
       iconOptions.innerHTML = templateEditPost(idCurrentPost);
@@ -322,7 +331,7 @@ function editPostOptions(postContainer) {
 
 async function likesHandler(e) {
   const btnLike = e.target;
-  const idUser = localStorageCall().id;
+  const idUser = sessionStorageCall().id;
   const idPost = btnLike.getAttribute('name');
   const dataPost = await getUserById(idPost, 'posts');
 
@@ -344,7 +353,10 @@ export const postView = () => {
     /** Creamos un div para el modal */
     const modalContainer = `<dialog id="modalContainer">
      </dialog><dialog id="modalEditContainer"></dialog>`;
-    postContainer.innerHTML = modalContainer;
+    if (postContainer != null) {
+      postContainer.innerHTML = modalContainer;
+    }
+
     /** Creamos un div post content */
     const postContainerGeneral = document.createElement('div');
     postContainerGeneral.setAttribute('class', 'postsContent');
@@ -371,6 +383,7 @@ export const postView = () => {
       );
       postContainerGeneral.innerHTML += postContent;
       postContainer.appendChild(postContainerGeneral);
+
       // eslint-disable-next-line no-use-before-define
       verifyLike(dato.likes, element.id);
     });
@@ -384,7 +397,7 @@ export const postView = () => {
 };
 
 const verifyLike = (arrLikesPost, idPost) => {
-  const idUser = localStorageCall().id;
+  const idUser = sessionStorageCall().id;
   const containerPost = document.getElementById(`${idPost}`);
   if (arrLikesPost.includes(idUser)) {
     containerPost.childNodes[7].classList.add('clickeado');

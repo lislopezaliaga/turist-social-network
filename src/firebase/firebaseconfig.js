@@ -13,7 +13,7 @@ import {
   getAuth, createUserWithEmailAndPassword,
   signInWithRedirect, signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, sendEmailVerification,
-  onAuthStateChanged,
+  onAuthStateChanged, signOut,
   // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js';
 
@@ -46,5 +46,5 @@ export {
   GoogleAuthProvider, signInWithPopup, signInWithRedirect,
   signInWithEmailAndPassword, sendEmailVerification, onAuthStateChanged,
   serverTimestamp, getDocs, onSnapshot, orderBy, query, ref, uploadBytes,
-  getDownloadURL, updateDoc, deleteDoc, where,
+  getDownloadURL, updateDoc, deleteDoc, where, signOut,
 };
