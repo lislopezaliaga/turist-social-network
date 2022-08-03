@@ -31,6 +31,14 @@ export const home = () => {
         <a href="#/lugares" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/ubicaciones.png" alt="lugares"></a>
         <p class"textheaderi"> Lugares </p>
       </li>
+      <li class="nav-menu-item" id="perfilhead">
+        <a href="#/perfil" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/useredit.png" alt="lugares"></a>
+        <p class"textheaderi"> Editar Perfil </p>
+      </li>
+      <li class="nav-menu-item" id="sesionhead">
+        <a href="#/perfil" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/logout.png" alt="lugares"></a>
+        <p class"textheaderi"> Cerrar Sesión </p>
+      </li>
     </ul>
     <div class="burgerMenu">
       <div id='perfilView'>
@@ -48,7 +56,7 @@ export const home = () => {
   const perfilview = homeContainer.querySelector('#perfilView');
   perfilview.addEventListener('click', () => {
     const optionsAccount = homeContainer.querySelector('#optionsAccount');
-    const templateOptions = '<a href="#/perfil">Perfil</a><p>Cerrar Sesión</p>';
+    const templateOptions = '<a href="#/perfil">Editar Perfil</a><p>Cerrar Sesión</p>';
     optionsAccount.innerHTML = templateOptions;
   });
   return homeContainer;

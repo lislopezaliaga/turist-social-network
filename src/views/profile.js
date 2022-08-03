@@ -10,6 +10,7 @@ export const profileView = async () => {
 
   const userObject = sessionStorageCall();
 
+  // eslint-disable-next-line no-use-before-define
   tenplateEditProfile(userObject);
 };
 
@@ -17,7 +18,7 @@ function tenplateEditProfile(userObject) {
   const perfilContainer = document.getElementById('perfilUser');
 
   const perfilContent = `
-    <div class="firstDivPerfil">
+    <div class="firstDivPerfil2">
       <div class="photoPerfil">
         <img id="imgPerfil" src="${userObject.profilePhoto}">
       </div>
@@ -45,6 +46,7 @@ function tenplateEditProfile(userObject) {
   perfilContainer.innerHTML = perfilContent;
 
   const editPeril = perfilContainer.querySelector('#editPerfil');
+  // eslint-disable-next-line no-use-before-define
   editPeril.addEventListener('click', editPerfilUser);
   return perfilContainer;
 }
@@ -55,6 +57,7 @@ async function editPerfilUser() {
 
   const perfilData = await getUserById(userObject.id, 'users');
 
+  // eslint-disable-next-line no-use-before-define
   modalEdit.innerHTML = modalEditPerfil(
     perfilData.name,
     perfilData.description,

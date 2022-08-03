@@ -45,8 +45,8 @@ function templatePostContent(
     </div>
 
     <div class="postReaction">
-      <i class="fa fa-heart like" name="${idPost}"></i>
-      <h3> ${likesCount}</h3>
+      <i class="fa fa-heart like" name="${idPost}"> </i> 
+      <h3> ${likesCount} me gusta</h3>
     </div>
 
     <div id="containerDelete"></div>
@@ -250,8 +250,6 @@ const deletePostClick = (divOptions) => {
     // Seleccionar btn cancelar y eliminar post
     modalContainer.querySelector('#closeModal').addEventListener('click', () => {
       modalContainer.close();
-
-      console.log(modalContainer.close());
     });
     modalContainer.querySelector('#deletePost').addEventListener('click', () => {
       deletePost(idPostBtn);
@@ -384,7 +382,6 @@ export const postView = () => {
         likesCount,
       );
       postContainerGeneral.innerHTML += postContent;
-
       postContainer.appendChild(postContainerGeneral);
 
       // eslint-disable-next-line no-use-before-define

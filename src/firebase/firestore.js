@@ -2,7 +2,7 @@ import { dateTime } from '../views/timeago.js';
 import {
   db, doc,
   setDoc, getDoc, addDoc, collection, serverTimestamp,
-  onSnapshot, orderBy, query, updateDoc, deleteDoc, where, getDocs
+  onSnapshot, orderBy, query, updateDoc, deleteDoc, where, getDocs,
 } from './firebaseconfig.js';
 
 // Añadir nuevo usuario (Document) a users (colección)
