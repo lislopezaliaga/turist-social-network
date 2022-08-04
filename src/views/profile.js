@@ -10,6 +10,7 @@ export const profileView = async () => {
 
   const userObject = sessionStorageCall();
 
+  // eslint-disable-next-line no-use-before-define
   tenplateEditProfile(userObject);
 };
 
@@ -17,7 +18,7 @@ function tenplateEditProfile(userObject) {
   const perfilContainer = document.getElementById('perfilUser');
 
   const perfilContent = `
-    <div class="firstDivPerfil">
+    <div class="firstDivPerfil2">
       <div class="photoPerfil">
         <img id="imgPerfil" src="${userObject.profilePhoto}">
       </div>
@@ -36,7 +37,7 @@ function tenplateEditProfile(userObject) {
       <p>${userObject.interest}</p>
     </div>
   </div>
-      <button id='editPerfil'>Editar perfil</button>
+      <button id='editPerfil'><i class="fa fa-pencil"></i> Editar perfil  </button>
       <dialog id='modalEdit'><dialog>
     </div>
 
@@ -45,6 +46,7 @@ function tenplateEditProfile(userObject) {
   perfilContainer.innerHTML = perfilContent;
 
   const editPeril = perfilContainer.querySelector('#editPerfil');
+  // eslint-disable-next-line no-use-before-define
   editPeril.addEventListener('click', editPerfilUser);
   return perfilContainer;
 }
@@ -55,11 +57,14 @@ async function editPerfilUser() {
 
   const perfilData = await getUserById(userObject.id, 'users');
 
+  // eslint-disable-next-line no-use-before-define
   modalEdit.innerHTML = modalEditPerfil(
     perfilData.name,
     perfilData.description,
     perfilData.country,
     perfilData.interest,
+    perfilData.profilePhoto,
+
   );
   if (!modalEdit.open) {
     modalEdit.showModal();
@@ -93,21 +98,20 @@ async function editPerfilUser() {
 
     const postsUser = await getPosts(userObj.id);
     postsUser.forEach((doc) => {
-      console.log(doc.id, ' => ', doc.data());
       updateCreatorName(doc.id, namepefil);
     });
   });
 }
-function modalEditPerfil(name, description, pais, intereses) {
+function modalEditPerfil(name, description, pais, intereses,photo) {
   const editModalContent = `
   <div id = "modalCharginEdit" style = "display:none">
     <p>Cargando ...</p>
-    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
+    <img width="150px" height="100px" src=""/>
   </div>
   <div id=''>
     <div >
       <div class="photoPerfil">
-        <img id="imgPerfil" src="">
+        <img id="imgPerfil" src="${photo}">
       </div>
       <div class="inputFiles relative">
           <label for="compartirImg"></label>
@@ -129,8 +133,10 @@ function modalEditPerfil(name, description, pais, intereses) {
         <input id='interesespefil' value='${intereses}'>
       </div>
     </div> 
-    <button id='guardarButton'>Guardar Cambios</button>
-    <button id='cancelButton'>Cancelar</button>
+    <div class="botonesProfile">
+      <button id='guardarButton'>Guardar </button>
+      <button id='cancelButton'>Cancelar</button>
+    </div>
   </div>`;
 
   return editModalContent;

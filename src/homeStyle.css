@@ -30,6 +30,8 @@
   align-items: center;
   padding: 5px;
   box-shadow: 0px 5px 8px #293462;
+  color: #1d1d17;
+  cursor: pointer;
 }
 .logo2 {
   width: 220px;
@@ -48,7 +50,7 @@
   border-radius: 8px;
 }
 #mainContent {
-  background: #ececec;
+  background: #ffffff;
   display: flex;
   padding-top: 70px;
   background-attachment: fixed;
@@ -70,7 +72,7 @@
   padding-bottom: 30px;
   margin-left: 40px;
   margin-top: 20px;
-
+  font-family: "Nunito Sans", sans-serif;
   /* position: fixed;  */
 }
 .firstDivPerfil {
@@ -113,6 +115,7 @@
 #muroContainer {
   display: grid;
   width: 80vw;
+  height: 100vw;
   justify-content: center;
 }
 #divContainer {
@@ -160,6 +163,7 @@
   margin-right: 10px;
 }
 .textimg {
+  font-family: "Signika", sans-serif;
   font-size: 16px;
   margin: 5px 10px;
   width: 400px;
@@ -213,29 +217,71 @@
   align-items: center;
   margin-top: 5px;
 }
-.buttonPublication {
+.buttonPublication,
+#cancelButton {
+  border: none;
   width: 30%;
   height: 35px;
   border-radius: 7px;
   cursor: pointer;
   font-size: 15px;
-  background-color: #cb9a3a;
+  background-color: #acd2fd;
   box-shadow: 0px 1px 10px #838bae;
+  font-family: "Acme", sans-serif;
 }
-
+.buttonPublication2 {
+  border: none;
+  width: 80px;
+  height: 35px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #acd2fd;
+  box-shadow: 0px 1px 10px #838bae;
+  font-family: "Acme", sans-serif;
+}
+.btnPost,
+#guardarButton,
+#editPerfil {
+  order: none;
+  width: 80px;
+  height: 35px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #fff;
+  background-color: #023876;
+  box-shadow: 0px 1px 10px #838bae;
+  font-family: "Acme", sans-serif;
+}
+#editPerfil {
+  width: 100px;
+}
+.firstDivPerfil2 .nombreuser {
+  margin-top: 15px;
+}
 .buttonPublication:first-child {
   background-color: #34579c;
   color: #ffffff;
+  border: none;
 }
 .buttonPublication:hover {
-  background-color: #d61c4e;
+  background-color: #709fb0;
 }
+.botonesProfile {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
 .namePhotoPublication {
   display: flex;
   align-items: center;
+  margin-top: 10px;
   margin-bottom: 8px;
   max-width: 40vw;
   justify-content: flex-start;
+  font-family: "Nunito Sans", sans-serif;
 }
 .namePhotoPublication img {
   border-radius: 50%;
@@ -247,7 +293,8 @@
 #privacyPostArea {
   font-size: 14px;
   cursor: pointer;
-  padding: 4px 6px;
+  padding: 6px 6px;
+  margin-top: 10px;
   border: 2px solid #878787;
   border-radius: 14px;
   color: #878787;
@@ -306,7 +353,7 @@
 }
 .postNameImage {
   display: flex;
-  background-color: #e0e3e2;
+  background-color: #efefefad;
   max-width: 40vw;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
@@ -330,9 +377,14 @@
   display: flex;
   align-items: center;
   max-width: 40vw;
-  background-color: #e0e3e2;
+  background-color: #efefefad;
   border-radius: 0px 0px 10px 10px;
-  padding: 10px;
+  padding: 15px;
+  font-family: "Signika", sans-serif;
+  font-weight: 600;
+}
+.fa-heart {
+  margin-right: 8px;
 }
 .iconpost {
   border-radius: 50%;
@@ -346,7 +398,7 @@
 }
 
 .clickeado {
-  color: #ff3030 !important;
+  color: #ed5e8b !important;
 }
 
 .noclick {
@@ -367,7 +419,7 @@
   background-color: #ffffff;
 }
 .namepost {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 20px;
   color: #000;
 }
@@ -383,7 +435,8 @@
   padding: 3px 4px;
 }
 .postindividual {
-  box-shadow: 0px 5px 8px #293462;
+  -webkit-box-shadow: 2px 5px 16px -1px rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 5px 16px -1px rgba(0, 0, 0, 0.9);
   margin: 10px 0px;
   padding: 0px;
   border-radius: 10px;
@@ -398,7 +451,7 @@
   max-width: 90%;
 }
 .nombreuser {
-  font-size: 22px;
+  font-size: 23px;
   text-align: center;
 }
 #modal-charging {
@@ -414,6 +467,7 @@
 }
 .country {
   font-size: 16px;
+  font-family: "Signika", sans-serif;
   padding: 5px;
   color: #000;
 }
@@ -501,6 +555,8 @@
 }
 
 #modalEditContainer {
+  width: 350px;
+  border: none;
   position: absolute;
   top: 30%;
   left: 15%;
@@ -508,7 +564,8 @@
   padding: 10px;
   border-radius: 10px;
   max-width: 350px;
-  box-shadow: 0px 1px 10px #838bae;
+  -webkit-box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
   flex-direction: column;
   align-content: center;
   justify-content: center;
@@ -527,7 +584,9 @@
   padding: 10px;
   border-radius: 10px;
   width: 300px;
-  box-shadow: 0px 1px 10px #838bae;
+  border: none;
+  -webkit-box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
   flex-direction: column;
   align-content: center;
   justify-content: center;
@@ -564,24 +623,112 @@
   margin-top: 5px;
   width: 350px;
 }
-/* Navbar section */
 
+#optionsAccount a {
+  cursor: pointer;
+  color: #1d1d17;
+}
+/* profile Edit*/
+
+#divContainerProfile {
+  margin-top: 50px;
+  box-shadow: 0px 1px 10px #838bae;
+  height: 75vh;
+}
+#perfilUser {
+  height: 50vw;
+}
+.firstDivPerfil2 {
+  max-height: 40vw;
+}
+.firstDivPerfil2 {
+  background: linear-gradient(
+    180deg,
+    #acd2fd 0%,
+    rgba(172, 210, 253, 0.744792) 20%,
+    rgba(172, 210, 253, 0) 20%
+  );
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+}
+#modalEdit {
+  border: none;
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  width: 300px;
+  -webkit-box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+}
+#modalEdit input {
+  padding-left: 10px;
+  -webkit-box-shadow: 1px 1px 18px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 18px 8px rgba(0, 0, 0, 0.3);
+}
+#modalEdit .photoPerfil,
+#modalEdit .inputFiles {
+  margin-left: 30%;
+}
+#perfilhead,
+#sesionhead {
+  display: none;
+}
 /* Medai qurey section */
 
 @media screen and (min-width: 768px) and (max-width: 1350px) {
   #mainContent {
-    background-color: rgb(246, 245, 240);
+    background: #fff;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #muroContainer {
+  #muroContainer,
+  #mainContent {
     width: 100vw;
+  }
+  .firstDivPerfil2 .photoPerfil {
+    width: 16vw;
+    height: 16vw;
+    margin-bottom: 15px;
+  }
+  #perfilhead,
+  #sesionhead {
+    display: block;
+  }
+  .firstDivPerfil2 {
+    background: linear-gradient(
+      180deg,
+      #acd2fd 0%,
+      rgba(172, 210, 253, 0.744792) 36%,
+      rgba(172, 210, 253, 0) 36%
+    );
+  }
+  #modalEdit {
+    position: absolute;
+    top: 10%;
+    left: 3%;
+  }
+  #divContainerProfile {
+    margin-top: 50px;
+    box-shadow: 0px 1px 10px #838bae;
+    height: 75vh;
   }
   #modalEditContainer,
   #modalContainer {
     top: 40%;
-    left: 2%;
+    left: 1%;
   }
   .divtitulopost {
     max-width: 70%;
@@ -629,7 +776,7 @@
     display: none;
   }
   #mainContent {
-    background-color: rgb(246, 245, 240);
+    background: #fff;
   }
   .sectionPerfil {
     display: none;
@@ -637,7 +784,7 @@
   .nav-menu {
     flex-direction: column;
     align-items: center;
-    background: #acd2fd;
+    background: #6e9acd;
     position: fixed;
     top: 50px;
     width: 80%;
@@ -659,8 +806,9 @@
     cursor: pointer;
   }
   .nav-menu_visible {
+    width: 50%;
     margin-top: 20px;
     height: auto;
-    left: 30%;
+    left: 50%;
   }
 }

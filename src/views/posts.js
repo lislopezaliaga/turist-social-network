@@ -45,8 +45,8 @@ function templatePostContent(
     </div>
 
     <div class="postReaction">
-      <i class="fa fa-heart like" name="${idPost}"></i>
-      <h3> ${likesCount}</h3>
+      <i class="fa fa-heart like" name="${idPost}"> </i> 
+      <h3> ${likesCount} me gusta</h3>
     </div>
 
     <div id="containerDelete"></div>
@@ -68,7 +68,7 @@ function templateEditPost(idCurrentPost) {
   return iconOptionsContent;
 }
 
-const updatePostClick = (divOptions, postContainer) => {
+export const updatePostClick = (divOptions, postContainer) => {
   const updateOpt = divOptions.querySelector('#update-post');
   updateOpt.addEventListener('click', (e) => {
     const idPostBtn = e.target.dataset.id;
@@ -96,7 +96,7 @@ const updatePostClick = (divOptions, postContainer) => {
         }
         // Capturar los nuevos datos ingresados
         const inputFile = document.querySelector('#inputSelectImg');
-        console.log(inputFile);
+
         // eslint-disable-next-line no-use-before-define
         let urlImage = postData.imgPost;
 
@@ -132,7 +132,7 @@ const updatePostClick = (divOptions, postContainer) => {
             }
           }
           const pContentPost = document.querySelector('#inputUpdatedText').value;
-          console.log(pContentPost);
+
           await updatePost(post.id, pContentPost, urlImage);
 
           modalContainerEdit.close();
@@ -169,13 +169,11 @@ const updatePostClick = (divOptions, postContainer) => {
 
 function addImage() {
   count = 'changeImage';
-  console.log(count);
+
   const divAddImage = document.getElementById('addImageContainer');
 
   const imageContainer = '<div class=\'imageContainer\' id="imageContainer"></div>';
-  console.log(JSON.stringify(imageContainer));
 
-  console.log(imageContainer);
   divAddImage.innerHTML = imageContainer;
 
   const imagen = document.createElement('img');
@@ -226,7 +224,7 @@ const templateDeleteModal = () => {
     <p class="modalTitleDelete">¿Estás seguro que deseas eliminar?</p>
     <div class= "btnsDeleteCancel">
       <button type="button" class="btnPost" id="deletePost">Eliminar</button>
-      <button type="button" class= "btnPost" id="closeModal">Cancelar</button>
+      <button type="button" class="buttonPublication2" id="closeModal">Cancelar</button>
     </div>
   </div>`;
 
@@ -250,8 +248,6 @@ const deletePostClick = (divOptions) => {
     // Seleccionar btn cancelar y eliminar post
     modalContainer.querySelector('#closeModal').addEventListener('click', () => {
       modalContainer.close();
-
-      console.log(modalContainer.close());
     });
     modalContainer.querySelector('#deletePost').addEventListener('click', () => {
       deletePost(idPostBtn);
@@ -311,17 +307,16 @@ const templateEditModal = (
 };
 
 // Al apretar los ... el usuario puede seleccionar editar o eliminar su post
-function editPostOptions(postContainer) {
+export function editPostOptions(postContainer) {
   const iconEditPost = document.querySelectorAll('.editPostIcon');
   iconEditPost.forEach((iconOptions) => {
     const idCurrentPost = iconOptions.dataset.id;
-
+    console.log('hola');
     if (iconOptions.id === sessionStorageCall().id) {
       // const iconEditOptions = document.querySelector('.icon')
       // eslint-disable-next-line no-param-reassign
       iconOptions.innerHTML = templateEditPost(idCurrentPost);
       iconOptions.addEventListener('click', () => {
-        console.log('apretaste los 2 puntos');
         const tooltip = iconOptions.querySelector('.tooltip');
         tooltip.classList.toggle('hide');
         deletePostClick(tooltip);
@@ -384,7 +379,6 @@ export const postView = () => {
         likesCount,
       );
       postContainerGeneral.innerHTML += postContent;
-
       postContainer.appendChild(postContainerGeneral);
 
       // eslint-disable-next-line no-use-before-define

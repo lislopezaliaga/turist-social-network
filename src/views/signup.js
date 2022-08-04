@@ -64,16 +64,19 @@ function verifyCompletedInput(name, email, password) {
 
 export const signUpHandler = (e) => {
   cierreActividadUsuario();
-  sessionStorage.clear();
+  // sessionStorage.clear();
   e.preventDefault();
+
   const invalidPassword = document.querySelector('#invalidPassword');
   const invalidEmail = document.querySelector('#invalidEmail');
 
-  const signUpForm = document.querySelector('#signUpForm');
-  const name = signUpForm.name.value;
-  const email = signUpForm.email.value;
-  const password = signUpForm.password.value;
-  console.log(`${email} y ${password}`);
+  const inputName = document.querySelector('#name');
+  const inputEmail = document.querySelector('#email');
+  const inputPassword = document.querySelector('#password');
+
+  const name = inputName.value;
+  const email = inputEmail.value;
+  const password = inputPassword.value;
 
   verifyCompletedInput(name, email, password);
 
@@ -83,8 +86,6 @@ export const signUpHandler = (e) => {
       const user = userCredential.user;
       const emailRegister = user.email;
       const userIdRegister = user.uid;
-      console.log(userCredential);
-      console.log(emailRegister, userIdRegister);
 
       emailVerificationHandler().then(() => {
         createNewUser(name, emailRegister, userIdRegister, '../img/user.png');
