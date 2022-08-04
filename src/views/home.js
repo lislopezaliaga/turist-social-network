@@ -1,18 +1,3 @@
-// // Llamar a sessionStorage
-// const sessionStorageCall = () => {
-//   let userData = sessionStorage.getItem('user');
-//   console.log(sessionStorage);
-//   if (!userData) {
-//     userData = {
-//       username: '',
-//       name: '',
-//     };
-//   } else {
-//     userData = JSON.parse(sessionStorage.user);
-//   }
-//   return userData;
-// };
-// const userInfo = sessionStorageCall();
 export const home = () => {
   const homeContent = `
   <nav class="nav">
