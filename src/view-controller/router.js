@@ -24,8 +24,10 @@ export const changeTmp = (route) => {
       // }, 5000);
       break;
     }
-    case '#/viajeros': {
+    case '#/mochileros': {
       mainSection.appendChild(components.Home());
+      mainSection.appendChild(components.inicio(components.muro(components.mochileros())));
+
       break;
     }
     case '#/lugares': {

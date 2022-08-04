@@ -199,7 +199,6 @@ describe('Verificar los post', () => {
 //     // mainSection.appendChild(navToggle);
 //   });
 // });
-
 describe('Muro', () => {
   it('El componente muro sea un elemento Html', async () => {
     const mainSection = document.createElement('div');
