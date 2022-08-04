@@ -343,7 +343,7 @@ async function likesHandler(e) {
     await updateLikes(idPost, [...dataPost.likes, idUser]);
   }
 }
-export const postView = () => {
+export const postView = async () => {
   actualizarPosts((querySnapshoot) => {
     /** Seleccionamos al container para añadir el post */
     const postContainer = document.getElementById('postContainer');
