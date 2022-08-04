@@ -178,20 +178,9 @@ describe('Verificar los post', () => {
     const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
     postContainer.innerHTML = listNodos;
     // const iconEditPost = document.querySelectorAll('.editPostIcon');
-    
     // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
   });
 });
-
-
-
-
-
-
-
-
-
-
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
 //     const mainSection = document.createElement('div');
@@ -210,14 +199,6 @@ describe('Verificar los post', () => {
 //     // mainSection.appendChild(navToggle);
 //   });
 // });
-
-
-
-
-
-
-
-
 
 describe('Muro', () => {
   it('El componente muro sea un elemento Html', async () => {

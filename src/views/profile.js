@@ -102,7 +102,7 @@ async function editPerfilUser() {
     });
   });
 }
-function modalEditPerfil(name, description, pais, intereses,photo) {
+function modalEditPerfil(name, description, pais, intereses, photo) {
   const editModalContent = `
   <div id = "modalCharginEdit" style = "display:none">
     <p>Cargando ...</p>
