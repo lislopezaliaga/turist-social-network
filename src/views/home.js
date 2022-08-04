@@ -1,3 +1,5 @@
+import { cierreActividadUsuario } from '../firebase/auth.js';
+
 export const home = () => {
   const homeContent = `
   <nav class="nav">
@@ -16,6 +18,14 @@ export const home = () => {
         <a href="#/lugares" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/ubicaciones.png" alt="lugares"></a>
         <p class"textheaderi"> Lugares </p>
       </li>
+      <li class="nav-menu-item" id="perfilhead">
+        <a href="#/perfil" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/useredit.png" alt="lugares"></a>
+        <p class"textheaderi"> Editar Perfil </p>
+      </li>
+      <li class="nav-menu-item" id="sesionhead">
+        <a href="#/perfil" id="cerrar-sesion" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/logout.png" alt="lugares"></a>
+        <p class"textheaderi"> Cerrar Sesión </p>
+      </li>
     </ul>
     <div class="burgerMenu">
       <div id='perfilView'>
@@ -23,18 +33,37 @@ export const home = () => {
         <i class="fa fa-caret-down"></i>
         
       </div>
-      <div id='optionsAccount'></div>
+      <div id='optionsAccount'>
+        <a href="#/perfil">Editar Perfil</a><br><a id="cerrarSesion">Cerrar Sesion</a>
+      </div>
     </div>
   </nav>`;
   const homeContainer = document.createElement('div');
   homeContainer.setAttribute('class', 'homeContainer');
   homeContainer.innerHTML = homeContent;
 
-  const perfilview = homeContainer.querySelector('#perfilView');
-  perfilview.addEventListener('click', () => {
-    const optionsAccount = homeContainer.querySelector('#optionsAccount');
-    const templateOptions = '<a href="#/perfil">Perfil</a><p>Cerrar Sesión</p>';
-    optionsAccount.innerHTML = templateOptions;
+  const btnCerrarSesion1 = homeContainer.querySelector('#cerrarSesion');
+  btnCerrarSesion1.addEventListener('click', () => {
+    cierreActividadUsuario()
+      .then(() => {
+        sessionStorage.clear();
+        window.location.hash = '#/signin';
+      }).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  });
+
+  const btnCerrarSesion = homeContainer.querySelector('#cerrar-sesion');
+  btnCerrarSesion.addEventListener('click', () => {
+    cierreActividadUsuario()
+      .then(() => {
+        sessionStorage.clear();
+        window.location.hash = '#/signin';
+      }).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
   });
   return homeContainer;
 };
