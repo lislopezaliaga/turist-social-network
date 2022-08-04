@@ -11,7 +11,7 @@ export const home = () => {
         <p class"textheaderi"> Inicio </p>
       </li>
       <li class="nav-menu-item">
-        <a href="#/viajeros" class="nav-menu-link nav-link"><img class="iconhead" width=57px src="../img/mochileros.png" alt="viajeros"></a>
+        <a href="#/mochileros" class="nav-menu-link nav-link"><img class="iconhead" width=57px src="../img/mochileros.png" alt="viajeros"></a>
         <p class"textheaderi"> Mochileros </p>
       </li>
       <li class="nav-menu-item">

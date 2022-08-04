@@ -5,6 +5,7 @@ import { inicioView } from './inicio.js';
 import { muroView } from './muro.js';
 import { muroInicioView } from './muroInicio.js';
 import { editProfile } from './editProfile.js';
+import { backpackersView } from './backpackers.js';
 
 const components = {
   signin: formSignIn,
@@ -14,6 +15,7 @@ const components = {
   inicio: inicioView,
   muroInicio: muroInicioView,
   profile: editProfile,
+  mochileros: backpackersView,
 };
 
 export { components };

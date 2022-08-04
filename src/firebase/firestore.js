@@ -61,6 +61,10 @@ export const actualizarPosts = async (callback) => {
   await onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (callback));
 };
 
+export const usersView = async (callback) => {
+  await onSnapshot(query(collection(db, 'users'), orderBy('name', 'desc')), (callback));
+};
+
 export const updateLikes = async (idPost, arrayLikes) => {
   await updateDoc(doc(db, 'posts', idPost), {
     likes: arrayLikes,
@@ -81,12 +85,13 @@ export const updatePost = (idPost, contentPost, urlImg) => {
 };
 
 // Editanto user
-export const updateUser = (idUser, name, description, country, interest) => {
+export const updateUser = (idUser, name, description, country, interest, profilePhoto) => {
   updateDoc(doc(db, 'users', idUser), {
     name,
     description,
     country,
     interest,
+    profilePhoto,
   });
 };
 
@@ -98,9 +103,10 @@ export const getPosts = async (idUser) => {
 };
 
 // Editanto post
-export const updateCreatorName = (idPost, name) => {
+export const updateCreatorName = (idPost, name, photo) => {
   updateDoc(doc(db, 'posts', idPost), {
     nameCreator: name,
+    photoCreator: photo,
   });
 };
 // querySnapshot.forEach((doc) => {
