@@ -3,7 +3,9 @@ import { sessionStorageCall } from '../componentes/sessionStorage.js';
 import {
   getPosts, getUserById, updateCreatorName, updateUser,
 } from '../firebase/firestore.js';
+import { shareImgPost } from '../firebase/storage.js';
 
+let imagen = '';
 export const profileView = async () => {
   const perfil = document.querySelector('#firstPerfil');
   perfil.style.display = 'none';
@@ -20,7 +22,7 @@ function tenplateEditProfile(userObject) {
   const perfilContent = `
     <div class="firstDivPerfil2">
       <div class="photoPerfil">
-        <img id="imgPerfil" src="${userObject.profilePhoto}">
+        <img id="imagenPerfil" class='imgPerfil' src="${userObject.profilePhoto}">
       </div>
       <h2 class="nombreuser">${userObject.name}</h2> 
       <div class="divPerfil">
@@ -51,11 +53,33 @@ function tenplateEditProfile(userObject) {
   return perfilContainer;
 }
 
+function addImage() {
+  imagen = 'changeImage';
+
+  const photo = document.querySelector('#imgPerfilModal');
+
+  const read = new FileReader();
+  const file = this.files;
+
+  // eslint-disable-next-line func-names
+  read.onload = function () {
+    const result = this.result;
+    const url = result;
+
+    photo.src = url;
+    // eslint-disable-next-line no-use-before-define
+    // deleteBtnPreviewImg();
+  };
+
+  read.readAsDataURL(file[0]);
+}
+
 async function editPerfilUser() {
   const modalEdit = document.querySelector('#modalEdit');
   const userObject = sessionStorageCall();
 
   const perfilData = await getUserById(userObject.id, 'users');
+  console.log(perfilData);
 
   // eslint-disable-next-line no-use-before-define
   modalEdit.innerHTML = modalEditPerfil(
@@ -74,35 +98,61 @@ async function editPerfilUser() {
     modalEdit.close();
   });
 
+  // cambiar imagen
+  const inputFile = document.querySelector('#inputImage');
+  inputFile.addEventListener('change', addImage);
+
   const guardarButton = document.querySelector('#guardarButton');
   guardarButton.addEventListener('click', async () => {
     const namepefil = document.querySelector('#namepefil').value;
     const descriptionpefil = document.querySelector('#descriptionpefil').value;
     const paispefil = document.querySelector('#paispefil').value;
     const interesespefil = document.querySelector('#interesespefil').value;
+    let photo = document.querySelector('#imagenPerfil').src;
+
+    if (imagen === 'changeImage') {
+      const file = inputFile.files[0];
+      const url = file.name;
+      await shareImgPost(url, file);
+      /* --------obtener la url del post */
+      photo = await shareImgPost(url, file);
+      imagen = '';
+    }
+
+    // if (inputFile.files.length > 0) {
+    //   if (count === 'changeImage') {
+    //     const file = inputFile.files[0];
+    //     const url = file.name;
+    //     await shareImgPost(url, file);
+
+    //     /* --------obtener la url del post */
+    //     urlImage = await shareImgPost(url, file);
+    //     count = '';
+    //   }
+    // }
     const userStorage = {
       country: paispefil,
       description: descriptionpefil,
       id: userObject.id,
       interest: interesespefil,
       name: namepefil,
-      profilePhoto: '../img/user.png',
+      profilePhoto: photo,
     };
     // llama otra vez a la funcion
     sessionStorage.setItem('USER', JSON.stringify(userStorage));
     const userObj = sessionStorageCall();
     tenplateEditProfile(userObj);
 
-    updateUser(userObject.id, namepefil, descriptionpefil, paispefil, interesespefil);
+    updateUser(userObject.id, namepefil, descriptionpefil, paispefil, interesespefil, photo);
     modalEdit.close();
 
     const postsUser = await getPosts(userObj.id);
     postsUser.forEach((doc) => {
-      updateCreatorName(doc.id, namepefil);
+      updateCreatorName(doc.id, namepefil, photo);
     });
   });
 }
-function modalEditPerfil(name, description, pais, intereses,photo) {
+function modalEditPerfil(name, description, pais, intereses, photo) {
   const editModalContent = `
   <div id = "modalCharginEdit" style = "display:none">
     <p>Cargando ...</p>
@@ -111,11 +161,11 @@ function modalEditPerfil(name, description, pais, intereses,photo) {
   <div id=''>
     <div >
       <div class="photoPerfil">
-        <img id="imgPerfil" src="${photo}">
+        <img id="imgPerfilModal" class='imgPerfil' src="${photo}">
       </div>
       <div class="inputFiles relative">
           <label for="compartirImg"></label>
-          <input type="file"  id="inputSelectImg" >
+          <input type="file"  id="inputImage" >
       </div>
       <input class="" id='namepefil' value='${name}'>
     </div>
