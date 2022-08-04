@@ -37,7 +37,7 @@ function tenplateEditProfile(userObject) {
       <p>${userObject.interest}</p>
     </div>
   </div>
-      <button id='editPerfil'>Editar perfil</button>
+      <button id='editPerfil'><i class="fa fa-pencil"></i> Editar perfil  </button>
       <dialog id='modalEdit'><dialog>
     </div>
 
@@ -132,8 +132,10 @@ function modalEditPerfil(name, description, pais, intereses) {
         <input id='interesespefil' value='${intereses}'>
       </div>
     </div> 
-    <button id='guardarButton'>Guardar Cambios</button>
-    <button id='cancelButton'>Cancelar</button>
+    <div class="botonesProfile">
+      <button id='guardarButton'>Guardar </button>
+      <button id='cancelButton'>Cancelar</button>
+    </div>
   </div>`;
 
   return editModalContent;
