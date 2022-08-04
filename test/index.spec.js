@@ -2,7 +2,7 @@ import { actualizarPosts, loadPublications } from '../src/firebase/firestore.js'
 import { components } from '../src/views/index.js';
 import { muroInicioView } from '../src/views/muroInicio';
 import { perfilView } from '../src/views/perfil.js';
-import { editPostOptions } from '../src/views/posts.js';
+import { editPostOptions, updatePostClick } from '../src/views/posts.js';
 
 // import { postView } from '../src/views/posts.js';
 import { publicationView } from '../src/views/publications.js';
@@ -178,11 +178,9 @@ describe('Verificar los post', () => {
     const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
     postContainer.innerHTML = listNodos;
     // const iconEditPost = document.querySelectorAll('.editPostIcon');
-
     // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
   });
 });
-
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
 //     const mainSection = document.createElement('div');
@@ -201,9 +199,7 @@ describe('Verificar los post', () => {
 //     // mainSection.appendChild(navToggle);
 //   });
 // });
-
 describe('Muro', () => {
-  // beforeEach();
   it('El componente muro sea un elemento Html', async () => {
     const mainSection = document.createElement('div');
     mainSection.id = 'container';
