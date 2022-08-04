@@ -3,27 +3,31 @@ import { usersView } from '../firebase/firestore.js';
 
 function templateUsersContent(name, description, interest, profilePhoto, country) {
   const userContent = `
-      <div class="firstDivPerfil2">
-        <div class="photoPerfil">
-          <img id="imagenPerfil" class='imgPerfil' src="${profilePhoto}">
-        </div>
-        <h2 class="nombreuser">${name}</h2> 
-        <div class="divPerfil">
-      <div class="divPerfil">
-        <h3><i class="fa fa-user"></i> Descripción</h3>
-        <p>${description}</p>
-      </div>
-      <div class="divPerfil">
-        <h3><i class="fa fa-globe"></i> País</h3>
-        <p>${country}</p>
-      </div>
-      <div class="divPerfil">
-        <h3><i class="fa fa-gratipay"></i> Intereses</h3>
-        <p>${interest}</p>
-      </div>
-    </div>
-        <button id='editPerfil'><i class="fa fa-pencil"></i> Editar perfil  </button>
-        <dialog id='modalEdit'><dialog>
+      <div class="firstDivPerfil3">
+            <div class="divperfilUser">
+                <h2 class="nombreuser">${name}</h2> 
+            </div>
+            <div class="segDivPerfil">
+              <div class="photoPerfil">
+                <img id="imagenPerfil" class='imgPerfil' src="${profilePhoto}">
+              </div>
+
+              <div class="infoUser">
+                
+                <div class="divperfilUser">
+                  <h4><i class="fa fa-user"></i> Descripción</h4>
+                  <p class="infoDescription">${description}</p>
+                </div>
+                <div class="divperfilUser">
+                  <h4><i class="fa fa-globe"></i> País</h4>
+                  <p class="infoDescription">${country}</p>
+                </div>
+                <div class="divperfilUser">
+                  <h4><i class="fa fa-gratipay"></i> Intereses</h4>
+                  <p class="infoDescription">${interest}</p>
+                </div>
+              </div>
+            </div>
       </div>
   
         `;
