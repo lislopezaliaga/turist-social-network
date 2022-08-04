@@ -63,6 +63,8 @@ async function editPerfilUser() {
     perfilData.description,
     perfilData.country,
     perfilData.interest,
+    perfilData.profilePhoto,
+
   );
   if (!modalEdit.open) {
     modalEdit.showModal();
@@ -96,21 +98,20 @@ async function editPerfilUser() {
 
     const postsUser = await getPosts(userObj.id);
     postsUser.forEach((doc) => {
-      console.log(doc.id, ' => ', doc.data());
       updateCreatorName(doc.id, namepefil);
     });
   });
 }
-function modalEditPerfil(name, description, pais, intereses) {
+function modalEditPerfil(name, description, pais, intereses,photo) {
   const editModalContent = `
   <div id = "modalCharginEdit" style = "display:none">
     <p>Cargando ...</p>
-    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
+    <img width="150px" height="100px" src=""/>
   </div>
   <div id=''>
     <div >
       <div class="photoPerfil">
-        <img id="imgPerfil" src="">
+        <img id="imgPerfil" src="${photo}">
       </div>
       <div class="inputFiles relative">
           <label for="compartirImg"></label>

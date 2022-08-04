@@ -75,16 +75,13 @@ export const signInHandler = (e) => {
       const user = userCredential.user;
       // const emailRegister = userCredential.user.email;
       const userIdRegister = userCredential.user.uid;
-      // console.log(emailRegister, userIdRegister);
-      console.log('email');
+
       if (user.emailVerified) {
         // Obtener data del user logueado para agregarlo al sessionStorage
         getUserById(userIdRegister, 'users').then((userData) => {
-          // console.log(userData);
           const data = userData;
           data.id = userIdRegister;
           sessionStorage.setItem('USER', JSON.stringify(userData));
-          // console.log(userData);
           // Enviar al usuario con email verificado a la vista inicio
           window.location.hash = '#/inicio';
         });
@@ -117,37 +114,34 @@ export const signInGoogleHandler = (e) => {
   sessionStorage.clear();
 
   signInGoogle()
-    .then((result) => {
+    .then(async (result) => {
       // The signed-in user info.
       const user = result.user;
       const name = user.displayName;
       const emailRegister = user.email;
       const userIdRegister = user.uid;
-      const photo = user.photoURL;
-      console.log(emailRegister, userIdRegister);
-      console.log(result);
+      const photo = await user.photoURL;
 
       // Crear el usuario y almacenarlo en firestore
       // Obtener data del user logueado para agregarlo al sessionStorage
       getUserById(userIdRegister, 'users')
-        .then((userData) => {
-          console.log(userData);
+        .then(async (userData) => {
           let localUser = userData;
+
           if (!localUser) {
-            createNewUser(name, emailRegister, userIdRegister, photo);
+            await createNewUser(name, emailRegister, userIdRegister, photo);
             localUser = {
               country: 'Global',
-              description: '',
+              description: 'Soy amante de los viajes',
               email: emailRegister,
-              interest: '',
+              interest: 'Nuevas aventuras',
               name,
               profilePhoto: photo,
             };
           }
 
-          const data = localUser;
-          data.id = userIdRegister;
-          sessionStorage.setItem('USER', JSON.stringify(data));
+          localUser.id = userIdRegister;
+          sessionStorage.setItem('USER', JSON.stringify(localUser));
           window.location.hash = '#/inicio';
         });
     })
@@ -157,5 +151,4 @@ export const signInGoogleHandler = (e) => {
       const errorMessage = error.message;
       console.log('error en signup', errorMessage, errorCode);
     });
-  return '#/inicio';
 };

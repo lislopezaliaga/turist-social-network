@@ -15,7 +15,6 @@ export async function createNewUser(name, email, userId, profilePhoto) {
     interest: 'Nuevas aventuras',
     profilePhoto,
   });
-  console.log('estoy llamando a createuser');
 }
 
 // Obtener la data de cada user guardado en firestore
