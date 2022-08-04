@@ -168,7 +168,7 @@ function deleteButtonPreviewImg() {
 
 export const publicationView = () => {
   const userObject = sessionStorageCall();
-  console.log(userObject);
+
   const publicationContent = templatePublication(
     userObject.profilePhoto,
     userObject.name,

@@ -1,5 +1,7 @@
 import { components } from '../views/index.js';
 
+import { profileView } from '../views/profile.js';
+
 export const changeTmp = (route) => {
   const mainSection = document.getElementById('container');
   mainSection.innerHTML = '';
@@ -33,9 +35,7 @@ export const changeTmp = (route) => {
     case '#/perfil': {
       mainSection.appendChild(components.Home());
       mainSection.appendChild(components.inicio(components.muro(components.profile())));
-      const perfil = document.querySelector('#firstPerfil');
-      perfil.style.display = 'none';
-
+      profileView();
       break;
     }
     default:
