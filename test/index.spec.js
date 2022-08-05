@@ -1,6 +1,6 @@
 import { actualizarPosts, loadPublications } from '../src/firebase/firestore.js';
 import { components } from '../src/views/index.js';
-import { muroInicioView } from '../src/views/muroInicio';
+import { muroInicioView } from '../src/views/muroInicio.js';
 import { perfilView } from '../src/views/perfil.js';
 import { editPostOptions } from '../src/views/posts.js';
 
@@ -235,5 +235,21 @@ describe('Home', () => {
     const perfilview = document.querySelector('#perfilView');
     perfilview.click();
     expect(components.Home() instanceof HTMLElement).toBe(true);
+  });
+
+  it('Verificar que  mainSection tenga un hijo', async () => {
+    const mainSection = document.createElement('div');
+    mainSection.id = 'container';
+    document.body.append(mainSection);
+
+    mainSection.appendChild(muroInicioView());
+    const postContainer = document.querySelector('#postContainer');
+    console.log(postContainer);
+    // expect(postContainer instanceof HTMLElement).toBe(true);
+    // expect(actualizarPosts).toHaveBeenCalled();
+    // postView();
+    // actualizarPosts();
+    expect(postContainer.children).toHaveLength(1);
+    // expect(templatePostContent).toHaveBeenCalled();
   });
 });
