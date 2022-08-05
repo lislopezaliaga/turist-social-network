@@ -104,6 +104,11 @@ async function editPerfilUser() {
 
   const guardarButton = document.querySelector('#guardarButton');
   guardarButton.addEventListener('click', async () => {
+    const chargingGif = document.querySelector('#modalCharginEdit');
+    chargingGif.style.display = 'block';
+    const chargingContainer = document.querySelector('#contentModal');
+    chargingContainer.style.display = 'none';
+
     const namepefil = document.querySelector('#namepefil').value;
     const descriptionpefil = document.querySelector('#descriptionpefil').value;
     const paispefil = document.querySelector('#paispefil').value;
@@ -156,9 +161,9 @@ function modalEditPerfil(name, description, pais, intereses, photo) {
   const editModalContent = `
   <div id = "modalCharginEdit" style = "display:none">
     <p>Cargando ...</p>
-    <img width="150px" height="100px" src=""/>
+    <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
   </div>
-  <div id=''>
+  <div id='contentModal'>
     <div >
       <div class="photoPerfil">
         <img id="imgPerfilModal" class='imgPerfil' src="${photo}">

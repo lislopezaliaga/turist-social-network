@@ -1,10 +1,10 @@
-import { actualizarPosts, loadPublications } from '../src/firebase/firestore.js';
+import { actualizarPosts, deletePost, loadPublications, updatePost } from '../src/firebase/firestore.js';
 import { components } from '../src/views/index.js';
 import { muroInicioView } from '../src/views/muroInicio';
 import { perfilView } from '../src/views/perfil.js';
-import { editPostOptions } from '../src/views/posts.js';
+import { deletePostClick, postView, templateDeleteModal, templateEditModal, templateEditPost, templatePostContent, updatePostClick } from '../src/views/posts.js';
+// import { editPostOptions } from '../src/views/posts.js';
 
-// import { postView } from '../src/views/posts.js';
 import { publicationView } from '../src/views/publications.js';
 
 jest.mock('../src/firebase/auth.js');
@@ -29,6 +29,7 @@ describe('formSignin', () => {
 
     expect(buttonLogin instanceof HTMLElement).toBe(true);
     // CUANDO
+
     buttonLogin.click();
 
     const complete = document.querySelector('#complete');
@@ -152,37 +153,6 @@ describe('loadPublications() ', () => {
   });
 });
 
-describe('Verificar los post', () => {
-  it('Verificar que la función actualizarPost sea llamada ', async () => {
-    const mainSection = document.createElement('div');
-    mainSection.id = 'container';
-    document.body.append(mainSection);
-
-    mainSection.appendChild(muroInicioView());
-
-    const postContainer = document.querySelector('#postContainer');
-    expect(postContainer instanceof HTMLElement).toBe(true);
-    expect(actualizarPosts).toHaveBeenCalled();
-  });
-  it('Verificar que la función  ', async () => {
-    const mainSection = document.createElement('div');
-
-    document.body.append(mainSection);
-
-    mainSection.appendChild(muroInicioView());
-
-    const postContainer = document.querySelector('#postContainer');
-
-    editPostOptions(postContainer);
-
-    const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
-    postContainer.innerHTML = listNodos;
-    // const iconEditPost = document.querySelectorAll('.editPostIcon');
-
-    // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
-  });
-});
-
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
 //     const mainSection = document.createElement('div');
@@ -235,5 +205,104 @@ describe('Home', () => {
     const perfilview = document.querySelector('#perfilView');
     perfilview.click();
     expect(components.Home() instanceof HTMLElement).toBe(true);
+  });
+});
+
+describe('Verificar los post', () => {
+  it('Verificar que la función es una String ', () => {
+    expect(typeof templatePostContent()).toEqual(typeof String());
+  });
+
+  beforeAll(() => {
+    HTMLDialogElement.prototype.show = jest.fn();
+    HTMLDialogElement.prototype.showModal = jest.fn();
+    HTMLDialogElement.prototype.close = jest.fn();
+  });
+
+  it('Verificar que la función deletePost es llamada ', () => {
+    const mainSection = document.createElement('div');
+    const modalDialog = document.createElement('dialog');
+    modalDialog.id = 'modalContainer';
+
+    document.body.append(mainSection);
+    document.body.appendChild(modalDialog);
+    document.body.append(templateDeleteModal());
+
+    mainSection.innerHTML = templateEditPost();
+
+    deletePostClick(document);
+
+    const deleteOpt = document.querySelector('#delete-post');
+    deleteOpt.click();
+
+    const closeModal = document.querySelector('#closeModal');
+    closeModal.click();
+
+    const deleteButtonPost = document.querySelector('#deletePost');
+    deleteButtonPost.click();
+
+    expect(deletePost).toHaveBeenCalled();
+  });
+
+  it('Update Post  ', () => {
+    const mainSection = document.createElement('div');
+    const templateEdit = document.createElement('div');
+    const modalDialog = document.createElement('dialog');
+    const templateEditM = document.createElement('div');
+    modalDialog.id = 'modalEditContainer';
+
+    document.body.append(mainSection);
+    document.body.append(templateEdit);
+    document.body.appendChild(modalDialog);
+    document.body.appendChild(templateEditM);
+
+    templateEdit.innerHTML = templateEditPost();
+    mainSection.innerHTML = templatePostContent();
+    templateEditM.innerHTML = templateEditModal();
+
+    updatePostClick(document, document);
+    const updateButton = document.querySelector('#update-post');
+    updateButton.click();
+
+    const inputFile = document.querySelector('#inputSelectImg');
+
+    const changenEvent = new Event('change');
+    inputFile.dispatchEvent(changenEvent);
+
+    const modalCont = document.querySelector('#saveUpdate');
+
+    modalCont.click();
+      // await tick();
+    // const clickEvent = new Event('click');
+    // modalCont.dispatchEvent(clickEvent);
+    expect(updatePost).toHaveBeenCalled();
+    // console.log(inputFile);
+    // inputFile.onchange(clickEvent);
+    // mainSection.appendChild(muroInicioView());
+
+    // const postContainer = document.querySelector('#postContainer');
+
+    // editPostOptions(postContainer);
+
+    // const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
+    // postContainer.innerHTML = listNodos;
+    // const iconEditPost = document.querySelectorAll('.editPostIcon');
+
+    // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
+  });
+
+  it('Verificar que  mainSection tenga un hijo', () => {
+    const mainSection = document.createElement('div');
+    mainSection.id = 'container';
+    document.body.append(mainSection);
+
+    mainSection.appendChild(muroInicioView());
+
+    const postContainer = document.querySelector('#postContainer');
+    // console.log(postContainer);
+
+    expect(postContainer.children).toHaveLength(1);
+
+    // expect(templatePostContent).toHaveBeenCalled();
   });
 });
