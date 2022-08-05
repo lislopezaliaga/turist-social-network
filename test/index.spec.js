@@ -1,8 +1,15 @@
-import { actualizarPosts, deletePost, loadPublications, updatePost } from '../src/firebase/firestore.js';
+import {
+  actualizarPosts, deletePost, loadPublications, updatePost,
+} from '../src/firebase/firestore.js';
 import { components } from '../src/views/index.js';
 import { muroInicioView } from '../src/views/muroInicio';
 import { perfilView } from '../src/views/perfil.js';
-import { deletePostClick, postView, templateDeleteModal, templateEditModal, templateEditPost, templatePostContent, updatePostClick } from '../src/views/posts.js';
+
+import {
+  deletePostClick, postView, editPostOptions,
+  templateDeleteModal, templateEditModal, templateEditPost,
+  templatePostContent, updatePostClick,
+} from '../src/views/posts.js';
 // import { editPostOptions } from '../src/views/posts.js';
 
 import { publicationView } from '../src/views/publications.js';
@@ -153,6 +160,35 @@ describe('loadPublications() ', () => {
   });
 });
 
+// describe('Verificar los post', () => {
+//   it('Verificar que la función actualizarPost sea llamada ', async () => {
+//     const mainSection = document.createElement('div');
+//     mainSection.id = 'container';
+//     document.body.append(mainSection);
+
+//     mainSection.appendChild(muroInicioView());
+
+//     const postContainer = document.querySelector('#postContainer');
+//     expect(postContainer instanceof HTMLElement).toBe(true);
+//     expect(actualizarPosts).toHaveBeenCalled();
+//   });
+//   it('Verificar que la función  ', async () => {
+//     const mainSection = document.createElement('div');
+
+//     document.body.append(mainSection);
+
+//     mainSection.appendChild(muroInicioView());
+
+//     const postContainer = document.querySelector('#postContainer');
+
+//     editPostOptions(postContainer);
+
+//     const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
+//     postContainer.innerHTML = listNodos;
+//     // const iconEditPost = document.querySelectorAll('.editPostIcon');
+//     // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
+//   });
+// });
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
 //     const mainSection = document.createElement('div');
@@ -171,9 +207,7 @@ describe('loadPublications() ', () => {
 //     // mainSection.appendChild(navToggle);
 //   });
 // });
-
 describe('Muro', () => {
-  // beforeEach();
   it('El componente muro sea un elemento Html', async () => {
     const mainSection = document.createElement('div');
     mainSection.id = 'container';
@@ -272,7 +306,7 @@ describe('Verificar los post', () => {
     const modalCont = document.querySelector('#saveUpdate');
 
     modalCont.click();
-      // await tick();
+    // await tick();
     // const clickEvent = new Event('click');
     // modalCont.dispatchEvent(clickEvent);
     expect(updatePost).toHaveBeenCalled();

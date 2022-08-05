@@ -14,16 +14,12 @@ export const home = () => {
         <a href="#/mochileros" class="nav-menu-link nav-link"><img class="iconhead" width=57px src="../img/mochileros.png" alt="viajeros"></a>
         <p class"textheaderi"> Mochileros </p>
       </li>
-      <li class="nav-menu-item">
-        <a href="#/lugares" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/ubicaciones.png" alt="lugares"></a>
-        <p class"textheaderi"> Lugares </p>
-      </li>
       <li class="nav-menu-item" id="perfilhead">
         <a href="#/perfil" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/useredit.png" alt="lugares"></a>
         <p class"textheaderi"> Editar Perfil </p>
       </li>
       <li class="nav-menu-item" id="sesionhead">
-        <a href="#/perfil" id="cerrar-sesion" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/logout.png" alt="lugares"></a>
+        <a id="cerrar-sesion" class="nav-menu-link nav-link"><img class="iconhead"  width=38px src="../img/logout.png" alt="lugares"></a>
         <p class"textheaderi"> Cerrar Sesión </p>
       </li>
     </ul>
