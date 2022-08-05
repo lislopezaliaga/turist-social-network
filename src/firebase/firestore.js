@@ -62,7 +62,7 @@ export const actualizarPosts = async (callback) => {
 };
 
 export const usersView = async (callback) => {
-  await onSnapshot(query(collection(db, 'users'), orderBy('name', 'desc')), (callback));
+  await onSnapshot(query(collection(db, 'users'), orderBy('name')), (callback));
 };
 
 export const updateLikes = async (idPost, arrayLikes) => {

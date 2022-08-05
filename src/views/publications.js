@@ -102,18 +102,6 @@ async function addPublications(e) {
 }
 
 function addImage() {
-  /*   const divAddImage = document.getElementById('addImage');
-
-    const imageContainer = document.createElement('div');
-    imageContainer.setAttribute('class', 'imageContainer');
-    divAddImage.appendChild(imageContainer);
-
-    const imagen = document.createElement('img');
-
-    const iconX = document.createElement('span');
-    iconX.setAttribute('id', 'deleteButtonImage');
-    iconX.innerHTML = '✖'; */
-
   const divAddImage = document.getElementById('addImage');
   divAddImage.innerHTML = `
     <div class = "imageContainer">
@@ -124,24 +112,9 @@ function addImage() {
   // eslint-disable-next-line no-use-before-define
   deleteButtonPreviewImg();
 
-  /* const read = new FileReader();
-  const file = this.files;
-
-  read.onload = function () {
-    const result = this.result;
-    const url = result;
-    imagen.src = url;
-
-    imageContainer.appendChild(imagen);
-    imageContainer.appendChild(iconX);
-    deleteButtonPreviewImg();
-  }; */
-  /*   const preview = document.querySelector('#imgLoad'); */
-
   const file = document.querySelector('#compartirImg').files[0];
   const reader = new FileReader();
-  console.log(file);
-  console.log(reader);
+
   reader.addEventListener('load', () => {
     // convierte la imagen a una cadena en base64
     const imagen = divAddImage.querySelector('#imgLoad');

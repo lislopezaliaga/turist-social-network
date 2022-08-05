@@ -10,7 +10,7 @@ import {
 import { shareImgPost } from '../firebase/storage.js';
 
 let count = '';
-function templatePostContent(
+export function templatePostContent(
   idPost,
   photo,
   name,
@@ -55,7 +55,7 @@ function templatePostContent(
   return postContent;
 }
 
-function templateEditPost(idCurrentPost) {
+export function templateEditPost(idCurrentPost) {
   const iconOptionsContent = `
     <span class="icon-edit">
       <i class="fa fa-ellipsis-v"></i>
@@ -70,6 +70,7 @@ function templateEditPost(idCurrentPost) {
 
 export const updatePostClick = (divOptions, postContainer) => {
   const updateOpt = divOptions.querySelector('#update-post');
+
   updateOpt.addEventListener('click', (e) => {
     const idPostBtn = e.target.dataset.id;
 
@@ -81,7 +82,6 @@ export const updatePostClick = (divOptions, postContainer) => {
 
         // Traer los datos actuales del post
         const postData = await getUserById(post.id, 'posts');
-
         // postData.imgPost,
         // eslint-disable-next-line no-use-before-define
         modalContainerEdit.innerHTML = templateEditModal(
@@ -94,6 +94,7 @@ export const updatePostClick = (divOptions, postContainer) => {
         if (!modalContainerEdit.open) {
           modalContainerEdit.showModal();
         }
+
         // Capturar los nuevos datos ingresados
         const inputFile = document.querySelector('#inputSelectImg');
 
@@ -102,6 +103,7 @@ export const updatePostClick = (divOptions, postContainer) => {
 
         // eslint-disable-next-line no-use-before-define
         inputFile.addEventListener('change', addImage);
+
         if (postData.imgPost === '') {
           const imgLoad = document.getElementById('oldImgContainer');
           imgLoad.innerHTML = '';
@@ -113,12 +115,11 @@ export const updatePostClick = (divOptions, postContainer) => {
             imgLoad.innerHTML = '';
           });
         }
-
         modalContainerEdit.querySelector('#saveUpdate').addEventListener('click', async () => {
           const chargingGif = document.querySelector('#modalCharginEdit');
-          chargingGif.style.display = 'block';
           const chargingContainer = document.querySelector('#chargingContainer');
           chargingContainer.style.display = 'none';
+          chargingGif.style.display = 'block';
 
           if (inputFile.files.length > 0) {
             if (count === 'changeImage') {
@@ -133,7 +134,7 @@ export const updatePostClick = (divOptions, postContainer) => {
           }
           const pContentPost = document.querySelector('#inputUpdatedText').value;
 
-          await updatePost(post.id, pContentPost, urlImage);
+          updatePost(post.id, pContentPost, urlImage);
 
           modalContainerEdit.close();
         });
@@ -144,24 +145,6 @@ export const updatePostClick = (divOptions, postContainer) => {
           modalContainerEdit.close();
           count = '';
         });
-
-        /* const pContentPost = post.querySelector('.texto');
-        pContentPost.contentEditable = 'true';
-        pContentPost.focus();
-
-        const pos = document.createElement('div');
-
-        const template = '<button id=\'subirfotos\'>submit</button>';
-        pos.innerHTML = template;
-        post.appendChild(pos);
-
-        const guardar = postContainer.querySelector('#subirfotos');
-        guardar.addEventListener('click', async () => {
-          const urlImage = '';
-          if (!urlImage) {
-            await updatePost(post.id, pContentPost.textContent, urlImage);
-          }
-        }); */
       }
     });
   });
@@ -218,7 +201,7 @@ function deleteBtnPreviewImg() {
   });
 }
 
-const templateDeleteModal = () => {
+export const templateDeleteModal = () => {
   const deleteModalContent = `<div id="modalDeletePost" class="modalDeletePost">
     <img class="gatitoWarning" src="img/triste.png">
     <p class="modalTitleDelete">¿Estás seguro que deseas eliminar?</p>
@@ -231,7 +214,7 @@ const templateDeleteModal = () => {
   return deleteModalContent;
 };
 
-const deletePostClick = (divOptions) => {
+export const deletePostClick = (divOptions) => {
   const deleteOpt = divOptions.querySelector('#delete-post');
   deleteOpt.addEventListener('click', (e) => {
     const idPostBtn = e.target.dataset.id;
@@ -244,7 +227,6 @@ const deletePostClick = (divOptions) => {
     if (!modalContainer.open) {
       modalContainer.showModal();
     }
-
     // Seleccionar btn cancelar y eliminar post
     modalContainer.querySelector('#closeModal').addEventListener('click', () => {
       modalContainer.close();
@@ -256,7 +238,7 @@ const deletePostClick = (divOptions) => {
   });
 };
 
-const templateEditModal = (
+export const templateEditModal = (
   textPost,
   imgUrl,
 ) => {
@@ -311,7 +293,6 @@ export function editPostOptions(postContainer) {
   const iconEditPost = document.querySelectorAll('.editPostIcon');
   iconEditPost.forEach((iconOptions) => {
     const idCurrentPost = iconOptions.dataset.id;
-    console.log('hola');
     if (iconOptions.id === sessionStorageCall().id) {
       // const iconEditOptions = document.querySelector('.icon')
       // eslint-disable-next-line no-param-reassign
@@ -346,7 +327,7 @@ async function likesHandler(e) {
 export const postView = async () => {
   actualizarPosts((querySnapshoot) => {
     /** Seleccionamos al container para añadir el post */
-    const postContainer = document.getElementById('postContainer');
+    const postContainer = document.querySelector('#postContainer');
     /** Creamos un div para el modal */
     const modalContainer = `<dialog id="modalContainer">
      </dialog><dialog id="modalEditContainer"></dialog>`;
