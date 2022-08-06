@@ -243,13 +243,14 @@ describe('Home', () => {
     document.body.append(mainSection);
 
     mainSection.appendChild(muroInicioView());
-    const postContainer = document.querySelector('#postContainer');
+    const postContainer = document.getElementById('postContainer');
     console.log(postContainer);
     // expect(postContainer instanceof HTMLElement).toBe(true);
     // expect(actualizarPosts).toHaveBeenCalled();
     // postView();
     // actualizarPosts();
-    expect(postContainer.children).toHaveLength(1);
+    const compare = postContainer.children.length;
+    expect(compare).toBe(3);
     // expect(templatePostContent).toHaveBeenCalled();
   });
 });
