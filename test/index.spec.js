@@ -54,11 +54,8 @@ describe('formSignin', () => {
 
     buttonLogin.click();
 
-    // const complete = document.querySelector('#complete');
     await tick();
-    // ENTONCES
     expect(window.location.hash).toBe('#/inicio');
-    // verificar que el mensaje de error este dentro del documento
   });
 
   it('Debería cambiar de vista al autentificar al usuario de Google', async () => {
@@ -152,36 +149,6 @@ describe('loadPublications() ', () => {
   });
 });
 
-describe('Verificar los post', () => {
-  it('Verificar que la función actualizarPost sea llamada ', async () => {
-    const mainSection = document.createElement('div');
-    mainSection.id = 'container';
-    document.body.append(mainSection);
-
-    mainSection.appendChild(muroInicioView());
-
-    const postContainer = document.querySelector('#postContainer');
-    expect(postContainer instanceof HTMLElement).toBe(true);
-    expect(actualizarPosts).toHaveBeenCalled();
-  });
-  it('Verificar que la función  ', async () => {
-    const mainSection = document.createElement('div');
-
-    document.body.append(mainSection);
-
-    mainSection.appendChild(muroInicioView());
-
-    const postContainer = document.querySelector('#postContainer');
-
-    editPostOptions(postContainer);
-
-    const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
-    postContainer.innerHTML = listNodos;
-    // const iconEditPost = document.querySelectorAll('.editPostIcon');
-
-    // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
-  });
-});
 
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
@@ -237,9 +204,34 @@ describe('Home', () => {
     expect(components.Home() instanceof HTMLElement).toBe(true);
   });
 
-  it('Verificar que  mainSection tenga un hijo', async () => {
+});
+
+describe('Verificar los post', () => {
+  it('Verificar que la función es una String ', () => {
+    expect(typeof templatePostContent()).toEqual(typeof String());
+  });
+  it('Verificar que la función actualizarPost sea llamada ', async () => {
     const mainSection = document.createElement('div');
     mainSection.id = 'container';
+    document.body.append(mainSection);
+
+    mainSection.appendChild(muroInicioView());
+
+    const postContainer = document.querySelector('#postContainer');
+    expect(postContainer instanceof HTMLElement).toBe(true);
+    expect(actualizarPosts).toHaveBeenCalled();
+  });
+
+  beforeAll(() => {
+    HTMLDialogElement.prototype.show = jest.fn();
+    HTMLDialogElement.prototype.showModal = jest.fn();
+    HTMLDialogElement.prototype.close = jest.fn();
+  });
+
+
+  it('Verificar que  mainSection tenga un hijo', async () => {
+    const mainSection = document.createElement('div');
+    mainSection.id = '#postContainer';
     document.body.append(mainSection);
 
     mainSection.appendChild(muroInicioView());
