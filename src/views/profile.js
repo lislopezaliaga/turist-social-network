@@ -16,7 +16,7 @@ export const profileView = async () => {
   tenplateEditProfile(userObject);
 };
 
-function tenplateEditProfile(userObject) {
+export function tenplateEditProfile(userObject) {
   const perfilContainer = document.getElementById('perfilUser');
 
   const perfilContent = `
@@ -90,11 +90,13 @@ async function editPerfilUser() {
     perfilData.profilePhoto,
 
   );
+
   if (!modalEdit.open) {
     modalEdit.showModal();
   }
   const cancelButton = document.querySelector('#cancelButton');
   cancelButton.addEventListener('click', () => {
+    console.log('hola');
     modalEdit.close();
   });
 
@@ -103,7 +105,9 @@ async function editPerfilUser() {
   inputFile.addEventListener('change', addImage);
 
   const guardarButton = document.querySelector('#guardarButton');
+  console.log(guardarButton);
   guardarButton.addEventListener('click', async () => {
+    console.log('hola');
     const chargingGif = document.querySelector('#modalCharginEdit');
     chargingGif.style.display = 'block';
     const chargingContainer = document.querySelector('#contentModal');
@@ -123,18 +127,6 @@ async function editPerfilUser() {
       photo = await shareImgPost(url, file);
       imagen = '';
     }
-
-    // if (inputFile.files.length > 0) {
-    //   if (count === 'changeImage') {
-    //     const file = inputFile.files[0];
-    //     const url = file.name;
-    //     await shareImgPost(url, file);
-
-    //     /* --------obtener la url del post */
-    //     urlImage = await shareImgPost(url, file);
-    //     count = '';
-    //   }
-    // }
     const userStorage = {
       country: paispefil,
       description: descriptionpefil,
@@ -157,7 +149,7 @@ async function editPerfilUser() {
     });
   });
 }
-function modalEditPerfil(name, description, pais, intereses, photo) {
+export function modalEditPerfil(name, description, pais, intereses, photo) {
   const editModalContent = `
   <div id = "modalCharginEdit" style = "display:none">
     <p>Cargando ...</p>

@@ -48,6 +48,7 @@ function back() {
       const dato = element.data();
       const idUsuario = sessionStorageCall().id;
       const idUser = element.id;
+
       if (idUser !== idUsuario) {
         const postContent = templateUsersContent(
           dato.name,
@@ -57,7 +58,9 @@ function back() {
           dato.country,
         );
         userContainer.innerHTML += postContent;
+        console.log('hola');
         usersContainerGeneral.appendChild(userContainer);
+        console.log('hola');
       }
 
       // eslint-disable-next-line no-use-before-define
