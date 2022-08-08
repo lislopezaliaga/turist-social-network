@@ -149,7 +149,6 @@ describe('loadPublications() ', () => {
   });
 });
 
-
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
 //     const mainSection = document.createElement('div');
@@ -203,7 +202,6 @@ describe('Home', () => {
     perfilview.click();
     expect(components.Home() instanceof HTMLElement).toBe(true);
   });
-
 });
 
 describe('Verificar los post', () => {
@@ -227,7 +225,6 @@ describe('Verificar los post', () => {
     HTMLDialogElement.prototype.showModal = jest.fn();
     HTMLDialogElement.prototype.close = jest.fn();
   });
-
 
   it('Verificar que  mainSection tenga un hijo', async () => {
     const mainSection = document.createElement('div');
