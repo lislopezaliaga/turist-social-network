@@ -1,6 +1,8 @@
 import {
-  actualizarPosts, deletePost, loadPublications, updatePost,
+  actualizarPosts, deletePost, loadPublications, updatePost, updateUser,
 } from '../src/firebase/firestore.js';
+import { backpackersView } from '../src/views/backpackers.js';
+import { editProfile } from '../src/views/editProfile.js';
 import { components } from '../src/views/index.js';
 import { muroInicioView } from '../src/views/muroInicio';
 import { perfilView } from '../src/views/perfil.js';
@@ -10,11 +12,13 @@ import {
   templateDeleteModal, templateEditModal, templateEditPost,
   templatePostContent, updatePostClick,
 } from '../src/views/posts.js';
+import { modalEditPerfil, tenplateEditProfile } from '../src/views/profile.js';
 // import { editPostOptions } from '../src/views/posts.js';
 
 import { publicationView } from '../src/views/publications.js';
 
 jest.mock('../src/firebase/auth.js');
+jest.mock('../src/firebase/storage.js');
 jest.mock('../src/firebase/firestore.js');
 jest.mock('../src/firebase/firebaseconfig.js');
 
@@ -314,8 +318,60 @@ describe('Verificar los post', () => {
     const postContainer = document.querySelector('#postContainer');
     // console.log(postContainer);
 
-    expect(postContainer.children).toHaveLength(1);
+    expect(postContainer.children).toHaveLength(3);
 
     // expect(templatePostContent).toHaveBeenCalled();
+  });
+});
+
+describe('Perfil ', () => {
+  it('MuroPerfil tenga aun hijo', () => {
+    const divBackpackers = document.createElement('div');
+    divBackpackers.setAttribute('id', 'divBackpackers');
+
+    document.body.append(editProfile());
+
+    const muroProfile = document.querySelector('#divContainerProfile');
+    expect(muroProfile.children).toHaveLength(1);
+  });
+
+  it('Llamar a updateUser', () => {
+    const containerEditPerfil = document.createElement('div');
+    const perfilContainer = document.createElement('div');
+    const modalContainer = document.createElement('div');
+    perfilContainer.setAttribute('id', 'perfilUser');
+
+    document.body.append(perfilContainer);
+    document.body.append(containerEditPerfil);
+    document.body.append(modalContainer);
+
+    containerEditPerfil.innerHTML = tenplateEditProfile({});
+    modalContainer.innerHTML = modalEditPerfil();
+
+    const editPeril = document.querySelector('#editPerfil');
+
+    editPeril.click();
+    // const cancelButton = document.querySelector('#cancelButton');
+    // cancelButton.click();
+    const guardarButton = document.querySelector('#guardarButton');
+    // console.log(guardarButton);
+    const clickEvent = new Event('click');
+    guardarButton.dispatchEvent(clickEvent);
+    // guardarButton.click();
+
+    expect(editPeril instanceof HTMLElement).toBe(true);
+    expect(updateUser).toHaveBeenCalled();
+  });
+});
+
+describe('BackPackers ', () => {
+  it('El componente divBackpackers tenga un hijo', () => {
+    const divBackpackers = document.createElement('div');
+    divBackpackers.setAttribute('id', 'divBackpackers');
+
+    document.body.append(divBackpackers);
+
+    backpackersView();
+    expect(divBackpackers.children).toHaveLength(1);
   });
 });
