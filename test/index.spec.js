@@ -4,19 +4,16 @@ import {
 import { backpackersView } from '../src/views/backpackers.js';
 import { editProfile } from '../src/views/editProfile.js';
 import { components } from '../src/views/index.js';
-import { muroInicioView } from '../src/views/muroInicio.js';
+import { muroInicioView } from '../src/views/muroInicio';
 import { perfilView } from '../src/views/perfil.js';
-import { editPostOptions, templatePostContent } from '../src/views/posts.js';
 
-// import {
-//   deletePostClick, postView, editPostOptions,
-//   templateDeleteModal, templateEditModal, templateEditPost,
-//   , updatePostClick,
-// } from '../src/views/posts.js';
+import {
+  deletePostClick, postView, editPostOptions,
+  templateDeleteModal, templateEditModal, templateEditPost,
+  templatePostContent, updatePostClick,
+} from '../src/views/posts.js';
 import { modalEditPerfil, tenplateEditProfile } from '../src/views/profile.js';
 // import { editPostOptions } from '../src/views/posts.js';
-
-// import { postView } from '../src/views/posts.js';
 
 import { publicationView } from '../src/views/publications.js';
 
@@ -43,6 +40,7 @@ describe('formSignin', () => {
 
     expect(buttonLogin instanceof HTMLElement).toBe(true);
     // CUANDO
+
     buttonLogin.click();
 
     const complete = document.querySelector('#complete');
@@ -163,7 +161,6 @@ describe('loadPublications() ', () => {
   });
 });
 
-
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
 //     const mainSection = document.createElement('div');
@@ -182,9 +179,7 @@ describe('loadPublications() ', () => {
 //     // mainSection.appendChild(navToggle);
 //   });
 // });
-
 describe('Muro', () => {
-  // beforeEach();
   it('El componente muro sea un elemento Html', async () => {
     const mainSection = document.createElement('div');
     mainSection.id = 'container';
@@ -217,7 +212,6 @@ describe('Home', () => {
     perfilview.click();
     expect(components.Home() instanceof HTMLElement).toBe(true);
   });
-
 });
 
 describe('Verificar los post', () => {
@@ -242,8 +236,79 @@ describe('Verificar los post', () => {
     HTMLDialogElement.prototype.close = jest.fn();
   });
 
+  it('Verificar que la función deletePost es llamada ', () => {
+    const mainSection = document.createElement('div');
+    const modalDialog = document.createElement('dialog');
+    modalDialog.id = 'modalContainer';
 
-  it('Verificar que  mainSection tenga un hijo', async () => {
+    document.body.append(mainSection);
+    document.body.appendChild(modalDialog);
+    document.body.append(templateDeleteModal());
+
+    mainSection.innerHTML = templateEditPost();
+
+    deletePostClick(document);
+
+    const deleteOpt = document.querySelector('#delete-post');
+    deleteOpt.click();
+
+    const closeModal = document.querySelector('#closeModal');
+    closeModal.click();
+
+    const deleteButtonPost = document.querySelector('#deletePost');
+    deleteButtonPost.click();
+
+    expect(deletePost).toHaveBeenCalled();
+  });
+
+  it('Update Post  ', () => {
+    const mainSection = document.createElement('div');
+    const templateEdit = document.createElement('div');
+    const modalDialog = document.createElement('dialog');
+    const templateEditM = document.createElement('div');
+    modalDialog.id = 'modalEditContainer';
+
+    document.body.append(mainSection);
+    document.body.append(templateEdit);
+    document.body.appendChild(modalDialog);
+    document.body.appendChild(templateEditM);
+
+    templateEdit.innerHTML = templateEditPost();
+    mainSection.innerHTML = templatePostContent();
+    templateEditM.innerHTML = templateEditModal();
+
+    updatePostClick(document, document);
+    const updateButton = document.querySelector('#update-post');
+    updateButton.click();
+
+    const inputFile = document.querySelector('#inputSelectImg');
+
+    const changenEvent = new Event('change');
+    inputFile.dispatchEvent(changenEvent);
+
+    const modalCont = document.querySelector('#saveUpdate');
+
+    modalCont.click();
+    // await tick();
+    // const clickEvent = new Event('click');
+    // modalCont.dispatchEvent(clickEvent);
+    expect(updatePost).toHaveBeenCalled();
+    // console.log(inputFile);
+    // inputFile.onchange(clickEvent);
+    // mainSection.appendChild(muroInicioView());
+
+    // const postContainer = document.querySelector('#postContainer');
+
+    // editPostOptions(postContainer);
+
+    // const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
+    // postContainer.innerHTML = listNodos;
+    // const iconEditPost = document.querySelectorAll('.editPostIcon');
+
+    // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
+  });
+
+  it('Verificar que  mainSection tenga un hijo', () => {
     const mainSection = document.createElement('div');
     mainSection.id = '#postContainer';
     document.body.append(mainSection);
