@@ -327,7 +327,9 @@ async function likesHandler(e) {
 export const postView = async () => {
   actualizarPosts((querySnapshoot) => {
     /** Seleccionamos al container para añadir el post */
+
     const postContainer = document.querySelector('#postContainer');
+    console.log(postContainer);
     /** Creamos un div para el modal */
     const modalContainer = `<dialog id="modalContainer">
      </dialog><dialog id="modalEditContainer"></dialog>`;

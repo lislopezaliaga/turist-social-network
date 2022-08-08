@@ -94,7 +94,6 @@ async function editPerfilUser() {
   if (!modalEdit.open) {
     modalEdit.showModal();
   }
- 
   const cancelButton = document.querySelector('#cancelButton');
   cancelButton.addEventListener('click', () => {
     console.log('hola');

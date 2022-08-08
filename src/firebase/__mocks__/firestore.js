@@ -6,7 +6,6 @@ export const deletePost = jest.fn(() => {});
 export const updatePost = jest.fn(() => {});
 // eslint-disable-next-line max-len
 // preguntar el querysnapshot
-// export const actualizarPosts = jest.fn((callback) => Promise.resolve([{ data: () => { callback()} }]));
 export const actualizarPosts = jest.fn((callback) => {
   callback([{
     data: () => ({
