@@ -26,8 +26,6 @@ export const home = () => {
     <div class="burgerMenu">
       <div id='perfilView'>
         <img class="logomenuh"  src="../img/user.png"/>
-        <i class="fa fa-caret-down"></i>
-        
       </div>
       <div id='optionsAccount'>
         <a href="#/perfil">Editar Perfil</a><br><a id="cerrarSesion">Cerrar Sesion</a>

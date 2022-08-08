@@ -181,13 +181,12 @@ function addImage() {
     deleteBtnPreviewImg();
   };
 
-  read.readAsDataURL(file[0]);
-
   // Reemplazar la imagen del post por la nueva seleccionada
   if (document.getElementById('oldImgContainer')) {
     const oldImgContainer = document.getElementById('oldImgContainer');
     oldImgContainer.style.display = 'none';
   }
+  read.readAsDataURL(file[0]);
 }
 
 function deleteBtnPreviewImg() {
@@ -248,15 +247,6 @@ export const templateEditModal = (
     <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
   </div>
   <div id='chargingContainer'>
-    <div class="namePhotoPublication">
-      <div class='nameSelectPublication'>
-        <select id="selectPostArea">
-                <option value="🌎">🌎 Público</option>
-                <option value="🔒">🔒 Privado </option>
-        </select>
-      </div>
-    </div>
-
     <div id="postForm2">
       <textarea placeholder="Escribe Algo ..." id='inputUpdatedText'>${textPost}</textarea>
     
@@ -266,9 +256,6 @@ export const templateEditModal = (
           <input type="file"  id="inputSelectImg" >
         </div>
         <div class="textimgUp"><h4 > Cambia tu imagen </h4></div>
-        <select id="selectYourCountry"> 
-          <option value=" alguna parte del mundo" disabled selected></option>
-        </select>
       </div>
 
       <div id="addImageContainer" class = "containerPreviewImg">

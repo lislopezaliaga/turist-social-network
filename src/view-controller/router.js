@@ -41,6 +41,7 @@ export const changeTmp = (route) => {
       break;
     }
     default:
-      mainSection.appendChild(components.different());
+      mainSection.appendChild(components.error404());
+      break;
   }
 };

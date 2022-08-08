@@ -1,5 +1,5 @@
 import {
-  actualizarPosts, deletePost, loadPublications, updatePost, updateUser,
+  actualizarPosts, deletePost, loadPublications, updatePost,
 } from '../src/firebase/firestore.js';
 import { backpackersView } from '../src/views/backpackers.js';
 import { editProfile } from '../src/views/editProfile.js';
@@ -13,11 +13,11 @@ import { editPostOptions } from '../src/views/posts.js';
 >>>>>>> f31fc5b92ab3c8b3d22b05b3f5dac777dd2b506e
 
 import {
-  deletePostClick, postView, editPostOptions,
+  deletePostClick,
   templateDeleteModal, templateEditModal, templateEditPost,
   templatePostContent, updatePostClick,
 } from '../src/views/posts.js';
-import { modalEditPerfil, tenplateEditProfile } from '../src/views/profile.js';
+/* import { modalEditPerfil, tenplateEditProfile } from '../src/views/profile.js'; */
 // import { editPostOptions } from '../src/views/posts.js';
 
 import { publicationView } from '../src/views/publications.js';
@@ -328,6 +328,23 @@ describe('Verificar los post', () => {
 
     // expect(templatePostContent).toHaveBeenCalled();
   });
+
+  beforeAll(() => {
+    FileReader.prototype.readAsDataURL = jest.fn();
+  });
+
+  it('Verificar que OldImgContainer exista', () => {
+    const templateEditM = document.createElement('div');
+    document.body.appendChild(templateEditM);
+    templateEditM.innerHTML = templateEditModal();
+
+    const inputFile = document.querySelector('#inputSelectImg');
+    const changenEvent = new Event('change');
+    inputFile.dispatchEvent(changenEvent);
+
+    const oldImg = document.getElementById('oldImgContainer');
+    expect(oldImg instanceof HTMLElement).toBe(true);
+  });
 });
 
 describe('Perfil ', () => {
@@ -341,7 +358,7 @@ describe('Perfil ', () => {
     expect(muroProfile.children).toHaveLength(1);
   });
 
-  it('Llamar a updateUser', () => {
+  /* it('Llamar a updateUser', () => {
     const containerEditPerfil = document.createElement('div');
     const perfilContainer = document.createElement('div');
     const modalContainer = document.createElement('div');
@@ -367,7 +384,7 @@ describe('Perfil ', () => {
 
     expect(editPeril instanceof HTMLElement).toBe(true);
     expect(updateUser).toHaveBeenCalled();
-  });
+  }); */
 });
 
 describe('BackPackers ', () => {
@@ -376,8 +393,16 @@ describe('BackPackers ', () => {
     divBackpackers.setAttribute('id', 'divBackpackers');
 
     document.body.append(divBackpackers);
-
     backpackersView();
     expect(divBackpackers.children).toHaveLength(1);
   });
 });
+
+describe('Verificar error 404 ', () => {
+  it('error 404', () => {
+    document.body.append(components.error404());
+    const view404 = document.querySelector('#view404');
+    expect(view404 instanceof HTMLElement).toBe(true);
+  });
+});
+ 

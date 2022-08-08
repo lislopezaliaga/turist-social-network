@@ -58,9 +58,7 @@ function back() {
           dato.country,
         );
         userContainer.innerHTML += postContent;
-        console.log('hola');
         usersContainerGeneral.appendChild(userContainer);
-        console.log('hola');
       }
 
       // eslint-disable-next-line no-use-before-define
