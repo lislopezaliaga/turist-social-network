@@ -1,13 +1,24 @@
-import { actualizarPosts, loadPublications } from '../src/firebase/firestore.js';
+import {
+  actualizarPosts, deletePost, loadPublications, updatePost,
+} from '../src/firebase/firestore.js';
+import { backpackersView } from '../src/views/backpackers.js';
+import { editProfile } from '../src/views/editProfile.js';
 import { components } from '../src/views/index.js';
-import { muroInicioView } from '../src/views/muroInicio.js';
+import { muroInicioView } from '../src/views/muroInicio';
 import { perfilView } from '../src/views/perfil.js';
-import { editPostOptions } from '../src/views/posts.js';
 
-// import { postView } from '../src/views/posts.js';
+import {
+  deletePostClick,
+  templateDeleteModal, templateEditModal, templateEditPost,
+  templatePostContent, updatePostClick,
+} from '../src/views/posts.js';
+/* import { modalEditPerfil, tenplateEditProfile } from '../src/views/profile.js'; */
+// import { editPostOptions } from '../src/views/posts.js';
+
 import { publicationView } from '../src/views/publications.js';
 
 jest.mock('../src/firebase/auth.js');
+jest.mock('../src/firebase/storage.js');
 jest.mock('../src/firebase/firestore.js');
 jest.mock('../src/firebase/firebaseconfig.js');
 
@@ -29,6 +40,7 @@ describe('formSignin', () => {
 
     expect(buttonLogin instanceof HTMLElement).toBe(true);
     // CUANDO
+
     buttonLogin.click();
 
     const complete = document.querySelector('#complete');
@@ -167,9 +179,7 @@ describe('loadPublications() ', () => {
 //     // mainSection.appendChild(navToggle);
 //   });
 // });
-
 describe('Muro', () => {
-  // beforeEach();
   it('El componente muro sea un elemento Html', async () => {
     const mainSection = document.createElement('div');
     mainSection.id = 'container';
@@ -226,20 +236,167 @@ describe('Verificar los post', () => {
     HTMLDialogElement.prototype.close = jest.fn();
   });
 
-  it('Verificar que  mainSection tenga un hijo', async () => {
+  it('Verificar que la función deletePost es llamada ', () => {
+    const mainSection = document.createElement('div');
+    const modalDialog = document.createElement('dialog');
+    modalDialog.id = 'modalContainer';
+
+    document.body.append(mainSection);
+    document.body.appendChild(modalDialog);
+    document.body.append(templateDeleteModal());
+
+    mainSection.innerHTML = templateEditPost();
+
+    deletePostClick(document);
+
+    const deleteOpt = document.querySelector('#delete-post');
+    deleteOpt.click();
+
+    const closeModal = document.querySelector('#closeModal');
+    closeModal.click();
+
+    const deleteButtonPost = document.querySelector('#deletePost');
+    deleteButtonPost.click();
+
+    expect(deletePost).toHaveBeenCalled();
+  });
+
+  it('Update Post  ', () => {
+    const mainSection = document.createElement('div');
+    const templateEdit = document.createElement('div');
+    const modalDialog = document.createElement('dialog');
+    const templateEditM = document.createElement('div');
+    modalDialog.id = 'modalEditContainer';
+
+    document.body.append(mainSection);
+    document.body.append(templateEdit);
+    document.body.appendChild(modalDialog);
+    document.body.appendChild(templateEditM);
+
+    templateEdit.innerHTML = templateEditPost();
+    mainSection.innerHTML = templatePostContent();
+    templateEditM.innerHTML = templateEditModal();
+
+    updatePostClick(document, document);
+    const updateButton = document.querySelector('#update-post');
+    updateButton.click();
+
+    const inputFile = document.querySelector('#inputSelectImg');
+
+    const changenEvent = new Event('change');
+    inputFile.dispatchEvent(changenEvent);
+
+    const modalCont = document.querySelector('#saveUpdate');
+
+    modalCont.click();
+    // await tick();
+    // const clickEvent = new Event('click');
+    // modalCont.dispatchEvent(clickEvent);
+    expect(updatePost).toHaveBeenCalled();
+    // console.log(inputFile);
+    // inputFile.onchange(clickEvent);
+    // mainSection.appendChild(muroInicioView());
+
+    // const postContainer = document.querySelector('#postContainer');
+
+    // editPostOptions(postContainer);
+
+    // const listNodos = '<div class="editPostIcon" data-id = "12324"></div>';
+    // postContainer.innerHTML = listNodos;
+    // const iconEditPost = document.querySelectorAll('.editPostIcon');
+
+    // iconEditPost.forEach((icon) => console.log(icon.dataset.id));
+  });
+
+  it('Verificar que  mainSection tenga un hijo', () => {
     const mainSection = document.createElement('div');
     mainSection.id = '#postContainer';
     document.body.append(mainSection);
 
     mainSection.appendChild(muroInicioView());
-    const postContainer = document.getElementById('postContainer');
-    console.log(postContainer);
-    // expect(postContainer instanceof HTMLElement).toBe(true);
-    // expect(actualizarPosts).toHaveBeenCalled();
-    // postView();
-    // actualizarPosts();
-    const compare = postContainer.children.length;
-    expect(compare).toBe(3);
+
+    const postContainer = document.querySelector('#postContainer');
+    // console.log(postContainer);
+
+    expect(postContainer.children).toHaveLength(3);
+
     // expect(templatePostContent).toHaveBeenCalled();
   });
+
+  beforeAll(() => {
+    FileReader.prototype.readAsDataURL = jest.fn();
+  });
+
+  it('Verificar que OldImgContainer exista', () => {
+    const templateEditM = document.createElement('div');
+    document.body.appendChild(templateEditM);
+    templateEditM.innerHTML = templateEditModal();
+
+    const inputFile = document.querySelector('#inputSelectImg');
+    const changenEvent = new Event('change');
+    inputFile.dispatchEvent(changenEvent);
+
+    const oldImg = document.getElementById('oldImgContainer');
+    expect(oldImg instanceof HTMLElement).toBe(true);
+  });
 });
+
+describe('Perfil ', () => {
+  it('MuroPerfil tenga aun hijo', () => {
+    const divBackpackers = document.createElement('div');
+    divBackpackers.setAttribute('id', 'divBackpackers');
+
+    document.body.append(editProfile());
+
+    const muroProfile = document.querySelector('#divContainerProfile');
+    expect(muroProfile.children).toHaveLength(1);
+  });
+
+  /* it('Llamar a updateUser', () => {
+    const containerEditPerfil = document.createElement('div');
+    const perfilContainer = document.createElement('div');
+    const modalContainer = document.createElement('div');
+    perfilContainer.setAttribute('id', 'perfilUser');
+
+    document.body.append(perfilContainer);
+    document.body.append(containerEditPerfil);
+    document.body.append(modalContainer);
+
+    containerEditPerfil.innerHTML = tenplateEditProfile({});
+    modalContainer.innerHTML = modalEditPerfil();
+
+    const editPeril = document.querySelector('#editPerfil');
+
+    editPeril.click();
+    // const cancelButton = document.querySelector('#cancelButton');
+    // cancelButton.click();
+    const guardarButton = document.querySelector('#guardarButton');
+    // console.log(guardarButton);
+    const clickEvent = new Event('click');
+    guardarButton.dispatchEvent(clickEvent);
+    // guardarButton.click();
+
+    expect(editPeril instanceof HTMLElement).toBe(true);
+    expect(updateUser).toHaveBeenCalled();
+  }); */
+});
+
+describe('BackPackers ', () => {
+  it('El componente divBackpackers tenga un hijo', () => {
+    const divBackpackers = document.createElement('div');
+    divBackpackers.setAttribute('id', 'divBackpackers');
+
+    document.body.append(divBackpackers);
+    backpackersView();
+    expect(divBackpackers.children).toHaveLength(1);
+  });
+});
+
+describe('Verificar error 404 ', () => {
+  it('error 404', () => {
+    document.body.append(components.error404());
+    const view404 = document.querySelector('#view404');
+    expect(view404 instanceof HTMLElement).toBe(true);
+  });
+});
+ 

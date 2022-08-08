@@ -6,6 +6,7 @@ import { muroView } from './muro.js';
 import { muroInicioView } from './muroInicio.js';
 import { editProfile } from './editProfile.js';
 import { backpackersView } from './backpackers.js';
+import error from './error404.js';
 
 const components = {
   signin: formSignIn,
@@ -16,6 +17,7 @@ const components = {
   muroInicio: muroInicioView,
   profile: editProfile,
   mochileros: backpackersView,
+  error404: error,
 };
 
 export { components };

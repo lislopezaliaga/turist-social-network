@@ -48,6 +48,7 @@ function back() {
       const dato = element.data();
       const idUsuario = sessionStorageCall().id;
       const idUser = element.id;
+
       if (idUser !== idUsuario) {
         const postContent = templateUsersContent(
           dato.name,
