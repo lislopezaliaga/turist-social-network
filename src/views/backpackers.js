@@ -40,9 +40,10 @@ function back() {
     const usersContainerGeneral = document.getElementById('divBackpackers');
 
     /** Creamos un div post content */
-    const userContainer = document.createElement('div');
+   /*  const userContainer = document.createElement('div');
     userContainer.setAttribute('class', 'userContainer');
-    userContainer.innerHTML = '';
+    userContainer.innerHTML = ''; */
+    usersContainerGeneral.innerHTML = '';
 
     querySnapshoot.forEach((element) => {
       const dato = element.data();
@@ -57,8 +58,8 @@ function back() {
           dato.profilePhoto,
           dato.country,
         );
-        userContainer.innerHTML += postContent;
-        usersContainerGeneral.appendChild(userContainer);
+        usersContainerGeneral.innerHTML += postContent;
+        // usersContainerGeneral.appendChild(userContainer);
       }
 
       // eslint-disable-next-line no-use-before-define
