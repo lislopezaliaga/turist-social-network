@@ -6,11 +6,6 @@ import { editProfile } from '../src/views/editProfile.js';
 import { components } from '../src/views/index.js';
 import { muroInicioView } from '../src/views/muroInicio';
 import { perfilView } from '../src/views/perfil.js';
-<<<<<<< HEAD
-// eslint-disable-next-line no-unused-vars
-import { editPostOptions } from '../src/views/posts.js';
-=======
->>>>>>> f31fc5b92ab3c8b3d22b05b3f5dac777dd2b506e
 
 import {
   deletePostClick,
@@ -221,7 +216,6 @@ describe('Home', () => {
 
 describe('Verificar los post', () => {
   it('Verificar que la función es una String ', () => {
-    // eslint-disable-next-line no-undef
     expect(typeof templatePostContent()).toEqual(typeof String());
   });
   it('Verificar que la función actualizarPost sea llamada ', async () => {
@@ -405,4 +399,3 @@ describe('Verificar error 404 ', () => {
     expect(view404 instanceof HTMLElement).toBe(true);
   });
 });
- 

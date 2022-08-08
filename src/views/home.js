@@ -36,8 +36,7 @@ export const home = () => {
   homeContainer.setAttribute('class', 'homeContainer');
   homeContainer.innerHTML = homeContent;
 
-  const btnCerrarSesion1 = homeContainer.querySelector('#cerrarSesion');
-  btnCerrarSesion1.addEventListener('click', () => {
+  function cerrado() {
     cierreActividadUsuario()
       .then(() => {
         sessionStorage.clear();
@@ -46,18 +45,11 @@ export const home = () => {
         // eslint-disable-next-line no-console
         console.log(error);
       });
-  });
+  }
+  const btnCerrarSesion1 = homeContainer.querySelector('#cerrarSesion');
+  btnCerrarSesion1.addEventListener('click', cerrado);
 
   const btnCerrarSesion = homeContainer.querySelector('#cerrar-sesion');
-  btnCerrarSesion.addEventListener('click', () => {
-    cierreActividadUsuario()
-      .then(() => {
-        sessionStorage.clear();
-        window.location.hash = '#/signin';
-      }).catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error);
-      });
-  });
+  btnCerrarSesion.addEventListener('click', cerrado);
   return homeContainer;
 };
