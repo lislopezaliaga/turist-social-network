@@ -89,7 +89,7 @@ export const signUpHandler = (e) => {
 
       emailVerificationHandler().then(() => {
         createNewUser(name, emailRegister, userIdRegister, '../img/user.png');
-        //pos antigua
+        // pos antigua
       });
       window.location.hash = '#/signin';
     })

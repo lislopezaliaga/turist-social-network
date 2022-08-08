@@ -3,7 +3,7 @@ export default () => {
   const viewError = `
       <div id = 'view404'>
         <h1>Error 404, Página no encontrada</h1> <br>
-        <img src="img/imgxf" >
+        <img src="img/error.gif" >
       </div>
         `;
   // CREANDO NODO SECTION

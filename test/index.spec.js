@@ -399,4 +399,3 @@ describe('Verificar error 404 ', () => {
     expect(view404 instanceof HTMLElement).toBe(true);
   });
 });
- 
