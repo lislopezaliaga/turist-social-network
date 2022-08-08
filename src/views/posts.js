@@ -362,10 +362,14 @@ export const postView = async () => {
         likesCount,
       );
       postContainerGeneral.innerHTML += postContent;
-      postContainer.appendChild(postContainerGeneral);
+      if (postContainer != null) {
+        postContainer.appendChild(postContainerGeneral);
+
+        // eslint-disable-next-line no-use-before-define
+        verifyLike(dato.likes, element.id);
+      }
 
       // eslint-disable-next-line no-use-before-define
-      verifyLike(dato.likes, element.id);
     });
     editPostOptions(postContainer);
 

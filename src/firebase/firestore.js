@@ -109,39 +109,3 @@ export const updateCreatorName = (idPost, name, photo) => {
     photoCreator: photo,
   });
 };
-// querySnapshot.forEach((doc) => {
-//   console.log(doc.id, ' => ', doc.data());
-// });
-// const museums = query(collectionGroup(db, 'landmarks'), where('type', '==', 'museum'));
-// const querySnapshot = await getDocs(museums);
-
-// .collection("posts")
-// .where("userId", "==", "ipb0GzB5x2dAA4cfQRiTAUlj9jD3")
-// const citiesRef = collection(db, "cities");
-
-// // Create a query against the collection.
-// const q = query(citiesRef, where("state", "==", "CA"));
-
-// export const getUserById = (userId, colection) => {
-//   const docRef = doc(db, colection, userId);
-//   const docSnap = getDoc(docRef).then((userDoc) => userDoc.data());
-//   return docSnap;
-// };
-
-// const querySnapshot = await getDocs(collection(db, "cities"));
-
-// export const dataUser = (userId) => {
-//  return  onSnapshot(doc(db, 'users', userId), (datos) => {
-//     console.log(datos.data());
-//     return datos.data();
-//   });
-
-// };
-// const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
-//   console.log("Current data: ", doc.data());
-// });
-// export const getUserById = (userId, colection) => {
-//   const docRef = doc(db, colection, userId);
-//   const docSnap = getDoc(docRef).then((userDoc) => userDoc.data());
-//   return docSnap;
-// };
