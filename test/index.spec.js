@@ -2,6 +2,7 @@ import { actualizarPosts, loadPublications } from '../src/firebase/firestore.js'
 import { components } from '../src/views/index.js';
 import { muroInicioView } from '../src/views/muroInicio.js';
 import { perfilView } from '../src/views/perfil.js';
+// eslint-disable-next-line no-unused-vars
 import { editPostOptions } from '../src/views/posts.js';
 
 // import { postView } from '../src/views/posts.js';
@@ -149,7 +150,6 @@ describe('loadPublications() ', () => {
   });
 });
 
-
 // describe('inicioView() ', () => {
 //   it.only('Inicio view muestre la vista perfil', async () => {
 //     const mainSection = document.createElement('div');
@@ -203,11 +203,11 @@ describe('Home', () => {
     perfilview.click();
     expect(components.Home() instanceof HTMLElement).toBe(true);
   });
-
 });
 
 describe('Verificar los post', () => {
   it('Verificar que la función es una String ', () => {
+    // eslint-disable-next-line no-undef
     expect(typeof templatePostContent()).toEqual(typeof String());
   });
   it('Verificar que la función actualizarPost sea llamada ', async () => {
@@ -227,7 +227,6 @@ describe('Verificar los post', () => {
     HTMLDialogElement.prototype.showModal = jest.fn();
     HTMLDialogElement.prototype.close = jest.fn();
   });
-
 
   it('Verificar que  mainSection tenga un hijo', async () => {
     const mainSection = document.createElement('div');
