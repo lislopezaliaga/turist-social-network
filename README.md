@@ -42,12 +42,10 @@ Para el proyecto se opto por un estilo explorador, ya que nuestro objetivo es po
 
 ### 2.3 Vista Desktop  💻
 
-![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dDsignin.png)
+![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dSignup.png)
+![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dPost.png)
+![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dMochileros.png)
 
 ### 3.2. Historias de Usuario y Criterios de Aceptación  📢📝
 ```
