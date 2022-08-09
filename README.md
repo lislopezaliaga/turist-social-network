@@ -32,11 +32,13 @@ Para el proyecto se opto por un estilo explorador, ya que nuestro objetivo es po
 
 ![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/signinM.png)
 
-![prototipo2](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo3](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo4](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo5](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
-![prototipo6](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo2](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/signupM.png)
+![prototipo3](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/navM.png)
+![prototipo4](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PublicationM.PNG)
+![prototipo5](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PostM.PNG)
+![prototipo6](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mochilerosM.png)
+![prototipo7](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/EditProfileM.png)
+
 
 ### 2.3 Vista Desktop  💻
 
