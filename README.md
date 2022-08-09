@@ -30,7 +30,7 @@ Para el proyecto se opto por un estilo explorador, ya que nuestro objetivo es po
 
 ### 2.2 Vista Móvil 📲
 
-![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/signinM.png)
 
 ![prototipo2](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
 ![prototipo3](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
