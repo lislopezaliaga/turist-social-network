@@ -33,19 +33,19 @@ Para el proyecto se opto por un estilo explorador, ya que nuestro objetivo es po
 ![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/signinM.png)
 
 ![prototipo2](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/signupM.png)
-![prototipo3](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/navM.png)
-![prototipo4](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PublicationM.PNG)
-![prototipo5](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PostM.PNG)
-![prototipo6](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mochilerosM.png)
-![prototipo7](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/EditProfileM.png)
+
+![prototipo3](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PublicationM.PNG)
+![prototipo4](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PostM.PNG)
+![prototipo5](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mochilerosM.png)
+![prototipo6](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/EditProfileM.png)
 
 
 ### 2.3 Vista Desktop  💻
 
 ![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dDsignin.png)
-![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dSignup.png)
-![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dPost.png)
-![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dMochileros.png)
+![prototipo2](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dSignup.png)
+![prototipo3](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/dPost.png)
+
 
 ### 3.2. Historias de Usuario y Criterios de Aceptación  📢📝
 ```
@@ -53,26 +53,30 @@ HU 1:  🗣️ Como usuario viajero QUIERO suscribirme a la red social A+Aventur
 PARA crear mis publicaciones.
 
  📍 Criterios de Aceptación:
-- [✔️] El usuario debe poder ingresar a la red social para poder loguearse
 - [✔️] Registrarse como nuevo usuario
+- [✔️] Ingresar como usuario de Google
+- [✔️] Validar que no puede crear su cuenta con campos vacíos o información erronea.
 - [✔️] Iniciar sesión con su cuenta creada
-- [✔️] Crear test unitario de validación en los campos vacíos
+- [✔️] El usuario debe poder ingresar a Home una vez validado su correo
+- [✔️] Crear test  de validación en los campos vacíos
 - [✔️] Test de cambio de vista cuando inicia sesión
 
 
  🏁 Definición de terminado:
 - [✔️] El usuario puede registrarse con su correo electrónico y un nickname único. Además, luego podrá  iniciar sesión con esa cuenta creada.
+- [✔️] Debe existir validaciones para que el usuario pueda loguearse
 - [✔️] La vista debe ser responsive, similitud con el prototipo de alta fidelidad.
 
 ```
 
 ```
-HU 2:  🗣️ Como usuario viajero QUIERO poder subir una imagen y pequeña descripción del lugar que visité como una publicación PARA compartir el destino al que viajé con la comunidad
+HU 2:  🗣️ Como usuario viajero QUIERO poder subir una imagen y pequeña descripción del lugar que visité como una publicación PARA compartir el destino al que viajé con la comunidad viajera.
 
  📍 Criterios de Aceptación:
 - [✔️] El usuario debe poder postear texto o imágenes en su muro, previa validación de contenido.
-- [✔️] Guardar todas las publicaciones en su muro.
-- [✔️] Testear que los post que publique el usuario se visualicen en el muro.
+- [✔️] El usuario debe poder escoger otra imagen .
+- [✔️] Al publicar el post se muestre en la parte superior del timeline.
+
 
  🏁 Definición de terminado:
 - [✔️] El usuario puede realizar un post con su usuario registrado
@@ -80,18 +84,85 @@ HU 2:  🗣️ Como usuario viajero QUIERO poder subir una imagen y pequeña des
 - [✔️] Diseño responsive, similitud con el prototipo de alta fidelidad
 
 ```
+```
+HU 3:  🗣️ Como usuario viajero QUIERO poder editar mis publicaciones PARA corregir cualquier error que cometí.
+
+ 📍 Criterios de Aceptación:
+- [✔️] Aparezca un modal para poder editar el texto y/o imagen del post.
+- [✔️]Al confirmar la edición se muestre en el timeline el post actualizado.
+
+
+ 🏁 Definición de terminado:
+- [✔️] El usuario puede editar solo sus posts.
+- [✔️] Se muestre en tiempo real actualizado su post.
 
 ```
-HU 3:  🗣️ HU 3: Como usuario viajero QUIERO poder ver a otros amigos viajeros PARA ver sus publicaciones y darles like.
+HU 4:  🗣️ Como usuario viajero QUIERO poder eliminar mis publicaciones PARA que no exista en el muro ese post.
+
+ 📍 Criterios de Aceptación:
+- [✔️] Tenga una opción de eliminar un post específico.
+- [✔️]Antes de eliminar un post me dé la opción de confirmación a travez de un modal.
+- [✔️]Una vez dada la confirmación ya no se debe mostrar en timeline.
+
+
+ 🏁 Definición de terminado:
+- [✔️] El usuario puede eliminar solo sus posts.
+- [✔️] Desaparezca el post de las demas publicaciones.
+
+```
+HU 5:  🗣️ Como usuario viajero QUIERO poder dar like a mis publicaciones y tambien a las de otro PARA demostrar que me encanta dicha publicación.
+
+ 📍 Criterios de Aceptación:
+- [✔️] Tenga una opción para dar me gusta a la publicación.
+- [✔️] Debe aumentar el contador de likes.
+- [✔️] Poder quitar el like y disminuir el contador.
+
+
+
+ 🏁 Definición de terminado:
+- [✔️] El usuario da like a los posts.
+- [✔️] El contador de like aumenta en 1.
+
+```
+HU 6:  🗣️ Como usuario viajero QUIERO poder ver mis datos en la sección principal PARA ver mi información y foto de Perfil si es que me animo a cambiarla.
+
+ 📍 Criterios de Aceptación:
+- [✔️] La vista principal tenga una pequeña sección de su imagen y nombre del usuario.
+- [✔️] Cuente con datos principales como País/Descripción/Intereses .
+
+ 🏁 Definición de terminado:
+- [✔️] El usuario puede ver su información personal.
+
+```
+```
+HU 7:  🗣️ Como usuario viajero QUIERO poder editar mi perfil PARA cambiar la información que no me gusta.
+
+ 📍 Criterios de Aceptación:
+- [✔️] Tenga una opción para editar su perfil.
+- [✔️] En un modal aparezca los Datos del usario imagen y nombre y deccripción.
+- [✔️] El usuario pueda cambiar de foto de perfil.
+- [✔️] El usuario pueda cambiar sus datos en Inputs.
+- [✔️] El usuario puede guardar los cambios y actualizar en tiempo real.
+
+
+
+ 🏁 Definición de terminado:
+- [✔️] El usuario edita su perfil.
+- [✔️] El usuario ve la actualización en tiempo real.
+
+```
+
+```
+🗣️ HU 8: Como usuario viajero QUIERO poder ver a otros amigos viajeros PARA ver quienes son.
 
 
  📍 Criterios de Aceptación:
-- [✔️] El usuario puede ver las publicaciones de otros viajeros
-- [✔️] Al apretar en el ícono del corazón puede darle me gusta a las publicaciones
+- [✔️] El usuario puede ver la información de todos los usuarios suscritos a la red social.
+
 
  🏁 Definición de terminado:
-- [✔️] El usuario entra al muro y ve las publicaciones 
-- [✔️] El usuario da me gusta a publicaciones de su interés.
+- [✔️]En la sección mochileros se ve todos los usuarios suscritos a nuestra red.
+
 
 ```
 ## 4. Autoras ✒️
