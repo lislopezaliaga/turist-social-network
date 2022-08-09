@@ -5,8 +5,6 @@
 }
 
 .modalDeleteWarning {
-  /* position: absolute;
-  top: 10rem; */
   background-color: beige;
 }
 
@@ -33,9 +31,20 @@
   color: #1d1d17;
   cursor: pointer;
 }
+.logoTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family:Arial, Helvetica, sans-serif;
+}
 .logo2 {
-  width: 220px;
+  width: 70px;
   height: 70px;
+}
+.worldSave{
+  display: flex;
+
 }
 .iconhead {
   cursor: pointer;
@@ -167,7 +176,7 @@
   color: #878787;
 }
 .inputFiles {
-  width: 28px;
+  width: 45px;
   height: 28px;
   background-color: #ffffff;
   border-radius: 4px;
@@ -218,7 +227,7 @@
 }
 
 .inputFiles label {
-  width: 90%;
+  width: 80%;
   margin-left: 5%;
   height: 90%;
   display: block;
@@ -274,6 +283,8 @@
 }
 .firstDivPerfil2 .nombreuser {
   margin-top: 15px;
+  font-size: 23px;
+  text-align: center;
 }
 .buttonPublication:first-child {
   background-color: #34579c;
@@ -304,6 +315,8 @@
   border: solid #293462;
   margin-right: 2%;
   width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
 #privacyPostArea {
   font-size: 14px;
@@ -482,10 +495,6 @@
 .texto {
   max-width: 90%;
 }
-.firstDivPerfil2 .nombreuser {
-  font-size: 23px;
-  text-align: center;
-}
 #modal-charging {
   justify-content: center;
   flex-direction: column;
@@ -659,6 +668,7 @@
   margin-top: 50px;
   box-shadow: 0px 1px 10px #838bae;
   height: 75vh;
+  border-radius: 20px;
 }
 #perfilUser {
   height: 50vw;
@@ -690,7 +700,7 @@
   justify-content: center;
   justify-items: center;
   padding: 20px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
   box-shadow: 0px 1px 10px #838bae;
   margin: 20px;
   flex-basis: 270px;
@@ -712,10 +722,7 @@
   justify-items: end;
   text-align: right;
 }
-.divperfilUser .nombreuser {
-  font-size: 18px;
-  padding: 10px;
-}
+
 .infoDescription {
   font-family: "Nunito Sans", sans-serif;
   font-size: 15px;
@@ -723,14 +730,13 @@
 #modalEdit {
   border: none;
   position: absolute;
-  top: 10%;
-  left: 15%;
-  margin: auto;
+  top: 15%;
+  left: 35%;
   padding: 10px;
   border-radius: 10px;
-  width: 300px;
-  -webkit-box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
-  box-shadow: 1px 1px 35px 9px rgba(0, 0, 0, 0.65);
+  width: 30%;
+  -webkit-box-shadow: 1px 1px 35px 9px rgb(0 0 0 / 65%);
+  box-shadow: 1px 1px 35px 9px rgb(0 0 0 / 65%);
   flex-direction: column;
   align-content: center;
   justify-content: center;

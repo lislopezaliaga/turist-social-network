@@ -30,11 +30,24 @@ Para el proyecto se opto por un estilo explorador, ya que nuestro objetivo es po
 
 ### 2.2 Vista Móvil 📲
 
+![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
 
+![prototipo2](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo3](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo4](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo5](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo6](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
 
 ### 2.3 Vista Desktop  💻
 
-### 3.2. Historias de Usuario y Criterios de Aceptación  📢  📝
+![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+![prototipo1](https://github.com/elisabethfarfan/LIM018-data-lovers/blob/main/src/img/dise%C3%B1os/dise%C3%B1o-pag-principal.png?raw=true)
+
+### 3.2. Historias de Usuario y Criterios de Aceptación  📢📝
 ```
 HU 1:  🗣️ Como usuario viajero QUIERO suscribirme a la red social A+Aventuras 
 PARA crear mis publicaciones.
