@@ -30,9 +30,9 @@ Para el proyecto se opto por un estilo explorador, ya que nuestro objetivo es po
 
 ### 2.2 Vista Móvil 📲
 
-![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mlogin.png)
+![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mlogin.PNG)
 
-![prototipo2](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mhome.png)
+![prototipo2](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mhome.PNG)
 
 
 
