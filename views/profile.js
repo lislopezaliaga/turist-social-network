@@ -147,7 +147,7 @@ async function editPerfilUser() {
 }
 export function modalEditPerfil(name, description, pais, intereses, photo) {
   const editModalContent = `
-  <div id = "modalCharginEdit" style = "display:none">
+  <div id = "modalCharginEdit" class='worldSave' style = "display:none">
     <p>Cargando ...</p>
     <img width="150px" height="100px" src="http://iepingenieria.edu.pe/images/Admision/cargando.gif"/>
   </div>

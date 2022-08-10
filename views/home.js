@@ -3,7 +3,10 @@ import { cierreActividadUsuario } from '../firebase/auth.js';
 export const home = () => {
   const homeContent = `
   <nav class="nav">
-    <img class="logo2"  src="img/travels.svg" width="220px" />
+    <div class='logoTitle'>
+      <img class="logo2"  src="img/backpacker.png" />
+      <p>A+AVENTURAS</p>
+    </div>
     <button class="nav-toggle"><i class="fa fa-bars"></i></button>
     <ul class="nav-menu">
       <li class="nav-menu-item">
