@@ -30,14 +30,10 @@ Para el proyecto se opto por un estilo explorador, ya que nuestro objetivo es po
 
 ### 2.2 Vista Móvil 📲
 
-![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/signinM.png)
+![prototipo1](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mlogin.png)
 
-![prototipo2](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/signupM.png)
+![prototipo2](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mhome.png)
 
-![prototipo3](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PublicationM.PNG)
-![prototipo4](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/PostM.PNG)
-![prototipo5](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/mochilerosM.png)
-![prototipo6](https://github.com/lislopezaliaga/turist-social-network/blob/main/src/img/EditProfileM.png)
 
 
 ### 2.3 Vista Desktop  💻
